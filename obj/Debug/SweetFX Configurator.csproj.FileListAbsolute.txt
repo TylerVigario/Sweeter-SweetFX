@@ -1,0 +1,12 @@
+c:\users\logicpwn\documents\visual studio 2012\Projects\SweetFX Configurator\SweetFX Configurator\bin\Debug\SweetFX Configurator.exe.config
+c:\users\logicpwn\documents\visual studio 2012\Projects\SweetFX Configurator\SweetFX Configurator\bin\Debug\SweetFX Configurator.exe
+c:\users\logicpwn\documents\visual studio 2012\Projects\SweetFX Configurator\SweetFX Configurator\bin\Debug\SweetFX Configurator.pdb
+c:\users\logicpwn\documents\visual studio 2012\Projects\SweetFX Configurator\SweetFX Configurator\obj\Debug\SweetFX Configurator.csprojResolveAssemblyReference.cache
+c:\users\logicpwn\documents\visual studio 2012\Projects\SweetFX Configurator\SweetFX Configurator\obj\Debug\SweetFX_Configurator.MainForm.resources
+c:\users\logicpwn\documents\visual studio 2012\Projects\SweetFX Configurator\SweetFX Configurator\obj\Debug\SweetFX_Configurator.Properties.Resources.resources
+c:\users\logicpwn\documents\visual studio 2012\Projects\SweetFX Configurator\SweetFX Configurator\obj\Debug\SweetFX Configurator.csproj.GenerateResource.Cache
+c:\users\logicpwn\documents\visual studio 2012\Projects\SweetFX Configurator\SweetFX Configurator\obj\Debug\SweetFX Configurator.exe
+c:\users\logicpwn\documents\visual studio 2012\Projects\SweetFX Configurator\SweetFX Configurator\obj\Debug\SweetFX Configurator.pdb
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\SweetFX Configurator\bin\Debug\ObjectListView.dll
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\SweetFX Configurator\bin\Debug\ObjectListView.pdb
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\SweetFX Configurator\bin\Debug\ObjectListView.xml
