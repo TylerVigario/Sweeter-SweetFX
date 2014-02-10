@@ -1,0 +1,4 @@
+sweetfx-configurator
+====================
+
+SweetFX Configurator
