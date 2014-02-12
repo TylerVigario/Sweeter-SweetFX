@@ -10,7 +10,7 @@ namespace SweetFX_Configurator
     public static class SweetFX
     {
         private static bool _loading = false;
-        private static string _file;
+        private static Game _game = null;
         private static List<Setting> SaveSettingQueue = new List<Setting>();
         private static System.Timers.Timer _timer = new System.Timers.Timer(5000);
         public static event SaveSettingsFinishedD SaveSettingsFinished;
@@ -24,7 +24,7 @@ namespace SweetFX_Configurator
         /// <returns>False = No previous file loaded</returns>
         public static bool Load()
         {
-            if (!String.IsNullOrEmpty(_file)) { Load(_file); return true; }
+            if (_game != null) { Load(_game); }
             return false;
         }
 
@@ -32,14 +32,14 @@ namespace SweetFX_Configurator
         /// Parse and load a SweetFX config file
         /// </summary>
         /// <param name="file">Full file path</param>
-        public static void Load(string file)
+        public static void Load(Game g)
         {
             if (_loading) { return; }
             _loading = true;
             SMAA = new _SMAA();
             LumaSharpen = new _LumaSharpen();
-            string[] lines = File.ReadAllLines(file);
-            _file = file;
+            string[] lines = File.ReadAllLines(g.Directory + @"\SweetFX_settings.txt");
+            _game = g;
             foreach (string line in lines)
             {
                 if (line.StartsWith("#define"))
@@ -133,7 +133,7 @@ namespace SweetFX_Configurator
 
         private static void SaveSettingWorker()
         {
-            string[] lines = File.ReadAllLines(_file);
+            string[] lines = File.ReadAllLines(_game.Directory + @"\SweetFX_settings.txt");
             for (int i = 0; i < lines.Length; i++)
             {
                 string low_line = lines[i].ToLower();
@@ -152,7 +152,7 @@ namespace SweetFX_Configurator
                     }
                 }
             }
-            File.WriteAllLines(_file, lines);
+            File.WriteAllLines(_game.Directory + @"\SweetFX_settings.txt", lines);
             _timer.Enabled = false;
             _timer.Stop();
             SaveSettingsFinished();

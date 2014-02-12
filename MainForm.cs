@@ -8,7 +8,7 @@ namespace SweetFX_Configurator
     {
         private List<Message> MessagePump = new List<Message>();
         private delegate void SweetFX_SaveSettingsFinishedD();
-        AddGameForm add_game_form;
+        InstallManagerForm install_manager_form;
 
         public MainForm()
         {
@@ -17,10 +17,25 @@ namespace SweetFX_Configurator
         
         private void MainForm_Load(object sender, EventArgs e)
         {
+            Settings.Load();
             WindowGeometry.GeometryFromString(Settings.Main_Window_Geometry, this);
             //
-            SweetFX.Load(@"D:\Desktop\SweetFX_settings.txt");
             SweetFX.SaveSettingsFinished += SweetFX_SaveSettingsFinished;
+            InstallManager.GameLoaded += InstallManager_GameLoaded;
+            if (Settings.LastGame != null)
+            {
+                InstallManager.LoadGame(Settings.LastGame);
+            }
+        }
+
+        void InstallManager_GameLoaded()
+        {
+            LoadSFXConfig();
+        }
+
+        private void LoadSFXConfig()
+        {
+            StopFormCapture();
             // SMAA
             checkBox1.Checked = SweetFX.SMAA.Enabled;
             numericUpDown1.Value = SweetFX.SMAA.Threshold;
@@ -123,18 +138,18 @@ namespace SweetFX_Configurator
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!AddGameForm.isOpen)
+            if (!InstallManagerForm.isOpen)
             {
-                add_game_form = new AddGameForm();
-                add_game_form.FormClosed += add_game_form_FormClosed;
-                add_game_form.Show();
+                install_manager_form = new InstallManagerForm();
+                install_manager_form.FormClosed += install_manager_form_FormClosed;
+                install_manager_form.Show();
             }
-            else { add_game_form.BringToFront(); }
+            else { install_manager_form.BringToFront(); }
         }
 
-        void add_game_form_FormClosed(object sender, FormClosedEventArgs e)
+        void install_manager_form_FormClosed(object sender, FormClosedEventArgs e)
         {
-            add_game_form.Dispose();
+            install_manager_form.Dispose();
         }
 
         #region SMAA

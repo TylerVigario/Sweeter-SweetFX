@@ -22,3 +22,9 @@ C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\swe
 C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX_Configurator.MainForm.resources
 C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX_Configurator.Properties.Resources.resources
 C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX Configurator.csproj.GenerateResource.Cache
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX_Configurator.AddGameForm.resources
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\Ookii.Dialogs.dll
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\Ookii.Dialogs.pdb
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\Ookii.Dialogs.xml
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\nl\Ookii.Dialogs.resources.dll
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX_Configurator.InstallManagerForm.resources

@@ -51,8 +51,14 @@
     <Compile Include="AddGameForm.Designer.cs">
       <DependentUpon>AddGameForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Games.cs" />
+    <Compile Include="InstallManager.cs" />
     <Compile Include="IniFile.cs" />
+    <Compile Include="InstallManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InstallManagerForm.Designer.cs">
+      <DependentUpon>InstallManagerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     <Compile Include="WindowGeometry.cs" />
     <EmbeddedResource Include="AddGameForm.resx">
       <DependentUpon>AddGameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InstallManagerForm.resx">
+      <DependentUpon>InstallManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

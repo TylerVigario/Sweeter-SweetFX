@@ -112,20 +112,20 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.addToolStripMenuItem.Text = "Add Game";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.addToolStripMenuItem.Text = "Game Manager";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // recentToolStripMenuItem
             // 
             this.recentToolStripMenuItem.Name = "recentToolStripMenuItem";
-            this.recentToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.recentToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.recentToolStripMenuItem.Text = "Recent";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(127, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
             // 
             // settingsToolStripMenuItem
             // 

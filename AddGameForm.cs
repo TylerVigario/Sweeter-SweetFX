@@ -45,6 +45,14 @@ namespace SweetFX_Configurator
                 MessageBox.Show("Please add the name of the game");
                 return;
             }
+            if (String.IsNullOrEmpty(textBox1.Text))
+            {
+                MessageBox.Show("Click Browse to select the game directory");
+                return;
+            }
+            Settings.AddGame(new Game(textBox2.Text.Trim(), textBox1.Text.Trim()));
+            // Open Installer
+            this.Close();
         }
     }
 }
