@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SweetFX_Configurator
@@ -29,6 +23,13 @@ namespace SweetFX_Configurator
             WindowGeometry.GeometryFromString(Settings.InstallManager_Window_Geometry, this);
             Games = Settings.GetGames();
             fastObjectListView1.SetObjects(Games);
+            Settings.GameAdded += Settings_GameAdded;
+        }
+
+        void Settings_GameAdded(Game _g)
+        {
+            Games.Add(_g);
+            fastObjectListView1.AddObject(_g);
         }
 
         private void InstallManagerForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -55,12 +56,23 @@ namespace SweetFX_Configurator
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Settings.DeleteGame((Game)fastObjectListView1.SelectedObject);
+            fastObjectListView1.RemoveObject(fastObjectListView1.SelectedObject);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            InstallManager.LoadGame((Game)fastObjectListView1.SelectedObject);
+        }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // install SweetFX
+        }
+
+        private void InstallManagerForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _open = false;
         }
     }
 }

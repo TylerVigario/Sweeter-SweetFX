@@ -35,6 +35,7 @@ namespace SweetFX_Configurator
         public static void Load(Game g)
         {
             if (_loading) { return; }
+            if (!File.Exists(g.Directory + @"\SweetFX_settings.txt")) { return; }
             _loading = true;
             SMAA = new _SMAA();
             LumaSharpen = new _LumaSharpen();

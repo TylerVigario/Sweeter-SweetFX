@@ -14,7 +14,7 @@ namespace SweetFX_Configurator
         {
             InitializeComponent();
         }
-        
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             Settings.Load();
@@ -22,14 +22,35 @@ namespace SweetFX_Configurator
             //
             SweetFX.SaveSettingsFinished += SweetFX_SaveSettingsFinished;
             InstallManager.GameLoaded += InstallManager_GameLoaded;
-            if (Settings.LastGame != null)
+            if (Settings.LastGame.isSweetFXInstalled)
             {
                 InstallManager.LoadGame(Settings.LastGame);
             }
+            //
+            List<Game> _gms = Settings.GetGames();
+            foreach (Game _game in _gms)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem();
+                item.Text = _game.Name;
+                item.Click += item_Click;
+                gamesToolStripMenuItem1.DropDownItems.Add(item);
+            }
         }
+
+        void item_Click(object sender, EventArgs e)
+        {
+            InstallManager.LoadGame(((ToolStripMenuItem)sender).Text);
+        }
+
+        private delegate void InstallManager_GameLoadedD();
 
         void InstallManager_GameLoaded()
         {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new InstallManager_GameLoadedD(InstallManager_GameLoaded));
+                return;
+            }
             LoadSFXConfig();
         }
 
@@ -150,6 +171,11 @@ namespace SweetFX_Configurator
         void install_manager_form_FormClosed(object sender, FormClosedEventArgs e)
         {
             install_manager_form.Dispose();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //about
         }
 
         #region SMAA
