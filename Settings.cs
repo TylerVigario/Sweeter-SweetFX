@@ -31,5 +31,21 @@ namespace SweetFX_Configurator
         }
 
         #endregion
+
+        #region AddGame_Window_Geometry
+
+        public static string AddGame_Window_Geometry
+        {
+            get
+            {
+                return ini.GetString("Settings", "AddGame_Window_Geometry", "");
+            }
+            set
+            {
+                ini.WriteValue("Settings", "AddGame_Window_Geometry", value);
+            }
+        }
+
+        #endregion
     }
 }

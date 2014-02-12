@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace SweetFX_Configurator
 {
     public partial class MainForm : Form
     {
+        private List<Message> MessagePump = new List<Message>();
+        private delegate void SweetFX_SaveSettingsFinishedD();
+        AddGameForm add_game_form;
+
         public MainForm()
         {
             InitializeComponent();
@@ -12,7 +17,10 @@ namespace SweetFX_Configurator
         
         private void MainForm_Load(object sender, EventArgs e)
         {
+            WindowGeometry.GeometryFromString(Settings.Main_Window_Geometry, this);
+            //
             SweetFX.Load(@"D:\Desktop\SweetFX_settings.txt");
+            SweetFX.SaveSettingsFinished += SweetFX_SaveSettingsFinished;
             // SMAA
             checkBox1.Checked = SweetFX.SMAA.Enabled;
             numericUpDown1.Value = SweetFX.SMAA.Threshold;
@@ -27,6 +35,27 @@ namespace SweetFX_Configurator
             checkBox3.Checked = SweetFX.SMAA.DirectX9_Linear_Blend;
             //
             StartFormCapture();
+        }
+
+        void SweetFX_SaveSettingsFinished()
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new SweetFX_SaveSettingsFinishedD(SweetFX_SaveSettingsFinished));
+                return;
+            }
+            SetMessage("SweetFX configuration saved");
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Settings.Main_Window_Geometry = WindowGeometry.GeometryToString(this);
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SweetFX.Dispose();
+            Environment.Exit(0);
         }
 
         private void StartFormCapture()
@@ -59,20 +88,53 @@ namespace SweetFX_Configurator
             this.checkBox3.CheckedChanged -= new System.EventHandler(this.checkBox3_CheckedChanged);
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void SetMessage(string _message)
         {
-            //
-            Environment.Exit(0);
+            SetMessage(new Message(_message));
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void SetMessage(Message _message)
         {
-            // add game - create form
+            if (!timer1.Enabled)
+            {
+                toolStripStatusLabel1.Text = _message.ToString();
+                timer1.Interval = _message.Timeout;
+                timer1.Enabled = true;
+                timer1.Start();
+            }
+            else { MessagePump.Add(_message); }
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            // remove game - easy
+            if (MessagePump.Count > 0)
+            {
+                toolStripStatusLabel1.Text = MessagePump[0].ToString();
+                timer1.Interval = MessagePump[0].Timeout;
+                MessagePump.Remove(MessagePump[0]);
+            }
+            else
+            {
+                toolStripStatusLabel1.Text = "";
+                timer1.Enabled = false;
+                timer1.Stop();
+            }
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!AddGameForm.isOpen)
+            {
+                add_game_form = new AddGameForm();
+                add_game_form.FormClosed += add_game_form_FormClosed;
+                add_game_form.Show();
+            }
+            else { add_game_form.BringToFront(); }
+        }
+
+        void add_game_form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            add_game_form.Dispose();
         }
 
         #region SMAA
@@ -94,70 +156,116 @@ namespace SweetFX_Configurator
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)
         {
-            // Remove only the event needed, sigh
-            // sigh - bitch work
-            StopFormCapture();
+            this.numericUpDown1.ValueChanged -= new System.EventHandler(this.numericUpDown1_ValueChanged);
             numericUpDown1.Value = (decimal)trackBar1.Value / (decimal)100.00;
             SweetFX.SMAA.Threshold = numericUpDown1.Value;
-            StartFormCapture();
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            StopFormCapture();
+            this.trackBar1.Scroll -= new System.EventHandler(this.trackBar1_ValueChanged);
             SweetFX.SMAA.Threshold = numericUpDown1.Value * (decimal)100.00;
             trackBar1.Value = Convert.ToInt32(SweetFX.SMAA.Threshold);
-            StartFormCapture();
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_ValueChanged);
         }
 
         private void trackBar2_ValueChanged(object sender, EventArgs e)
         {
-            StopFormCapture();
+            this.numericUpDown2.ValueChanged -= new System.EventHandler(this.numericUpDown2_ValueChanged);
             numericUpDown2.Value = trackBar2.Value;
             SweetFX.SMAA.Max_Search_Steps = trackBar2.Value;
-            StartFormCapture();
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
         }
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            StopFormCapture();
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_ValueChanged);
             trackBar2.Value = Convert.ToInt32(numericUpDown2.Value);
             SweetFX.SMAA.Max_Search_Steps = trackBar2.Value;
-            StartFormCapture();
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_ValueChanged);
         }
 
         private void trackBar3_ValueChanged(object sender, EventArgs e)
         {
-            StopFormCapture();
+            this.numericUpDown3.ValueChanged -= new System.EventHandler(this.numericUpDown3_ValueChanged);
             numericUpDown3.Value = trackBar3.Value;
             SweetFX.SMAA.Max_Search_Steps_Diag = trackBar3.Value;
-            StartFormCapture();
+            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
         }
 
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)
         {
-            StopFormCapture();
+            this.trackBar3.Scroll -= new System.EventHandler(this.trackBar3_ValueChanged);
             trackBar3.Value = Convert.ToInt32(numericUpDown3.Value);
             SweetFX.SMAA.Max_Search_Steps_Diag = trackBar3.Value;
-            StartFormCapture();
+            this.trackBar3.Scroll += new System.EventHandler(this.trackBar3_ValueChanged);
         }
 
         private void trackBar4_ValueChanged(object sender, EventArgs e)
         {
-            StopFormCapture();
+            this.numericUpDown4.ValueChanged -= new System.EventHandler(this.numericUpDown4_ValueChanged);
             numericUpDown4.Value = trackBar4.Value;
             SweetFX.SMAA.Corner_Rounding = trackBar4.Value;
-            StartFormCapture();
+            this.numericUpDown4.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
         }
 
         private void numericUpDown4_ValueChanged(object sender, EventArgs e)
         {
-            StopFormCapture();
+            this.trackBar4.Scroll -= new System.EventHandler(this.trackBar4_ValueChanged);
             trackBar4.Value = Convert.ToInt32(numericUpDown4.Value);
             SweetFX.SMAA.Corner_Rounding = trackBar4.Value;
-            StartFormCapture();
+            this.trackBar4.Scroll += new System.EventHandler(this.trackBar4_ValueChanged);
         }
 
         #endregion
+    }
+
+    public class Message
+    {
+        private string _action;
+        private string _text;
+        private int _timeout;
+
+        public Message(string tex)
+        {
+            _text = tex;
+            _action = "";
+            _timeout = 5;
+        }
+
+        public Message(string tex, string a)
+        {
+            _text = tex;
+            _action = a;
+            _timeout = 5;
+        }
+
+        public Message(string tex, int t)
+        {
+            _text = tex;
+            _action = "";
+            _timeout = t;
+        }
+
+        public Message(string tex, string a, int t)
+        {
+            _text = tex;
+            _action = a;
+            _timeout = t;
+        }
+
+        public string Action { get { return _action; } }
+
+        public string Text { get { return _text; } }
+
+        public int Timeout { get { return _timeout * 1000; } }
+
+        public override string ToString()
+        {
+            string _final = "";
+            if (!String.IsNullOrEmpty(_action)) { _final = _action + ": "; }
+            return _final + _text;
+        }
     }
 }
