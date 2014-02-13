@@ -69,6 +69,99 @@ namespace SweetFX_Configurator
             trackBar4.Value = SweetFX.SMAA.Corner_Rounding;
             checkBox2.Checked = SweetFX.SMAA.Color_Edge_Detection;
             checkBox3.Checked = SweetFX.SMAA.DirectX9_Linear_Blend;
+            // FXAA
+            checkBox6.Checked = SweetFX.FXAA.Enabled;
+            numericUpDown8.Value = SweetFX.FXAA.Quality_Preset;
+            trackBar8.Value = SweetFX.FXAA.Quality_Preset;
+            numericUpDown7.Value = SweetFX.FXAA.Subpix;
+            trackBar7.Value = Convert.ToInt32(SweetFX.FXAA.Subpix * (decimal)1000.00);
+            numericUpDown6.Value = SweetFX.FXAA.Edge_Threshold;
+            trackBar6.Value = Convert.ToInt32(SweetFX.FXAA.Edge_Threshold * (decimal)1000.00);
+            numericUpDown5.Value = SweetFX.FXAA.Edge_Threshold_Min;
+            trackBar5.Value = Convert.ToInt32(SweetFX.FXAA.Edge_Threshold_Min * (decimal)1000.00);
+            // Explosion
+            checkBox4.Checked = SweetFX.Explosion.Enabled;
+            numericUpDown12.Value = SweetFX.Explosion.Radius;
+            trackBar12.Value = Convert.ToInt32(SweetFX.Explosion.Radius * (decimal)10.00);
+            // Cartoon
+            checkBox5.Checked = SweetFX.Cartoon.Enabled;
+            numericUpDown11.Value = SweetFX.Cartoon.Power;
+            trackBar9.Value = Convert.ToInt32(SweetFX.Cartoon.Power * (decimal)10.00);
+            numericUpDown9.Value = SweetFX.Cartoon.Edge_Slope;
+            trackBar11.Value = Convert.ToInt32(SweetFX.Cartoon.Edge_Slope * (decimal)10.00);
+            // CRT
+            checkBox8.Checked = SweetFX.CRT.Enabled;
+            checkBox12.Checked = SweetFX.CRT.Enabled;
+            numericUpDown19.Value = SweetFX.CRT.Amount;
+            trackBar19.Value = Convert.ToInt32(SweetFX.CRT.Amount * (decimal)100.00);
+            numericUpDown18.Value = SweetFX.CRT.Resolution;
+            trackBar18.Value = Convert.ToInt32(SweetFX.CRT.Resolution * (decimal)10.00);
+            numericUpDown17.Value = SweetFX.CRT.Gamma;
+            trackBar17.Value = Convert.ToInt32(SweetFX.CRT.Gamma * (decimal)10.00);
+            numericUpDown16.Value = SweetFX.CRT.Monitor_Gamma;
+            trackBar16.Value = Convert.ToInt32(SweetFX.CRT.Monitor_Gamma * (decimal)10.00);
+            numericUpDown10.Value = SweetFX.CRT.Brightness;
+            trackBar10.Value = Convert.ToInt32(SweetFX.CRT.Brightness * (decimal)10.00);
+            numericUpDown13.Value = SweetFX.CRT.Scanline_Intensity;
+            trackBar13.Value = Convert.ToInt32(SweetFX.CRT.Scanline_Intensity * (decimal)10.00);
+            checkBox10.Checked = SweetFX.CRT.Scanline_Gaussian;
+            numericUpDown23.Value = SweetFX.CRT.Corner_Size;
+            trackBar23.Value = Convert.ToInt32(SweetFX.CRT.Corner_Size * (decimal)10000.00);
+            numericUpDown22.Value = SweetFX.CRT.Distance;
+            trackBar22.Value = Convert.ToInt32(SweetFX.CRT.Distance * (decimal)100.00);
+            numericUpDown21.Value = SweetFX.CRT.AngleX;
+            trackBar21.Value = Convert.ToInt32(SweetFX.CRT.AngleX * (decimal)100.00);
+            numericUpDown20.Value = SweetFX.CRT.AngleY;
+            trackBar20.Value = Convert.ToInt32(SweetFX.CRT.AngleY * (decimal)100.00);
+            numericUpDown15.Value = SweetFX.CRT.Curvature_Radius;
+            trackBar15.Value = Convert.ToInt32(SweetFX.CRT.Curvature_Radius * (decimal)10.00);
+            numericUpDown14.Value = SweetFX.CRT.Overscan;
+            trackBar14.Value = Convert.ToInt32(SweetFX.CRT.Overscan * (decimal)100.00);
+            checkBox7.Checked = SweetFX.CRT.Curvature;
+            checkBox14.Checked = SweetFX.CRT.Oversample;
+            // Bloom
+            checkBox16.Checked = SweetFX.Bloom.Enabled;
+            numericUpDown26.Value = SweetFX.Bloom.Threshold;
+            trackBar26.Value = Convert.ToInt32(SweetFX.Bloom.Threshold * (decimal)100.00);
+            numericUpDown28.Value = SweetFX.Bloom.Power;
+            trackBar27.Value = Convert.ToInt32(SweetFX.Bloom.Power * (decimal)1000.00);
+            numericUpDown27.Value = SweetFX.Bloom.Width;
+            trackBar28.Value = Convert.ToInt32(SweetFX.Bloom.Width * (decimal)10000.00);
+            // HDR
+            checkBox15.Checked = SweetFX.HDR.Enabled;
+            numericUpDown25.Value = SweetFX.HDR.Power;
+            trackBar24.Value = Convert.ToInt32(SweetFX.HDR.Power * (decimal)100.00);
+            numericUpDown24.Value = SweetFX.HDR.Radius;
+            trackBar25.Value = Convert.ToInt32(SweetFX.HDR.Radius * (decimal)100.00);
+            // LumaSharpen
+            checkBox20.Checked = SweetFX.LumaSharpen.Enabled;
+            numericUpDown32.Value = SweetFX.LumaSharpen.Strength;
+            trackBar32.Value = Convert.ToInt32(SweetFX.LumaSharpen.Strength * (decimal)100.00);
+            numericUpDown31.Value = SweetFX.LumaSharpen.Clamp;
+            trackBar31.Value = Convert.ToInt32(SweetFX.LumaSharpen.Clamp * (decimal)1000.00);
+            numericUpDown30.Value = SweetFX.LumaSharpen.Pattern;
+            trackBar30.Value = SweetFX.LumaSharpen.Pattern;
+            numericUpDown29.Value = SweetFX.LumaSharpen.Offset_Bias;
+            trackBar29.Value = Convert.ToInt32(SweetFX.LumaSharpen.Offset_Bias * (decimal)10.00);
+            checkBox19.Checked = SweetFX.LumaSharpen.Show;
+            // Levels
+            checkBox21.Checked = SweetFX.Levels.Enabled;
+            numericUpDown35.Value = SweetFX.Levels.Black_Point;
+            trackBar48.Value = SweetFX.Levels.Black_Point;
+            numericUpDown33.Value = SweetFX.Levels.White_Point;
+            trackBar33.Value = SweetFX.Levels.White_Point;
+            // Technicolor
+            checkBox23.Checked = SweetFX.Technicolor.Enabled;
+            numericUpDown52.Value = SweetFX.Technicolor.Amount;
+            trackBar52.Value = Convert.ToInt32(SweetFX.Technicolor.Amount * (decimal)100.00);
+            numericUpDown51.Value = SweetFX.Technicolor.Power;
+            trackBar51.Value = Convert.ToInt32(SweetFX.Technicolor.Power * (decimal)100.00);
+            numericUpDown50.Value = SweetFX.Technicolor.Red_Negative_Amount;
+            trackBar50.Value = Convert.ToInt32(SweetFX.Technicolor.Red_Negative_Amount * (decimal)100.00);
+            numericUpDown49.Value = SweetFX.Technicolor.Green_Negative_Amount;
+            trackBar49.Value = Convert.ToInt32(SweetFX.Technicolor.Green_Negative_Amount * (decimal)100.00);
+            numericUpDown48.Value = SweetFX.Technicolor.Blue_Negative_Amount;
+            trackBar35.Value = Convert.ToInt32(SweetFX.Technicolor.Blue_Negative_Amount * (decimal)100.00);
             //
             StartFormCapture();
         }
@@ -96,6 +189,7 @@ namespace SweetFX_Configurator
 
         private void StartFormCapture()
         {
+            // SMAA
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_ValueChanged);
@@ -107,10 +201,129 @@ namespace SweetFX_Configurator
             this.trackBar4.Scroll += new System.EventHandler(this.trackBar4_ValueChanged);
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            // FXAA
+            checkBox6.CheckedChanged += checkBox6_CheckedChanged;
+            numericUpDown8.ValueChanged += numericUpDown8_ValueChanged;
+            trackBar8.Scroll += trackBar8_Scroll;
+            numericUpDown7.ValueChanged += numericUpDown7_ValueChanged;
+            trackBar7.Scroll += trackBar7_Scroll;
+            numericUpDown6.ValueChanged += numericUpDown6_ValueChanged;
+            trackBar6.Scroll += trackBar6_Scroll;
+            numericUpDown5.ValueChanged += numericUpDown5_ValueChanged;
+            trackBar5.Scroll += trackBar5_Scroll;
+            // Explosion
+            checkBox4.CheckedChanged += checkBox4_CheckedChanged;
+            numericUpDown12.ValueChanged += numericUpDown12_ValueChanged;
+            trackBar12.Scroll += trackBar12_Scroll;
+            // Cartoon
+            checkBox5.CheckedChanged += checkBox5_CheckedChanged;
+            numericUpDown11.ValueChanged += numericUpDown11_ValueChanged;
+            trackBar9.Scroll += trackBar9_Scroll;
+            numericUpDown9.ValueChanged += numericUpDown9_ValueChanged;
+            trackBar11.Scroll += trackBar11_Scroll;
+            // CRT
+            checkBox8.CheckedChanged += checkBox8_CheckedChanged;
+            checkBox12.CheckedChanged += checkBox12_CheckedChanged;
+            numericUpDown19.ValueChanged += numericUpDown19_ValueChanged;
+            trackBar19.Scroll += trackBar19_Scroll;
+            numericUpDown18.ValueChanged += numericUpDown18_ValueChanged;
+            trackBar18.Value = Convert.ToInt32(SweetFX.CRT.Resolution * (decimal)10.00);
+            numericUpDown17.Value = SweetFX.CRT.Gamma;
+            trackBar17.Value = Convert.ToInt32(SweetFX.CRT.Gamma * (decimal)10.00);
+            numericUpDown16.Value = SweetFX.CRT.Monitor_Gamma;
+            trackBar16.Value = Convert.ToInt32(SweetFX.CRT.Monitor_Gamma * (decimal)10.00);
+            numericUpDown10.Value = SweetFX.CRT.Brightness;
+            trackBar10.Value = Convert.ToInt32(SweetFX.CRT.Brightness * (decimal)10.00);
+            numericUpDown13.Value = SweetFX.CRT.Scanline_Intensity;
+            trackBar13.Value = Convert.ToInt32(SweetFX.CRT.Scanline_Intensity * (decimal)10.00);
+            checkBox10.Checked = SweetFX.CRT.Scanline_Gaussian;
+            numericUpDown23.Value = SweetFX.CRT.Corner_Size;
+            trackBar23.Value = Convert.ToInt32(SweetFX.CRT.Corner_Size * (decimal)10000.00);
+            numericUpDown22.Value = SweetFX.CRT.Distance;
+            trackBar22.Value = Convert.ToInt32(SweetFX.CRT.Distance * (decimal)100.00);
+            numericUpDown21.Value = SweetFX.CRT.AngleX;
+            trackBar21.Value = Convert.ToInt32(SweetFX.CRT.AngleX * (decimal)100.00);
+            numericUpDown20.Value = SweetFX.CRT.AngleY;
+            trackBar20.Value = Convert.ToInt32(SweetFX.CRT.AngleY * (decimal)100.00);
+            numericUpDown15.Value = SweetFX.CRT.Curvature_Radius;
+            trackBar15.Value = Convert.ToInt32(SweetFX.CRT.Curvature_Radius * (decimal)10.00);
+            numericUpDown14.Value = SweetFX.CRT.Overscan;
+            trackBar14.Value = Convert.ToInt32(SweetFX.CRT.Overscan * (decimal)100.00);
+            checkBox7.Checked = SweetFX.CRT.Curvature;
+            checkBox14.Checked = SweetFX.CRT.Oversample;
+            // Bloom
+            checkBox16.Checked = SweetFX.Bloom.Enabled;
+            numericUpDown26.Value = SweetFX.Bloom.Threshold;
+            trackBar26.Value = Convert.ToInt32(SweetFX.Bloom.Threshold * (decimal)100.00);
+            numericUpDown28.Value = SweetFX.Bloom.Power;
+            trackBar27.Value = Convert.ToInt32(SweetFX.Bloom.Power * (decimal)1000.00);
+            numericUpDown27.Value = SweetFX.Bloom.Width;
+            trackBar28.Value = Convert.ToInt32(SweetFX.Bloom.Width * (decimal)10000.00);
+            // HDR
+            checkBox15.Checked = SweetFX.HDR.Enabled;
+            numericUpDown25.Value = SweetFX.HDR.Power;
+            trackBar24.Value = Convert.ToInt32(SweetFX.HDR.Power * (decimal)100.00);
+            numericUpDown24.Value = SweetFX.HDR.Radius;
+            trackBar25.Value = Convert.ToInt32(SweetFX.HDR.Radius * (decimal)100.00);
+            // LumaSharpen
+            checkBox20.Checked = SweetFX.LumaSharpen.Enabled;
+            numericUpDown32.Value = SweetFX.LumaSharpen.Strength;
+            trackBar32.Value = Convert.ToInt32(SweetFX.LumaSharpen.Strength * (decimal)100.00);
+            numericUpDown31.Value = SweetFX.LumaSharpen.Clamp;
+            trackBar31.Value = Convert.ToInt32(SweetFX.LumaSharpen.Clamp * (decimal)1000.00);
+            numericUpDown30.Value = SweetFX.LumaSharpen.Pattern;
+            trackBar30.Value = SweetFX.LumaSharpen.Pattern;
+            numericUpDown29.Value = SweetFX.LumaSharpen.Offset_Bias;
+            trackBar29.Value = Convert.ToInt32(SweetFX.LumaSharpen.Offset_Bias * (decimal)10.00);
+            checkBox19.Checked = SweetFX.LumaSharpen.Show;
+            // Levels
+            checkBox21.Checked = SweetFX.Levels.Enabled;
+            numericUpDown35.Value = SweetFX.Levels.Black_Point;
+            trackBar48.Value = SweetFX.Levels.Black_Point;
+            numericUpDown33.Value = SweetFX.Levels.White_Point;
+            trackBar33.Value = SweetFX.Levels.White_Point;
+            // Technicolor
+            checkBox23.Checked = SweetFX.Technicolor.Enabled;
+            numericUpDown52.Value = SweetFX.Technicolor.Amount;
+            trackBar52.Value = Convert.ToInt32(SweetFX.Technicolor.Amount * (decimal)100.00);
+            numericUpDown51.Value = SweetFX.Technicolor.Power;
+            trackBar51.Value = Convert.ToInt32(SweetFX.Technicolor.Power * (decimal)100.00);
+            numericUpDown50.Value = SweetFX.Technicolor.Red_Negative_Amount;
+            trackBar50.Value = Convert.ToInt32(SweetFX.Technicolor.Red_Negative_Amount * (decimal)100.00);
+            numericUpDown49.Value = SweetFX.Technicolor.Green_Negative_Amount;
+            trackBar49.Value = Convert.ToInt32(SweetFX.Technicolor.Green_Negative_Amount * (decimal)100.00);
+            numericUpDown48.Value = SweetFX.Technicolor.Blue_Negative_Amount;
+            trackBar35.Value = Convert.ToInt32(SweetFX.Technicolor.Blue_Negative_Amount * (decimal)100.00);
+        }
+
+        void checkBox8_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void checkBox12_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown19_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar19_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown18_ValueChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void StopFormCapture()
         {
+            // SMAA
             this.checkBox1.CheckedChanged -= new System.EventHandler(this.checkBox1_CheckedChanged);
             this.numericUpDown1.ValueChanged -= new System.EventHandler(this.numericUpDown1_ValueChanged);
             this.trackBar1.Scroll -= new System.EventHandler(this.trackBar1_ValueChanged);
@@ -122,6 +335,8 @@ namespace SweetFX_Configurator
             this.trackBar4.Scroll -= new System.EventHandler(this.trackBar4_ValueChanged);
             this.checkBox2.CheckedChanged -= new System.EventHandler(this.checkBox2_CheckedChanged);
             this.checkBox3.CheckedChanged -= new System.EventHandler(this.checkBox3_CheckedChanged);
+            // FXAA
+
         }
 
         private void SetMessage(string _message)
@@ -257,6 +472,103 @@ namespace SweetFX_Configurator
             trackBar4.Value = Convert.ToInt32(numericUpDown4.Value);
             SweetFX.SMAA.Corner_Rounding = trackBar4.Value;
             this.trackBar4.Scroll += new System.EventHandler(this.trackBar4_ValueChanged);
+        }
+
+        #endregion
+
+        #region FXAA
+
+        void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown8_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar8_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown7_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar7_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown6_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar6_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown5_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar5_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Explosion
+
+        void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown12_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar12_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Cartoon
+
+        void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown11_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar9_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown9_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar11_Scroll(object sender, EventArgs e)
+        {
+
         }
 
         #endregion

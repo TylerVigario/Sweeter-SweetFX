@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows.Forms;
+using System.Timers;
 
 namespace SweetFX_Configurator
 {
@@ -12,11 +12,20 @@ namespace SweetFX_Configurator
         private static bool _loading = false;
         private static Game _game = null;
         private static List<Setting> SaveSettingQueue = new List<Setting>();
-        private static System.Timers.Timer _timer = new System.Timers.Timer(5000);
+        private static Timer _timer = new Timer(5000);
         public static event SaveSettingsFinishedD SaveSettingsFinished;
 
         public static _SMAA SMAA;
+        public static _FXAA FXAA;
+        public static _Explosion Explosion;
+        public static _Cartoon Cartoon;
+        public static _CRT CRT;
+        public static _Bloom Bloom;
+        public static _HDR HDR;
         public static _LumaSharpen LumaSharpen;
+        public static _Levels Levels;
+        public static _Technicolor Technicolor;
+        public static _Cineon_DPX Cineon_DPX;
 
         /// <summary>
         /// Load last read SweetFX config file
@@ -38,7 +47,16 @@ namespace SweetFX_Configurator
             if (!File.Exists(g.Directory + @"\SweetFX_settings.txt")) { return; }
             _loading = true;
             SMAA = new _SMAA();
+            FXAA = new _FXAA();
+            Explosion = new _Explosion();
+            Cartoon = new _Cartoon();
+            CRT = new _CRT();
+            Bloom = new _Bloom();
+            HDR = new _HDR();
             LumaSharpen = new _LumaSharpen();
+            Levels = new _Levels();
+            Technicolor = new _Technicolor();
+            Cineon_DPX = new _Cineon_DPX();
             string[] lines = File.ReadAllLines(g.Directory + @"\SweetFX_settings.txt");
             _game = g;
             foreach (string line in lines)
@@ -53,6 +71,7 @@ namespace SweetFX_Configurator
                     //
                     switch (settings[1].ToLower())
                     {
+                        // SMAA
                         case "use_smaa_antialiasing":
                             SMAA.Enabled = Convert.ToBoolean(Convert.ToInt32(settings[2]));
                             break;
@@ -74,6 +93,112 @@ namespace SweetFX_Configurator
                         case "smaa_directx9_linear_blend":
                             SMAA.DirectX9_Linear_Blend = Convert.ToBoolean(Convert.ToInt32(settings[2]));
                             break;
+                        // FXAA
+                        case "use_fxaa_antialiasing":
+                            FXAA.Enabled = Convert.ToBoolean(Convert.ToInt32(settings[2]));
+                            break;
+                        case "fxaa_quality__preset":
+                            FXAA.Quality_Preset = Convert.ToInt32(settings[2]);
+                            break;
+                        case "fxaa_subpix":
+                            FXAA.Subpix = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "fxaa_edgethreshold":
+                            FXAA.Edge_Threshold = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "fxaa_edgethresholdmin":
+                            FXAA.Edge_Threshold_Min = Convert.ToDecimal(settings[2]);
+                            break;
+                        // Explosion
+                        case "use_explosion":
+                            Explosion.Enabled = Convert.ToBoolean(Convert.ToInt32(settings[2]));
+                            break;
+                        case "explosion_radius":
+                            Explosion.Radius = Convert.ToDecimal(settings[2]);
+                            break;
+                        // Cartoon
+                        case "use_cartoon":
+                            Explosion.Enabled = Convert.ToBoolean(Convert.ToInt32(settings[2]));
+                            break;
+                        case "cartoonpower":
+                            Cartoon.Power = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "cartoonedgeslope":
+                            Cartoon.Edge_Slope = Convert.ToDecimal(settings[2]);
+                            break;
+                        // CRT
+                        case "use_advanced_crt":
+                            CRT.Enabled = Convert.ToBoolean(Convert.ToInt32(settings[2]));
+                            break;
+                        case "crtamount":
+                            CRT.Amount = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "crtresolution":
+                            CRT.Resolution = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "crtgamma":
+                            CRT.Gamma = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "crtmonitorgamma":
+                            CRT.Monitor_Gamma = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "crtbrightness":
+                            CRT.Brightness = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "crtscanlineintensity":
+                            CRT.Scanline_Intensity = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "crtscanlinegaussian":
+                            CRT.Scanline_Gaussian = Convert.ToBoolean(Convert.ToInt32(settings[2]));
+                            break;
+                        case "crtcurvature":
+                            CRT.Curvature = Convert.ToBoolean(Convert.ToInt32(settings[2]));
+                            break;
+                        case "crtcurvatureradius":
+                            CRT.Curvature_Radius = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "crtcornersize":
+                            CRT.Corner_Size = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "crtdistance":
+                            CRT.Distance = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "crtanglex":
+                            CRT.AngleX = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "crtangley":
+                            CRT.AngleY = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "crtoverscan":
+                            CRT.Overscan = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "crtoversample":
+                            CRT.Oversample = Convert.ToBoolean(Convert.ToInt32(settings[2]));
+                            break;
+                        // Bloom
+                        case "use_bloom":
+                            Bloom.Enabled = Convert.ToBoolean(Convert.ToInt32(settings[2]));
+                            break;
+                        case "bloomthreshold":
+                            Bloom.Threshold = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "bloompower":
+                            Bloom.Power = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "bloomwidth":
+                            Bloom.Width = Convert.ToDecimal(settings[2]);
+                            break;
+                        // HDR
+                        case "use_hdr":
+                            HDR.Enabled = Convert.ToBoolean(Convert.ToInt32(settings[2]));
+                            break;
+                        case "hdrpower":
+                            HDR.Power = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "radius2":
+                            HDR.Radius = Convert.ToDecimal(settings[2]);
+                            break;
+                        // LumaSharpen
                         case "use_lumasharpen":
                             LumaSharpen.Enabled = Convert.ToBoolean(Convert.ToInt32(settings[2]));
                             break;
@@ -92,6 +217,35 @@ namespace SweetFX_Configurator
                         case "show_sharpen":
                             LumaSharpen.Show = Convert.ToBoolean(Convert.ToInt32(settings[2]));
                             break;
+                        // Levels
+                        case "use_levels":
+                            Levels.Enabled = Convert.ToBoolean(Convert.ToInt32(settings[2]));
+                            break;
+                        case "levels_black_point":
+                            Levels.Black_Point = Convert.ToInt32(settings[2]);
+                            break;
+                        case "levels_white_point":
+                            Levels.White_Point = Convert.ToInt32(settings[2]);
+                            break;
+                        // Technicolor
+                        case "use_technicolor":
+                            Technicolor.Enabled = Convert.ToBoolean(Convert.ToInt32(settings[2]));
+                            break;
+                        case "techniamount":
+                            Technicolor.Amount = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "technipower":
+                            Technicolor.Power = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "rednegativeamount":
+                            Technicolor.Red_Negative_Amount = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "greennegativeamount":
+                            Technicolor.Green_Negative_Amount = Convert.ToDecimal(settings[2]);
+                            break;
+                        case "bluenegativeamount":
+                            Technicolor.Blue_Negative_Amount = Convert.ToDecimal(settings[2]);
+                            break;
                     }
 
                 }
@@ -106,7 +260,16 @@ namespace SweetFX_Configurator
         public static void Unload()
         {
             SMAA = null;
+            FXAA = null;
+            Explosion = null;
+            Cartoon = null;
+            CRT = null;
+            Bloom = null;
+            HDR = null;
             LumaSharpen = null;
+            Levels = null;
+            Technicolor = null;
+            Cineon_DPX = null;
         }
 
         /// <summary>
@@ -273,6 +436,393 @@ namespace SweetFX_Configurator
         }
     }
 
+    public class _FXAA
+    {
+        private bool _enabled;
+        private int _quality_preset;
+        private decimal _subpix;
+        private decimal _edge_threshold;
+        private decimal _edge_threshold_min;
+
+        public bool Enabled
+        {
+            get { return _enabled; }
+            set
+            {
+                _enabled = value;
+                SweetFX.SaveSetting(new Setting("use_fxaa_antialiasing", (Convert.ToInt32(value)).ToString()));
+            }
+        }
+
+        public int Quality_Preset
+        {
+            get { return _quality_preset; }
+            set
+            {
+                _quality_preset = value;
+                SweetFX.SaveSetting(new Setting("fxaa_quality__preset", value.ToString()));
+            }
+        }
+
+        public decimal Subpix
+        {
+            get { return _subpix; }
+            set
+            {
+                _subpix = value;
+                SweetFX.SaveSetting(new Setting("fxaa_subpix", value.ToString()));
+            }
+        }
+
+        public decimal Edge_Threshold
+        {
+            get { return _edge_threshold; }
+            set
+            {
+                _edge_threshold = value;
+                SweetFX.SaveSetting(new Setting("fxaa_edgethreshold", value.ToString()));
+            }
+        }
+
+        public decimal Edge_Threshold_Min
+        {
+            get { return _edge_threshold_min; }
+            set
+            {
+                _edge_threshold_min = value;
+                SweetFX.SaveSetting(new Setting("fxaa_edgethresholdmin", value.ToString()));
+            }
+        }
+    }
+
+    public class _Explosion
+    {
+        private bool _enabled;
+        private decimal _radius;
+
+        public bool Enabled
+        {
+            get { return _enabled; }
+            set
+            {
+                _enabled = value;
+                SweetFX.SaveSetting(new Setting("use_explosion", (Convert.ToInt32(value)).ToString()));
+            }
+        }
+
+        public decimal Radius
+        {
+            get { return _radius; }
+            set
+            {
+                _radius = value;
+                SweetFX.SaveSetting(new Setting("explosion_radius", value.ToString()));
+            }
+        }
+    }
+
+    public class _Cartoon
+    {
+        private bool _enabled;
+        private decimal _power;
+        private decimal _edge_slope;
+
+        public bool Enabled
+        {
+            get { return _enabled; }
+            set
+            {
+                _enabled = value;
+                SweetFX.SaveSetting(new Setting("use_cartoon", (Convert.ToInt32(value)).ToString()));
+            }
+        }
+
+        public decimal Power
+        {
+            get { return _power; }
+            set
+            {
+                _power = value;
+                SweetFX.SaveSetting(new Setting("CartoonPower", value.ToString()));
+            }
+        }
+
+        public decimal Edge_Slope
+        {
+            get { return _edge_slope; }
+            set
+            {
+                _edge_slope = value;
+                SweetFX.SaveSetting(new Setting("CartoonEdgeSlope", value.ToString()));
+            }
+        }
+    }
+
+    public class _CRT
+    {
+        private bool _enabled;
+        private decimal _amount;
+        private decimal _resolution;
+        private decimal _gamma;
+        private decimal _monitor_gamma;
+        private decimal _brightness;
+        private decimal _scanline_intensity;
+        private bool _scanline_gaussian;
+        private bool _curvature;
+        private decimal _curvature_radius;
+        private decimal _corner_size;
+        private decimal _distance;
+        private decimal _angle_x;
+        private decimal _angle_y;
+        private decimal _overscan;
+        private bool _oversample;
+
+        public bool Enabled
+        {
+            get { return _enabled; }
+            set
+            {
+                _enabled = value;
+                SweetFX.SaveSetting(new Setting("use_advanced_crt", (Convert.ToInt32(value)).ToString()));
+            }
+        }
+
+        public decimal Amount
+        {
+            get { return _amount; }
+            set
+            {
+                _amount = value;
+                SweetFX.SaveSetting(new Setting("crtamount", value.ToString()));
+            }
+        }
+
+        public decimal Resolution
+        {
+            get { return _resolution; }
+            set
+            {
+                _resolution = value;
+                SweetFX.SaveSetting(new Setting("crtresolution", value.ToString()));
+            }
+        }
+
+        public decimal Gamma
+        {
+            get { return _gamma; }
+            set
+            {
+                _gamma = value;
+                SweetFX.SaveSetting(new Setting("crtgamma", value.ToString()));
+            }
+        }
+
+        public decimal Monitor_Gamma
+        {
+            get { return _monitor_gamma; }
+            set
+            {
+                _monitor_gamma = value;
+                SweetFX.SaveSetting(new Setting("crtmonitorgamma", value.ToString()));
+            }
+        }
+
+        public decimal Brightness
+        {
+            get { return _brightness; }
+            set
+            {
+                _brightness = value;
+                SweetFX.SaveSetting(new Setting("crtbrightness", value.ToString()));
+            }
+        }
+
+        public decimal Scanline_Intensity
+        {
+            get { return _scanline_intensity; }
+            set
+            {
+                _scanline_intensity = value;
+                SweetFX.SaveSetting(new Setting("crtscanlineintensity", value.ToString()));
+            }
+        }
+
+        public bool Scanline_Gaussian
+        {
+            get { return _scanline_gaussian; }
+            set
+            {
+                _scanline_gaussian = value;
+                SweetFX.SaveSetting(new Setting("crtscanlinegaussian", (Convert.ToInt32(value)).ToString()));
+            }
+        }
+
+        public bool Curvature
+        {
+            get { return _curvature; }
+            set
+            {
+                _curvature = value;
+                SweetFX.SaveSetting(new Setting("crtcurvature", (Convert.ToInt32(value)).ToString()));
+            }
+        }
+
+        public decimal Curvature_Radius
+        {
+            get { return _curvature_radius; }
+            set
+            {
+                _curvature_radius = value;
+                SweetFX.SaveSetting(new Setting("crtcurvatureradius", value.ToString()));
+            }
+        }
+
+        public decimal Corner_Size
+        {
+            get { return _corner_size; }
+            set
+            {
+                _corner_size = value;
+                SweetFX.SaveSetting(new Setting("crtcornersize", value.ToString()));
+            }
+        }
+
+        public decimal Distance
+        {
+            get { return _distance; }
+            set
+            {
+                _distance = value;
+                SweetFX.SaveSetting(new Setting("crtdistance", value.ToString()));
+            }
+        }
+
+        public decimal AngleX
+        {
+            get { return _angle_x; }
+            set
+            {
+                _angle_x = value;
+                SweetFX.SaveSetting(new Setting("crtanglex", value.ToString()));
+            }
+        }
+
+        public decimal AngleY
+        {
+            get { return _angle_y; }
+            set
+            {
+                _angle_y = value;
+                SweetFX.SaveSetting(new Setting("crtangley", value.ToString()));
+            }
+        }
+
+        public decimal Overscan
+        {
+            get { return _overscan; }
+            set
+            {
+                _overscan = value;
+                SweetFX.SaveSetting(new Setting("crtoverscan", value.ToString()));
+            }
+        }
+
+        public bool Oversample
+        {
+            get { return _oversample; }
+            set
+            {
+                _oversample = value;
+                SweetFX.SaveSetting(new Setting("crtoversample", (Convert.ToInt32(value)).ToString()));
+            }
+        }
+    }
+
+    public class _Bloom
+    {
+        private bool _enabled;
+        private decimal _threshold;
+        private decimal _power;
+        private decimal _width;
+
+        public bool Enabled
+        {
+            get { return _enabled; }
+            set
+            {
+                _enabled = value;
+                SweetFX.SaveSetting(new Setting("use_bloom", Convert.ToInt32(value).ToString()));
+            }
+        }
+
+        public decimal Threshold
+        {
+            get { return _threshold; }
+            set
+            {
+                _threshold = value;
+                SweetFX.SaveSetting(new Setting("bloomthreshold", value.ToString()));
+            }
+        }
+
+        public decimal Power
+        {
+            get { return _power; }
+            set
+            {
+                _power = value;
+                SweetFX.SaveSetting(new Setting("bloompower", value.ToString()));
+            }
+        }
+
+        public decimal Width
+        {
+            get { return _width; }
+            set
+            {
+                _width = value;
+                SweetFX.SaveSetting(new Setting("bloomwidth", value.ToString()));
+            }
+        }
+    }
+
+    public class _HDR
+    {
+        private bool _enabled;
+        private decimal _power;
+        private decimal _radius;
+
+        public bool Enabled
+        {
+            get { return _enabled; }
+            set
+            {
+                _enabled = value;
+                SweetFX.SaveSetting(new Setting("use_hdr", Convert.ToInt32(value).ToString()));
+            }
+        }
+
+        public decimal Power
+        {
+            get { return _power; }
+            set
+            {
+                _power = value;
+                SweetFX.SaveSetting(new Setting("hdrpower", value.ToString()));
+            }
+        }
+
+        public decimal Radius
+        {
+            get { return _radius; }
+            set
+            {
+                _radius = value;
+                SweetFX.SaveSetting(new Setting("radius2", value.ToString()));
+            }
+        }
+    }
+
     public class _LumaSharpen
     {
         private bool _enabled;
@@ -341,5 +891,117 @@ namespace SweetFX_Configurator
                 SweetFX.SaveSetting(new Setting("show_sharpen", Convert.ToInt32(value).ToString()));
             }
         }
+    }
+
+    public class _Levels
+    {
+        private bool _enabled;
+        private int _black_point;
+        private int _white_point;
+
+        public bool Enabled
+        {
+            get { return _enabled; }
+            set
+            {
+                _enabled = value;
+                SweetFX.SaveSetting(new Setting("use_levels", Convert.ToInt32(value).ToString()));
+            }
+        }
+
+        public int Black_Point
+        {
+            get { return _black_point; }
+            set
+            {
+                _black_point = value;
+                SweetFX.SaveSetting(new Setting("levels_black_point", value.ToString()));
+            }
+        }
+
+        public int White_Point
+        {
+            get { return _white_point; }
+            set
+            {
+                _white_point = value;
+                SweetFX.SaveSetting(new Setting("levels_white_point", value.ToString()));
+            }
+        }
+    }
+
+    public class _Technicolor
+    {
+        private bool _enabled;
+        private decimal _amount;
+        private decimal _power;
+        private decimal _red_negative_amount;
+        private decimal _green_negative_amount;
+        private decimal _blue_negative_amount;
+
+        public bool Enabled
+        {
+            get { return _enabled; }
+            set
+            {
+                _enabled = value;
+                SweetFX.SaveSetting(new Setting("use_technicolor", Convert.ToInt32(value).ToString()));
+            }
+        }
+
+        public decimal Amount
+        {
+            get { return _amount; }
+            set
+            {
+                _amount = value;
+                SweetFX.SaveSetting(new Setting("techniamount", value.ToString()));
+            }
+        }
+
+        public decimal Power
+        {
+            get { return _power; }
+            set
+            {
+                _power = value;
+                SweetFX.SaveSetting(new Setting("techniamount", value.ToString()));
+            }
+        }
+
+        public decimal Red_Negative_Amount
+        {
+            get { return _red_negative_amount; }
+            set
+            {
+                _red_negative_amount = value;
+                SweetFX.SaveSetting(new Setting("rednegativeamount", value.ToString()));
+            }
+        }
+
+        public decimal Green_Negative_Amount
+        {
+            get { return _green_negative_amount; }
+            set
+            {
+                _green_negative_amount = value;
+                SweetFX.SaveSetting(new Setting("greennegativeamount", value.ToString()));
+            }
+        }
+
+        public decimal Blue_Negative_Amount
+        {
+            get { return _blue_negative_amount; }
+            set
+            {
+                _blue_negative_amount = value;
+                SweetFX.SaveSetting(new Setting("bluenegativeamount", value.ToString()));
+            }
+        }
+    }
+
+    public class _Cineon_DPX
+    {
+
     }
 }
