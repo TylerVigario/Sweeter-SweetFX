@@ -6,6 +6,7 @@ using System.Timers;
 namespace SweetFX_Configurator
 {
     public delegate void SaveSettingsFinishedD();
+    public delegate void GameLoadedD();
 
     public static class SweetFX
     {
@@ -14,6 +15,7 @@ namespace SweetFX_Configurator
         private static List<Setting> SaveSettingQueue = new List<Setting>();
         private static Timer _timer = new Timer(5000);
         public static event SaveSettingsFinishedD SaveSettingsFinished;
+        public static event GameLoadedD GameLoaded;
 
         public static _SMAA SMAA;
         public static _FXAA FXAA;
@@ -28,16 +30,6 @@ namespace SweetFX_Configurator
         public static _Cineon_DPX Cineon_DPX;
 
         /// <summary>
-        /// Load last read SweetFX config file
-        /// </summary>
-        /// <returns>False = No previous file loaded</returns>
-        public static bool Load()
-        {
-            if (_game != null) { Load(_game); }
-            return false;
-        }
-
-        /// <summary>
         /// Parse and load a SweetFX config file
         /// </summary>
         /// <param name="file">Full file path</param>
@@ -46,6 +38,7 @@ namespace SweetFX_Configurator
             if (_loading) { return; }
             if (!File.Exists(g.Directory + @"\SweetFX_settings.txt")) { return; }
             _loading = true;
+            Settings.LastGame = g;
             SMAA = new _SMAA();
             FXAA = new _FXAA();
             Explosion = new _Explosion();
@@ -251,6 +244,7 @@ namespace SweetFX_Configurator
                 }
             }
             _timer.Elapsed += _timer_Elapsed;
+            GameLoaded();
             _loading = false;
         }
 

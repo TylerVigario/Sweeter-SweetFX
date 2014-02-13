@@ -15,7 +15,7 @@ namespace SweetFX_Configurator
         public static void Load()
         {
             string path = Application.StartupPath + "\\settings.ini";
-            if (!File.Exists(path)) { File.Create(path); }
+            if (!File.Exists(path)) { File.Create(path).Close(); }
             //
             ini = new IniFile(path);
         }

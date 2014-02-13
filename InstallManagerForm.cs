@@ -62,7 +62,7 @@ namespace SweetFX_Configurator
 
         private void button3_Click(object sender, EventArgs e)
         {
-            InstallManager.LoadGame((Game)fastObjectListView1.SelectedObject);
+            SweetFX.Load((Game)fastObjectListView1.SelectedObject);
         }
 
         private void button4_Click(object sender, EventArgs e)

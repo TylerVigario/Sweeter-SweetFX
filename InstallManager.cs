@@ -2,23 +2,12 @@
 
 namespace SweetFX_Configurator
 {
-    public delegate void GameLoadedD();
+
 
     public static class InstallManager
     {
-        public static event GameLoadedD GameLoaded;
 
-        public static void LoadGame(string _game)
-        {
-            SweetFX.Load(Settings.GetGame(_game));
-            GameLoaded();
-        }
 
-        public static void LoadGame(Game _game)
-        {
-            SweetFX.Load(_game);
-            GameLoaded();
-        }
 
         public static bool isSweetFXInstalled(string _directory)
         {

@@ -16,3 +16,9 @@ obj/Debug/SweetFX Configurator.csproj.FileListAbsolute.txt
 obj/Debug/SweetFX_Configurator.MainForm.resources
 obj/Debug/SweetFX Configurator.csproj.FileListAbsolute.txt
 obj/Debug/SweetFX_Configurator.MainForm.resources
+bin/Debug/settings.ini
+bin/Release/Ookii.Dialogs.xml
+bin/Release/settings.ini
+obj/Release/SweetFX_Configurator.AddGameForm.resources
+obj/Release/SweetFX_Configurator.InstallManagerForm.resources
+bin/Debug/settings.ini
