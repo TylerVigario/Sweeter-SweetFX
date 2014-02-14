@@ -74,5 +74,48 @@ namespace SweetFX_Configurator
         {
             _open = false;
         }
+
+        public static bool isSweetFXInstalled(string _directory)
+        {
+            if (System.IO.File.Exists(_directory + @"\SweetFX_settings.txt")) { return true; }
+            else { return false; }
+        }
+    }
+
+    public class Game
+    {
+        string _name;
+        string _directory;
+        bool _sweetfx_installed;
+
+        public Game(string n, string d)
+        {
+            _name = n;
+            _directory = d;
+            _sweetfx_installed = InstallManagerForm.isSweetFXInstalled(d);
+        }
+
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+
+        public string Directory
+        {
+            get { return _directory; }
+            set { _directory = value; }
+        }
+
+        public bool isSweetFXInstalled
+        {
+            get { return _sweetfx_installed; }
+        }
+
+        public bool RescanForSweetFX()
+        {
+            _sweetfx_installed = InstallManagerForm.isSweetFXInstalled(_directory);
+            return _sweetfx_installed;
+        }
     }
 }

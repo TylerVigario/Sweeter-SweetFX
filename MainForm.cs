@@ -170,6 +170,134 @@ namespace SweetFX_Configurator
             trackBar49.Value = Convert.ToInt32(SweetFX.Technicolor.Green_Negative_Amount * (decimal)100.00);
             numericUpDown48.Value = SweetFX.Technicolor.Blue_Negative_Amount;
             trackBar35.Value = Convert.ToInt32(SweetFX.Technicolor.Blue_Negative_Amount * (decimal)100.00);
+            // DPX
+            checkBox9.Checked = SweetFX.Cineon_DPX.Enabled;
+            numericUpDown39.Value = SweetFX.Cineon_DPX.Color_Gamma;
+            trackBar39.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Color_Gamma * (decimal)10.00);
+            numericUpDown38.Value = SweetFX.Cineon_DPX.Saturation;
+            trackBar38.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Saturation * (decimal)10.00);
+            numericUpDown36.Value = SweetFX.Cineon_DPX.Blend;
+            trackBar36.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Blend * (decimal)100.00);
+            numericUpDown34.Value = SweetFX.Cineon_DPX.Red;
+            trackBar34.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Red * (decimal)100.00);
+            numericUpDown37.Value = SweetFX.Cineon_DPX.Green;
+            trackBar37.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Green * (decimal)100.00);
+            numericUpDown40.Value = SweetFX.Cineon_DPX.Blue;
+            trackBar40.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Blue * (decimal)100.00);
+            numericUpDown41.Value = SweetFX.Cineon_DPX.RedC;
+            trackBar41.Value = Convert.ToInt32(SweetFX.Cineon_DPX.RedC * (decimal)100.00);
+            numericUpDown42.Value = SweetFX.Cineon_DPX.GreenC;
+            trackBar42.Value = Convert.ToInt32(SweetFX.Cineon_DPX.GreenC * (decimal)100.00);
+            numericUpDown43.Value = SweetFX.Cineon_DPX.BlueC;
+            trackBar43.Value = Convert.ToInt32(SweetFX.Cineon_DPX.BlueC * (decimal)100.00);
+            // Monochrome
+            checkBox11.Checked = SweetFX.Monochrome.Enabled;
+            numericUpDown54.Value = SweetFX.Monochrome.Conversion_Values.Red;
+            trackBar54.Value = Convert.ToInt32(SweetFX.Monochrome.Conversion_Values.Red * (decimal)100.00);
+            numericUpDown44.Value = SweetFX.Monochrome.Conversion_Values.Green;
+            trackBar44.Value = Convert.ToInt32(SweetFX.Monochrome.Conversion_Values.Green * (decimal)100.00);
+            numericUpDown45.Value = SweetFX.Monochrome.Conversion_Values.Blue;
+            trackBar45.Value = Convert.ToInt32(SweetFX.Monochrome.Conversion_Values.Blue * (decimal)100.00);
+            // Lift Gamma Gain
+            checkBox13.Checked = SweetFX.Lift_Gamma_Gain.Enabled;
+            numericUpDown53.Value = SweetFX.Lift_Gamma_Gain.Lift.Red;
+            trackBar53.Value = Convert.ToInt32(SweetFX.Lift_Gamma_Gain.Lift.Red * (decimal)1000);
+            numericUpDown46.Value = SweetFX.Lift_Gamma_Gain.Lift.Green;
+            trackBar46.Value = Convert.ToInt32(SweetFX.Lift_Gamma_Gain.Lift.Green * (decimal)1000);
+            numericUpDown47.Value = SweetFX.Lift_Gamma_Gain.Lift.Blue;
+            trackBar47.Value = Convert.ToInt32(SweetFX.Lift_Gamma_Gain.Lift.Blue * (decimal)1000);
+            numericUpDown57.Value = SweetFX.Lift_Gamma_Gain.Gamma.Red;
+            trackBar57.Value = Convert.ToInt32(SweetFX.Lift_Gamma_Gain.Gamma.Red * (decimal)1000);
+            numericUpDown56.Value = SweetFX.Lift_Gamma_Gain.Gamma.Green;
+            trackBar56.Value = Convert.ToInt32(SweetFX.Lift_Gamma_Gain.Gamma.Green * (decimal)1000);
+            numericUpDown55.Value = SweetFX.Lift_Gamma_Gain.Gamma.Blue;
+            trackBar55.Value = Convert.ToInt32(SweetFX.Lift_Gamma_Gain.Gamma.Blue * (decimal)1000);
+            numericUpDown60.Value = SweetFX.Lift_Gamma_Gain.Gain.Red;
+            trackBar60.Value = Convert.ToInt32(SweetFX.Lift_Gamma_Gain.Gain.Red * (decimal)1000);
+            numericUpDown59.Value = SweetFX.Lift_Gamma_Gain.Gain.Green;
+            trackBar59.Value = Convert.ToInt32(SweetFX.Lift_Gamma_Gain.Gain.Green * (decimal)1000);
+            numericUpDown58.Value = SweetFX.Lift_Gamma_Gain.Gain.Blue;
+            trackBar58.Value = Convert.ToInt32(SweetFX.Lift_Gamma_Gain.Gain.Blue * (decimal)1000);
+            // Tonemap
+            checkBox17.Checked = SweetFX.Tonemap.Enabled;
+            numericUpDown69.Value = SweetFX.Tonemap.Gamma;
+            trackBar69.Value = Convert.ToInt32(SweetFX.Tonemap.Gamma * (decimal)1000);
+            numericUpDown67.Value = SweetFX.Tonemap.Exposure;
+            trackBar67.Value = Convert.ToInt32(SweetFX.Tonemap.Exposure * (decimal)1000);
+            numericUpDown61.Value = SweetFX.Tonemap.Bleach;
+            trackBar61.Value = Convert.ToInt32(SweetFX.Tonemap.Bleach * (decimal)1000);
+            numericUpDown63.Value = SweetFX.Tonemap.Defog;
+            trackBar63.Value = Convert.ToInt32(SweetFX.Tonemap.Defog * (decimal)1000);
+            numericUpDown62.Value = SweetFX.Tonemap.Saturation;
+            trackBar62.Value = Convert.ToInt32(SweetFX.Tonemap.Saturation * (decimal)1000);
+            numericUpDown66.Value = SweetFX.Tonemap.Fog_Color.Red;
+            trackBar66.Value = Convert.ToInt32(SweetFX.Tonemap.Fog_Color.Red * (decimal)100);
+            numericUpDown64.Value = SweetFX.Tonemap.Fog_Color.Green;
+            trackBar64.Value = Convert.ToInt32(SweetFX.Tonemap.Fog_Color.Green * (decimal)100);
+            numericUpDown65.Value = SweetFX.Tonemap.Fog_Color.Blue;
+            trackBar65.Value = Convert.ToInt32(SweetFX.Tonemap.Fog_Color.Blue * (decimal)100);
+            // Vibrance
+            checkBox18.Checked = SweetFX.Vibrance.Enabled;
+            numericUpDown76.Value = SweetFX.Vibrance.Vibrance;
+            trackBar76.Value = Convert.ToInt32(SweetFX.Vibrance.Vibrance * (decimal)1000);
+            numericUpDown74.Value = SweetFX.Vibrance.RGB_Balance.Red;
+            trackBar74.Value = Convert.ToInt32(SweetFX.Vibrance.RGB_Balance.Red * (decimal)1000);
+            numericUpDown68.Value = SweetFX.Vibrance.RGB_Balance.Green;
+            trackBar68.Value = Convert.ToInt32(SweetFX.Vibrance.RGB_Balance.Green * (decimal)1000);
+            numericUpDown70.Value = SweetFX.Vibrance.RGB_Balance.Blue;
+            trackBar70.Value = Convert.ToInt32(SweetFX.Vibrance.RGB_Balance.Blue * (decimal)1000);
+            // Curves
+            checkBox24.Checked = SweetFX.Curves.Enabled;
+            comboBox1.SelectedIndex = SweetFX.Curves.Mode;
+            numericUpDown72.Value = SweetFX.Curves.Formula;
+            trackBar72.Value = Convert.ToInt32(SweetFX.Curves.Formula);
+            numericUpDown73.Value = SweetFX.Curves.Contrast;
+            trackBar73.Value = Convert.ToInt32(SweetFX.Curves.Contrast * (decimal)100);
+            // Dither
+            checkBox26.Checked = SweetFX.Dither.Enabled;
+            comboBox3.SelectedIndex = SweetFX.Dither.Method - 1;
+            // Sepia
+            checkBox22.Checked = SweetFX.Sepia.Enabled;
+            numericUpDown82.Value = SweetFX.Sepia.Grey_Power;
+            trackBar82.Value = Convert.ToInt32(SweetFX.Sepia.Grey_Power * (decimal)100);
+            numericUpDown78.Value = SweetFX.Sepia.Power;
+            trackBar78.Value = Convert.ToInt32(SweetFX.Sepia.Power * (decimal)100);
+            numericUpDown80.Value = SweetFX.Sepia.Color_Tone.Red;
+            trackBar80.Value = Convert.ToInt32(SweetFX.Sepia.Color_Tone.Red * (decimal)100);
+            numericUpDown75.Value = SweetFX.Sepia.Color_Tone.Green;
+            trackBar75.Value = Convert.ToInt32(SweetFX.Sepia.Color_Tone.Green * (decimal)100);
+            numericUpDown71.Value = SweetFX.Sepia.Color_Tone.Blue;
+            trackBar71.Value = Convert.ToInt32(SweetFX.Sepia.Color_Tone.Blue * (decimal)100);
+            // Vignette
+            checkBox25.Checked = SweetFX.Vignette.Enabled;
+            numericUpDown77.Value = SweetFX.Vignette.Ratio;
+            trackBar77.Value = Convert.ToInt32(SweetFX.Vignette.Ratio * (decimal)100);
+            numericUpDown79.Value = SweetFX.Vignette.Radius;
+            trackBar79.Value = Convert.ToInt32(SweetFX.Vignette.Radius * (decimal)100);
+            numericUpDown81.Value = SweetFX.Vignette.Amount;
+            trackBar81.Value = Convert.ToInt32(SweetFX.Vignette.Amount * (decimal)100);
+            numericUpDown83.Value = SweetFX.Vignette.Slope;
+            trackBar83.Value = Convert.ToInt32(SweetFX.Vignette.Slope);
+            comboBox2.SelectedIndex = SweetFX.Vignette.Type - 1;
+            numericUpDown86.Value = SweetFX.Vignette.Center.Red;
+            trackBar86.Value = Convert.ToInt32(SweetFX.Vignette.Center.Red * (decimal)100);
+            numericUpDown85.Value = SweetFX.Vignette.Center.Green;
+            trackBar85.Value = Convert.ToInt32(SweetFX.Vignette.Center.Green * (decimal)100);
+            // Border
+            checkBox28.Checked = SweetFX.Border.Enabled;
+            numericUpDown90.Value = SweetFX.Border.Width.Red;
+            trackBar90.Value = Convert.ToInt32(SweetFX.Border.Width.Red * (decimal)100);
+            numericUpDown88.Value = SweetFX.Border.Width.Green;
+            trackBar88.Value = Convert.ToInt32(SweetFX.Border.Width.Green * (decimal)100);
+            numericUpDown89.Value = SweetFX.Border.Color.Red;
+            trackBar89.Value = Convert.ToInt32(SweetFX.Border.Color.Red * (decimal)100);
+            numericUpDown87.Value = SweetFX.Border.Color.Green;
+            trackBar87.Value = Convert.ToInt32(SweetFX.Border.Color.Green * (decimal)100);
+            numericUpDown84.Value = SweetFX.Border.Color.Blue;
+            trackBar84.Value = Convert.ToInt32(SweetFX.Border.Color.Blue * (decimal)100);
+            // Splitscreen
+            checkBox27.Checked = SweetFX.Splitscreen.Enabled;
+            comboBox4.SelectedIndex = SweetFX.Splitscreen.Mode - 1;
             //
             StartFormCapture();
         }
@@ -302,6 +430,134 @@ namespace SweetFX_Configurator
             trackBar49.ValueChanged += trackBar49_ValueChanged;
             numericUpDown48.ValueChanged += numericUpDown48_ValueChanged;
             trackBar35.Scroll += trackBar35_Scroll;
+            // DPX
+            checkBox9.CheckedChanged += checkBox9_CheckedChanged;
+            numericUpDown39.ValueChanged += numericUpDown39_ValueChanged;
+            trackBar39.Scroll += trackBar39_Scroll;
+            numericUpDown38.ValueChanged += numericUpDown38_ValueChanged;
+            trackBar38.Scroll += trackBar38_Scroll;
+            numericUpDown36.ValueChanged += numericUpDown36_ValueChanged;
+            trackBar36.Scroll += trackBar36_Scroll;
+            numericUpDown34.ValueChanged += numericUpDown34_ValueChanged;
+            trackBar34.Scroll += trackBar34_Scroll;
+            numericUpDown37.ValueChanged += numericUpDown37_ValueChanged;
+            trackBar37.Scroll += trackBar37_Scroll;
+            numericUpDown40.ValueChanged += numericUpDown40_ValueChanged;
+            trackBar40.Scroll += trackBar40_Scroll;
+            numericUpDown41.ValueChanged += numericUpDown41_ValueChanged;
+            trackBar41.Scroll += trackBar41_Scroll;
+            numericUpDown42.ValueChanged += numericUpDown42_ValueChanged;
+            trackBar42.Scroll += trackBar42_Scroll;
+            numericUpDown43.ValueChanged += numericUpDown43_ValueChanged;
+            trackBar43.Scroll += trackBar43_Scroll;
+            // Monochrome
+            checkBox11.CheckedChanged += checkBox11_CheckedChanged;
+            numericUpDown54.ValueChanged += numericUpDown54_ValueChanged;
+            trackBar54.Scroll += trackBar54_Scroll;
+            numericUpDown44.ValueChanged += numericUpDown44_ValueChanged;
+            trackBar44.Scroll += trackBar44_Scroll;
+            numericUpDown45.ValueChanged += numericUpDown45_ValueChanged;
+            trackBar45.Scroll += trackBar45_Scroll;
+            // Lift Gamma Gain
+            checkBox13.CheckedChanged += checkBox13_CheckedChanged;
+            numericUpDown53.ValueChanged += numericUpDown53_ValueChanged;
+            trackBar53.Scroll += trackBar53_Scroll;
+            numericUpDown46.ValueChanged += numericUpDown46_ValueChanged;
+            trackBar46.Scroll += trackBar46_Scroll;
+            numericUpDown47.ValueChanged += numericUpDown47_ValueChanged;
+            trackBar47.Scroll += trackBar47_Scroll;
+            numericUpDown57.ValueChanged += numericUpDown57_ValueChanged;
+            trackBar57.Scroll += trackBar57_Scroll;
+            numericUpDown56.ValueChanged += numericUpDown56_ValueChanged;
+            trackBar56.Scroll += trackBar56_Scroll;
+            numericUpDown55.ValueChanged += numericUpDown55_ValueChanged;
+            trackBar55.Scroll += trackBar55_Scroll;
+            numericUpDown60.ValueChanged += numericUpDown60_ValueChanged;
+            trackBar60.Scroll += trackBar60_Scroll;
+            numericUpDown59.ValueChanged += numericUpDown59_ValueChanged;
+            trackBar59.Scroll += trackBar59_Scroll;
+            numericUpDown58.ValueChanged += numericUpDown58_ValueChanged;
+            trackBar58.Scroll += trackBar58_Scroll;
+            // Tonemap
+            checkBox17.CheckedChanged += checkBox17_CheckedChanged;
+            numericUpDown69.ValueChanged += numericUpDown69_ValueChanged;
+            trackBar69.Scroll += trackBar69_Scroll;
+            numericUpDown67.ValueChanged += numericUpDown67_ValueChanged;
+            trackBar67.Scroll += trackBar67_Scroll;
+            numericUpDown61.ValueChanged += numericUpDown61_ValueChanged;
+            trackBar61.Scroll += trackBar61_Scroll;
+            numericUpDown63.ValueChanged += numericUpDown63_ValueChanged;
+            trackBar63.Scroll += trackBar63_Scroll;
+            numericUpDown62.ValueChanged += numericUpDown62_ValueChanged;
+            trackBar62.Scroll += trackBar62_Scroll;
+            numericUpDown66.ValueChanged += numericUpDown66_ValueChanged;
+            trackBar66.Scroll += trackBar66_Scroll;
+            numericUpDown64.ValueChanged += numericUpDown64_ValueChanged;
+            trackBar64.Scroll += trackBar64_Scroll;
+            numericUpDown65.ValueChanged += numericUpDown65_ValueChanged;
+            trackBar65.Scroll += trackBar65_Scroll;
+            // Vibrance
+            checkBox18.CheckedChanged += checkBox18_CheckedChanged;
+            numericUpDown76.ValueChanged += numericUpDown76_ValueChanged;
+            trackBar76.Scroll += trackBar76_Scroll;
+            numericUpDown74.ValueChanged += numericUpDown74_ValueChanged;
+            trackBar74.Scroll += trackBar74_Scroll;
+            numericUpDown68.ValueChanged += numericUpDown68_ValueChanged;
+            trackBar68.Scroll += trackBar68_Scroll;
+            numericUpDown70.ValueChanged += numericUpDown70_ValueChanged;
+            trackBar70.Scroll += trackBar70_Scroll;
+            // Curves
+            checkBox24.CheckedChanged += checkBox24_CheckedChanged;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            numericUpDown72.ValueChanged += numericUpDown72_ValueChanged;
+            trackBar72.Scroll += trackBar72_Scroll;
+            numericUpDown73.ValueChanged += numericUpDown73_ValueChanged;
+            trackBar73.Scroll += trackBar73_Scroll;
+            // Dither
+            checkBox26.CheckedChanged += checkBox26_CheckedChanged;
+            comboBox3.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
+            // Sepia
+            checkBox22.CheckedChanged += checkBox22_CheckedChanged;
+            numericUpDown82.ValueChanged += numericUpDown82_ValueChanged;
+            trackBar82.Scroll += trackBar82_Scroll;
+            numericUpDown78.ValueChanged += numericUpDown78_ValueChanged;
+            trackBar78.Scroll += trackBar78_Scroll;
+            numericUpDown80.ValueChanged += numericUpDown80_ValueChanged;
+            trackBar80.Scroll += trackBar80_Scroll;
+            numericUpDown75.ValueChanged += numericUpDown75_ValueChanged;
+            trackBar75.Scroll += trackBar75_Scroll;
+            numericUpDown71.ValueChanged += numericUpDown71_ValueChanged;
+            trackBar71.Scroll += trackBar71_Scroll;
+            // Vignette
+            checkBox25.CheckedChanged += checkBox25_CheckedChanged;
+            numericUpDown77.Scroll += numericUpDown77_Scroll;
+            trackBar77.ValueChanged += trackBar77_ValueChanged;
+            numericUpDown79.ValueChanged += numericUpDown79_ValueChanged;
+            trackBar79.Scroll += trackBar79_Scroll;
+            numericUpDown81.ValueChanged += numericUpDown81_ValueChanged;
+            trackBar81.Scroll += trackBar81_Scroll;
+            numericUpDown83.ValueChanged += numericUpDown83_ValueChanged;
+            trackBar83.Scroll += trackBar83_Scroll;
+            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
+            numericUpDown86.ValueChanged += numericUpDown86_ValueChanged;
+            trackBar86.Scroll += trackBar86_Scroll;
+            numericUpDown85.ValueChanged += numericUpDown85_ValueChanged;
+            trackBar85.Scroll += trackBar85_Scroll;
+            // Border
+            checkBox28.CheckedChanged += checkBox28_CheckedChanged;
+            numericUpDown90.ValueChanged += numericUpDown90_ValueChanged;
+            trackBar90.Scroll += trackBar90_Scroll;
+            numericUpDown88.ValueChanged += numericUpDown88_ValueChanged;
+            trackBar88.Scroll += trackBar88_Scroll;
+            numericUpDown89.ValueChanged += numericUpDown89_ValueChanged;
+            trackBar89.Scroll += trackBar89_Scroll;
+            numericUpDown87.ValueChanged += numericUpDown87_ValueChanged;
+            trackBar87.Scroll += trackBar87_Scroll;
+            numericUpDown84.ValueChanged += numericUpDown84_ValueChanged;
+            trackBar84.Scroll += trackBar84_Scroll;
+            // Splitscreen
+            checkBox27.CheckedChanged += checkBox27_CheckedChanged;
+            comboBox4.SelectedIndexChanged += comboBox4_SelectedIndexChanged;
         }
 
         private void StopFormCapture()
@@ -411,6 +667,134 @@ namespace SweetFX_Configurator
             trackBar49.ValueChanged -= trackBar49_ValueChanged;
             numericUpDown48.ValueChanged -= numericUpDown48_ValueChanged;
             trackBar35.Scroll -= trackBar35_Scroll;
+            // DPX
+            checkBox9.CheckedChanged -= checkBox9_CheckedChanged;
+            numericUpDown39.ValueChanged -= numericUpDown39_ValueChanged;
+            trackBar39.Scroll -= trackBar39_Scroll;
+            numericUpDown38.ValueChanged -= numericUpDown38_ValueChanged;
+            trackBar38.Scroll -= trackBar38_Scroll;
+            numericUpDown36.ValueChanged -= numericUpDown36_ValueChanged;
+            trackBar36.Scroll -= trackBar36_Scroll;
+            numericUpDown34.ValueChanged -= numericUpDown34_ValueChanged;
+            trackBar34.Scroll -= trackBar34_Scroll;
+            numericUpDown37.ValueChanged -= numericUpDown37_ValueChanged;
+            trackBar37.Scroll -= trackBar37_Scroll;
+            numericUpDown40.ValueChanged -= numericUpDown40_ValueChanged;
+            trackBar40.Scroll -= trackBar40_Scroll;
+            numericUpDown41.ValueChanged -= numericUpDown41_ValueChanged;
+            trackBar41.Scroll -= trackBar41_Scroll;
+            numericUpDown42.ValueChanged -= numericUpDown42_ValueChanged;
+            trackBar42.Scroll -= trackBar42_Scroll;
+            numericUpDown43.ValueChanged -= numericUpDown43_ValueChanged;
+            trackBar43.Scroll -= trackBar43_Scroll;
+            // Monochrome
+            checkBox11.CheckedChanged -= checkBox11_CheckedChanged;
+            numericUpDown54.ValueChanged -= numericUpDown54_ValueChanged;
+            trackBar54.Scroll -= trackBar54_Scroll;
+            numericUpDown44.ValueChanged -= numericUpDown44_ValueChanged;
+            trackBar44.Scroll -= trackBar44_Scroll;
+            numericUpDown45.ValueChanged -= numericUpDown45_ValueChanged;
+            trackBar45.Scroll -= trackBar45_Scroll;
+            // Lift Gamma Gain
+            checkBox13.CheckedChanged -= checkBox13_CheckedChanged;
+            numericUpDown53.ValueChanged -= numericUpDown53_ValueChanged;
+            trackBar53.Scroll -= trackBar53_Scroll;
+            numericUpDown46.ValueChanged -= numericUpDown46_ValueChanged;
+            trackBar46.Scroll -= trackBar46_Scroll;
+            numericUpDown47.ValueChanged -= numericUpDown47_ValueChanged;
+            trackBar47.Scroll -= trackBar47_Scroll;
+            numericUpDown57.ValueChanged -= numericUpDown57_ValueChanged;
+            trackBar57.Scroll -= trackBar57_Scroll;
+            numericUpDown56.ValueChanged -= numericUpDown56_ValueChanged;
+            trackBar56.Scroll -= trackBar56_Scroll;
+            numericUpDown55.ValueChanged -= numericUpDown55_ValueChanged;
+            trackBar55.Scroll -= trackBar55_Scroll;
+            numericUpDown60.ValueChanged -= numericUpDown60_ValueChanged;
+            trackBar60.Scroll -= trackBar60_Scroll;
+            numericUpDown59.ValueChanged -= numericUpDown59_ValueChanged;
+            trackBar59.Scroll -= trackBar59_Scroll;
+            numericUpDown58.ValueChanged -= numericUpDown58_ValueChanged;
+            trackBar58.Scroll -= trackBar58_Scroll;
+            // Tonemap
+            checkBox17.CheckedChanged -= checkBox17_CheckedChanged;
+            numericUpDown69.ValueChanged -= numericUpDown69_ValueChanged;
+            trackBar69.Scroll -= trackBar69_Scroll;
+            numericUpDown67.ValueChanged -= numericUpDown67_ValueChanged;
+            trackBar67.Scroll -= trackBar67_Scroll;
+            numericUpDown61.ValueChanged -= numericUpDown61_ValueChanged;
+            trackBar61.Scroll -= trackBar61_Scroll;
+            numericUpDown63.ValueChanged -= numericUpDown63_ValueChanged;
+            trackBar63.Scroll -= trackBar63_Scroll;
+            numericUpDown62.ValueChanged -= numericUpDown62_ValueChanged;
+            trackBar62.Scroll -= trackBar62_Scroll;
+            numericUpDown66.ValueChanged -= numericUpDown66_ValueChanged;
+            trackBar66.Scroll -= trackBar66_Scroll;
+            numericUpDown64.ValueChanged -= numericUpDown64_ValueChanged;
+            trackBar64.Scroll -= trackBar64_Scroll;
+            numericUpDown65.ValueChanged -= numericUpDown65_ValueChanged;
+            trackBar65.Scroll -= trackBar65_Scroll;
+            // Vibrance
+            checkBox18.CheckedChanged -= checkBox18_CheckedChanged;
+            numericUpDown76.ValueChanged -= numericUpDown76_ValueChanged;
+            trackBar76.Scroll -= trackBar76_Scroll;
+            numericUpDown74.ValueChanged -= numericUpDown74_ValueChanged;
+            trackBar74.Scroll -= trackBar74_Scroll;
+            numericUpDown68.ValueChanged -= numericUpDown68_ValueChanged;
+            trackBar68.Scroll -= trackBar68_Scroll;
+            numericUpDown70.ValueChanged -= numericUpDown70_ValueChanged;
+            trackBar70.Scroll -= trackBar70_Scroll;
+            // Curves
+            checkBox24.CheckedChanged -= checkBox24_CheckedChanged;
+            comboBox1.SelectedIndexChanged -= comboBox1_SelectedIndexChanged;
+            numericUpDown72.ValueChanged -= numericUpDown72_ValueChanged;
+            trackBar72.Scroll -= trackBar72_Scroll;
+            numericUpDown73.ValueChanged -= numericUpDown73_ValueChanged;
+            trackBar73.Scroll -= trackBar73_Scroll;
+            // Dither
+            checkBox26.CheckedChanged -= checkBox26_CheckedChanged;
+            comboBox3.SelectedIndexChanged -= comboBox3_SelectedIndexChanged;
+            // Sepia
+            checkBox22.CheckedChanged -= checkBox22_CheckedChanged;
+            numericUpDown82.ValueChanged -= numericUpDown82_ValueChanged;
+            trackBar82.Scroll -= trackBar82_Scroll;
+            numericUpDown78.ValueChanged -= numericUpDown78_ValueChanged;
+            trackBar78.Scroll -= trackBar78_Scroll;
+            numericUpDown80.ValueChanged -= numericUpDown80_ValueChanged;
+            trackBar80.Scroll -= trackBar80_Scroll;
+            numericUpDown75.ValueChanged -= numericUpDown75_ValueChanged;
+            trackBar75.Scroll -= trackBar75_Scroll;
+            numericUpDown71.ValueChanged -= numericUpDown71_ValueChanged;
+            trackBar71.Scroll -= trackBar71_Scroll;
+            // Vignette
+            checkBox25.CheckedChanged -= checkBox25_CheckedChanged;
+            numericUpDown77.Scroll -= numericUpDown77_Scroll;
+            trackBar77.ValueChanged -= trackBar77_ValueChanged;
+            numericUpDown79.ValueChanged -= numericUpDown79_ValueChanged;
+            trackBar79.Scroll -= trackBar79_Scroll;
+            numericUpDown81.ValueChanged -= numericUpDown81_ValueChanged;
+            trackBar81.Scroll -= trackBar81_Scroll;
+            numericUpDown83.ValueChanged -= numericUpDown83_ValueChanged;
+            trackBar83.Scroll -= trackBar83_Scroll;
+            comboBox2.SelectedIndexChanged -= comboBox2_SelectedIndexChanged;
+            numericUpDown86.ValueChanged -= numericUpDown86_ValueChanged;
+            trackBar86.Scroll -= trackBar86_Scroll;
+            numericUpDown85.ValueChanged -= numericUpDown85_ValueChanged;
+            trackBar85.Scroll -= trackBar85_Scroll;
+            // Border
+            checkBox28.CheckedChanged -= checkBox28_CheckedChanged;
+            numericUpDown90.ValueChanged -= numericUpDown90_ValueChanged;
+            trackBar90.Scroll -= trackBar90_Scroll;
+            numericUpDown88.ValueChanged -= numericUpDown88_ValueChanged;
+            trackBar88.Scroll -= trackBar88_Scroll;
+            numericUpDown89.ValueChanged -= numericUpDown89_ValueChanged;
+            trackBar89.Scroll -= trackBar89_Scroll;
+            numericUpDown87.ValueChanged -= numericUpDown87_ValueChanged;
+            trackBar87.Scroll -= trackBar87_Scroll;
+            numericUpDown84.ValueChanged -= numericUpDown84_ValueChanged;
+            trackBar84.Scroll -= trackBar84_Scroll;
+            // Splitscreen
+            checkBox27.CheckedChanged -= checkBox27_CheckedChanged;
+            comboBox4.SelectedIndexChanged -= comboBox4_SelectedIndexChanged;
         }
 
         private void SetMessage(string _message)
@@ -1214,6 +1598,641 @@ namespace SweetFX_Configurator
             numericUpDown48.Value = (decimal)trackBar35.Value / (decimal)100;
             SweetFX.Technicolor.Blue_Negative_Amount = numericUpDown49.Value;
             this.numericUpDown48.ValueChanged += new System.EventHandler(this.numericUpDown48_ValueChanged);
+        }
+
+        #endregion
+
+        #region DPX
+
+        void checkBox9_CheckedChanged(object sender, EventArgs e)
+        {
+            SweetFX.Cineon_DPX.Enabled = checkBox9.Checked;
+        }
+
+        void numericUpDown39_ValueChanged(object sender, EventArgs e)
+        {
+            this.numericUpDown39.ValueChanged -= new System.EventHandler(this.numericUpDown39_ValueChanged);
+            trackBar39.Value = Convert.ToInt32(numericUpDown39.Value / (decimal)100);
+            SweetFX.Technicolor.Blue_Negative_Amount = numericUpDown39.Value;
+            this.numericUpDown39.ValueChanged += new System.EventHandler(this.numericUpDown39_ValueChanged);
+        }
+
+        void trackBar39_Scroll(object sender, EventArgs e)
+        {
+            this.numericUpDown39.ValueChanged -= new System.EventHandler(this.numericUpDown39_ValueChanged);
+            numericUpDown39.Value = (decimal)trackBar39.Value / (decimal)100;
+            SweetFX.Technicolor.Blue_Negative_Amount = numericUpDown39.Value;
+            this.numericUpDown39.ValueChanged += new System.EventHandler(this.numericUpDown39_ValueChanged);
+        }
+
+        void numericUpDown38_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar38_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown36_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar36_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown34_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar34_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown37_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar37_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown40_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar40_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown41_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar41_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown42_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar42_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown43_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar43_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Monochrome
+
+        void checkBox11_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown54_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar54_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown44_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar44_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown45_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar45_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Lift Gamma Gain
+
+        void checkBox13_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown53_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar53_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown46_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar46_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown47_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar47_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown57_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar57_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown56_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar56_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown55_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar55_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown60_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar60_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown59_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar59_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown58_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar58_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Tonemap
+
+        void checkBox17_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown69_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar69_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown67_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar67_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown61_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar61_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown63_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar63_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown62_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar62_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown66_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar66_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown64_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar64_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown65_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar65_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Vibrance
+
+        void checkBox18_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown76_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar76_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown74_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar74_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown68_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar68_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown70_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar70_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Curves
+
+        void checkBox24_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown72_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar72_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown73_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar73_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Dither
+
+        void checkBox26_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Sepia
+
+        void checkBox22_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown82_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar82_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown78_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar78_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown80_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar80_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown75_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar75_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown71_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar71_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Vignette
+
+        void checkBox25_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown77_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
+
+        void trackBar77_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown79_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar79_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown81_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar81_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown83_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar83_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown86_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar86_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown85_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar85_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Border
+
+        void checkBox28_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown90_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar90_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown88_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar88_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown89_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar89_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown87_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar87_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        void numericUpDown84_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void trackBar84_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Splitscreen
+
+        void checkBox27_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         #endregion
