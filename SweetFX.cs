@@ -149,7 +149,7 @@ namespace SweetFX_Configurator
                             break;
                         // Cartoon
                         case "use_cartoon":
-                            Explosion.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Cartoon.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
                             break;
                         case "cartoonpower":
                             Cartoon.Power = Convert.ToDecimal(value);
@@ -313,20 +313,28 @@ namespace SweetFX_Configurator
                             Monochrome.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
                             break;
                         case "monochrome_conversion_values":
-                            Monochrome.Conversion_Values = new RGB(Convert.ToDecimal(_rgb[0].Trim()), Convert.ToDecimal(_rgb[1].Trim()), Convert.ToDecimal(_rgb[2].Trim()));
+                            Monochrome.Red = Convert.ToDecimal(_rgb[0].Trim());
+                            Monochrome.Green = Convert.ToDecimal(_rgb[1].Trim());
+                            Monochrome.Blue = Convert.ToDecimal(_rgb[2].Trim());
                             break;
                         // Lift Gamma Gain
                         case "use_liftgammagain":
                             Lift_Gamma_Gain.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
                             break;
                         case "rgb_lift":
-                            Lift_Gamma_Gain.Lift = new RGB(Convert.ToDecimal(_rgb[0].Trim()), Convert.ToDecimal(_rgb[1].Trim()), Convert.ToDecimal(_rgb[2].Trim()));
+                            Lift_Gamma_Gain.Lift_Red = Convert.ToDecimal(_rgb[0].Trim());
+                            Lift_Gamma_Gain.Lift_Green = Convert.ToDecimal(_rgb[1].Trim());
+                            Lift_Gamma_Gain.Lift_Blue = Convert.ToDecimal(_rgb[2].Trim());
                             break;
                         case "rgb_gamma":
-                            Lift_Gamma_Gain.Gamma = new RGB(Convert.ToDecimal(_rgb[0].Trim()), Convert.ToDecimal(_rgb[1].Trim()), Convert.ToDecimal(_rgb[2].Trim()));
+                            Lift_Gamma_Gain.Gamma_Red = Convert.ToDecimal(_rgb[0].Trim());
+                            Lift_Gamma_Gain.Gamma_Green = Convert.ToDecimal(_rgb[1].Trim());
+                            Lift_Gamma_Gain.Gamma_Blue = Convert.ToDecimal(_rgb[2].Trim());
                             break;
                         case "rgb_gain":
-                            Lift_Gamma_Gain.Gain = new RGB(Convert.ToDecimal(_rgb[0].Trim()), Convert.ToDecimal(_rgb[1].Trim()), Convert.ToDecimal(_rgb[2].Trim()));
+                            Lift_Gamma_Gain.Gain_Red = Convert.ToDecimal(_rgb[0].Trim());
+                            Lift_Gamma_Gain.Gain_Green = Convert.ToDecimal(_rgb[1].Trim());
+                            Lift_Gamma_Gain.Gain_Blue = Convert.ToDecimal(_rgb[2].Trim());
                             break;
                         // Tonemap
                         case "use_tonemap":
@@ -345,7 +353,9 @@ namespace SweetFX_Configurator
                             Tonemap.Defog = Convert.ToDecimal(value);
                             break;
                         case "fogcolor":
-                            Tonemap.Fog_Color = new RGB(Convert.ToDecimal(_rgb[0].Trim()), Convert.ToDecimal(_rgb[1].Trim()), Convert.ToDecimal(_rgb[2].Trim()));
+                            Tonemap.Fog_Red = Convert.ToDecimal(_rgb[0].Trim());
+                            Tonemap.Fog_Green = Convert.ToDecimal(_rgb[1].Trim());
+                            Tonemap.Fog_Blue = Convert.ToDecimal(_rgb[2].Trim());
                             break;
                         // Vibrance
                         case "use_vibrance":
@@ -355,7 +365,9 @@ namespace SweetFX_Configurator
                             Vibrance.Vibrance = Convert.ToDecimal(value);
                             break;
                         case "vibrance_rgb_balance":
-                            Vibrance.RGB_Balance = new RGB(Convert.ToDecimal(_rgb[0].Trim()), Convert.ToDecimal(_rgb[1].Trim()), Convert.ToDecimal(_rgb[2].Trim()));
+                            Vibrance.Red = Convert.ToDecimal(_rgb[0].Trim());
+                            Vibrance.Green = Convert.ToDecimal(_rgb[1].Trim());
+                            Vibrance.Blue = Convert.ToDecimal(_rgb[2].Trim());
                             break;
                         // Curves
                         case "use_curves":
@@ -375,7 +387,9 @@ namespace SweetFX_Configurator
                             Sepia.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
                             break;
                         case "colortone":
-                            Sepia.Color_Tone = new RGB(Convert.ToDecimal(_rgb[0].Trim()), Convert.ToDecimal(_rgb[1].Trim()), Convert.ToDecimal(_rgb[2].Trim()));
+                            Sepia.Red = Convert.ToDecimal(_rgb[0].Trim());
+                            Sepia.Green = Convert.ToDecimal(_rgb[1].Trim());
+                            Sepia.Blue = Convert.ToDecimal(_rgb[2].Trim());
                             break;
                         case "greypower":
                             Sepia.Grey_Power = Convert.ToDecimal(value);
@@ -403,7 +417,8 @@ namespace SweetFX_Configurator
                             Vignette.Slope = Convert.ToInt32(value);
                             break;
                         case "vignettecenter":
-                            Vignette.Center = new RG(Convert.ToDecimal(_rgb[0].Trim()), Convert.ToDecimal(_rgb[1].Trim()));
+                            Vignette.Center_X = Convert.ToDecimal(_rgb[0].Trim());
+                            Vignette.Center_Y = Convert.ToDecimal(_rgb[1].Trim());
                             break;
                         // Vignette
                         case "use_dither":
@@ -417,10 +432,13 @@ namespace SweetFX_Configurator
                             Border.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
                             break;
                         case "border_width":
-                            Border.Width = new RG(Convert.ToDecimal(_rgb[0].Trim()), Convert.ToDecimal(_rgb[1].Trim()));
+                            Border.Width_X = Convert.ToDecimal(_rgb[0].Trim());
+                            Border.Width_Y = Convert.ToDecimal(_rgb[1].Trim());
                             break;
                         case "border_color":
-                            Border.Color = new RGB(Convert.ToDecimal(_rgb[0].Trim()), Convert.ToDecimal(_rgb[1].Trim()), Convert.ToDecimal(_rgb[2].Trim()));
+                            Border.Red = Convert.ToDecimal(_rgb[0].Trim());
+                            Border.Green = Convert.ToDecimal(_rgb[1].Trim());
+                            Border.Blue = Convert.ToDecimal(_rgb[2].Trim());
                             break;
                         // Splitscreen
                         case "use_splitscreen":
@@ -493,24 +511,27 @@ namespace SweetFX_Configurator
                         setting = setting.Substring(index, (setting.Length - 1) - index);
                         index = setting.IndexOf(" ") + 1;
                         string key = setting.Substring(0, index - 1);
-                        setting = setting.Substring(index, (setting.Length - 1) - index).Trim();
-                        string value;
-                        string[] rgb;
-                        if (setting.StartsWith("float"))
+                        if (key.ToLower() == set.Key)
                         {
-                            index = setting.IndexOf(")");
-                            setting = setting.Substring(0, index).Trim();
-                            index = setting.IndexOf("(");
-                            value = setting.Substring(index + 1, (setting.Length - 1) - index).Trim();
+                            setting = setting.Substring(index, (setting.Length - 1) - index).Trim();
+                            string value;
+                            string[] rgb;
+                            if (setting.StartsWith("float"))
+                            {
+                                index = setting.IndexOf(")");
+                                setting = setting.Substring(0, index).Trim();
+                                index = setting.IndexOf("(");
+                                value = setting.Substring(index + 1, (setting.Length - 1) - index).Trim();
+                            }
+                            else
+                            {
+                                index = setting.IndexOf(" ");
+                                value = setting.Substring(0, index);
+                            }
+                            lines[i] = lines[i].Replace(value, set.Value);
+                            SaveSettingQueue.Remove(set);
+                            break;
                         }
-                        else
-                        {
-                            index = setting.IndexOf(" ");
-                            value = setting.Substring(0, index);
-                        }
-                        lines[i] = lines[i].Replace(value, set.Value);
-                        SaveSettingQueue.Remove(set);
-                        break;
                     }
                 }
             }
@@ -537,13 +558,11 @@ namespace SweetFX_Configurator
     {
         private string _key;
         private string _value;
-        private bool _float;
 
-        public Setting(string k, string v, bool f = false)
+        public Setting(string k, string v)
         {
             _key = k;
             _value = v;
-            _float = f;
         }
 
         public string Key { get { return _key; } }
@@ -553,8 +572,6 @@ namespace SweetFX_Configurator
             get { return _value; }
             set { _value = value; }
         }
-
-        public bool Float { get { return _float; } }
     }
 
     public class _SMAA
@@ -745,7 +762,7 @@ namespace SweetFX_Configurator
             set
             {
                 _power = value;
-                SweetFX.SaveSetting(new Setting("CartoonPower", value.ToString()));
+                SweetFX.SaveSetting(new Setting("cartoonpower", value.ToString()));
             }
         }
 
@@ -755,7 +772,7 @@ namespace SweetFX_Configurator
             set
             {
                 _edge_slope = value;
-                SweetFX.SaveSetting(new Setting("CartoonEdgeSlope", value.ToString()));
+                SweetFX.SaveSetting(new Setting("cartoonedgeslope", value.ToString()));
             }
         }
     }
@@ -1167,7 +1184,7 @@ namespace SweetFX_Configurator
             set
             {
                 _power = value;
-                SweetFX.SaveSetting(new Setting("techniamount", value.ToString()));
+                SweetFX.SaveSetting(new Setting("technipower", value.ToString()));
             }
         }
 
@@ -1319,7 +1336,9 @@ namespace SweetFX_Configurator
     public class _Monochrome
     {
         private bool _enabled;
-        private RGB _conversion_values;
+        private decimal _red;
+        private decimal _green;
+        private decimal _blue;
 
         public bool Enabled
         {
@@ -1331,13 +1350,33 @@ namespace SweetFX_Configurator
             }
         }
 
-        public RGB Conversion_Values
+        public decimal Red
         {
-            get { return _conversion_values; }
+            get { return _red; }
             set
             {
-                _conversion_values = value;
-                SweetFX.SaveSetting(new Setting("monochrome_conversion_values", value.ToString(), true));
+                _red = value;
+                SweetFX.SaveSetting(new Setting("monochrome_conversion_values", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+            }
+        }
+
+        public decimal Green
+        {
+            get { return _green; }
+            set
+            {
+                _green = value;
+                SweetFX.SaveSetting(new Setting("monochrome_conversion_values", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+            }
+        }
+
+        public decimal Blue
+        {
+            get { return _blue; }
+            set
+            {
+                _blue = value;
+                SweetFX.SaveSetting(new Setting("monochrome_conversion_values", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
             }
         }
     }
@@ -1345,9 +1384,15 @@ namespace SweetFX_Configurator
     public class _Lift_Gamma_Gain
     {
         private bool _enabled;
-        private RGB _lift;
-        private RGB _gamma;
-        private RGB _gain;
+        private decimal _lift_red;
+        private decimal _lift_green;
+        private decimal _lift_blue;
+        private decimal _gamma_red;
+        private decimal _gamma_green;
+        private decimal _gamma_blue;
+        private decimal _gain_red;
+        private decimal _gain_green;
+        private decimal _gain_blue;
 
         public bool Enabled
         {
@@ -1359,33 +1404,93 @@ namespace SweetFX_Configurator
             }
         }
 
-        public RGB Lift
+        public decimal Lift_Red
         {
-            get { return _lift; }
+            get { return _lift_red; }
             set
             {
-                _lift = value;
-                SweetFX.SaveSetting(new Setting("rgb_lift", value.ToString(), true));
+                _lift_red = value;
+                SweetFX.SaveSetting(new Setting("rgb_lift", "float3(" + _lift_red + ", " + _lift_green + ", " + _lift_blue + ")"));
             }
         }
 
-        public RGB Gamma
+        public decimal Lift_Green
         {
-            get { return _gamma; }
+            get { return _lift_green; }
             set
             {
-                _gamma = value;
-                SweetFX.SaveSetting(new Setting("rgb_gamma", value.ToString(), true));
+                _lift_green = value;
+                SweetFX.SaveSetting(new Setting("rgb_lift", "float3(" + _lift_red + ", " + _lift_green + ", " + _lift_blue + ")"));
             }
         }
 
-        public RGB Gain
+        public decimal Lift_Blue
         {
-            get { return _gain; }
+            get { return _lift_green; }
             set
             {
-                _gain = value;
-                SweetFX.SaveSetting(new Setting("rgb_gain", value.ToString(), true));
+                _lift_blue = value;
+                SweetFX.SaveSetting(new Setting("rgb_lift", "float3(" + _lift_red + ", " + _lift_green + ", " + _lift_blue + ")"));
+            }
+        }
+
+        public decimal Gamma_Red
+        {
+            get { return _gamma_red; }
+            set
+            {
+                _gamma_red = value;
+                SweetFX.SaveSetting(new Setting("rgb_gamma", "float3(" + _gamma_red + ", " + _gamma_green + ", " + _gamma_blue + ")"));
+            }
+        }
+
+        public decimal Gamma_Green
+        {
+            get { return _gamma_green; }
+            set
+            {
+                _gamma_green = value;
+                SweetFX.SaveSetting(new Setting("rgb_gamma", "float3(" + _gamma_red + ", " + _gamma_green + ", " + _gamma_blue + ")"));
+            }
+        }
+
+        public decimal Gamma_Blue
+        {
+            get { return _gamma_blue; }
+            set
+            {
+                _gamma_blue = value;
+                SweetFX.SaveSetting(new Setting("rgb_gamma", "float3(" + _gamma_red + ", " + _gamma_green + ", " + _gamma_blue + ")"));
+            }
+        }
+
+        public decimal Gain_Red
+        {
+            get { return _gain_red; }
+            set
+            {
+                _gain_red = value;
+                SweetFX.SaveSetting(new Setting("rgb_gain", value.ToString()));
+            }
+        }
+
+        public decimal Gain_Green
+        {
+            get { return _gain_green; }
+            set
+            {
+                _gain_green = value;
+                SweetFX.SaveSetting(new Setting("rgb_gain", value.ToString()));
+            }
+        }
+
+        public decimal Gain_Blue
+        {
+            get { return _gain_blue; }
+            set
+            {
+                _gain_blue = value;
+                SweetFX.SaveSetting(new Setting("rgb_gain", value.ToString()));
             }
         }
     }
@@ -1398,7 +1503,9 @@ namespace SweetFX_Configurator
         private decimal _saturation;
         private decimal _bleach;
         private decimal _defog;
-        private RGB _fog_color;
+        private decimal _fog_red;
+        private decimal _fog_green;
+        private decimal _fog_blue;
 
         public bool Enabled
         {
@@ -1460,13 +1567,33 @@ namespace SweetFX_Configurator
             }
         }
 
-        public RGB Fog_Color
+        public decimal Fog_Red
         {
-            get { return _fog_color; }
+            get { return _fog_red; }
             set
             {
-                _fog_color = value;
-                SweetFX.SaveSetting(new Setting("fogcolor", value.ToString(), true));
+                _fog_red = value;
+                SweetFX.SaveSetting(new Setting("fogcolor", "float3(" + _fog_red.ToString() + ", " + _fog_green + ", " + _fog_blue + ")"));
+            }
+        }
+
+        public decimal Fog_Green
+        {
+            get { return _fog_green; }
+            set
+            {
+                _fog_green = value;
+                SweetFX.SaveSetting(new Setting("fogcolor", "float3(" + _fog_red.ToString() + ", " + _fog_green + ", " + _fog_blue + ")"));
+            }
+        }
+
+        public decimal Fog_Blue
+        {
+            get { return _fog_blue; }
+            set
+            {
+                _fog_blue = value;
+                SweetFX.SaveSetting(new Setting("fogcolor", "float3(" + _fog_red.ToString() + ", " + _fog_green + ", " + _fog_blue + ")"));
             }
         }
     }
@@ -1475,7 +1602,9 @@ namespace SweetFX_Configurator
     {
         private bool _enabled;
         private decimal vibrance_;
-        private RGB _rgb_balance;
+        private decimal _red;
+        private decimal _green;
+        private decimal _blue;
 
         public bool Enabled
         {
@@ -1497,13 +1626,33 @@ namespace SweetFX_Configurator
             }
         }
 
-        public RGB RGB_Balance
+        public decimal Red
         {
-            get { return _rgb_balance; }
+            get { return _red; }
             set
             {
-                _rgb_balance = value;
-                SweetFX.SaveSetting(new Setting("vibrance_rgb_balance", value.ToString(), true));
+                _red = value;
+                SweetFX.SaveSetting(new Setting("vibrance_rgb_balance", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+            }
+        }
+
+        public decimal Green
+        {
+            get { return _green; }
+            set
+            {
+                _green = value;
+                SweetFX.SaveSetting(new Setting("vibrance_rgb_balance", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+            }
+        }
+
+        public decimal Blue
+        {
+            get { return _blue; }
+            set
+            {
+                _blue = value;
+                SweetFX.SaveSetting(new Setting("vibrance_rgb_balance", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
             }
         }
     }
@@ -1559,7 +1708,9 @@ namespace SweetFX_Configurator
     public class _Sepia
     {
         private bool _enabled;
-        private RGB _color_tone;
+        private decimal _red;
+        private decimal _green;
+        private decimal _blue;
         private decimal _grey_power;
         private decimal _power;
 
@@ -1573,13 +1724,33 @@ namespace SweetFX_Configurator
             }
         }
 
-        public RGB Color_Tone
+        public decimal Red
         {
-            get { return _color_tone; }
+            get { return _red; }
             set
             {
-                _color_tone = value;
-                SweetFX.SaveSetting(new Setting("colortone", value.ToString(), true));
+                _red = value;
+                SweetFX.SaveSetting(new Setting("colortone", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+            }
+        }
+
+        public decimal Green
+        {
+            get { return _green; }
+            set
+            {
+                _green = value;
+                SweetFX.SaveSetting(new Setting("colortone", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+            }
+        }
+
+        public decimal Blue
+        {
+            get { return _blue; }
+            set
+            {
+                _blue = value;
+                SweetFX.SaveSetting(new Setting("colortone", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
             }
         }
 
@@ -1612,7 +1783,8 @@ namespace SweetFX_Configurator
         private decimal _radius;
         private decimal _amount;
         private int _slope;
-        private RG _center;
+        private decimal _center_x;
+        private decimal _center_y;
 
         public bool Enabled
         {
@@ -1674,13 +1846,23 @@ namespace SweetFX_Configurator
             }
         }
 
-        public RG Center
+        public decimal Center_X
         {
-            get { return _center; }
+            get { return _center_x; }
             set
             {
-                _center = value;
-                SweetFX.SaveSetting(new Setting("vignettecenter", value.ToString()));
+                _center_x = value;
+                SweetFX.SaveSetting(new Setting("vignettecenter", "float(" + _center_x + ", " + _center_y + ")"));
+            }
+        }
+
+        public decimal Center_Y
+        {
+            get { return _center_y; }
+            set
+            {
+                _center_y = value;
+                SweetFX.SaveSetting(new Setting("vignettecenter", "float(" + _center_x + ", " + _center_y + ")"));
             }
         }
     }
@@ -1714,8 +1896,11 @@ namespace SweetFX_Configurator
     public class _Border
     {
         private bool _enabled;
-        private RG _width;
-        private RGB _color;
+        private decimal _width_x;
+        private decimal _width_y;
+        private decimal _red;
+        private decimal _green;
+        private decimal _blue;
 
         public bool Enabled
         {
@@ -1727,23 +1912,53 @@ namespace SweetFX_Configurator
             }
         }
 
-        public RG Width
+        public decimal Width_X
         {
-            get { return _width; }
+            get { return _width_x; }
             set
             {
-                _width = value;
-                SweetFX.SaveSetting(new Setting("border_width", value.ToString()));
+                _width_x = value;
+                SweetFX.SaveSetting(new Setting("border_width", "float2(" + _width_x + ", " + _width_y + ")"));
             }
         }
 
-        public RGB Color
+        public decimal Width_Y
         {
-            get { return _color; }
+            get { return _width_y; }
             set
             {
-                _color = value;
-                SweetFX.SaveSetting(new Setting("border_color", value.ToString()));
+                _width_y = value;
+                SweetFX.SaveSetting(new Setting("border_width", "float2(" + _width_x + ", " + _width_y + ")"));
+            }
+        }
+
+        public decimal Red
+        {
+            get { return _red; }
+            set
+            {
+                _red = value;
+                SweetFX.SaveSetting(new Setting("border_color", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+            }
+        }
+
+        public decimal Green
+        {
+            get { return _green; }
+            set
+            {
+                _green = value;
+                SweetFX.SaveSetting(new Setting("border_color", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+            }
+        }
+
+        public decimal Blue
+        {
+            get { return _blue; }
+            set
+            {
+                _blue = value;
+                SweetFX.SaveSetting(new Setting("border_color", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
             }
         }
     }
@@ -1771,42 +1986,6 @@ namespace SweetFX_Configurator
                 _mode = value;
                 SweetFX.SaveSetting(new Setting("splitscreen_mode", value.ToString()));
             }
-        }
-    }
-
-    public class RG
-    {
-        public decimal Red;
-        public decimal Green;
-
-        public RG(decimal r, decimal g)
-        {
-            Red = r;
-            Green = g;
-        }
-
-        public override string ToString()
-        {
-            return "float2(" + Red.ToString() + ", " + Green.ToString() + ")";
-        }
-    }
-
-    public class RGB
-    {
-        public decimal Red;
-        public decimal Green;
-        public decimal Blue;
-
-        public RGB(decimal r, decimal g, decimal b)
-        {
-            Red = r;
-            Green = g;
-            Blue = b;
-        }
-
-        public override string ToString()
-        {
-            return "float3(" + Red.ToString() + ", " + Green.ToString() + ", " + Blue.ToString() + ")";
         }
     }
 }

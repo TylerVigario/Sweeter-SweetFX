@@ -1211,21 +1211,26 @@
             this.numericUpDown5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown5.DecimalPlaces = 3;
             this.numericUpDown5.Location = new System.Drawing.Point(494, 91);
+            this.numericUpDown5.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(63, 20);
             this.numericUpDown5.TabIndex = 14;
             this.numericUpDown5.Value = new decimal(new int[] {
-            60,
+            1,
             0,
             0,
-            196608});
+            0});
             // 
             // numericUpDown6
             // 
             this.numericUpDown6.DecimalPlaces = 3;
             this.numericUpDown6.Location = new System.Drawing.Point(207, 91);
             this.numericUpDown6.Maximum = new decimal(new int[] {
-            1000,
+            15000,
             0,
             0,
             196608});
@@ -1305,18 +1310,18 @@
             this.trackBar5.Size = new System.Drawing.Size(275, 45);
             this.trackBar5.TabIndex = 7;
             this.trackBar5.TickFrequency = 25;
-            this.trackBar5.Value = 60;
+            this.trackBar5.Value = 1000;
             // 
             // trackBar6
             // 
             this.trackBar6.BackColor = System.Drawing.SystemColors.Window;
             this.trackBar6.LargeChange = 10;
             this.trackBar6.Location = new System.Drawing.Point(14, 117);
-            this.trackBar6.Maximum = 1000;
+            this.trackBar6.Maximum = 15000;
             this.trackBar6.Name = "trackBar6";
             this.trackBar6.Size = new System.Drawing.Size(275, 45);
             this.trackBar6.TabIndex = 6;
-            this.trackBar6.TickFrequency = 25;
+            this.trackBar6.TickFrequency = 250;
             this.trackBar6.Value = 250;
             // 
             // label6
@@ -2674,7 +2679,7 @@
             this.trackBar35.Name = "trackBar35";
             this.trackBar35.Size = new System.Drawing.Size(275, 45);
             this.trackBar35.TabIndex = 16;
-            this.trackBar35.TickFrequency = 5;
+            this.trackBar35.TickFrequency = 4;
             this.trackBar35.Value = 88;
             // 
             // label39
@@ -2767,18 +2772,18 @@
             262144});
             this.numericUpDown52.Location = new System.Drawing.Point(207, 16);
             this.numericUpDown52.Maximum = new decimal(new int[] {
-            10000,
+            800,
             0,
             0,
-            262144});
+            131072});
             this.numericUpDown52.Name = "numericUpDown52";
             this.numericUpDown52.Size = new System.Drawing.Size(63, 20);
             this.numericUpDown52.TabIndex = 11;
             this.numericUpDown52.Value = new decimal(new int[] {
-            40,
+            8,
             0,
             0,
-            131072});
+            0});
             // 
             // label41
             // 
@@ -2799,7 +2804,7 @@
             this.trackBar49.Name = "trackBar49";
             this.trackBar49.Size = new System.Drawing.Size(275, 45);
             this.trackBar49.TabIndex = 7;
-            this.trackBar49.TickFrequency = 5;
+            this.trackBar49.TickFrequency = 4;
             this.trackBar49.Value = 88;
             // 
             // trackBar50
@@ -2810,7 +2815,7 @@
             this.trackBar50.Name = "trackBar50";
             this.trackBar50.Size = new System.Drawing.Size(275, 45);
             this.trackBar50.TabIndex = 6;
-            this.trackBar50.TickFrequency = 5;
+            this.trackBar50.TickFrequency = 4;
             this.trackBar50.Value = 88;
             // 
             // label42
@@ -2847,13 +2852,14 @@
             // trackBar52
             // 
             this.trackBar52.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.trackBar52.LargeChange = 10;
             this.trackBar52.Location = new System.Drawing.Point(14, 42);
-            this.trackBar52.Maximum = 100;
+            this.trackBar52.Maximum = 800;
             this.trackBar52.Name = "trackBar52";
             this.trackBar52.Size = new System.Drawing.Size(275, 45);
             this.trackBar52.TabIndex = 2;
-            this.trackBar52.TickFrequency = 5;
-            this.trackBar52.Value = 40;
+            this.trackBar52.TickFrequency = 25;
+            this.trackBar52.Value = 800;
             // 
             // label44
             // 
@@ -3078,7 +3084,7 @@
             0,
             0});
             this.numericUpDown40.Name = "numericUpDown40";
-            this.numericUpDown40.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown40.Size = new System.Drawing.Size(47, 20);
             this.numericUpDown40.TabIndex = 23;
             this.numericUpDown40.Value = new decimal(new int[] {
             8,
@@ -3107,7 +3113,7 @@
             0,
             0});
             this.numericUpDown37.Name = "numericUpDown37";
-            this.numericUpDown37.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown37.Size = new System.Drawing.Size(47, 20);
             this.numericUpDown37.TabIndex = 22;
             this.numericUpDown37.Value = new decimal(new int[] {
             8,
@@ -3136,7 +3142,7 @@
             0,
             0});
             this.numericUpDown34.Name = "numericUpDown34";
-            this.numericUpDown34.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown34.Size = new System.Drawing.Size(47, 20);
             this.numericUpDown34.TabIndex = 21;
             this.numericUpDown34.Value = new decimal(new int[] {
             8,
@@ -3331,12 +3337,12 @@
             this.trackBar38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar38.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar38.Location = new System.Drawing.Point(299, 40);
-            this.trackBar38.Maximum = 800;
+            this.trackBar38.Maximum = 80;
             this.trackBar38.Name = "trackBar38";
             this.trackBar38.Size = new System.Drawing.Size(275, 45);
             this.trackBar38.TabIndex = 4;
-            this.trackBar38.TickFrequency = 25;
-            this.trackBar38.Value = 300;
+            this.trackBar38.TickFrequency = 3;
+            this.trackBar38.Value = 30;
             // 
             // label31
             // 
@@ -4507,7 +4513,7 @@
             0,
             -2147352576});
             this.numericUpDown70.Name = "numericUpDown70";
-            this.numericUpDown70.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown70.Size = new System.Drawing.Size(47, 20);
             this.numericUpDown70.TabIndex = 37;
             this.numericUpDown70.Value = new decimal(new int[] {
             10,
@@ -4527,6 +4533,7 @@
             this.trackBar70.Size = new System.Drawing.Size(45, 136);
             this.trackBar70.TabIndex = 36;
             this.trackBar70.TickFrequency = 100;
+            this.trackBar70.Value = 100;
             // 
             // numericUpDown68
             // 
@@ -4549,7 +4556,7 @@
             0,
             -2147352576});
             this.numericUpDown68.Name = "numericUpDown68";
-            this.numericUpDown68.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown68.Size = new System.Drawing.Size(47, 20);
             this.numericUpDown68.TabIndex = 35;
             this.numericUpDown68.Value = new decimal(new int[] {
             10,
@@ -4569,6 +4576,7 @@
             this.trackBar68.Size = new System.Drawing.Size(45, 136);
             this.trackBar68.TabIndex = 34;
             this.trackBar68.TickFrequency = 100;
+            this.trackBar68.Value = 100;
             // 
             // label75
             // 
@@ -4628,13 +4636,13 @@
             0,
             -2147352576});
             this.numericUpDown74.Name = "numericUpDown74";
-            this.numericUpDown74.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown74.Size = new System.Drawing.Size(47, 20);
             this.numericUpDown74.TabIndex = 21;
             this.numericUpDown74.Value = new decimal(new int[] {
-            10,
+            100,
             0,
             0,
-            65536});
+            131072});
             // 
             // trackBar74
             // 
@@ -4648,6 +4656,7 @@
             this.trackBar74.Size = new System.Drawing.Size(45, 136);
             this.trackBar74.TabIndex = 15;
             this.trackBar74.TickFrequency = 100;
+            this.trackBar74.Value = 100;
             // 
             // numericUpDown76
             // 
@@ -4672,7 +4681,7 @@
             this.numericUpDown76.Size = new System.Drawing.Size(63, 20);
             this.numericUpDown76.TabIndex = 11;
             this.numericUpDown76.Value = new decimal(new int[] {
-            15,
+            97,
             0,
             0,
             131072});
@@ -4682,13 +4691,13 @@
             this.trackBar76.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar76.LargeChange = 10;
             this.trackBar76.Location = new System.Drawing.Point(18, 38);
-            this.trackBar76.Maximum = 1000;
-            this.trackBar76.Minimum = -1000;
+            this.trackBar76.Maximum = 100;
+            this.trackBar76.Minimum = -100;
             this.trackBar76.Name = "trackBar76";
             this.trackBar76.Size = new System.Drawing.Size(275, 45);
             this.trackBar76.TabIndex = 2;
-            this.trackBar76.TickFrequency = 50;
-            this.trackBar76.Value = 15;
+            this.trackBar76.TickFrequency = 5;
+            this.trackBar76.Value = 97;
             // 
             // label82
             // 
