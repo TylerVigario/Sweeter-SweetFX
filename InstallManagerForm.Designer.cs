@@ -41,6 +41,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(74, 251);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(56, 23);
@@ -63,6 +64,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Enabled = false;
             this.button3.Location = new System.Drawing.Point(326, 251);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(56, 23);
@@ -90,24 +92,26 @@
             this.fastObjectListView1.UseCompatibleStateImageBehavior = false;
             this.fastObjectListView1.View = System.Windows.Forms.View.Details;
             this.fastObjectListView1.VirtualMode = true;
+            this.fastObjectListView1.SelectedIndexChanged += new System.EventHandler(this.fastObjectListView1_SelectedIndexChanged);
             // 
             // olvColumn1
             // 
             this.olvColumn1.AspectName = "Name";
             this.olvColumn1.CellPadding = null;
             this.olvColumn1.Text = "Game";
-            this.olvColumn1.Width = 170;
+            this.olvColumn1.Width = 292;
             // 
             // olvColumn2
             // 
             this.olvColumn2.AspectName = "isSweetFXInstalled";
             this.olvColumn2.CellPadding = null;
             this.olvColumn2.Text = "SweetFX";
-            this.olvColumn2.Width = 180;
+            this.olvColumn2.Width = 70;
             // 
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.Enabled = false;
             this.button4.Location = new System.Drawing.Point(264, 251);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(56, 23);

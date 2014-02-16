@@ -7,8 +7,11 @@ namespace SweetFX_Configurator
     public partial class MainForm : Form
     {
         private List<Message> MessagePump = new List<Message>();
+        private Message _message = new Message("");
         private delegate void SweetFX_SaveSettingsFinishedD();
         InstallManagerForm install_manager_form;
+        SettingsForm settings_form;
+        AboutForm about_form;
 
         public MainForm()
         {
@@ -20,13 +23,6 @@ namespace SweetFX_Configurator
             Settings.Load();
             WindowGeometry.GeometryFromString(Settings.Main_Window_Geometry, this);
             //
-            SweetFX.SaveSettingsFinished += SweetFX_SaveSettingsFinished;
-            SweetFX.GameLoaded += SweetFX_GameLoaded;
-            if (Settings.LastGame != null && Settings.LastGame.isSweetFXInstalled)
-            {
-                SweetFX.Load(Settings.LastGame);
-            }
-            //
             List<Game> _gms = Settings.GetGames();
             foreach (Game _game in _gms)
             {
@@ -36,7 +32,16 @@ namespace SweetFX_Configurator
                 gamesToolStripMenuItem1.DropDownItems.Add(item);
             }
             //
+            SweetFX.SaveSettingsFinished += SweetFX_SaveSettingsFinished;
+            SweetFX.GameLoaded += SweetFX_GameLoaded;
+            if (Settings.LastGame != null && Settings.LastGame.isSweetFXInstalled)
+            {
+                SweetFX.Load(Settings.LastGame);
+            }
+            //
             Settings.GameAdded += Settings_GameAdded;
+            onlyActiveToolStripMenuItem.Checked = Settings.OnlyActive;
+            tabControl1.SelectedIndex = Settings.LastTab;
         }
 
         private delegate void InstallManager_GameLoadedD();
@@ -49,7 +54,8 @@ namespace SweetFX_Configurator
                 return;
             }
             LoadSFXConfig();
-            this.Text = "The Unknown - Game loaded: " + Settings.LastGame.Name;
+            SetMessage(new Message("Game loaded: " + Settings.LastGame.Name, 0));
+            if (onlyActiveToolStripMenuItem.Checked) { HideUnactiveTabs(); }
         }
 
         void Settings_GameAdded(Game _g)
@@ -147,8 +153,7 @@ namespace SweetFX_Configurator
             trackBar32.Value = Convert.ToInt32(SweetFX.LumaSharpen.Strength * (decimal)100.00);
             numericUpDown31.Value = SweetFX.LumaSharpen.Clamp;
             trackBar31.Value = Convert.ToInt32(SweetFX.LumaSharpen.Clamp * (decimal)1000.00);
-            numericUpDown30.Value = SweetFX.LumaSharpen.Pattern;
-            trackBar30.Value = SweetFX.LumaSharpen.Pattern;
+            comboBox5.SelectedIndex = SweetFX.LumaSharpen.Pattern - 1;
             numericUpDown29.Value = SweetFX.LumaSharpen.Offset_Bias;
             trackBar29.Value = Convert.ToInt32(SweetFX.LumaSharpen.Offset_Bias * (decimal)10.00);
             checkBox19.Checked = SweetFX.LumaSharpen.Show;
@@ -280,21 +285,21 @@ namespace SweetFX_Configurator
             trackBar83.Value = Convert.ToInt32(SweetFX.Vignette.Slope);
             comboBox2.SelectedIndex = SweetFX.Vignette.Type - 1;
             numericUpDown86.Value = SweetFX.Vignette.Center_X;
-            trackBar86.Value = Convert.ToInt32(SweetFX.Vignette.Center_X * (decimal)100);
+            trackBar86.Value = Convert.ToInt32(SweetFX.Vignette.Center_X * (decimal)1000);
             numericUpDown85.Value = SweetFX.Vignette.Center_Y;
-            trackBar85.Value = Convert.ToInt32(SweetFX.Vignette.Center_Y * (decimal)100);
+            trackBar85.Value = Convert.ToInt32(SweetFX.Vignette.Center_Y * (decimal)1000);
             // Border
             checkBox28.Checked = SweetFX.Border.Enabled;
             numericUpDown90.Value = SweetFX.Border.Width_X;
-            trackBar90.Value = Convert.ToInt32(SweetFX.Border.Width_X * (decimal)100);
+            trackBar90.Value = Convert.ToInt32(SweetFX.Border.Width_X);
             numericUpDown88.Value = SweetFX.Border.Width_Y;
-            trackBar88.Value = Convert.ToInt32(SweetFX.Border.Width_Y * (decimal)100);
+            trackBar88.Value = Convert.ToInt32(SweetFX.Border.Width_Y);
             numericUpDown89.Value = SweetFX.Border.Red;
-            trackBar89.Value = Convert.ToInt32(SweetFX.Border.Red * (decimal)100);
+            trackBar89.Value = Convert.ToInt32(SweetFX.Border.Red);
             numericUpDown87.Value = SweetFX.Border.Green;
-            trackBar87.Value = Convert.ToInt32(SweetFX.Border.Green * (decimal)100);
+            trackBar87.Value = Convert.ToInt32(SweetFX.Border.Green);
             numericUpDown84.Value = SweetFX.Border.Blue;
-            trackBar84.Value = Convert.ToInt32(SweetFX.Border.Blue * (decimal)100);
+            trackBar84.Value = Convert.ToInt32(SweetFX.Border.Blue);
             // Splitscreen
             checkBox27.Checked = SweetFX.Splitscreen.Enabled;
             comboBox4.SelectedIndex = SweetFX.Splitscreen.Mode - 1;
@@ -309,11 +314,12 @@ namespace SweetFX_Configurator
                 BeginInvoke(new SweetFX_SaveSettingsFinishedD(SweetFX_SaveSettingsFinished));
                 return;
             }
-            SetMessage("Last SweetFX configuration saved on: " + DateTime.Now.ToShortTimeString());
+            SetMessage(new Message("Game loaded: " + Settings.LastGame.Name + ", last saved: " + DateTime.Now.ToShortTimeString(), 0));
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Settings.LastTab = tabControl1.SelectedIndex;
             Settings.Main_Window_Geometry = WindowGeometry.GeometryToString(this);
         }
 
@@ -407,8 +413,7 @@ namespace SweetFX_Configurator
             trackBar32.Scroll += trackBar32_Scroll;
             numericUpDown31.ValueChanged += numericUpDown31_ValueChanged;
             trackBar31.Scroll += trackBar31_Scroll;
-            numericUpDown30.ValueChanged += numericUpDown30_ValueChanged;
-            trackBar30.Scroll += trackBar30_Scroll;
+            comboBox5.SelectedIndexChanged += comboBox5_SelectedIndexChanged;
             numericUpDown29.ValueChanged += numericUpDown29_ValueChanged;
             trackBar29.Scroll += trackBar29_Scroll;
             checkBox19.CheckedChanged += checkBox19_CheckedChanged;
@@ -644,8 +649,7 @@ namespace SweetFX_Configurator
             trackBar32.Scroll -= trackBar32_Scroll;
             numericUpDown31.ValueChanged -= numericUpDown31_ValueChanged;
             trackBar31.Scroll -= trackBar31_Scroll;
-            numericUpDown30.ValueChanged -= numericUpDown30_ValueChanged;
-            trackBar30.Scroll -= trackBar30_Scroll;
+            comboBox5.SelectedIndexChanged -= comboBox5_SelectedIndexChanged;
             numericUpDown29.ValueChanged -= numericUpDown29_ValueChanged;
             trackBar29.Scroll -= trackBar29_Scroll;
             checkBox19.CheckedChanged -= checkBox19_CheckedChanged;
@@ -802,16 +806,22 @@ namespace SweetFX_Configurator
             SetMessage(new Message(_message));
         }
 
-        private void SetMessage(Message _message)
+        private void SetMessage(Message message_)
         {
+            if (message_.Timeout == 0)
+            {
+                toolStripStatusLabel1.Text = message_.ToString();
+                _message = message_;
+                return;
+            }
             if (!timer1.Enabled)
             {
-                toolStripStatusLabel1.Text = _message.ToString();
-                timer1.Interval = _message.Timeout;
+                toolStripStatusLabel1.Text = message_.ToString();
+                timer1.Interval = message_.Timeout;
                 timer1.Enabled = true;
                 timer1.Start();
             }
-            else { MessagePump.Add(_message); }
+            else { MessagePump.Add(message_); }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -824,7 +834,7 @@ namespace SweetFX_Configurator
             }
             else
             {
-                toolStripStatusLabel1.Text = "";
+                toolStripStatusLabel1.Text = _message.ToString();
                 timer1.Enabled = false;
                 timer1.Stop();
             }
@@ -848,7 +858,88 @@ namespace SweetFX_Configurator
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //about
+            if (!AboutForm.isOpen)
+            {
+                about_form = new AboutForm();
+                about_form.FormClosed += about_form_FormClosed;
+                about_form.Show();
+            }
+            else { about_form.BringToFront(); }
+        }
+
+        void about_form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            about_form.Dispose();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!SettingsForm.isOpen)
+            {
+                settings_form = new SettingsForm();
+                settings_form.FormClosed += settings_form_FormClosed;
+                settings_form.Show();
+            }
+            else { settings_form.BringToFront(); }
+        }
+
+        void settings_form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            settings_form.Dispose();
+        }
+
+        private void onlyActiveToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.OnlyActive = onlyActiveToolStripMenuItem.Checked;
+            if (onlyActiveToolStripMenuItem.Checked) { HideUnactiveTabs(); }
+            else { ShowAllTabs(); }
+        }
+
+        private void HideUnactiveTabs()
+        {
+            ShowAllTabs();
+            if (!SweetFX.SMAA.Enabled) { tabControl1.TabPages.Remove(tabPage1); }
+            if (!SweetFX.FXAA.Enabled) { tabControl1.TabPages.Remove(tabPage2); }
+            if (!SweetFX.Explosion.Enabled && !SweetFX.Cartoon.Enabled) { tabControl1.TabPages.Remove(tabPage3); }
+            if (!SweetFX.CRT.Enabled) { tabControl1.TabPages.Remove(tabPage4); tabControl1.TabPages.Remove(tabPage5); }
+            if (!SweetFX.Bloom.Enabled && !SweetFX.HDR.Enabled) { tabControl1.TabPages.Remove(tabPage6); }
+            if (!SweetFX.LumaSharpen.Enabled) { tabControl1.TabPages.Remove(tabPage8); }
+            if (!SweetFX.Levels.Enabled) { tabControl1.TabPages.Remove(tabPage9); }
+            if (!SweetFX.Technicolor.Enabled) { tabControl1.TabPages.Remove(tabPage10); }
+            if (!SweetFX.Cineon_DPX.Enabled) { tabControl1.TabPages.Remove(tabPage7); }
+            if (!SweetFX.Monochrome.Enabled) { tabControl1.TabPages.Remove(tabPage11); }
+            if (!SweetFX.Lift_Gamma_Gain.Enabled) { tabControl1.TabPages.Remove(tabPage12); }
+            if (!SweetFX.Tonemap.Enabled) { tabControl1.TabPages.Remove(tabPage13); }
+            if (!SweetFX.Vibrance.Enabled) { tabControl1.TabPages.Remove(tabPage14); }
+            if (!SweetFX.Curves.Enabled) { tabControl1.TabPages.Remove(tabPage15); }
+            if (!SweetFX.Sepia.Enabled && !SweetFX.Dither.Enabled) { tabControl1.TabPages.Remove(tabPage16); ; }
+            if (!SweetFX.Vignette.Enabled) { tabControl1.TabPages.Remove(tabPage17); }
+            if (!SweetFX.Border.Enabled) { tabControl1.TabPages.Remove(tabPage18); }
+            if (!SweetFX.Splitscreen.Enabled) { tabControl1.TabPages.Remove(tabPage19); }
+        }
+
+        private void ShowAllTabs()
+        {
+            tabControl1.TabPages.Clear();
+            tabControl1.TabPages.Add(tabPage1);
+            tabControl1.TabPages.Add(tabPage2);
+            tabControl1.TabPages.Add(tabPage3);
+            tabControl1.TabPages.Add(tabPage4);
+            tabControl1.TabPages.Add(tabPage5);
+            tabControl1.TabPages.Add(tabPage6);
+            tabControl1.TabPages.Add(tabPage7);
+            tabControl1.TabPages.Add(tabPage8);
+            tabControl1.TabPages.Add(tabPage9);
+            tabControl1.TabPages.Add(tabPage10);
+            tabControl1.TabPages.Add(tabPage11);
+            tabControl1.TabPages.Add(tabPage12);
+            tabControl1.TabPages.Add(tabPage13);
+            tabControl1.TabPages.Add(tabPage14);
+            tabControl1.TabPages.Add(tabPage15);
+            tabControl1.TabPages.Add(tabPage16);
+            tabControl1.TabPages.Add(tabPage17);
+            tabControl1.TabPages.Add(tabPage18);
+            tabControl1.TabPages.Add(tabPage19);
         }
 
         #region SMAA
@@ -879,8 +970,8 @@ namespace SweetFX_Configurator
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             this.trackBar1.Scroll -= new System.EventHandler(this.trackBar1_ValueChanged);
-            SweetFX.SMAA.Threshold = numericUpDown1.Value * (decimal)100.00;
-            trackBar1.Value = Convert.ToInt32(SweetFX.SMAA.Threshold);
+            SweetFX.SMAA.Threshold = numericUpDown1.Value;
+            trackBar1.Value = Convert.ToInt32(numericUpDown1.Value * (decimal)100.00);
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_ValueChanged);
         }
 
@@ -959,10 +1050,10 @@ namespace SweetFX_Configurator
 
         void numericUpDown7_ValueChanged(object sender, EventArgs e)
         {
-            this.trackBar8.Scroll -= new System.EventHandler(this.trackBar8_Scroll);
+            this.trackBar7.Scroll -= new System.EventHandler(this.trackBar7_Scroll);
             SweetFX.FXAA.Subpix = numericUpDown7.Value;
-            trackBar8.Value = Convert.ToInt32(numericUpDown7.Value * (decimal)1000);
-            this.trackBar8.Scroll += new System.EventHandler(this.trackBar8_Scroll);
+            trackBar7.Value = Convert.ToInt32(numericUpDown7.Value * (decimal)1000);
+            this.trackBar7.Scroll += new System.EventHandler(this.trackBar7_Scroll);
         }
 
         void trackBar7_Scroll(object sender, EventArgs e)
@@ -1017,8 +1108,8 @@ namespace SweetFX_Configurator
         void numericUpDown12_ValueChanged(object sender, EventArgs e)
         {
             this.trackBar12.Scroll -= new System.EventHandler(this.trackBar12_Scroll);
-            trackBar12.Value = Convert.ToInt32(numericUpDown12.Value / (decimal)10);
             SweetFX.Explosion.Radius = numericUpDown12.Value;
+            trackBar12.Value = Convert.ToInt32(numericUpDown12.Value * (decimal)10);
             this.trackBar12.Scroll += new System.EventHandler(this.trackBar12_Scroll);
         }
 
@@ -1195,7 +1286,7 @@ namespace SweetFX_Configurator
         void numericUpDown23_ValueChanged(object sender, EventArgs e)
         {
             this.trackBar23.Scroll -= new System.EventHandler(this.trackBar23_Scroll);
-            trackBar23.Value = Convert.ToInt32(numericUpDown23.Value / (decimal)1000);
+            trackBar23.Value = Convert.ToInt32(numericUpDown23.Value * (decimal)10000);
             SweetFX.CRT.Corner_Size = numericUpDown23.Value;
             this.trackBar23.Scroll += new System.EventHandler(this.trackBar23_Scroll);
         }
@@ -1211,7 +1302,7 @@ namespace SweetFX_Configurator
         void numericUpDown22_ValueChanged(object sender, EventArgs e)
         {
             this.trackBar22.Scroll -= new System.EventHandler(this.trackBar22_Scroll);
-            trackBar22.Value = Convert.ToInt32(numericUpDown22.Value / (decimal)100);
+            trackBar22.Value = Convert.ToInt32(numericUpDown22.Value * (decimal)100);
             SweetFX.CRT.Distance = numericUpDown22.Value;
             this.trackBar22.Scroll += new System.EventHandler(this.trackBar22_Scroll);
         }
@@ -1227,7 +1318,7 @@ namespace SweetFX_Configurator
         void numericUpDown21_ValueChanged(object sender, EventArgs e)
         {
             this.trackBar21.Scroll -= new System.EventHandler(this.trackBar21_Scroll);
-            trackBar21.Value = Convert.ToInt32(numericUpDown21.Value / (decimal)100);
+            trackBar21.Value = Convert.ToInt32(numericUpDown21.Value * (decimal)100);
             SweetFX.CRT.AngleX = numericUpDown21.Value;
             this.trackBar21.Scroll -= new System.EventHandler(this.trackBar21_Scroll);
         }
@@ -1243,7 +1334,7 @@ namespace SweetFX_Configurator
         void numericUpDown20_ValueChanged(object sender, EventArgs e)
         {
             this.trackBar20.Scroll -= new System.EventHandler(this.trackBar20_Scroll);
-            trackBar20.Value = Convert.ToInt32(numericUpDown20.Value / (decimal)100);
+            trackBar20.Value = Convert.ToInt32(numericUpDown20.Value * (decimal)100);
             SweetFX.CRT.AngleY = numericUpDown20.Value;
             this.trackBar20.Scroll += new System.EventHandler(this.trackBar20_Scroll);
         }
@@ -1259,7 +1350,7 @@ namespace SweetFX_Configurator
         void numericUpDown15_ValueChanged(object sender, EventArgs e)
         {
             this.trackBar15.Scroll -= new System.EventHandler(this.trackBar15_Scroll);
-            trackBar15.Value = Convert.ToInt32(numericUpDown15.Value / (decimal)10);
+            trackBar15.Value = Convert.ToInt32(numericUpDown15.Value * (decimal)10);
             SweetFX.CRT.Curvature_Radius = numericUpDown15.Value;
             this.trackBar15.Scroll += new System.EventHandler(this.trackBar15_Scroll);
         }
@@ -1275,7 +1366,7 @@ namespace SweetFX_Configurator
         void numericUpDown14_ValueChanged(object sender, EventArgs e)
         {
             this.trackBar14.Scroll -= new System.EventHandler(this.trackBar14_Scroll);
-            trackBar14.Value = Convert.ToInt32(numericUpDown14.Value / (decimal)100);
+            trackBar14.Value = Convert.ToInt32(numericUpDown14.Value * (decimal)100);
             SweetFX.CRT.Overscan = numericUpDown14.Value;
             this.trackBar14.Scroll += new System.EventHandler(this.trackBar14_Scroll);
         }
@@ -1437,20 +1528,9 @@ namespace SweetFX_Configurator
             this.numericUpDown31.ValueChanged += new System.EventHandler(this.numericUpDown31_ValueChanged);
         }
 
-        void numericUpDown30_ValueChanged(object sender, EventArgs e)
+        void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.trackBar30.Scroll -= new System.EventHandler(this.trackBar30_Scroll);
-            trackBar30.Value = Convert.ToInt32(numericUpDown30.Value);
-            SweetFX.LumaSharpen.Pattern = trackBar30.Value;
-            this.trackBar30.Scroll += new System.EventHandler(this.trackBar30_Scroll);
-        }
-
-        void trackBar30_Scroll(object sender, EventArgs e)
-        {
-            this.numericUpDown30.ValueChanged -= new System.EventHandler(this.numericUpDown30_ValueChanged);
-            numericUpDown30.Value = (decimal)trackBar30.Value;
-            SweetFX.LumaSharpen.Pattern = trackBar30.Value;
-            this.numericUpDown30.ValueChanged += new System.EventHandler(this.numericUpDown30_ValueChanged);
+            SweetFX.LumaSharpen.Pattern = comboBox5.SelectedIndex + 1;
         }
 
         void numericUpDown29_ValueChanged(object sender, EventArgs e)
@@ -2092,7 +2172,7 @@ namespace SweetFX_Configurator
         {
             this.trackBar65.Scroll -= new System.EventHandler(this.trackBar65_Scroll);
             trackBar65.Value = Convert.ToInt32(numericUpDown65.Value * (decimal)100);
-            SweetFX.Tonemap.Fog_Green = numericUpDown65.Value;
+            SweetFX.Tonemap.Fog_Blue = numericUpDown65.Value;
             this.trackBar65.Scroll += new System.EventHandler(this.trackBar65_Scroll);
         }
 
@@ -2100,7 +2180,7 @@ namespace SweetFX_Configurator
         {
             this.numericUpDown65.ValueChanged -= new System.EventHandler(this.numericUpDown65_ValueChanged);
             numericUpDown65.Value = (decimal)trackBar65.Value / (decimal)100;
-            SweetFX.Tonemap.Fog_Green = numericUpDown65.Value;
+            SweetFX.Tonemap.Fog_Blue = numericUpDown65.Value;
             this.numericUpDown65.ValueChanged += new System.EventHandler(this.numericUpDown65_ValueChanged);
         }
 
@@ -2416,7 +2496,7 @@ namespace SweetFX_Configurator
         {
             this.numericUpDown86.ValueChanged -= new System.EventHandler(this.numericUpDown86_ValueChanged);
             numericUpDown86.Value = (decimal)trackBar86.Value / (decimal)1000;
-            SweetFX.Vignette.Center_X = trackBar86.Value;
+            SweetFX.Vignette.Center_X = numericUpDown86.Value;
             this.numericUpDown86.ValueChanged += new System.EventHandler(this.numericUpDown86_ValueChanged);
         }
 
@@ -2432,7 +2512,7 @@ namespace SweetFX_Configurator
         {
             this.numericUpDown85.ValueChanged -= new System.EventHandler(this.numericUpDown85_ValueChanged);
             numericUpDown85.Value = (decimal)trackBar85.Value / (decimal)1000;
-            SweetFX.Vignette.Center_Y = trackBar85.Value;
+            SweetFX.Vignette.Center_Y = numericUpDown85.Value;
             this.numericUpDown85.ValueChanged += new System.EventHandler(this.numericUpDown85_ValueChanged);
         }
 
@@ -2480,7 +2560,7 @@ namespace SweetFX_Configurator
         void numericUpDown89_ValueChanged(object sender, EventArgs e)
         {
             this.trackBar89.Scroll -= new System.EventHandler(this.trackBar89_Scroll);
-            trackBar89.Value = Convert.ToInt32(numericUpDown89.Value * (decimal)100);
+            trackBar89.Value = Convert.ToInt32(numericUpDown89.Value);
             SweetFX.Border.Red = numericUpDown89.Value;
             this.trackBar89.Scroll += new System.EventHandler(this.trackBar89_Scroll);
         }
@@ -2488,7 +2568,7 @@ namespace SweetFX_Configurator
         void trackBar89_Scroll(object sender, EventArgs e)
         {
             this.numericUpDown89.ValueChanged -= new System.EventHandler(this.numericUpDown89_ValueChanged);
-            numericUpDown89.Value = (decimal)trackBar89.Value / (decimal)100;
+            numericUpDown89.Value = (decimal)trackBar89.Value;
             SweetFX.Border.Red = trackBar89.Value;
             this.numericUpDown89.ValueChanged += new System.EventHandler(this.numericUpDown89_ValueChanged);
         }
@@ -2496,7 +2576,7 @@ namespace SweetFX_Configurator
         void numericUpDown87_ValueChanged(object sender, EventArgs e)
         {
             this.trackBar87.Scroll -= new System.EventHandler(this.trackBar87_Scroll);
-            trackBar87.Value = Convert.ToInt32(numericUpDown87.Value * (decimal)100);
+            trackBar87.Value = Convert.ToInt32(numericUpDown87.Value);
             SweetFX.Border.Green = numericUpDown87.Value;
             this.trackBar87.Scroll += new System.EventHandler(this.trackBar87_Scroll);
         }
@@ -2504,7 +2584,7 @@ namespace SweetFX_Configurator
         void trackBar87_Scroll(object sender, EventArgs e)
         {
             this.numericUpDown87.ValueChanged -= new System.EventHandler(this.numericUpDown87_ValueChanged);
-            numericUpDown87.Value = (decimal)trackBar87.Value / (decimal)100;
+            numericUpDown87.Value = (decimal)trackBar87.Value;
             SweetFX.Border.Green = trackBar87.Value;
             this.numericUpDown87.ValueChanged += new System.EventHandler(this.numericUpDown87_ValueChanged);
         }
@@ -2512,7 +2592,7 @@ namespace SweetFX_Configurator
         void numericUpDown84_ValueChanged(object sender, EventArgs e)
         {
             this.trackBar84.Scroll -= new System.EventHandler(this.trackBar84_Scroll);
-            trackBar84.Value = Convert.ToInt32(numericUpDown84.Value * (decimal)100);
+            trackBar84.Value = Convert.ToInt32(numericUpDown84.Value);
             SweetFX.Border.Blue = numericUpDown84.Value;
             this.trackBar84.Scroll += new System.EventHandler(this.trackBar84_Scroll);
         }
@@ -2520,7 +2600,7 @@ namespace SweetFX_Configurator
         void trackBar84_Scroll(object sender, EventArgs e)
         {
             this.numericUpDown84.ValueChanged -= new System.EventHandler(this.numericUpDown84_ValueChanged);
-            numericUpDown84.Value = (decimal)trackBar84.Value / (decimal)100;
+            numericUpDown84.Value = (decimal)trackBar84.Value;
             SweetFX.Border.Blue = trackBar84.Value;
             this.numericUpDown84.ValueChanged += new System.EventHandler(this.numericUpDown84_ValueChanged);
         }

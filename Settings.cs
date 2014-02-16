@@ -82,7 +82,53 @@ namespace SweetFX_Configurator
 
         #endregion
 
-        #region Games
+        #region Settings_Window_Geometry
+
+        private static string swg = null;
+
+        public static string Settings_Window_Geometry
+        {
+            get
+            {
+                if (swg == null)
+                {
+                    swg = ini.GetString("Settings", "Settings_Window_Geometry", "");
+                }
+                return swg;
+            }
+            set
+            {
+                ini.WriteValue("Settings", "Settings_Window_Geometry", value);
+                swg = value;
+            }
+        }
+
+        #endregion
+
+        #region About_Window_Geometry
+
+        private static string abwg = null;
+
+        public static string About_Window_Geometry
+        {
+            get
+            {
+                if (abwg == null)
+                {
+                    abwg = ini.GetString("Settings", "About_Window_Geometry", "");
+                }
+                return abwg;
+            }
+            set
+            {
+                ini.WriteValue("Settings", "About_Window_Geometry", value);
+                abwg = value;
+            }
+        }
+
+        #endregion
+
+        #region LastGame
 
         private static Game _lg = null;
 
@@ -104,6 +150,23 @@ namespace SweetFX_Configurator
                 ini.WriteValue("Settings", "Last_Game", value.Name);
                 _lg = value;
             }
+        }
+
+        #endregion
+
+        public static bool OnlyActive
+        {
+            get
+            {
+                return Convert.ToBoolean(ini.GetInt32("Settings", "Only_Active", 0));
+            }
+            set { ini.WriteValue("Settings", "Only_Active", Convert.ToInt32(value)); }
+        }
+
+        public static int LastTab
+        {
+            get { return ini.GetInt32("Settings", "Last_Tab", 0); }
+            set { ini.WriteValue("Settings", "Last_Tab", value); }
         }
 
         public static Game GetGame(string game)
@@ -146,7 +209,5 @@ namespace SweetFX_Configurator
             }
             return game_name.ToLower().Replace(" ", "_");
         }
-
-        #endregion
     }
 }

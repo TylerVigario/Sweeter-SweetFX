@@ -10,21 +10,18 @@ c:\users\logicpwn\documents\visual studio 2012\Projects\SweetFX Configurator\Swe
 C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\SweetFX Configurator\bin\Debug\ObjectListView.dll
 C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\SweetFX Configurator\bin\Debug\ObjectListView.pdb
 C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\SweetFX Configurator\bin\Debug\ObjectListView.xml
-C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\SweetFX Configurator.exe.config
-C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX Configurator.exe
-C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX Configurator.pdb
-C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\SweetFX Configurator.exe
-C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\SweetFX Configurator.pdb
 C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\ObjectListView.dll
-C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\ObjectListView.pdb
-C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\ObjectListView.xml
 C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX Configurator.csprojResolveAssemblyReference.cache
 C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX_Configurator.MainForm.resources
 C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX_Configurator.Properties.Resources.resources
 C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX Configurator.csproj.GenerateResource.Cache
 C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX_Configurator.AddGameForm.resources
 C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\Ookii.Dialogs.dll
-C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\Ookii.Dialogs.pdb
-C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\Ookii.Dialogs.xml
-C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\nl\Ookii.Dialogs.resources.dll
 C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX_Configurator.InstallManagerForm.resources
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX_Configurator.SettingsForm.resources
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX_Configurator.AboutForm.resources
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\Sweeter SweetFX.exe.config
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\Sweeter SweetFX.exe
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\Sweeter SweetFX.pdb
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\Sweeter SweetFX.exe
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\Sweeter SweetFX.pdb

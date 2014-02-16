@@ -343,6 +343,9 @@ namespace SweetFX_Configurator
                         case "gamma":
                             Tonemap.Gamma = Convert.ToDecimal(value);
                             break;
+                        case "exposure":
+                            Tonemap.Exposure = Convert.ToDecimal(value);
+                            break;
                         case "saturation":
                             Tonemap.Saturation = Convert.ToDecimal(value);
                             break;
@@ -515,7 +518,6 @@ namespace SweetFX_Configurator
                         {
                             setting = setting.Substring(index, (setting.Length - 1) - index).Trim();
                             string value;
-                            string[] rgb;
                             if (setting.StartsWith("float"))
                             {
                                 index = setting.IndexOf(")");
@@ -1356,7 +1358,7 @@ namespace SweetFX_Configurator
             set
             {
                 _red = value;
-                SweetFX.SaveSetting(new Setting("monochrome_conversion_values", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+                SweetFX.SaveSetting(new Setting("monochrome_conversion_values", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1366,7 +1368,7 @@ namespace SweetFX_Configurator
             set
             {
                 _green = value;
-                SweetFX.SaveSetting(new Setting("monochrome_conversion_values", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+                SweetFX.SaveSetting(new Setting("monochrome_conversion_values", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1376,7 +1378,7 @@ namespace SweetFX_Configurator
             set
             {
                 _blue = value;
-                SweetFX.SaveSetting(new Setting("monochrome_conversion_values", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+                SweetFX.SaveSetting(new Setting("monochrome_conversion_values", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
     }
@@ -1410,7 +1412,7 @@ namespace SweetFX_Configurator
             set
             {
                 _lift_red = value;
-                SweetFX.SaveSetting(new Setting("rgb_lift", "float3(" + _lift_red + ", " + _lift_green + ", " + _lift_blue + ")"));
+                SweetFX.SaveSetting(new Setting("rgb_lift", _lift_red + ", " + _lift_green + ", " + _lift_blue));
             }
         }
 
@@ -1420,7 +1422,7 @@ namespace SweetFX_Configurator
             set
             {
                 _lift_green = value;
-                SweetFX.SaveSetting(new Setting("rgb_lift", "float3(" + _lift_red + ", " + _lift_green + ", " + _lift_blue + ")"));
+                SweetFX.SaveSetting(new Setting("rgb_lift", _lift_red + ", " + _lift_green + ", " + _lift_blue));
             }
         }
 
@@ -1430,7 +1432,7 @@ namespace SweetFX_Configurator
             set
             {
                 _lift_blue = value;
-                SweetFX.SaveSetting(new Setting("rgb_lift", "float3(" + _lift_red + ", " + _lift_green + ", " + _lift_blue + ")"));
+                SweetFX.SaveSetting(new Setting("rgb_lift", _lift_red + ", " + _lift_green + ", " + _lift_blue));
             }
         }
 
@@ -1440,7 +1442,7 @@ namespace SweetFX_Configurator
             set
             {
                 _gamma_red = value;
-                SweetFX.SaveSetting(new Setting("rgb_gamma", "float3(" + _gamma_red + ", " + _gamma_green + ", " + _gamma_blue + ")"));
+                SweetFX.SaveSetting(new Setting("rgb_gamma", _gamma_red + ", " + _gamma_green + ", " + _gamma_blue));
             }
         }
 
@@ -1450,7 +1452,7 @@ namespace SweetFX_Configurator
             set
             {
                 _gamma_green = value;
-                SweetFX.SaveSetting(new Setting("rgb_gamma", "float3(" + _gamma_red + ", " + _gamma_green + ", " + _gamma_blue + ")"));
+                SweetFX.SaveSetting(new Setting("rgb_gamma", _gamma_red + ", " + _gamma_green + ", " + _gamma_blue));
             }
         }
 
@@ -1460,7 +1462,7 @@ namespace SweetFX_Configurator
             set
             {
                 _gamma_blue = value;
-                SweetFX.SaveSetting(new Setting("rgb_gamma", "float3(" + _gamma_red + ", " + _gamma_green + ", " + _gamma_blue + ")"));
+                SweetFX.SaveSetting(new Setting("rgb_gamma", _gamma_red + ", " + _gamma_green + ", " + _gamma_blue));
             }
         }
 
@@ -1470,7 +1472,7 @@ namespace SweetFX_Configurator
             set
             {
                 _gain_red = value;
-                SweetFX.SaveSetting(new Setting("rgb_gain", value.ToString()));
+                SweetFX.SaveSetting(new Setting("rgb_gain", _gain_red + ", " + _gain_green + ", " + _gain_blue));
             }
         }
 
@@ -1480,7 +1482,7 @@ namespace SweetFX_Configurator
             set
             {
                 _gain_green = value;
-                SweetFX.SaveSetting(new Setting("rgb_gain", value.ToString()));
+                SweetFX.SaveSetting(new Setting("rgb_gain", _gain_red + ", " + _gain_green + ", " + _gain_blue));
             }
         }
 
@@ -1490,7 +1492,7 @@ namespace SweetFX_Configurator
             set
             {
                 _gain_blue = value;
-                SweetFX.SaveSetting(new Setting("rgb_gain", value.ToString()));
+                SweetFX.SaveSetting(new Setting("rgb_gain", _gain_red + ", " + _gain_green + ", " + _gain_blue));
             }
         }
     }
@@ -1573,7 +1575,7 @@ namespace SweetFX_Configurator
             set
             {
                 _fog_red = value;
-                SweetFX.SaveSetting(new Setting("fogcolor", "float3(" + _fog_red.ToString() + ", " + _fog_green + ", " + _fog_blue + ")"));
+                SweetFX.SaveSetting(new Setting("fogcolor", _fog_red.ToString() + ", " + _fog_green + ", " + _fog_blue));
             }
         }
 
@@ -1583,7 +1585,7 @@ namespace SweetFX_Configurator
             set
             {
                 _fog_green = value;
-                SweetFX.SaveSetting(new Setting("fogcolor", "float3(" + _fog_red.ToString() + ", " + _fog_green + ", " + _fog_blue + ")"));
+                SweetFX.SaveSetting(new Setting("fogcolor", _fog_red.ToString() + ", " + _fog_green + ", " + _fog_blue));
             }
         }
 
@@ -1593,7 +1595,7 @@ namespace SweetFX_Configurator
             set
             {
                 _fog_blue = value;
-                SweetFX.SaveSetting(new Setting("fogcolor", "float3(" + _fog_red.ToString() + ", " + _fog_green + ", " + _fog_blue + ")"));
+                SweetFX.SaveSetting(new Setting("fogcolor", _fog_red.ToString() + ", " + _fog_green + ", " + _fog_blue));
             }
         }
     }
@@ -1632,7 +1634,7 @@ namespace SweetFX_Configurator
             set
             {
                 _red = value;
-                SweetFX.SaveSetting(new Setting("vibrance_rgb_balance", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+                SweetFX.SaveSetting(new Setting("vibrance_rgb_balance", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1642,7 +1644,7 @@ namespace SweetFX_Configurator
             set
             {
                 _green = value;
-                SweetFX.SaveSetting(new Setting("vibrance_rgb_balance", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+                SweetFX.SaveSetting(new Setting("vibrance_rgb_balance", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1652,7 +1654,7 @@ namespace SweetFX_Configurator
             set
             {
                 _blue = value;
-                SweetFX.SaveSetting(new Setting("vibrance_rgb_balance", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+                SweetFX.SaveSetting(new Setting("vibrance_rgb_balance", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
     }
@@ -1730,7 +1732,7 @@ namespace SweetFX_Configurator
             set
             {
                 _red = value;
-                SweetFX.SaveSetting(new Setting("colortone", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+                SweetFX.SaveSetting(new Setting("colortone", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1740,7 +1742,7 @@ namespace SweetFX_Configurator
             set
             {
                 _green = value;
-                SweetFX.SaveSetting(new Setting("colortone", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+                SweetFX.SaveSetting(new Setting("colortone", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1750,7 +1752,7 @@ namespace SweetFX_Configurator
             set
             {
                 _blue = value;
-                SweetFX.SaveSetting(new Setting("colortone", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+                SweetFX.SaveSetting(new Setting("colortone", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1852,7 +1854,7 @@ namespace SweetFX_Configurator
             set
             {
                 _center_x = value;
-                SweetFX.SaveSetting(new Setting("vignettecenter", "float(" + _center_x + ", " + _center_y + ")"));
+                SweetFX.SaveSetting(new Setting("vignettecenter", _center_x + ", " + _center_y));
             }
         }
 
@@ -1862,7 +1864,7 @@ namespace SweetFX_Configurator
             set
             {
                 _center_y = value;
-                SweetFX.SaveSetting(new Setting("vignettecenter", "float(" + _center_x + ", " + _center_y + ")"));
+                SweetFX.SaveSetting(new Setting("vignettecenter", _center_x + ", " + _center_y));
             }
         }
     }
@@ -1918,7 +1920,7 @@ namespace SweetFX_Configurator
             set
             {
                 _width_x = value;
-                SweetFX.SaveSetting(new Setting("border_width", "float2(" + _width_x + ", " + _width_y + ")"));
+                SweetFX.SaveSetting(new Setting("border_width", _width_x + ", " + _width_y));
             }
         }
 
@@ -1928,7 +1930,7 @@ namespace SweetFX_Configurator
             set
             {
                 _width_y = value;
-                SweetFX.SaveSetting(new Setting("border_width", "float2(" + _width_x + ", " + _width_y + ")"));
+                SweetFX.SaveSetting(new Setting("border_width", _width_x + ", " + _width_y));
             }
         }
 
@@ -1938,7 +1940,7 @@ namespace SweetFX_Configurator
             set
             {
                 _red = value;
-                SweetFX.SaveSetting(new Setting("border_color", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+                SweetFX.SaveSetting(new Setting("border_color", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1948,7 +1950,7 @@ namespace SweetFX_Configurator
             set
             {
                 _green = value;
-                SweetFX.SaveSetting(new Setting("border_color", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+                SweetFX.SaveSetting(new Setting("border_color", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1958,7 +1960,7 @@ namespace SweetFX_Configurator
             set
             {
                 _blue = value;
-                SweetFX.SaveSetting(new Setting("border_color", "float3(" + _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString() + ")"));
+                SweetFX.SaveSetting(new Setting("border_color", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
     }
