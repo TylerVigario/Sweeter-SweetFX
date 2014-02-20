@@ -41,6 +41,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(74, 251);
             this.button1.Name = "button1";

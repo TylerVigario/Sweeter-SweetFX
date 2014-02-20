@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Timers;
+using Ookii.Dialogs;
 
 namespace SweetFX_Configurator
 {
@@ -104,351 +105,351 @@ namespace SweetFX_Configurator
                     {
                         // SMAA
                         case "use_smaa_antialiasing":
-                            SMAA.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            SMAA.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_FXAA_ANTIALIASING", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "smaa_threshold":
-                            SMAA.Threshold = Convert.ToDecimal(value);
+                            SMAA.Threshold = OutOfRangeCheck("SMAA_THRESHOLD", Convert.ToDecimal(value), new decimal[] { (decimal)0.05, (decimal)0.20 });
                             break;
                         case "smaa_max_search_steps":
-                            SMAA.Max_Search_Steps = Convert.ToInt32(value);
+                            SMAA.Max_Search_Steps = OutOfRangeCheck("SMAA_MAX_SEARCH_STEPS", Convert.ToInt32(value), new int[] { 0, 98 });
                             break;
                         case "smaa_max_search_steps_diag":
-                            SMAA.Max_Search_Steps_Diag = Convert.ToInt32(value);
+                            SMAA.Max_Search_Steps_Diag = OutOfRangeCheck("SMAA_MAX_SEARCH_STEPS_DIAG", Convert.ToInt32(value), new int[] { 0, 16 });
                             break;
                         case "smaa_corner_rounding":
-                            SMAA.Corner_Rounding = Convert.ToInt32(value);
+                            SMAA.Corner_Rounding = OutOfRangeCheck("SMAA_CORNER_ROUNDING", Convert.ToInt32(value), new int[] { 0, 100 });
                             break;
                         case "color_edge_detection":
-                            SMAA.Color_Edge_Detection = Convert.ToBoolean(Convert.ToInt32(value));
+                            SMAA.Color_Edge_Detection = OutOfRangeCheck("COLOR_EDGE_DETECTION", Convert.ToInt32(value), new int[] { 0, 1 });
                             break;
                         case "smaa_directx9_linear_blend":
-                            SMAA.DirectX9_Linear_Blend = Convert.ToBoolean(Convert.ToInt32(value));
+                            SMAA.DirectX9_Linear_Blend = Convert.ToBoolean(OutOfRangeCheck("SMAA_DIRECTX9_LINEAR_BLEND", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         // FXAA
                         case "use_fxaa_antialiasing":
-                            FXAA.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            FXAA.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_FXAA_ANTIALIASING", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "fxaa_quality__preset":
-                            FXAA.Quality_Preset = Convert.ToInt32(value);
+                            FXAA.Quality_Preset = OutOfRangeCheck("FXAA_QUALITY__PRESET", Convert.ToInt32(value), new int[] { 1, 9 });
                             break;
                         case "fxaa_subpix":
-                            FXAA.Subpix = Convert.ToDecimal(value);
+                            FXAA.Subpix = OutOfRangeCheck("fxaa_Subpix", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "fxaa_edgethreshold":
-                            FXAA.Edge_Threshold = Convert.ToDecimal(value);
+                            FXAA.Edge_Threshold = OutOfRangeCheck("fxaa_EdgeThreshold", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "fxaa_edgethresholdmin":
-                            FXAA.Edge_Threshold_Min = Convert.ToDecimal(value);
+                            FXAA.Edge_Threshold_Min = OutOfRangeCheck("fxaa_EdgeThresholdMin", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         // Explosion
                         case "use_explosion":
-                            Explosion.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Explosion.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_EXPLOSION", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "explosion_radius":
-                            Explosion.Radius = Convert.ToDecimal(value);
+                            Explosion.Radius = OutOfRangeCheck("Explosion_Radius", Convert.ToDecimal(value), new decimal[] { (decimal)0.2, (decimal)100 });
                             break;
                         // Cartoon
                         case "use_cartoon":
-                            Cartoon.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Cartoon.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_CARTOON", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "cartoonpower":
-                            Cartoon.Power = Convert.ToDecimal(value);
+                            Cartoon.Power = OutOfRangeCheck("CartoonPower", Convert.ToDecimal(value), new decimal[] { (decimal)0.1, (decimal)10 });
                             break;
                         case "cartoonedgeslope":
-                            Cartoon.Edge_Slope = Convert.ToDecimal(value);
+                            Cartoon.Edge_Slope = OutOfRangeCheck("CartoonEdgeSlope", Convert.ToDecimal(value), new decimal[] { (decimal)0.1, (decimal)8 });
                             break;
                         // CRT
                         case "use_advanced_crt":
-                            CRT.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            CRT.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_ADVANCED_CRT", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "crtamount":
-                            CRT.Amount = Convert.ToDecimal(value);
+                            CRT.Amount = OutOfRangeCheck("CRTAmount", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "crtresolution":
-                            CRT.Resolution = Convert.ToDecimal(value);
+                            CRT.Resolution = OutOfRangeCheck("CRTResolution", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)8 });
                             break;
                         case "crtgamma":
-                            CRT.Gamma = Convert.ToDecimal(value);
+                            CRT.Gamma = OutOfRangeCheck("CRTgamma", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)4 });
                             break;
                         case "crtmonitorgamma":
-                            CRT.Monitor_Gamma = Convert.ToDecimal(value);
+                            CRT.Monitor_Gamma = OutOfRangeCheck("CRTmonitorgamma", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)4 });
                             break;
                         case "crtbrightness":
-                            CRT.Brightness = Convert.ToDecimal(value);
+                            CRT.Brightness = OutOfRangeCheck("CRTBrightness", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)3 });
                             break;
                         case "crtscanlineintensity":
-                            CRT.Scanline_Intensity = Convert.ToDecimal(value);
+                            CRT.Scanline_Intensity = OutOfRangeCheck("CRTScanlineIntensity", Convert.ToDecimal(value), new decimal[] { (decimal)2, (decimal)4 });
                             break;
                         case "crtscanlinegaussian":
-                            CRT.Scanline_Gaussian = Convert.ToBoolean(Convert.ToInt32(value));
+                            CRT.Scanline_Gaussian = Convert.ToBoolean(OutOfRangeCheck("CRTScanlineGaussian", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "crtcurvature":
-                            CRT.Curvature = Convert.ToBoolean(Convert.ToInt32(value));
+                            CRT.Curvature = Convert.ToBoolean(OutOfRangeCheck("CRTCurvature", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "crtcurvatureradius":
-                            CRT.Curvature_Radius = Convert.ToDecimal(value);
+                            CRT.Curvature_Radius = OutOfRangeCheck("CRTCurvatureRadius", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)2 });
                             break;
                         case "crtcornersize":
-                            CRT.Corner_Size = Convert.ToDecimal(value);
+                            CRT.Corner_Size = OutOfRangeCheck("CRTCornerSize", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "crtdistance":
-                            CRT.Distance = Convert.ToDecimal(value);
+                            CRT.Distance = OutOfRangeCheck("CRTDistance", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)4 });
                             break;
                         case "crtanglex":
-                            CRT.AngleX = Convert.ToDecimal(value);
+                            CRT.AngleX = OutOfRangeCheck("CRTAngleX", Convert.ToDecimal(value), new decimal[] { (decimal)-0.2, (decimal)0.2 });
                             break;
                         case "crtangley":
-                            CRT.AngleY = Convert.ToDecimal(value);
+                            CRT.AngleY = OutOfRangeCheck("CRTAngleY", Convert.ToDecimal(value), new decimal[] { (decimal)-0.2, (decimal)0.2 });
                             break;
                         case "crtoverscan":
-                            CRT.Overscan = Convert.ToDecimal(value);
+                            CRT.Overscan = OutOfRangeCheck("CRTOverScan", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)1.1 });
                             break;
                         case "crtoversample":
-                            CRT.Oversample = Convert.ToBoolean(Convert.ToInt32(value));
+                            CRT.Oversample = Convert.ToBoolean(OutOfRangeCheck("CRTOversample", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         // Bloom
                         case "use_bloom":
-                            Bloom.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Bloom.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_BLOOM", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "bloomthreshold":
-                            Bloom.Threshold = Convert.ToDecimal(value);
+                            Bloom.Threshold = OutOfRangeCheck("BloomThreshold", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)50 });
                             break;
                         case "bloompower":
-                            Bloom.Power = Convert.ToDecimal(value);
+                            Bloom.Power = OutOfRangeCheck("BloomPower", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)8 });
                             break;
                         case "bloomwidth":
-                            Bloom.Width = Convert.ToDecimal(value);
+                            Bloom.Width = OutOfRangeCheck("BloomWidth", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         // HDR
                         case "use_hdr":
-                            HDR.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            HDR.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_HDR", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "hdrpower":
-                            HDR.Power = Convert.ToDecimal(value);
+                            HDR.Power = OutOfRangeCheck("HDRPower", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)8 });
                             break;
                         case "radius2":
-                            HDR.Radius = Convert.ToDecimal(value);
+                            HDR.Radius = OutOfRangeCheck("radius2", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)8 });
                             break;
                         // LumaSharpen
                         case "use_lumasharpen":
-                            LumaSharpen.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            LumaSharpen.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_LUMASHARPEN", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "sharp_strength":
-                            LumaSharpen.Strength = Convert.ToDecimal(value);
+                            LumaSharpen.Strength = OutOfRangeCheck("sharp_strength", Convert.ToDecimal(value), new decimal[] { (decimal)0.10, (decimal)3 });
                             break;
                         case "sharp_clamp":
-                            LumaSharpen.Clamp = Convert.ToDecimal(value);
+                            LumaSharpen.Clamp = OutOfRangeCheck("sharp_clamp", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "pattern":
-                            LumaSharpen.Pattern = Convert.ToInt32(value);
+                            LumaSharpen.Pattern = OutOfRangeCheck("pattern", Convert.ToInt32(value), new int[] { 1, 4 });
                             break;
                         case "offset_bias":
-                            LumaSharpen.Offset_Bias = Convert.ToDecimal(value);
+                            LumaSharpen.Offset_Bias = OutOfRangeCheck("offset_bias", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)6 });
                             break;
                         case "show_sharpen":
-                            LumaSharpen.Show = Convert.ToBoolean(Convert.ToInt32(value));
+                            LumaSharpen.Show = Convert.ToBoolean(OutOfRangeCheck("show_sharpen", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         // Levels
                         case "use_levels":
-                            Levels.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Levels.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_LEVELS", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "levels_black_point":
-                            Levels.Black_Point = Convert.ToInt32(value);
+                            Levels.Black_Point = OutOfRangeCheck("Levels_black_point", Convert.ToInt32(value), new int[] { 0, 255 });
                             break;
                         case "levels_white_point":
-                            Levels.White_Point = Convert.ToInt32(value);
+                            Levels.White_Point = OutOfRangeCheck("Levels_white_point", Convert.ToInt32(value), new int[] { 0, 255 });
                             break;
                         // Technicolor
                         case "use_technicolor":
-                            Technicolor.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Technicolor.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_TECHNICOLOR", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "techniamount":
-                            Technicolor.Amount = Convert.ToDecimal(value);
+                            Technicolor.Amount = OutOfRangeCheck("TechniAmount", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "technipower":
-                            Technicolor.Power = Convert.ToDecimal(value);
+                            Technicolor.Power = OutOfRangeCheck("TechniPower", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)8 });
                             break;
                         case "rednegativeamount":
-                            Technicolor.Red_Negative_Amount = Convert.ToDecimal(value);
+                            Technicolor.Red_Negative_Amount = OutOfRangeCheck("redNegativeAmount", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "greennegativeamount":
-                            Technicolor.Green_Negative_Amount = Convert.ToDecimal(value);
+                            Technicolor.Green_Negative_Amount = OutOfRangeCheck("greenNegativeAmount", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "bluenegativeamount":
-                            Technicolor.Blue_Negative_Amount = Convert.ToDecimal(value);
+                            Technicolor.Blue_Negative_Amount = OutOfRangeCheck("blueNegativeAmount", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         // Cineon DPX
                         case "use_dpx":
-                            Cineon_DPX.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Cineon_DPX.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_DPX", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "red":
-                            Cineon_DPX.Red = Convert.ToDecimal(value);
+                            Cineon_DPX.Red = OutOfRangeCheck("Red", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)15 });
                             break;
                         case "green":
-                            Cineon_DPX.Green = Convert.ToDecimal(value);
+                            Cineon_DPX.Green = OutOfRangeCheck("Green", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)15 });
                             break;
                         case "blue":
-                            Cineon_DPX.Blue = Convert.ToDecimal(value);
+                            Cineon_DPX.Blue = OutOfRangeCheck("Blue", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)15 });
                             break;
                         case "colorgamma":
-                            Cineon_DPX.Color_Gamma = Convert.ToDecimal(value);
+                            Cineon_DPX.Color_Gamma = OutOfRangeCheck("ColorGamma", Convert.ToDecimal(value), new decimal[] { (decimal)0.1, (decimal)2.5 });
                             break;
                         case "dpxsaturation":
-                            Cineon_DPX.Saturation = Convert.ToDecimal(value);
+                            Cineon_DPX.Saturation = OutOfRangeCheck("DPXSaturation", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)8 });
                             break;
                         case "redc":
-                            Cineon_DPX.RedC = Convert.ToDecimal(value);
+                            Cineon_DPX.RedC = OutOfRangeCheck("RedC", Convert.ToDecimal(value), new decimal[] { (decimal)0.2, (decimal)0.6 });
                             break;
                         case "greenc":
-                            Cineon_DPX.GreenC = Convert.ToDecimal(value);
+                            Cineon_DPX.GreenC = OutOfRangeCheck("GreenC", Convert.ToDecimal(value), new decimal[] { (decimal)0.2, (decimal)0.6 });
                             break;
                         case "bluec":
-                            Cineon_DPX.BlueC = Convert.ToDecimal(value);
+                            Cineon_DPX.BlueC = OutOfRangeCheck("BlueC", Convert.ToDecimal(value), new decimal[] { (decimal)0.2, (decimal)0.6 });
                             break;
                         case "blend":
-                            Cineon_DPX.Blend = Convert.ToDecimal(value);
+                            Cineon_DPX.Blend = OutOfRangeCheck("Blend", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         // Monochrome
                         case "use_monochrome":
-                            Monochrome.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Monochrome.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_MONOCHROME", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "monochrome_conversion_values":
-                            Monochrome.Red = Convert.ToDecimal(_rgb[0].Trim());
-                            Monochrome.Green = Convert.ToDecimal(_rgb[1].Trim());
-                            Monochrome.Blue = Convert.ToDecimal(_rgb[2].Trim());
+                            Monochrome.Red = OutOfRangeCheck("monochrome_conversion_values", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)1 });
+                            Monochrome.Green = OutOfRangeCheck("monochrome_conversion_values", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)1 });
+                            Monochrome.Blue = OutOfRangeCheck("monochrome_conversion_values", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         // Lift Gamma Gain
                         case "use_liftgammagain":
-                            Lift_Gamma_Gain.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Lift_Gamma_Gain.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_LIFTGAMMAGAIN", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "rgb_lift":
-                            Lift_Gamma_Gain.Lift_Red = Convert.ToDecimal(_rgb[0].Trim());
-                            Lift_Gamma_Gain.Lift_Green = Convert.ToDecimal(_rgb[1].Trim());
-                            Lift_Gamma_Gain.Lift_Blue = Convert.ToDecimal(_rgb[2].Trim());
+                            Lift_Gamma_Gain.Lift_Red = OutOfRangeCheck("RGB_Lift", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)2 });
+                            Lift_Gamma_Gain.Lift_Green = OutOfRangeCheck("RGB_Lift", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2 });
+                            Lift_Gamma_Gain.Lift_Blue = OutOfRangeCheck("RGB_Lift", Convert.ToDecimal(_rgb[2].Trim()), new decimal[] { (decimal)0, (decimal)2 });
                             break;
                         case "rgb_gamma":
-                            Lift_Gamma_Gain.Gamma_Red = Convert.ToDecimal(_rgb[0].Trim());
-                            Lift_Gamma_Gain.Gamma_Green = Convert.ToDecimal(_rgb[1].Trim());
-                            Lift_Gamma_Gain.Gamma_Blue = Convert.ToDecimal(_rgb[2].Trim());
+                            Lift_Gamma_Gain.Gamma_Red = OutOfRangeCheck("RGB_Gamma", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)2 });
+                            Lift_Gamma_Gain.Gamma_Green = OutOfRangeCheck("RGB_Gamma", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2 });
+                            Lift_Gamma_Gain.Gamma_Blue = OutOfRangeCheck("RGB_Gamma", Convert.ToDecimal(_rgb[2].Trim()), new decimal[] { (decimal)0, (decimal)2 });
                             break;
                         case "rgb_gain":
-                            Lift_Gamma_Gain.Gain_Red = Convert.ToDecimal(_rgb[0].Trim());
-                            Lift_Gamma_Gain.Gain_Green = Convert.ToDecimal(_rgb[1].Trim());
-                            Lift_Gamma_Gain.Gain_Blue = Convert.ToDecimal(_rgb[2].Trim());
+                            Lift_Gamma_Gain.Gain_Red = OutOfRangeCheck("RGB_Gain", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)2 });
+                            Lift_Gamma_Gain.Gain_Green = OutOfRangeCheck("RGB_Gain", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2 });
+                            Lift_Gamma_Gain.Gain_Blue = OutOfRangeCheck("RGB_Gain", Convert.ToDecimal(_rgb[2].Trim()), new decimal[] { (decimal)0, (decimal)2 });
                             break;
                         // Tonemap
                         case "use_tonemap":
-                            Tonemap.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Tonemap.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_TONEMAP", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "gamma":
-                            Tonemap.Gamma = Convert.ToDecimal(value);
+                            Tonemap.Gamma = OutOfRangeCheck("Gamma", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)2 });
                             break;
                         case "exposure":
-                            Tonemap.Exposure = Convert.ToDecimal(value);
+                            Tonemap.Exposure = OutOfRangeCheck("Exposure", Convert.ToDecimal(value), new decimal[] { (decimal)-1, (decimal)1 });
                             break;
                         case "saturation":
-                            Tonemap.Saturation = Convert.ToDecimal(value);
+                            Tonemap.Saturation = OutOfRangeCheck("Saturation", Convert.ToDecimal(value), new decimal[] { (decimal)-1, (decimal)1 });
                             break;
                         case "bleach":
-                            Tonemap.Bleach = Convert.ToDecimal(value);
+                            Tonemap.Bleach = OutOfRangeCheck("Bleach", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "defog":
-                            Tonemap.Defog = Convert.ToDecimal(value);
+                            Tonemap.Defog = OutOfRangeCheck("Defog", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "fogcolor":
-                            Tonemap.Fog_Red = Convert.ToDecimal(_rgb[0].Trim());
-                            Tonemap.Fog_Green = Convert.ToDecimal(_rgb[1].Trim());
-                            Tonemap.Fog_Blue = Convert.ToDecimal(_rgb[2].Trim());
+                            Tonemap.Fog_Red = OutOfRangeCheck("FogColor", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
+                            Tonemap.Fog_Green = OutOfRangeCheck("FogColor", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
+                            Tonemap.Fog_Blue = OutOfRangeCheck("FogColor", Convert.ToDecimal(_rgb[2].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
                             break;
                         // Vibrance
                         case "use_vibrance":
-                            Vibrance.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Vibrance.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_VIBRANCE", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "vibrance":
-                            Vibrance.Vibrance = Convert.ToDecimal(value);
+                            Vibrance.Vibrance = OutOfRangeCheck("Vibrance", Convert.ToDecimal(value), new decimal[] { (decimal)-1, (decimal)1 });
                             break;
                         case "vibrance_rgb_balance":
-                            Vibrance.Red = Convert.ToDecimal(_rgb[0].Trim());
-                            Vibrance.Green = Convert.ToDecimal(_rgb[1].Trim());
-                            Vibrance.Blue = Convert.ToDecimal(_rgb[2].Trim());
+                            Vibrance.Red = OutOfRangeCheck("Vibrance_RGB_balance", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)-10, (decimal)10 });
+                            Vibrance.Green = OutOfRangeCheck("Vibrance_RGB_balance", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)-10, (decimal)10 });
+                            Vibrance.Blue = OutOfRangeCheck("Vibrance_RGB_balance", Convert.ToDecimal(_rgb[2].Trim()), new decimal[] { (decimal)-10, (decimal)10 });
                             break;
                         // Curves
                         case "use_curves":
-                            Curves.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Curves.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_CURVES", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "curves_mode":
-                            Curves.Mode= Convert.ToInt32(value);
+                            Curves.Mode = OutOfRangeCheck("Curves_mode", Convert.ToInt32(value), new int[] { 0, 2 });
                             break;
                         case "curves_contrast":
-                            Curves.Contrast = Convert.ToDecimal(value);
+                            Curves.Contrast = OutOfRangeCheck("Curves_contrast", Convert.ToDecimal(value), new decimal[] { (decimal)-1, (decimal)1 });
                             break;
                         case "curves_formula":
-                            Curves.Formula = Convert.ToInt32(value);
+                            Curves.Formula = OutOfRangeCheck("Curves_formula", Convert.ToInt32(value), new int[] { 1, 10 });
                             break;
                         // Sepia
                         case "use_sepia":
-                            Sepia.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Sepia.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_SEPIA", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "colortone":
-                            Sepia.Red = Convert.ToDecimal(_rgb[0].Trim());
-                            Sepia.Green = Convert.ToDecimal(_rgb[1].Trim());
-                            Sepia.Blue = Convert.ToDecimal(_rgb[2].Trim());
+                            Sepia.Red = OutOfRangeCheck("ColorTone", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
+                            Sepia.Green = OutOfRangeCheck("ColorTone", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
+                            Sepia.Blue = OutOfRangeCheck("ColorTone", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
                             break;
                         case "greypower":
-                            Sepia.Grey_Power = Convert.ToDecimal(value);
+                            Sepia.Grey_Power = OutOfRangeCheck("GreyPower", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "sepiapower":
-                            Sepia.Power = Convert.ToDecimal(value);
+                            Sepia.Power = OutOfRangeCheck("SepiaPower", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         // Vignette
                         case "use_vignette":
-                            Vignette.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Vignette.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_VIGNETTE", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "vignettetype":
-                            Vignette.Type = Convert.ToInt32(value);
+                            Vignette.Type = OutOfRangeCheck("VignetteType", Convert.ToInt32(value), new int[] { 1, 3 });
                             break;
                         case "vignetteratio":
-                            Vignette.Ratio = Convert.ToDecimal(value);
+                            Vignette.Ratio = OutOfRangeCheck("VignetteRatio", Convert.ToDecimal(value), new decimal[] { (decimal)0.15, (decimal)6 });
                             break;
                         case "vignetteradius":
-                            Vignette.Radius = Convert.ToDecimal(value);
+                            Vignette.Radius = OutOfRangeCheck("VignetteRadius", Convert.ToDecimal(value), new decimal[] { (decimal)-1, (decimal)3 });
                             break;
                         case "vignetteamount":
-                            Vignette.Amount = Convert.ToDecimal(value);
+                            Vignette.Amount = OutOfRangeCheck("VignetteAmount", Convert.ToDecimal(value), new decimal[] { (decimal)-2, (decimal)1 });
                             break;
                         case "vignetteslope":
-                            Vignette.Slope = Convert.ToInt32(value);
+                            Vignette.Slope = OutOfRangeCheck("VignetteSlope", Convert.ToInt32(value), new int[] { 2, 16 });
                             break;
                         case "vignettecenter":
-                            Vignette.Center_X = Convert.ToDecimal(_rgb[0].Trim());
-                            Vignette.Center_Y = Convert.ToDecimal(_rgb[1].Trim());
+                            Vignette.Center_X = OutOfRangeCheck("VignetteCenter", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)1 });
+                            Vignette.Center_Y = OutOfRangeCheck("VignetteCenter", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         // Vignette
                         case "use_dither":
-                            Dither.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Dither.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_VIGNETTE", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "dither_method":
-                            Dither.Method = Convert.ToInt32(value);
+                            Dither.Method = OutOfRangeCheck("dither_method", Convert.ToInt32(value), new int[] { 1, 2 });
                             break;
                         // Border
                         case "use_border":
-                            Border.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Border.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_BORDER", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "border_width":
-                            Border.Width_X = Convert.ToDecimal(_rgb[0].Trim());
-                            Border.Width_Y = Convert.ToDecimal(_rgb[1].Trim());
+                            Border.Width_X = OutOfRangeCheck("border_width", Convert.ToInt32(_rgb[0].Trim()), new int[] { 0, 2048 });
+                            Border.Width_Y = OutOfRangeCheck("border_width", Convert.ToInt32(_rgb[1].Trim()), new int[] { 0, 2048 });
                             break;
                         case "border_color":
-                            Border.Red = Convert.ToDecimal(_rgb[0].Trim());
-                            Border.Green = Convert.ToDecimal(_rgb[1].Trim());
-                            Border.Blue = Convert.ToDecimal(_rgb[2].Trim());
+                            Border.Red = OutOfRangeCheck("border_color", Convert.ToInt32(_rgb[0].Trim()), new int[] { 0, 255 });
+                            Border.Green = OutOfRangeCheck("border_color", Convert.ToInt32(_rgb[1].Trim()), new int[] { 0, 255 });
+                            Border.Blue = OutOfRangeCheck("border_color", Convert.ToInt32(_rgb[2].Trim()), new int[] { 0, 255 });
                             break;
                         // Splitscreen
                         case "use_splitscreen":
-                            Splitscreen.Enabled = Convert.ToBoolean(Convert.ToInt32(value));
+                            Splitscreen.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_SPLITSCREEN", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "splitscreen_mode":
-                            Splitscreen.Mode = Convert.ToInt32(value);
+                            Splitscreen.Mode = OutOfRangeCheck("splitscreen_mode", Convert.ToInt32(value), new int[] { 1, 6 });
                             break;
                     }
                 }
@@ -481,9 +482,9 @@ namespace SweetFX_Configurator
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        public static void SaveSetting(Setting set)
+        public static void SaveSetting(Setting set, bool bypass = false)
         {
-            if (_loading) { return; }
+            if (!bypass && _loading) { return; }
             //
             bool existed = false;
             if (SaveSettingQueue.Count > 0)
@@ -554,6 +555,38 @@ namespace SweetFX_Configurator
         {
             SaveSettingWorker();
         }
+
+        public static int OutOfRangeCheck(string setting, int value, int[] range)
+        {
+            int new_value = 0;
+            if (value < range[0]) { new_value = range[0]; }
+            else if (value > range[1]) { new_value = range[1]; }
+            else { return value; }
+            TaskDialog task = new TaskDialog();
+            task.WindowTitle = "SweetFX setting " + '"' + setting + '"' + " out of range";
+            task.Content = "The setting " + '"' + setting + '"' + " value of " + value.ToString() + " is out of range. The recommended and only range Sweeter SweetFX works with right now is: " + range[0].ToString() + " - " + range[1].ToString() + ". Would you like the value to automatically changed to: " + new_value.ToString() + "?";
+            TaskDialogButton yes_button = new TaskDialogButton(ButtonType.Yes);
+            task.Buttons.Add(yes_button);
+            task.Buttons.Add(new TaskDialogButton(ButtonType.No));
+            if (task.Show() == yes_button) { SaveSetting(new Setting(setting.ToLower(), new_value.ToString()), true); return new_value; }
+            else { Environment.Exit(0); return 0; }
+        }
+
+        public static decimal OutOfRangeCheck(string setting, decimal value, decimal[] range)
+        {
+            decimal new_value = 0;
+            if (value < range[0]) { new_value = range[0]; }
+            else if (value > range[1]) { new_value = range[1]; }
+            else { return value; }
+            TaskDialog task = new TaskDialog();
+            task.WindowTitle = "SweetFX setting " + '"' + setting + '"' + " out of range";
+            task.Content = "The setting " + '"' + setting + '"' + " value of " + value.ToString() + " is out of range. The recommended and only range Sweeter SweetFX works with right now is: " + range[0].ToString() + " - " + range[1].ToString() + ". Would you like the value to automatically changed to: " + new_value.ToString() + "?";
+            TaskDialogButton yes_button = new TaskDialogButton(ButtonType.Yes);
+            task.Buttons.Add(yes_button);
+            task.Buttons.Add(new TaskDialogButton(ButtonType.No));
+            if (task.Show() == yes_button) { SaveSetting(new Setting(setting.ToLower(), new_value.ToString()), true); return new_value; }
+            else { Environment.Exit(0); return 0; }
+        }
     }
 
     public class Setting
@@ -578,13 +611,13 @@ namespace SweetFX_Configurator
 
     public class _SMAA
     {
-        private bool _enabled;
-        public decimal _threshold;
-        public int _max_search_steps;
-        public int _max_search_steps_diag;
-        public int _corner_rounding;
-        public bool _color_edge_detection;
-        public bool _directx9_linear_blend;
+        private bool _enabled = true;
+        public decimal _threshold = (decimal)0.1;
+        public int _max_search_steps = 16;
+        public int _max_search_steps_diag = 6;
+        public int _corner_rounding = 0;
+        public int _color_edge_detection = 1;
+        public bool _directx9_linear_blend = false;
 
         public bool Enabled
         {
@@ -636,13 +669,13 @@ namespace SweetFX_Configurator
             }
         }
 
-        public bool Color_Edge_Detection
+        public int Color_Edge_Detection
         {
             get { return _color_edge_detection; }
             set
             {
                 _color_edge_detection = value;
-                SweetFX.SaveSetting(new Setting("color_edge_detection", (Convert.ToInt32(value)).ToString()));
+                SweetFX.SaveSetting(new Setting("color_edge_detection", value.ToString()));
             }
         }
 
@@ -659,11 +692,11 @@ namespace SweetFX_Configurator
 
     public class _FXAA
     {
-        private bool _enabled;
-        private int _quality_preset;
-        private decimal _subpix;
-        private decimal _edge_threshold;
-        private decimal _edge_threshold_min;
+        private bool _enabled = false;
+        private int _quality_preset = 9;
+        private decimal _subpix = (decimal)0.4;
+        private decimal _edge_threshold = (decimal)0.25;
+        private decimal _edge_threshold_min = (decimal)0.06;
 
         public bool Enabled
         {
@@ -680,6 +713,8 @@ namespace SweetFX_Configurator
             get { return _quality_preset; }
             set
             {
+                if (value < 1) { return; }
+                if (value > 9) { return; }
                 _quality_preset = value;
                 SweetFX.SaveSetting(new Setting("fxaa_quality__preset", value.ToString()));
             }
@@ -718,8 +753,8 @@ namespace SweetFX_Configurator
 
     public class _Explosion
     {
-        private bool _enabled;
-        private decimal _radius;
+        private bool _enabled = false;
+        private decimal _radius = (decimal)2.5;
 
         public bool Enabled
         {
@@ -744,9 +779,9 @@ namespace SweetFX_Configurator
 
     public class _Cartoon
     {
-        private bool _enabled;
-        private decimal _power;
-        private decimal _edge_slope;
+        private bool _enabled = false;
+        private decimal _power = (decimal)1.5;
+        private decimal _edge_slope = (decimal)1.5;
 
         public bool Enabled
         {
@@ -781,22 +816,22 @@ namespace SweetFX_Configurator
 
     public class _CRT
     {
-        private bool _enabled;
-        private decimal _amount;
-        private decimal _resolution;
-        private decimal _gamma;
-        private decimal _monitor_gamma;
-        private decimal _brightness;
-        private decimal _scanline_intensity;
-        private bool _scanline_gaussian;
-        private bool _curvature;
-        private decimal _curvature_radius;
-        private decimal _corner_size;
-        private decimal _distance;
-        private decimal _angle_x;
-        private decimal _angle_y;
-        private decimal _overscan;
-        private bool _oversample;
+        private bool _enabled = false;
+        private decimal _amount = 1;
+        private decimal _resolution = 2;
+        private decimal _gamma = (decimal)2.2;
+        private decimal _monitor_gamma = (decimal)2.4;
+        private decimal _brightness = (decimal)1.2;
+        private decimal _scanline_intensity = 2;
+        private bool _scanline_gaussian = true;
+        private bool _curvature = true;
+        private decimal _curvature_radius = 2;
+        private decimal _corner_size = (decimal)0.01;
+        private decimal _distance = 2;
+        private decimal _angle_x = 0;
+        private decimal _angle_y = (decimal)-0.15;
+        private decimal _overscan = 1;
+        private bool _oversample = false;
 
         public bool Enabled
         {
@@ -961,10 +996,10 @@ namespace SweetFX_Configurator
 
     public class _Bloom
     {
-        private bool _enabled;
-        private decimal _threshold;
-        private decimal _power;
-        private decimal _width;
+        private bool _enabled = false;
+        private decimal _threshold = (decimal)20.25;
+        private decimal _power = (decimal)1.446;
+        private decimal _width = (decimal)0.0142;
 
         public bool Enabled
         {
@@ -1009,9 +1044,9 @@ namespace SweetFX_Configurator
 
     public class _HDR
     {
-        private bool _enabled;
-        private decimal _power;
-        private decimal _radius;
+        private bool _enabled = false;
+        private decimal _power = (decimal)1.3;
+        private decimal _radius = (decimal)0.87;
 
         public bool Enabled
         {
@@ -1046,12 +1081,12 @@ namespace SweetFX_Configurator
 
     public class _LumaSharpen
     {
-        private bool _enabled;
-        private decimal _strength;
-        private decimal _clamp;
-        private int _pattern;
-        private decimal _offset_bias;
-        private bool _show;
+        private bool _enabled = true;
+        private decimal _strength = (decimal)0.65;
+        private decimal _clamp = (decimal)0.035;
+        private int _pattern = 2;
+        private decimal _offset_bias = 1;
+        private bool _show = false;
 
         public bool Enabled
         {
@@ -1116,9 +1151,9 @@ namespace SweetFX_Configurator
 
     public class _Levels
     {
-        private bool _enabled;
-        private int _black_point;
-        private int _white_point;
+        private bool _enabled = false;
+        private int _black_point = 16;
+        private int _white_point = 235;
 
         public bool Enabled
         {
@@ -1153,12 +1188,12 @@ namespace SweetFX_Configurator
 
     public class _Technicolor
     {
-        private bool _enabled;
-        private decimal _amount;
-        private decimal _power;
-        private decimal _red_negative_amount;
-        private decimal _green_negative_amount;
-        private decimal _blue_negative_amount;
+        private bool _enabled = false;
+        private decimal _amount = (decimal)0.4;
+        private decimal _power = 4;
+        private decimal _red_negative_amount = (decimal)0.88;
+        private decimal _green_negative_amount = (decimal)0.88;
+        private decimal _blue_negative_amount = (decimal)0.88;
 
         public bool Enabled
         {
@@ -1223,16 +1258,16 @@ namespace SweetFX_Configurator
 
     public class _Cineon_DPX
     {
-        private bool _enabled;
-        private decimal _red;
-        private decimal _green;
-        private decimal _blue;
-        private decimal _color_gamma;
-        private decimal _saturation;
-        private decimal _redc;
-        private decimal _greenc;
-        private decimal _bluec;
-        private decimal _blend;
+        private bool _enabled = false;
+        private decimal _red = 8;
+        private decimal _green = 8;
+        private decimal _blue = 8;
+        private decimal _color_gamma = (decimal)2.5;
+        private decimal _saturation = 3;
+        private decimal _redc = (decimal)0.36;
+        private decimal _greenc = (decimal)0.36;
+        private decimal _bluec = (decimal)0.34;
+        private decimal _blend = (decimal)0.2;
 
         public bool Enabled
         {
@@ -1337,10 +1372,10 @@ namespace SweetFX_Configurator
 
     public class _Monochrome
     {
-        private bool _enabled;
-        private decimal _red;
-        private decimal _green;
-        private decimal _blue;
+        private bool _enabled = false;
+        private decimal _red = (decimal)0.18;
+        private decimal _green = (decimal)0.41;
+        private decimal _blue = (decimal)0.41;
 
         public bool Enabled
         {
@@ -1385,16 +1420,16 @@ namespace SweetFX_Configurator
 
     public class _Lift_Gamma_Gain
     {
-        private bool _enabled;
-        private decimal _lift_red;
-        private decimal _lift_green;
-        private decimal _lift_blue;
-        private decimal _gamma_red;
-        private decimal _gamma_green;
-        private decimal _gamma_blue;
-        private decimal _gain_red;
-        private decimal _gain_green;
-        private decimal _gain_blue;
+        private bool _enabled = false;
+        private decimal _lift_red = 1;
+        private decimal _lift_green = 1;
+        private decimal _lift_blue = 1;
+        private decimal _gamma_red = 1;
+        private decimal _gamma_green = 1;
+        private decimal _gamma_blue = 1;
+        private decimal _gain_red = 1;
+        private decimal _gain_green = 1;
+        private decimal _gain_blue = 1;
 
         public bool Enabled
         {
@@ -1499,15 +1534,15 @@ namespace SweetFX_Configurator
 
     public class _Tonemap
     {
-        private bool _enabled;
-        private decimal _gamma;
-        private decimal _exposure;
-        private decimal _saturation;
-        private decimal _bleach;
-        private decimal _defog;
-        private decimal _fog_red;
-        private decimal _fog_green;
-        private decimal _fog_blue;
+        private bool _enabled = false;
+        private decimal _gamma = 1;
+        private decimal _exposure = 0;
+        private decimal _saturation = 0;
+        private decimal _bleach = 0;
+        private decimal _defog = 0;
+        private decimal _fog_red = 0;
+        private decimal _fog_green = 0;
+        private decimal _fog_blue = (decimal)2.55;
 
         public bool Enabled
         {
@@ -1602,11 +1637,11 @@ namespace SweetFX_Configurator
 
     public class _Vibrance
     {
-        private bool _enabled;
-        private decimal vibrance_;
-        private decimal _red;
-        private decimal _green;
-        private decimal _blue;
+        private bool _enabled = true;
+        private decimal vibrance_ = (decimal)0.15;
+        private decimal _red = 1;
+        private decimal _green = 1;
+        private decimal _blue = 1;
 
         public bool Enabled
         {
@@ -1661,10 +1696,10 @@ namespace SweetFX_Configurator
 
     public class _Curves
     {
-        private bool _enabled;
-        private int _mode;
-        private decimal _contrast;
-        private int _formula;
+        private bool _enabled = false;
+        private int _mode = 0;
+        private decimal _contrast = (decimal)0.15;
+        private int _formula = 2;
 
         public bool Enabled
         {
@@ -1709,12 +1744,12 @@ namespace SweetFX_Configurator
 
     public class _Sepia
     {
-        private bool _enabled;
-        private decimal _red;
-        private decimal _green;
-        private decimal _blue;
-        private decimal _grey_power;
-        private decimal _power;
+        private bool _enabled = false;
+        private decimal _red = (decimal)1.40;
+        private decimal _green = (decimal)1.10;
+        private decimal _blue = (decimal)0.90;
+        private decimal _grey_power = (decimal)0.11;
+        private decimal _power = (decimal)0.58;
 
         public bool Enabled
         {
@@ -1779,14 +1814,14 @@ namespace SweetFX_Configurator
 
     public class _Vignette
     {
-        private bool _enabled;
-        private int _type;
-        private decimal _ratio;
-        private decimal _radius;
-        private decimal _amount;
-        private int _slope;
-        private decimal _center_x;
-        private decimal _center_y;
+        private bool _enabled = false;
+        private int _type = 1;
+        private decimal _ratio = 1;
+        private decimal _radius = 1;
+        private decimal _amount = -1;
+        private int _slope = 8;
+        private decimal _center_x = (decimal)0.5;
+        private decimal _center_y = (decimal)0.5;
 
         public bool Enabled
         {
@@ -1871,8 +1906,8 @@ namespace SweetFX_Configurator
 
     public class _Dither
     {
-        private bool _enabled;
-        private int _method;
+        private bool _enabled = false;
+        private int _method = 1;
 
         public bool Enabled
         {
@@ -1897,12 +1932,12 @@ namespace SweetFX_Configurator
 
     public class _Border
     {
-        private bool _enabled;
-        private decimal _width_x;
-        private decimal _width_y;
-        private decimal _red;
-        private decimal _green;
-        private decimal _blue;
+        private bool _enabled = false;
+        private int _width_x = 1;
+        private int _width_y = 20;
+        private int _red = 0;
+        private int _green = 0;
+        private int _blue = 0;
 
         public bool Enabled
         {
@@ -1914,7 +1949,7 @@ namespace SweetFX_Configurator
             }
         }
 
-        public decimal Width_X
+        public int Width_X
         {
             get { return _width_x; }
             set
@@ -1924,7 +1959,7 @@ namespace SweetFX_Configurator
             }
         }
 
-        public decimal Width_Y
+        public int Width_Y
         {
             get { return _width_y; }
             set
@@ -1934,7 +1969,7 @@ namespace SweetFX_Configurator
             }
         }
 
-        public decimal Red
+        public int Red
         {
             get { return _red; }
             set
@@ -1944,7 +1979,7 @@ namespace SweetFX_Configurator
             }
         }
 
-        public decimal Green
+        public int Green
         {
             get { return _green; }
             set
@@ -1954,7 +1989,7 @@ namespace SweetFX_Configurator
             }
         }
 
-        public decimal Blue
+        public int Blue
         {
             get { return _blue; }
             set
@@ -1967,8 +2002,8 @@ namespace SweetFX_Configurator
 
     public class _Splitscreen
     {
-        private bool _enabled;
-        private int _mode;
+        private bool _enabled = false;
+        private int _mode = 1;
 
         public bool Enabled
         {

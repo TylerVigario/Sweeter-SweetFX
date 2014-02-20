@@ -34,12 +34,32 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gamesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.effectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showActiveOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.onlyActiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sMAAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fXAAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.explosionCartoonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cartoonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cRTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bloomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hDRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lumaSharpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.levelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.technicolorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dPXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.monochromeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.liftGammaGainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tonemapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vibranceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.curvesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sepiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ditherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vignetteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.borderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.splitscreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -92,12 +112,13 @@
             this.label8 = new System.Windows.Forms.Label();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label102 = new System.Windows.Forms.Label();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.trackBar4 = new System.Windows.Forms.TrackBar();
             this.trackBar3 = new System.Windows.Forms.TrackBar();
@@ -305,10 +326,9 @@
             this.label82 = new System.Windows.Forms.Label();
             this.checkBox18 = new System.Windows.Forms.CheckBox();
             this.tabPage15 = new System.Windows.Forms.TabPage();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown72 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown73 = new System.Windows.Forms.NumericUpDown();
-            this.trackBar72 = new System.Windows.Forms.TrackBar();
             this.label76 = new System.Windows.Forms.Label();
             this.trackBar73 = new System.Windows.Forms.TrackBar();
             this.label80 = new System.Windows.Forms.Label();
@@ -379,6 +399,8 @@
             this.label93 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.checkBox27 = new System.Windows.Forms.CheckBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabPage5.SuspendLayout();
@@ -543,9 +565,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown76)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar76)).BeginInit();
             this.tabPage15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown72)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown73)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar72)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar73)).BeginInit();
             this.tabPage16.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -606,7 +626,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gamesToolStripMenuItem1,
-            this.settingsToolStripMenuItem,
+            this.effectsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -630,53 +650,237 @@
             this.addToolStripMenuItem.Text = "Game Manager";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
-            // toolStripSeparator1
+            // effectsToolStripMenuItem
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingsToolStripMenuItem1,
+            this.effectsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showActiveOnlyToolStripMenuItem,
             this.toolStripSeparator2,
-            this.onlyActiveToolStripMenuItem});
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.settingsToolStripMenuItem.Text = "Settings";
+            this.sMAAToolStripMenuItem,
+            this.fXAAToolStripMenuItem,
+            this.explosionCartoonToolStripMenuItem,
+            this.cartoonToolStripMenuItem,
+            this.cRTToolStripMenuItem,
+            this.bloomToolStripMenuItem,
+            this.hDRToolStripMenuItem,
+            this.lumaSharpenToolStripMenuItem,
+            this.levelsToolStripMenuItem,
+            this.technicolorToolStripMenuItem,
+            this.dPXToolStripMenuItem,
+            this.monochromeToolStripMenuItem,
+            this.liftGammaGainToolStripMenuItem,
+            this.tonemapToolStripMenuItem,
+            this.vibranceToolStripMenuItem,
+            this.curvesToolStripMenuItem,
+            this.sepiaToolStripMenuItem,
+            this.ditherToolStripMenuItem,
+            this.vignetteToolStripMenuItem,
+            this.borderToolStripMenuItem,
+            this.splitscreenToolStripMenuItem});
+            this.effectsToolStripMenuItem.Name = "effectsToolStripMenuItem";
+            this.effectsToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.effectsToolStripMenuItem.Text = "Effects";
             // 
-            // settingsToolStripMenuItem1
+            // showActiveOnlyToolStripMenuItem
             // 
-            this.settingsToolStripMenuItem1.Name = "settingsToolStripMenuItem1";
-            this.settingsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.settingsToolStripMenuItem1.Text = "Settings";
-            this.settingsToolStripMenuItem1.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            this.showActiveOnlyToolStripMenuItem.CheckOnClick = true;
+            this.showActiveOnlyToolStripMenuItem.Name = "showActiveOnlyToolStripMenuItem";
+            this.showActiveOnlyToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.showActiveOnlyToolStripMenuItem.Text = "Only Show Active";
+            this.showActiveOnlyToolStripMenuItem.Click += new System.EventHandler(this.onlyActiveToolStripMenuItem_CheckedChanged);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(164, 6);
             // 
-            // onlyActiveToolStripMenuItem
+            // sMAAToolStripMenuItem
             // 
-            this.onlyActiveToolStripMenuItem.CheckOnClick = true;
-            this.onlyActiveToolStripMenuItem.Name = "onlyActiveToolStripMenuItem";
-            this.onlyActiveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.onlyActiveToolStripMenuItem.Text = "Only Active";
-            this.onlyActiveToolStripMenuItem.CheckedChanged += new System.EventHandler(this.onlyActiveToolStripMenuItem_CheckedChanged);
+            this.sMAAToolStripMenuItem.CheckOnClick = true;
+            this.sMAAToolStripMenuItem.Name = "sMAAToolStripMenuItem";
+            this.sMAAToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.sMAAToolStripMenuItem.Text = "SMAA";
+            this.sMAAToolStripMenuItem.CheckedChanged += new System.EventHandler(this.sMAAToolStripMenuItem_CheckedChanged);
+            // 
+            // fXAAToolStripMenuItem
+            // 
+            this.fXAAToolStripMenuItem.CheckOnClick = true;
+            this.fXAAToolStripMenuItem.Name = "fXAAToolStripMenuItem";
+            this.fXAAToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.fXAAToolStripMenuItem.Text = "FXAA";
+            this.fXAAToolStripMenuItem.CheckedChanged += new System.EventHandler(this.fXAAToolStripMenuItem_CheckedChanged);
+            // 
+            // explosionCartoonToolStripMenuItem
+            // 
+            this.explosionCartoonToolStripMenuItem.CheckOnClick = true;
+            this.explosionCartoonToolStripMenuItem.Name = "explosionCartoonToolStripMenuItem";
+            this.explosionCartoonToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.explosionCartoonToolStripMenuItem.Text = "Explosion";
+            this.explosionCartoonToolStripMenuItem.CheckedChanged += new System.EventHandler(this.explosionCartoonToolStripMenuItem_CheckedChanged);
+            // 
+            // cartoonToolStripMenuItem
+            // 
+            this.cartoonToolStripMenuItem.CheckOnClick = true;
+            this.cartoonToolStripMenuItem.Name = "cartoonToolStripMenuItem";
+            this.cartoonToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.cartoonToolStripMenuItem.Text = "Cartoon";
+            this.cartoonToolStripMenuItem.CheckedChanged += new System.EventHandler(this.cartoonToolStripMenuItem_CheckedChanged);
+            // 
+            // cRTToolStripMenuItem
+            // 
+            this.cRTToolStripMenuItem.CheckOnClick = true;
+            this.cRTToolStripMenuItem.Name = "cRTToolStripMenuItem";
+            this.cRTToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.cRTToolStripMenuItem.Text = "CRT";
+            this.cRTToolStripMenuItem.CheckedChanged += new System.EventHandler(this.cRTToolStripMenuItem_CheckedChanged);
+            // 
+            // bloomToolStripMenuItem
+            // 
+            this.bloomToolStripMenuItem.CheckOnClick = true;
+            this.bloomToolStripMenuItem.Name = "bloomToolStripMenuItem";
+            this.bloomToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.bloomToolStripMenuItem.Text = "Bloom";
+            this.bloomToolStripMenuItem.CheckedChanged += new System.EventHandler(this.bloomToolStripMenuItem_CheckedChanged);
+            // 
+            // hDRToolStripMenuItem
+            // 
+            this.hDRToolStripMenuItem.CheckOnClick = true;
+            this.hDRToolStripMenuItem.Name = "hDRToolStripMenuItem";
+            this.hDRToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.hDRToolStripMenuItem.Text = "HDR";
+            this.hDRToolStripMenuItem.CheckedChanged += new System.EventHandler(this.hDRToolStripMenuItem_CheckedChanged);
+            // 
+            // lumaSharpenToolStripMenuItem
+            // 
+            this.lumaSharpenToolStripMenuItem.CheckOnClick = true;
+            this.lumaSharpenToolStripMenuItem.Name = "lumaSharpenToolStripMenuItem";
+            this.lumaSharpenToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.lumaSharpenToolStripMenuItem.Text = "LumaSharpen";
+            this.lumaSharpenToolStripMenuItem.CheckedChanged += new System.EventHandler(this.lumaSharpenToolStripMenuItem_CheckedChanged);
+            // 
+            // levelsToolStripMenuItem
+            // 
+            this.levelsToolStripMenuItem.CheckOnClick = true;
+            this.levelsToolStripMenuItem.Name = "levelsToolStripMenuItem";
+            this.levelsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.levelsToolStripMenuItem.Text = "Levels";
+            this.levelsToolStripMenuItem.CheckedChanged += new System.EventHandler(this.levelsToolStripMenuItem_CheckedChanged);
+            // 
+            // technicolorToolStripMenuItem
+            // 
+            this.technicolorToolStripMenuItem.CheckOnClick = true;
+            this.technicolorToolStripMenuItem.Name = "technicolorToolStripMenuItem";
+            this.technicolorToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.technicolorToolStripMenuItem.Text = "Technicolor";
+            this.technicolorToolStripMenuItem.CheckedChanged += new System.EventHandler(this.technicolorToolStripMenuItem_CheckedChanged);
+            // 
+            // dPXToolStripMenuItem
+            // 
+            this.dPXToolStripMenuItem.CheckOnClick = true;
+            this.dPXToolStripMenuItem.Name = "dPXToolStripMenuItem";
+            this.dPXToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.dPXToolStripMenuItem.Text = "DPX";
+            this.dPXToolStripMenuItem.CheckedChanged += new System.EventHandler(this.dPXToolStripMenuItem_CheckedChanged);
+            // 
+            // monochromeToolStripMenuItem
+            // 
+            this.monochromeToolStripMenuItem.CheckOnClick = true;
+            this.monochromeToolStripMenuItem.Name = "monochromeToolStripMenuItem";
+            this.monochromeToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.monochromeToolStripMenuItem.Text = "Monochrome";
+            this.monochromeToolStripMenuItem.CheckedChanged += new System.EventHandler(this.monochromeToolStripMenuItem_CheckedChanged);
+            // 
+            // liftGammaGainToolStripMenuItem
+            // 
+            this.liftGammaGainToolStripMenuItem.CheckOnClick = true;
+            this.liftGammaGainToolStripMenuItem.Name = "liftGammaGainToolStripMenuItem";
+            this.liftGammaGainToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.liftGammaGainToolStripMenuItem.Text = "Lift Gamma Gain";
+            this.liftGammaGainToolStripMenuItem.CheckedChanged += new System.EventHandler(this.liftGammaGainToolStripMenuItem_CheckedChanged);
+            // 
+            // tonemapToolStripMenuItem
+            // 
+            this.tonemapToolStripMenuItem.CheckOnClick = true;
+            this.tonemapToolStripMenuItem.Name = "tonemapToolStripMenuItem";
+            this.tonemapToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.tonemapToolStripMenuItem.Text = "Tonemap";
+            this.tonemapToolStripMenuItem.CheckedChanged += new System.EventHandler(this.tonemapToolStripMenuItem_CheckedChanged);
+            // 
+            // vibranceToolStripMenuItem
+            // 
+            this.vibranceToolStripMenuItem.CheckOnClick = true;
+            this.vibranceToolStripMenuItem.Name = "vibranceToolStripMenuItem";
+            this.vibranceToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.vibranceToolStripMenuItem.Text = "Vibrance";
+            this.vibranceToolStripMenuItem.CheckedChanged += new System.EventHandler(this.vibranceToolStripMenuItem_CheckedChanged);
+            // 
+            // curvesToolStripMenuItem
+            // 
+            this.curvesToolStripMenuItem.CheckOnClick = true;
+            this.curvesToolStripMenuItem.Name = "curvesToolStripMenuItem";
+            this.curvesToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.curvesToolStripMenuItem.Text = "Curves";
+            this.curvesToolStripMenuItem.CheckedChanged += new System.EventHandler(this.curvesToolStripMenuItem_CheckedChanged);
+            // 
+            // sepiaToolStripMenuItem
+            // 
+            this.sepiaToolStripMenuItem.CheckOnClick = true;
+            this.sepiaToolStripMenuItem.Name = "sepiaToolStripMenuItem";
+            this.sepiaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.sepiaToolStripMenuItem.Text = "Sepia";
+            this.sepiaToolStripMenuItem.CheckedChanged += new System.EventHandler(this.sepiaToolStripMenuItem_CheckedChanged);
+            // 
+            // ditherToolStripMenuItem
+            // 
+            this.ditherToolStripMenuItem.CheckOnClick = true;
+            this.ditherToolStripMenuItem.Name = "ditherToolStripMenuItem";
+            this.ditherToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.ditherToolStripMenuItem.Text = "Dither";
+            this.ditherToolStripMenuItem.CheckedChanged += new System.EventHandler(this.ditherToolStripMenuItem_CheckedChanged);
+            // 
+            // vignetteToolStripMenuItem
+            // 
+            this.vignetteToolStripMenuItem.CheckOnClick = true;
+            this.vignetteToolStripMenuItem.Name = "vignetteToolStripMenuItem";
+            this.vignetteToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.vignetteToolStripMenuItem.Text = "Vignette";
+            this.vignetteToolStripMenuItem.CheckedChanged += new System.EventHandler(this.vignetteToolStripMenuItem_CheckedChanged);
+            // 
+            // borderToolStripMenuItem
+            // 
+            this.borderToolStripMenuItem.CheckOnClick = true;
+            this.borderToolStripMenuItem.Name = "borderToolStripMenuItem";
+            this.borderToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.borderToolStripMenuItem.Text = "Border";
+            this.borderToolStripMenuItem.CheckedChanged += new System.EventHandler(this.borderToolStripMenuItem_CheckedChanged);
+            // 
+            // splitscreenToolStripMenuItem
+            // 
+            this.splitscreenToolStripMenuItem.CheckOnClick = true;
+            this.splitscreenToolStripMenuItem.Name = "splitscreenToolStripMenuItem";
+            this.splitscreenToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.splitscreenToolStripMenuItem.Text = "Splitscreen";
+            this.splitscreenToolStripMenuItem.CheckedChanged += new System.EventHandler(this.splitscreenToolStripMenuItem_CheckedChanged);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingsToolStripMenuItem2,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
+            // settingsToolStripMenuItem2
+            // 
+            this.settingsToolStripMenuItem2.Name = "settingsToolStripMenuItem2";
+            this.settingsToolStripMenuItem2.Size = new System.Drawing.Size(116, 22);
+            this.settingsToolStripMenuItem2.Text = "Settings";
+            this.settingsToolStripMenuItem2.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -722,6 +926,7 @@
             this.label13.Size = new System.Drawing.Size(90, 13);
             this.label13.TabIndex = 20;
             this.label13.Text = "Scanline Intensity";
+            this.toolTip1.SetToolTip(this.label13, "Scanlines intensity (use integer values preferably)");
             // 
             // trackBar13
             // 
@@ -811,6 +1016,7 @@
             this.label10.Size = new System.Drawing.Size(56, 13);
             this.label10.TabIndex = 15;
             this.label10.Text = "Brightness";
+            this.toolTip1.SetToolTip(this.label10, "Used to boost brightness a little");
             // 
             // numericUpDown16
             // 
@@ -921,6 +1127,7 @@
             this.checkBox10.Size = new System.Drawing.Size(114, 17);
             this.checkBox10.TabIndex = 10;
             this.checkBox10.Text = "Scanline Gaussian";
+            this.toolTip1.SetToolTip(this.checkBox10, "Use the \"new nongaussian scanlines bloom effect\"");
             this.checkBox10.UseVisualStyleBackColor = true;
             // 
             // label16
@@ -932,6 +1139,7 @@
             this.label16.Size = new System.Drawing.Size(81, 13);
             this.label16.TabIndex = 8;
             this.label16.Text = "Monitor Gamma";
+            this.toolTip1.SetToolTip(this.label16, "Gamma of display monitor");
             // 
             // trackBar16
             // 
@@ -965,6 +1173,7 @@
             this.label17.Size = new System.Drawing.Size(43, 13);
             this.label17.TabIndex = 5;
             this.label17.Text = "Gamma";
+            this.toolTip1.SetToolTip(this.label17, "Gamma of simulated CRT");
             // 
             // trackBar18
             // 
@@ -988,6 +1197,7 @@
             this.label18.Size = new System.Drawing.Size(57, 13);
             this.label18.TabIndex = 3;
             this.label18.Text = "Resolution";
+            this.toolTip1.SetToolTip(this.label18, "Input size coefficent (low values gives the \"low-res retro look\")");
             // 
             // trackBar19
             // 
@@ -1008,6 +1218,7 @@
             this.label19.Size = new System.Drawing.Size(43, 13);
             this.label19.TabIndex = 1;
             this.label19.Text = "Amount";
+            this.toolTip1.SetToolTip(this.label19, "Amount of CRT effect you want");
             // 
             // checkBox12
             // 
@@ -1073,6 +1284,7 @@
             this.label9.Size = new System.Drawing.Size(37, 13);
             this.label9.TabIndex = 1;
             this.label9.Text = "Power";
+            this.toolTip1.SetToolTip(this.label9, "Amount of effect you want");
             // 
             // trackBar9
             // 
@@ -1164,6 +1376,8 @@
             this.label11.Size = new System.Drawing.Size(62, 13);
             this.label11.TabIndex = 5;
             this.label11.Text = "Edge Slope";
+            this.toolTip1.SetToolTip(this.label11, "Raise this to filter out fainter edges. You might need to increase the power to c" +
+        "ompensate. Whole numbers are faster.");
             // 
             // groupBox1
             // 
@@ -1200,6 +1414,7 @@
             this.label12.Size = new System.Drawing.Size(40, 13);
             this.label12.TabIndex = 1;
             this.label12.Text = "Radius";
+            this.toolTip1.SetToolTip(this.label12, "Amount of effect you want");
             // 
             // trackBar12
             // 
@@ -1362,6 +1577,7 @@
             this.label1.Size = new System.Drawing.Size(102, 13);
             this.label1.TabIndex = 8;
             this.label1.Text = "Edge Threshold Min";
+            this.toolTip1.SetToolTip(this.label1, "Trims the algorithm from processing darks");
             // 
             // trackBar5
             // 
@@ -1396,6 +1612,7 @@
             this.label6.Size = new System.Drawing.Size(82, 13);
             this.label6.TabIndex = 5;
             this.label6.Text = "Edge Threshold";
+            this.toolTip1.SetToolTip(this.label6, "The minimum amount of local contrast required to apply algorithm");
             // 
             // trackBar7
             // 
@@ -1419,6 +1636,7 @@
             this.label7.Size = new System.Drawing.Size(39, 13);
             this.label7.TabIndex = 3;
             this.label7.Text = "Subpix";
+            this.toolTip1.SetToolTip(this.label7, "Amount of sub-pixel aliasing removal");
             // 
             // trackBar8
             // 
@@ -1457,12 +1675,13 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label102);
+            this.tabPage1.Controls.Add(this.comboBox6);
             this.tabPage1.Controls.Add(this.numericUpDown4);
             this.tabPage1.Controls.Add(this.numericUpDown3);
             this.tabPage1.Controls.Add(this.numericUpDown2);
             this.tabPage1.Controls.Add(this.numericUpDown1);
             this.tabPage1.Controls.Add(this.checkBox3);
-            this.tabPage1.Controls.Add(this.checkBox2);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.trackBar4);
             this.tabPage1.Controls.Add(this.trackBar3);
@@ -1479,6 +1698,29 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "SMAA";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label102
+            // 
+            this.label102.AutoSize = true;
+            this.label102.Location = new System.Drawing.Point(30, 169);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(79, 13);
+            this.label102.TabIndex = 16;
+            this.label102.Text = "Edge detection";
+            this.toolTip1.SetToolTip(this.label102, "Using DX9 HARDWARE? (software version doesn\'t matter) if so this needs to be 1 - " +
+        "If not, leave it at 0");
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Items.AddRange(new object[] {
+            "Color (more accurate)",
+            "Luma (faster)"});
+            this.comboBox6.Location = new System.Drawing.Point(115, 163);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(134, 21);
+            this.comboBox6.TabIndex = 15;
             // 
             // numericUpDown4
             // 
@@ -1554,24 +1796,12 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(180, 168);
+            this.checkBox3.Location = new System.Drawing.Point(335, 165);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(129, 17);
             this.checkBox3.TabIndex = 10;
             this.checkBox3.Text = "DirectX9 Linear Blend";
             this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(33, 168);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(127, 17);
-            this.checkBox2.TabIndex = 9;
-            this.checkBox2.Text = "Color Edge Detection";
-            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -1582,6 +1812,7 @@
             this.label5.Size = new System.Drawing.Size(87, 13);
             this.label5.TabIndex = 8;
             this.label5.Text = "Corner Rounding";
+            this.toolTip1.SetToolTip(this.label5, "Determines the percent of antialiasing to apply to corners");
             // 
             // trackBar4
             // 
@@ -1613,6 +1844,7 @@
             this.label4.Size = new System.Drawing.Size(119, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "Max Search Steps Diag";
+            this.toolTip1.SetToolTip(this.label4, "Determines the radius SMAA will search for diagonal aliased edges");
             // 
             // trackBar2
             // 
@@ -1635,6 +1867,7 @@
             this.label3.Size = new System.Drawing.Size(94, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Max Search Steps";
+            this.toolTip1.SetToolTip(this.label3, "Determines the radius SMAA will search for aliased edges");
             // 
             // trackBar1
             // 
@@ -1656,6 +1889,7 @@
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Threshold";
+            this.toolTip1.SetToolTip(this.label2, "Edge detection threshold");
             // 
             // checkBox1
             // 
@@ -1669,10 +1903,12 @@
             this.checkBox1.Size = new System.Drawing.Size(65, 17);
             this.checkBox1.TabIndex = 0;
             this.checkBox1.Text = "Enabled";
+            this.toolTip1.SetToolTip(this.checkBox1, "Smoothens jagged lines using the SMAA technique");
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
+            this.tabControl1.AllowDrop = true;
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1700,6 +1936,8 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(599, 316);
             this.tabControl1.TabIndex = 8;
+            this.tabControl1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tabControl1_DragDrop);
+            this.tabControl1.DragEnter += new System.Windows.Forms.DragEventHandler(this.tabControl1_DragEnter);
             // 
             // tabPage4
             // 
@@ -1740,6 +1978,7 @@
             this.checkBox14.Size = new System.Drawing.Size(82, 17);
             this.checkBox14.TabIndex = 21;
             this.checkBox14.Text = "Oversample";
+            this.toolTip1.SetToolTip(this.checkBox14, "Enable 3x oversampling of the beam profile (warning : performance hit)");
             this.checkBox14.UseVisualStyleBackColor = true;
             // 
             // label14
@@ -1833,6 +2072,7 @@
             this.label15.Size = new System.Drawing.Size(89, 13);
             this.label15.TabIndex = 15;
             this.label15.Text = "Curvature Radius";
+            this.toolTip1.SetToolTip(this.label15, "Curvature Radius (only effective when Curvature is enabled)");
             // 
             // numericUpDown20
             // 
@@ -1943,6 +2183,7 @@
             this.checkBox7.Size = new System.Drawing.Size(72, 17);
             this.checkBox7.TabIndex = 10;
             this.checkBox7.Text = "Curvature";
+            this.toolTip1.SetToolTip(this.checkBox7, "\"Barrel effect\"");
             this.checkBox7.UseVisualStyleBackColor = true;
             // 
             // label24
@@ -1954,6 +2195,7 @@
             this.label24.Size = new System.Drawing.Size(44, 13);
             this.label24.TabIndex = 8;
             this.label24.Text = "Angle Y";
+            this.toolTip1.SetToolTip(this.label24, "Tilt angle in radians (Y coordinates)");
             // 
             // trackBar20
             // 
@@ -1988,6 +2230,7 @@
             this.label25.Size = new System.Drawing.Size(44, 13);
             this.label25.TabIndex = 5;
             this.label25.Text = "Angle X";
+            this.toolTip1.SetToolTip(this.label25, "Tilt angle in radians (X coordinates)");
             // 
             // trackBar22
             // 
@@ -2010,6 +2253,7 @@
             this.label26.Size = new System.Drawing.Size(49, 13);
             this.label26.TabIndex = 3;
             this.label26.Text = "Distance";
+            this.toolTip1.SetToolTip(this.label26, "Simulated distance from viewer to monitor");
             // 
             // trackBar23
             // 
@@ -2031,6 +2275,7 @@
             this.label27.Size = new System.Drawing.Size(61, 13);
             this.label27.TabIndex = 1;
             this.label27.Text = "Corner Size";
+            this.toolTip1.SetToolTip(this.label27, "Higher values, more rounded corner");
             // 
             // checkBox8
             // 
@@ -2096,6 +2341,7 @@
             this.label20.Size = new System.Drawing.Size(37, 13);
             this.label20.TabIndex = 1;
             this.label20.Text = "Power";
+            this.toolTip1.SetToolTip(this.label20, "Strangely lowering this makes the image brighter");
             // 
             // trackBar24
             // 
@@ -2175,6 +2421,7 @@
             this.label21.Size = new System.Drawing.Size(40, 13);
             this.label21.TabIndex = 5;
             this.label21.Text = "Radius";
+            this.toolTip1.SetToolTip(this.label21, "Raising this seems to make the effect stronger and also brighter");
             // 
             // groupBox4
             // 
@@ -2203,6 +2450,7 @@
             this.label32.Size = new System.Drawing.Size(35, 13);
             this.label32.TabIndex = 23;
             this.label32.Text = "Width";
+            this.toolTip1.SetToolTip(this.label32, "Width of the bloom");
             // 
             // label23
             // 
@@ -2212,6 +2460,7 @@
             this.label23.Size = new System.Drawing.Size(37, 13);
             this.label23.TabIndex = 22;
             this.label23.Text = "Power";
+            this.toolTip1.SetToolTip(this.label23, "Strength of the bloom");
             // 
             // numericUpDown28
             // 
@@ -2305,6 +2554,7 @@
             this.label22.Size = new System.Drawing.Size(54, 13);
             this.label22.TabIndex = 1;
             this.label22.Text = "Threshold";
+            this.toolTip1.SetToolTip(this.label22, "Threshold for what is a bright light (that causes bloom) and what isn\'t");
             // 
             // trackBar26
             // 
@@ -2464,6 +2714,7 @@
             this.checkBox19.Size = new System.Drawing.Size(96, 17);
             this.checkBox19.TabIndex = 9;
             this.checkBox19.Text = "Show Sharpen";
+            this.toolTip1.SetToolTip(this.checkBox19, "Visualize the strength of the sharpen (multiplied by 4 to see it better)");
             this.checkBox19.UseVisualStyleBackColor = true;
             // 
             // label33
@@ -2475,6 +2726,7 @@
             this.label33.Size = new System.Drawing.Size(58, 13);
             this.label33.TabIndex = 8;
             this.label33.Text = "Offset Bias";
+            this.toolTip1.SetToolTip(this.label33, "Offset bias adjusts the radius of the sampling pattern");
             // 
             // trackBar29
             // 
@@ -2496,6 +2748,7 @@
             this.label34.Size = new System.Drawing.Size(41, 13);
             this.label34.TabIndex = 5;
             this.label34.Text = "Pattern";
+            this.toolTip1.SetToolTip(this.label34, "Choose a sample pattern");
             // 
             // trackBar31
             // 
@@ -2519,6 +2772,7 @@
             this.label35.Size = new System.Drawing.Size(36, 13);
             this.label35.TabIndex = 3;
             this.label35.Text = "Clamp";
+            this.toolTip1.SetToolTip(this.label35, "Limits maximum amount of sharpening a pixel recieves");
             // 
             // trackBar32
             // 
@@ -2541,6 +2795,7 @@
             this.label36.Size = new System.Drawing.Size(47, 13);
             this.label36.TabIndex = 1;
             this.label36.Text = "Strength";
+            this.toolTip1.SetToolTip(this.label36, "Strength of the sharpening");
             // 
             // checkBox20
             // 
@@ -2618,6 +2873,7 @@
             this.label37.Size = new System.Drawing.Size(62, 13);
             this.label37.TabIndex = 8;
             this.label37.Text = "White Point";
+            this.toolTip1.SetToolTip(this.label37, "The new white point. Everything brighter than this becomes completely white");
             // 
             // trackBar33
             // 
@@ -2650,6 +2906,8 @@
             this.label40.Size = new System.Drawing.Size(61, 13);
             this.label40.TabIndex = 1;
             this.label40.Text = "Black Point";
+            this.toolTip1.SetToolTip(this.label40, "The black point is the new black - literally. Everything darker than this will be" +
+        "come completely black");
             // 
             // checkBox21
             // 
@@ -3362,6 +3620,7 @@
             this.label29.Size = new System.Drawing.Size(34, 13);
             this.label29.TabIndex = 8;
             this.label29.Text = "Blend";
+            this.toolTip1.SetToolTip(this.label29, "How strong the effect should be.");
             // 
             // trackBar36
             // 
@@ -3396,6 +3655,7 @@
             this.label31.Size = new System.Drawing.Size(55, 13);
             this.label31.TabIndex = 3;
             this.label31.Text = "Saturation";
+            this.toolTip1.SetToolTip(this.label31, "Adjust saturation of the effect. 1.0 is neutral.");
             // 
             // trackBar39
             // 
@@ -3416,6 +3676,8 @@
             this.label38.Size = new System.Drawing.Size(70, 13);
             this.label38.TabIndex = 1;
             this.label38.Text = "Color Gamma";
+            this.toolTip1.SetToolTip(this.label38, "Adjusts the colorfulness of the effect in a manner similar to Vibrance. 1.0 is ne" +
+        "utral.");
             // 
             // checkBox9
             // 
@@ -3561,6 +3823,7 @@
             this.label54.Size = new System.Drawing.Size(95, 13);
             this.label54.TabIndex = 27;
             this.label54.Text = "Conversion Values";
+            this.toolTip1.SetToolTip(this.label54, "Percentage of RGB to include (should sum up to 1.00)");
             // 
             // numericUpDown54
             // 
@@ -3662,13 +3925,13 @@
             1,
             0,
             0,
-            131072});
+            196608});
             this.numericUpDown58.Location = new System.Drawing.Point(510, 19);
             this.numericUpDown58.Maximum = new decimal(new int[] {
-            100,
+            2000,
             0,
             0,
-            131072});
+            196608});
             this.numericUpDown58.Name = "numericUpDown58";
             this.numericUpDown58.Size = new System.Drawing.Size(48, 20);
             this.numericUpDown58.TabIndex = 78;
@@ -3686,13 +3949,13 @@
             1,
             0,
             0,
-            131072});
+            196608});
             this.numericUpDown59.Location = new System.Drawing.Point(459, 19);
             this.numericUpDown59.Maximum = new decimal(new int[] {
-            100,
+            2000,
             0,
             0,
-            131072});
+            196608});
             this.numericUpDown59.Name = "numericUpDown59";
             this.numericUpDown59.Size = new System.Drawing.Size(48, 20);
             this.numericUpDown59.TabIndex = 77;
@@ -3707,12 +3970,12 @@
             this.trackBar58.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar58.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar58.Location = new System.Drawing.Point(513, 45);
-            this.trackBar58.Maximum = 1000;
+            this.trackBar58.Maximum = 2000;
             this.trackBar58.Name = "trackBar58";
             this.trackBar58.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar58.Size = new System.Drawing.Size(45, 151);
             this.trackBar58.TabIndex = 76;
-            this.trackBar58.TickFrequency = 50;
+            this.trackBar58.TickFrequency = 70;
             this.trackBar58.Value = 1000;
             // 
             // trackBar59
@@ -3720,12 +3983,12 @@
             this.trackBar59.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar59.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar59.Location = new System.Drawing.Point(462, 45);
-            this.trackBar59.Maximum = 1000;
+            this.trackBar59.Maximum = 2000;
             this.trackBar59.Name = "trackBar59";
             this.trackBar59.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar59.Size = new System.Drawing.Size(45, 151);
             this.trackBar59.TabIndex = 75;
-            this.trackBar59.TickFrequency = 50;
+            this.trackBar59.TickFrequency = 70;
             this.trackBar59.Value = 1000;
             // 
             // label61
@@ -3763,6 +4026,7 @@
             this.label64.Size = new System.Drawing.Size(29, 13);
             this.label64.TabIndex = 71;
             this.label64.Text = "Gain";
+            this.toolTip1.SetToolTip(this.label64, "Adjust highlights for Red, Green and Blue");
             // 
             // numericUpDown60
             // 
@@ -3772,13 +4036,13 @@
             1,
             0,
             0,
-            131072});
+            196608});
             this.numericUpDown60.Location = new System.Drawing.Point(408, 19);
             this.numericUpDown60.Maximum = new decimal(new int[] {
-            100,
+            2000,
             0,
             0,
-            131072});
+            196608});
             this.numericUpDown60.Name = "numericUpDown60";
             this.numericUpDown60.Size = new System.Drawing.Size(48, 20);
             this.numericUpDown60.TabIndex = 70;
@@ -3793,12 +4057,12 @@
             this.trackBar60.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar60.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar60.Location = new System.Drawing.Point(411, 45);
-            this.trackBar60.Maximum = 1000;
+            this.trackBar60.Maximum = 2000;
             this.trackBar60.Name = "trackBar60";
             this.trackBar60.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar60.Size = new System.Drawing.Size(45, 151);
             this.trackBar60.TabIndex = 69;
-            this.trackBar60.TickFrequency = 50;
+            this.trackBar60.TickFrequency = 70;
             this.trackBar60.Value = 1000;
             // 
             // numericUpDown55
@@ -3809,13 +4073,13 @@
             1,
             0,
             0,
-            131072});
+            196608});
             this.numericUpDown55.Location = new System.Drawing.Point(320, 19);
             this.numericUpDown55.Maximum = new decimal(new int[] {
-            100,
+            2000,
             0,
             0,
-            131072});
+            196608});
             this.numericUpDown55.Name = "numericUpDown55";
             this.numericUpDown55.Size = new System.Drawing.Size(48, 20);
             this.numericUpDown55.TabIndex = 68;
@@ -3833,13 +4097,13 @@
             1,
             0,
             0,
-            131072});
+            196608});
             this.numericUpDown56.Location = new System.Drawing.Point(269, 19);
             this.numericUpDown56.Maximum = new decimal(new int[] {
-            100,
+            2000,
             0,
             0,
-            131072});
+            196608});
             this.numericUpDown56.Name = "numericUpDown56";
             this.numericUpDown56.Size = new System.Drawing.Size(48, 20);
             this.numericUpDown56.TabIndex = 67;
@@ -3854,12 +4118,12 @@
             this.trackBar55.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar55.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar55.Location = new System.Drawing.Point(323, 45);
-            this.trackBar55.Maximum = 1000;
+            this.trackBar55.Maximum = 2000;
             this.trackBar55.Name = "trackBar55";
             this.trackBar55.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar55.Size = new System.Drawing.Size(45, 151);
             this.trackBar55.TabIndex = 66;
-            this.trackBar55.TickFrequency = 50;
+            this.trackBar55.TickFrequency = 70;
             this.trackBar55.Value = 1000;
             // 
             // trackBar56
@@ -3867,12 +4131,12 @@
             this.trackBar56.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar56.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar56.Location = new System.Drawing.Point(272, 45);
-            this.trackBar56.Maximum = 1000;
+            this.trackBar56.Maximum = 2000;
             this.trackBar56.Name = "trackBar56";
             this.trackBar56.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar56.Size = new System.Drawing.Size(45, 151);
             this.trackBar56.TabIndex = 65;
-            this.trackBar56.TickFrequency = 50;
+            this.trackBar56.TickFrequency = 70;
             this.trackBar56.Value = 1000;
             // 
             // label57
@@ -3910,6 +4174,7 @@
             this.label60.Size = new System.Drawing.Size(43, 13);
             this.label60.TabIndex = 61;
             this.label60.Text = "Gamma";
+            this.toolTip1.SetToolTip(this.label60, "Adjust midtones for Red, Green and Blue");
             // 
             // numericUpDown57
             // 
@@ -3919,13 +4184,13 @@
             1,
             0,
             0,
-            131072});
+            196608});
             this.numericUpDown57.Location = new System.Drawing.Point(218, 19);
             this.numericUpDown57.Maximum = new decimal(new int[] {
-            100,
+            2000,
             0,
             0,
-            131072});
+            196608});
             this.numericUpDown57.Name = "numericUpDown57";
             this.numericUpDown57.Size = new System.Drawing.Size(48, 20);
             this.numericUpDown57.TabIndex = 60;
@@ -3940,12 +4205,12 @@
             this.trackBar57.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar57.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar57.Location = new System.Drawing.Point(221, 45);
-            this.trackBar57.Maximum = 1000;
+            this.trackBar57.Maximum = 2000;
             this.trackBar57.Name = "trackBar57";
             this.trackBar57.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar57.Size = new System.Drawing.Size(45, 151);
             this.trackBar57.TabIndex = 59;
-            this.trackBar57.TickFrequency = 50;
+            this.trackBar57.TickFrequency = 70;
             this.trackBar57.Value = 1000;
             // 
             // numericUpDown47
@@ -3956,10 +4221,10 @@
             1,
             0,
             0,
-            131072});
+            196608});
             this.numericUpDown47.Location = new System.Drawing.Point(127, 19);
             this.numericUpDown47.Maximum = new decimal(new int[] {
-            100,
+            200,
             0,
             0,
             131072});
@@ -3980,10 +4245,10 @@
             1,
             0,
             0,
-            131072});
+            196608});
             this.numericUpDown46.Location = new System.Drawing.Point(76, 19);
             this.numericUpDown46.Maximum = new decimal(new int[] {
-            100,
+            200,
             0,
             0,
             131072});
@@ -4001,12 +4266,12 @@
             this.trackBar47.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar47.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar47.Location = new System.Drawing.Point(130, 45);
-            this.trackBar47.Maximum = 1000;
+            this.trackBar47.Maximum = 2000;
             this.trackBar47.Name = "trackBar47";
             this.trackBar47.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar47.Size = new System.Drawing.Size(45, 151);
             this.trackBar47.TabIndex = 56;
-            this.trackBar47.TickFrequency = 50;
+            this.trackBar47.TickFrequency = 70;
             this.trackBar47.Value = 1000;
             // 
             // trackBar46
@@ -4014,12 +4279,12 @@
             this.trackBar46.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar46.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar46.Location = new System.Drawing.Point(79, 45);
-            this.trackBar46.Maximum = 1000;
+            this.trackBar46.Maximum = 2000;
             this.trackBar46.Name = "trackBar46";
             this.trackBar46.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar46.Size = new System.Drawing.Size(45, 151);
             this.trackBar46.TabIndex = 55;
-            this.trackBar46.TickFrequency = 50;
+            this.trackBar46.TickFrequency = 70;
             this.trackBar46.Value = 1000;
             // 
             // label52
@@ -4057,6 +4322,7 @@
             this.label56.Size = new System.Drawing.Size(21, 13);
             this.label56.TabIndex = 27;
             this.label56.Text = "Lift";
+            this.toolTip1.SetToolTip(this.label56, "Adjust shadows for Red, Green and Blue");
             // 
             // numericUpDown53
             // 
@@ -4066,13 +4332,13 @@
             1,
             0,
             0,
-            131072});
+            196608});
             this.numericUpDown53.Location = new System.Drawing.Point(25, 19);
             this.numericUpDown53.Maximum = new decimal(new int[] {
-            100,
+            2000,
             0,
             0,
-            131072});
+            196608});
             this.numericUpDown53.Name = "numericUpDown53";
             this.numericUpDown53.Size = new System.Drawing.Size(48, 20);
             this.numericUpDown53.TabIndex = 21;
@@ -4087,12 +4353,12 @@
             this.trackBar53.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar53.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar53.Location = new System.Drawing.Point(28, 45);
-            this.trackBar53.Maximum = 1000;
+            this.trackBar53.Maximum = 2000;
             this.trackBar53.Name = "trackBar53";
             this.trackBar53.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar53.Size = new System.Drawing.Size(45, 151);
             this.trackBar53.TabIndex = 15;
-            this.trackBar53.TickFrequency = 50;
+            this.trackBar53.TickFrequency = 70;
             this.trackBar53.Value = 1000;
             // 
             // checkBox13
@@ -4239,6 +4505,7 @@
             this.label67.Size = new System.Drawing.Size(36, 13);
             this.label67.TabIndex = 37;
             this.label67.Text = "Defog";
+            this.toolTip1.SetToolTip(this.label67, "How much of the color tint to remove");
             // 
             // trackBar63
             // 
@@ -4297,6 +4564,7 @@
             this.label66.Size = new System.Drawing.Size(52, 13);
             this.label66.TabIndex = 33;
             this.label66.Text = "Fog Color";
+            this.toolTip1.SetToolTip(this.label66, "What color to remove - default is blue");
             // 
             // numericUpDown61
             // 
@@ -4326,6 +4594,7 @@
             this.label65.Size = new System.Drawing.Size(40, 13);
             this.label65.TabIndex = 31;
             this.label65.Text = "Bleach";
+            this.toolTip1.SetToolTip(this.label65, "Brightens the shadows and fades the colors");
             // 
             // trackBar61
             // 
@@ -4452,6 +4721,7 @@
             this.label71.Size = new System.Drawing.Size(51, 13);
             this.label71.TabIndex = 8;
             this.label71.Text = "Exposure";
+            this.toolTip1.SetToolTip(this.label71, "Adjust exposure");
             // 
             // trackBar67
             // 
@@ -4475,6 +4745,7 @@
             this.label72.Size = new System.Drawing.Size(55, 13);
             this.label72.TabIndex = 3;
             this.label72.Text = "Saturation";
+            this.toolTip1.SetToolTip(this.label72, "Adjust saturation");
             // 
             // trackBar69
             // 
@@ -4496,6 +4767,7 @@
             this.label73.Size = new System.Drawing.Size(43, 13);
             this.label73.TabIndex = 1;
             this.label73.Text = "Gamma";
+            this.toolTip1.SetToolTip(this.label73, "Adjust midtones. 1.000 is neutral.");
             // 
             // checkBox17
             // 
@@ -4630,6 +4902,8 @@
             this.label75.Size = new System.Drawing.Size(46, 13);
             this.label75.TabIndex = 33;
             this.label75.Text = "Balance";
+            this.toolTip1.SetToolTip(this.label75, "A per channel multiplier to the Vibrance strength so you can give more boost to c" +
+        "ertain colors over others");
             // 
             // label77
             // 
@@ -4750,6 +5024,8 @@
             this.label82.Size = new System.Drawing.Size(49, 13);
             this.label82.TabIndex = 1;
             this.label82.Text = "Vibrance";
+            this.toolTip1.SetToolTip(this.label82, "Intelligently saturates (or desaturates if you use negative values) the pixels de" +
+        "pending on their original saturation");
             // 
             // checkBox18
             // 
@@ -4767,10 +5043,9 @@
             // 
             // tabPage15
             // 
+            this.tabPage15.Controls.Add(this.comboBox7);
             this.tabPage15.Controls.Add(this.comboBox1);
-            this.tabPage15.Controls.Add(this.numericUpDown72);
             this.tabPage15.Controls.Add(this.numericUpDown73);
-            this.tabPage15.Controls.Add(this.trackBar72);
             this.tabPage15.Controls.Add(this.label76);
             this.tabPage15.Controls.Add(this.trackBar73);
             this.tabPage15.Controls.Add(this.label80);
@@ -4784,40 +5059,38 @@
             this.tabPage15.Text = "Curves";
             this.tabPage15.UseVisualStyleBackColor = true;
             // 
+            // comboBox7
+            // 
+            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Items.AddRange(new object[] {
+            "Sine",
+            "Abs split",
+            "Smoothstep",
+            "Exp formula",
+            "Simplified Catmull-Rom (0,0,1,1)",
+            "Perlins Smootherstep      ",
+            "Abs add",
+            "Techicolor Cinestyle",
+            "Parabola",
+            "Half-circles"});
+            this.comboBox7.Location = new System.Drawing.Point(108, 91);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(200, 21);
+            this.comboBox7.TabIndex = 16;
+            // 
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Luma",
-            "Chroma",
+            "Luma (brightness)",
+            "Chroma (colors)",
             "Both"});
             this.comboBox1.Location = new System.Drawing.Point(108, 32);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 15;
-            // 
-            // numericUpDown72
-            // 
-            this.numericUpDown72.Location = new System.Drawing.Point(207, 91);
-            this.numericUpDown72.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDown72.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown72.Name = "numericUpDown72";
-            this.numericUpDown72.Size = new System.Drawing.Size(63, 20);
-            this.numericUpDown72.TabIndex = 13;
-            this.numericUpDown72.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
             // 
             // numericUpDown73
             // 
@@ -4848,25 +5121,15 @@
             0,
             131072});
             // 
-            // trackBar72
-            // 
-            this.trackBar72.BackColor = System.Drawing.SystemColors.Window;
-            this.trackBar72.LargeChange = 3;
-            this.trackBar72.Location = new System.Drawing.Point(14, 117);
-            this.trackBar72.Minimum = 1;
-            this.trackBar72.Name = "trackBar72";
-            this.trackBar72.Size = new System.Drawing.Size(275, 45);
-            this.trackBar72.TabIndex = 6;
-            this.trackBar72.Value = 2;
-            // 
             // label76
             // 
             this.label76.AutoSize = true;
-            this.label76.Location = new System.Drawing.Point(30, 93);
+            this.label76.Location = new System.Drawing.Point(59, 94);
             this.label76.Name = "label76";
             this.label76.Size = new System.Drawing.Size(44, 13);
             this.label76.TabIndex = 5;
             this.label76.Text = "Formula";
+            this.toolTip1.SetToolTip(this.label76, "The contrast s-curve you want to use");
             // 
             // trackBar73
             // 
@@ -4891,6 +5154,7 @@
             this.label80.Size = new System.Drawing.Size(46, 13);
             this.label80.TabIndex = 3;
             this.label80.Text = "Contrast";
+            this.toolTip1.SetToolTip(this.label80, "The amount of contrast you want");
             // 
             // label81
             // 
@@ -4900,6 +5164,7 @@
             this.label81.Size = new System.Drawing.Size(34, 13);
             this.label81.TabIndex = 1;
             this.label81.Text = "Mode";
+            this.toolTip1.SetToolTip(this.label81, "Choose what to apply contrast to");
             // 
             // checkBox24
             // 
@@ -5110,6 +5375,7 @@
             this.label83.Size = new System.Drawing.Size(59, 13);
             this.label83.TabIndex = 33;
             this.label83.Text = "Color Tone";
+            this.toolTip1.SetToolTip(this.label83, "What color to tint the image");
             // 
             // label85
             // 
@@ -5207,6 +5473,7 @@
             this.label89.Size = new System.Drawing.Size(37, 13);
             this.label89.TabIndex = 3;
             this.label89.Text = "Power";
+            this.toolTip1.SetToolTip(this.label89, "How much to tint the image");
             // 
             // trackBar82
             // 
@@ -5228,6 +5495,7 @@
             this.label90.Size = new System.Drawing.Size(62, 13);
             this.label90.TabIndex = 1;
             this.label90.Text = "Grey Power";
+            this.toolTip1.SetToolTip(this.label90, "How much desaturate the image before tinting it");
             // 
             // checkBox22
             // 
@@ -5319,6 +5587,7 @@
             this.label94.Size = new System.Drawing.Size(38, 13);
             this.label94.TabIndex = 45;
             this.label94.Text = "Center";
+            this.toolTip1.SetToolTip(this.label94, "Center of effect");
             // 
             // numericUpDown86
             // 
@@ -5402,6 +5671,8 @@
             this.label92.Size = new System.Drawing.Size(34, 13);
             this.label92.TabIndex = 19;
             this.label92.Text = "Slope";
+            this.toolTip1.SetToolTip(this.label92, "How far away from the center the change should start to really grow strong (odd n" +
+        "umbers cause a larger fps drop than even numbers)");
             // 
             // numericUpDown81
             // 
@@ -5455,6 +5726,7 @@
             this.label91.Size = new System.Drawing.Size(43, 13);
             this.label91.TabIndex = 16;
             this.label91.Text = "Amount";
+            this.toolTip1.SetToolTip(this.label91, "Strength of black. -2.00 = Max Black, 1.00 = Max White");
             // 
             // comboBox2
             // 
@@ -5547,6 +5819,7 @@
             this.label74.Size = new System.Drawing.Size(32, 13);
             this.label74.TabIndex = 5;
             this.label74.Text = "Ratio";
+            this.toolTip1.SetToolTip(this.label74, "Sets a width to height ratio");
             // 
             // trackBar79
             // 
@@ -5571,6 +5844,7 @@
             this.label84.Size = new System.Drawing.Size(40, 13);
             this.label84.TabIndex = 3;
             this.label84.Text = "Radius";
+            this.toolTip1.SetToolTip(this.label84, "Lower values = stronger radial effect from center");
             // 
             // label88
             // 
@@ -5724,6 +5998,7 @@
             this.label95.Size = new System.Drawing.Size(31, 13);
             this.label95.TabIndex = 33;
             this.label95.Text = "Color";
+            this.toolTip1.SetToolTip(this.label95, "What color the border should be");
             // 
             // label96
             // 
@@ -5809,6 +6084,7 @@
             this.label100.Size = new System.Drawing.Size(45, 13);
             this.label100.TabIndex = 3;
             this.label100.Text = "Width Y";
+            this.toolTip1.SetToolTip(this.label100, "Width Pixel width of the border");
             // 
             // trackBar90
             // 
@@ -5830,6 +6106,7 @@
             this.label101.Size = new System.Drawing.Size(45, 13);
             this.label101.TabIndex = 1;
             this.label101.Text = "Width X";
+            this.toolTip1.SetToolTip(this.label101, "Pixel width of the border");
             // 
             // checkBox28
             // 
@@ -5894,6 +6171,11 @@
             this.checkBox27.Text = "Enabled";
             this.checkBox27.UseVisualStyleBackColor = true;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5907,7 +6189,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sweeter SweetFX v0.1";
+            this.Text = "Sweeter SweetFX v0.2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -6094,9 +6376,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar76)).EndInit();
             this.tabPage15.ResumeLayout(false);
             this.tabPage15.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown72)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown73)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar72)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar73)).EndInit();
             this.tabPage16.ResumeLayout(false);
             this.tabPage16.PerformLayout();
@@ -6149,14 +6429,12 @@
 
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripMenuItem gamesToolStripMenuItem1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TrackBar trackBar13;
@@ -6212,7 +6490,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TrackBar trackBar4;
         private System.Windows.Forms.TrackBar trackBar3;
@@ -6420,9 +6697,7 @@
         private System.Windows.Forms.TrackBar trackBar68;
         private System.Windows.Forms.TabPage tabPage15;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown72;
         private System.Windows.Forms.NumericUpDown numericUpDown73;
-        private System.Windows.Forms.TrackBar trackBar72;
         private System.Windows.Forms.Label label76;
         private System.Windows.Forms.TrackBar trackBar73;
         private System.Windows.Forms.Label label80;
@@ -6494,9 +6769,36 @@
         private System.Windows.Forms.Label label93;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem onlyActiveToolStripMenuItem;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label102;
+        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.ToolStripMenuItem effectsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sMAAToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fXAAToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem explosionCartoonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cartoonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cRTToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bloomToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hDRToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lumaSharpenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem levelsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem technicolorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dPXToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem monochromeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem liftGammaGainToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tonemapToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vibranceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem curvesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sepiaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ditherToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vignetteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem borderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem splitscreenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showActiveOnlyToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 

@@ -10,11 +10,13 @@ namespace SweetFX_Configurator
         AddGameForm add_game_form;
         private static bool _open = false;
         private List<Game> Games;
+        private bool no_close;
 
-        public InstallManagerForm()
+        public InstallManagerForm(bool noclose = false)
         {
             _open = true;
             InitializeComponent();
+            no_close = noclose;
         }
 
         public static bool isOpen { get { return _open; } }
@@ -35,6 +37,14 @@ namespace SweetFX_Configurator
 
         private void InstallManagerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (no_close)
+            {
+                if (MessageBox.Show("Please load a game to continue.", "Sweeter SweetFX", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
             Settings.InstallManager_Window_Geometry = WindowGeometry.GeometryToString(this);
             _open = false;
         }
@@ -64,6 +74,7 @@ namespace SweetFX_Configurator
         private void button3_Click(object sender, EventArgs e)
         {
             SweetFX.Load((Game)fastObjectListView1.SelectedObject);
+            no_close = false;
         }
 
         private void button4_Click(object sender, EventArgs e)

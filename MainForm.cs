@@ -23,6 +23,8 @@ namespace SweetFX_Configurator
             Settings.Load();
             WindowGeometry.GeometryFromString(Settings.Main_Window_Geometry, this);
             //
+            Settings.GameAdded += Settings_GameAdded;
+            Settings.GameRemoved += Settings_GameRemoved;
             List<Game> _gms = Settings.GetGames();
             foreach (Game _game in _gms)
             {
@@ -36,11 +38,18 @@ namespace SweetFX_Configurator
             SweetFX.GameLoaded += SweetFX_GameLoaded;
             if (Settings.LastGame != null && Settings.LastGame.isSweetFXInstalled)
             {
+                showActiveOnlyToolStripMenuItem.Checked = Settings.OnlyActive;
                 SweetFX.Load(Settings.LastGame);
             }
+            else
+            {
+                this.Opacity = 0;
+                this.ShowInTaskbar = false;
+                install_manager_form = new InstallManagerForm();
+                install_manager_form.FormClosed += install_manager_form_FormClosed;
+                install_manager_form.Show();
+            }
             //
-            Settings.GameAdded += Settings_GameAdded;
-            onlyActiveToolStripMenuItem.Checked = Settings.OnlyActive;
             tabControl1.SelectedIndex = Settings.LastTab;
         }
 
@@ -53,14 +62,28 @@ namespace SweetFX_Configurator
                 BeginInvoke(new InstallManager_GameLoadedD(SweetFX_GameLoaded));
                 return;
             }
+            this.Opacity = 100;
+            this.ShowInTaskbar = true;
             LoadSFXConfig();
             SetMessage(new Message("Game loaded: " + Settings.LastGame.Name, 0));
-            if (onlyActiveToolStripMenuItem.Checked) { HideUnactiveTabs(); }
+            if (showActiveOnlyToolStripMenuItem.Checked) { HideUnactiveTabs(); }
         }
 
         void Settings_GameAdded(Game _g)
         {
+            if (this.Opacity == 0)
+            {
+                SweetFX.Load(_g);
+            }
             gamesToolStripMenuItem1.DropDownItems.Add(_g.Name);
+        }
+
+        void Settings_GameRemoved(Game _g)
+        {
+            foreach (ToolStripItem item in gamesToolStripMenuItem1.DropDownItems)
+            {
+                if (item.Text == _g.Name) { gamesToolStripMenuItem1.DropDownItems.Remove(item); break; }
+            }
         }
 
         void item_Click(object sender, EventArgs e)
@@ -73,138 +96,153 @@ namespace SweetFX_Configurator
             StopFormCapture();
             // SMAA
             checkBox1.Checked = SweetFX.SMAA.Enabled;
+            sMAAToolStripMenuItem.Checked = SweetFX.SMAA.Enabled;
             numericUpDown1.Value = SweetFX.SMAA.Threshold;
-            trackBar1.Value = Convert.ToInt32(SweetFX.SMAA.Threshold * (decimal)100.00);
+            trackBar1.Value = Convert.ToInt32(SweetFX.SMAA.Threshold * (decimal)100);
             numericUpDown2.Value = SweetFX.SMAA.Max_Search_Steps;
             trackBar2.Value = SweetFX.SMAA.Max_Search_Steps;
             numericUpDown3.Value = SweetFX.SMAA.Max_Search_Steps_Diag;
             trackBar3.Value = SweetFX.SMAA.Max_Search_Steps_Diag;
             numericUpDown4.Value = SweetFX.SMAA.Corner_Rounding;
             trackBar4.Value = SweetFX.SMAA.Corner_Rounding;
-            checkBox2.Checked = SweetFX.SMAA.Color_Edge_Detection;
+            comboBox6.SelectedIndex = (SweetFX.SMAA.Color_Edge_Detection == 1) ? 0 : 1;
             checkBox3.Checked = SweetFX.SMAA.DirectX9_Linear_Blend;
             // FXAA
             checkBox6.Checked = SweetFX.FXAA.Enabled;
+            fXAAToolStripMenuItem.Checked = SweetFX.FXAA.Enabled;
             numericUpDown8.Value = SweetFX.FXAA.Quality_Preset;
             trackBar8.Value = SweetFX.FXAA.Quality_Preset;
             numericUpDown7.Value = SweetFX.FXAA.Subpix;
-            trackBar7.Value = Convert.ToInt32(SweetFX.FXAA.Subpix * (decimal)1000.00);
+            trackBar7.Value = Convert.ToInt32(SweetFX.FXAA.Subpix * (decimal)1000);
             numericUpDown6.Value = SweetFX.FXAA.Edge_Threshold;
-            trackBar6.Value = Convert.ToInt32(SweetFX.FXAA.Edge_Threshold * (decimal)1000.00);
+            trackBar6.Value = Convert.ToInt32(SweetFX.FXAA.Edge_Threshold * (decimal)1000);
             numericUpDown5.Value = SweetFX.FXAA.Edge_Threshold_Min;
-            trackBar5.Value = Convert.ToInt32(SweetFX.FXAA.Edge_Threshold_Min * (decimal)1000.00);
+            trackBar5.Value = Convert.ToInt32(SweetFX.FXAA.Edge_Threshold_Min * (decimal)1000);
             // Explosion
             checkBox4.Checked = SweetFX.Explosion.Enabled;
+            explosionCartoonToolStripMenuItem.Checked = SweetFX.Explosion.Enabled;
             numericUpDown12.Value = SweetFX.Explosion.Radius;
-            trackBar12.Value = Convert.ToInt32(SweetFX.Explosion.Radius * (decimal)10.00);
+            trackBar12.Value = Convert.ToInt32(SweetFX.Explosion.Radius * (decimal)10);
             // Cartoon
             checkBox5.Checked = SweetFX.Cartoon.Enabled;
+            cartoonToolStripMenuItem.Checked = SweetFX.Cartoon.Enabled;
             numericUpDown11.Value = SweetFX.Cartoon.Power;
-            trackBar9.Value = Convert.ToInt32(SweetFX.Cartoon.Power * (decimal)10.00);
+            trackBar9.Value = Convert.ToInt32(SweetFX.Cartoon.Power * (decimal)10);
             numericUpDown9.Value = SweetFX.Cartoon.Edge_Slope;
-            trackBar11.Value = Convert.ToInt32(SweetFX.Cartoon.Edge_Slope * (decimal)10.00);
+            trackBar11.Value = Convert.ToInt32(SweetFX.Cartoon.Edge_Slope * (decimal)10);
             // CRT
             checkBox8.Checked = SweetFX.CRT.Enabled;
             checkBox12.Checked = SweetFX.CRT.Enabled;
+            cRTToolStripMenuItem.Checked = SweetFX.CRT.Enabled;
             numericUpDown19.Value = SweetFX.CRT.Amount;
-            trackBar19.Value = Convert.ToInt32(SweetFX.CRT.Amount * (decimal)100.00);
+            trackBar19.Value = Convert.ToInt32(SweetFX.CRT.Amount * (decimal)100);
             numericUpDown18.Value = SweetFX.CRT.Resolution;
-            trackBar18.Value = Convert.ToInt32(SweetFX.CRT.Resolution * (decimal)10.00);
+            trackBar18.Value = Convert.ToInt32(SweetFX.CRT.Resolution * (decimal)10);
             numericUpDown17.Value = SweetFX.CRT.Gamma;
-            trackBar17.Value = Convert.ToInt32(SweetFX.CRT.Gamma * (decimal)10.00);
+            trackBar17.Value = Convert.ToInt32(SweetFX.CRT.Gamma * (decimal)10);
             numericUpDown16.Value = SweetFX.CRT.Monitor_Gamma;
-            trackBar16.Value = Convert.ToInt32(SweetFX.CRT.Monitor_Gamma * (decimal)10.00);
+            trackBar16.Value = Convert.ToInt32(SweetFX.CRT.Monitor_Gamma * (decimal)10);
             numericUpDown10.Value = SweetFX.CRT.Brightness;
-            trackBar10.Value = Convert.ToInt32(SweetFX.CRT.Brightness * (decimal)10.00);
+            trackBar10.Value = Convert.ToInt32(SweetFX.CRT.Brightness * (decimal)10);
             numericUpDown13.Value = SweetFX.CRT.Scanline_Intensity;
-            trackBar13.Value = Convert.ToInt32(SweetFX.CRT.Scanline_Intensity * (decimal)10.00);
+            trackBar13.Value = Convert.ToInt32(SweetFX.CRT.Scanline_Intensity * (decimal)10);
             checkBox10.Checked = SweetFX.CRT.Scanline_Gaussian;
             numericUpDown23.Value = SweetFX.CRT.Corner_Size;
-            trackBar23.Value = Convert.ToInt32(SweetFX.CRT.Corner_Size * (decimal)10000.00);
+            trackBar23.Value = Convert.ToInt32(SweetFX.CRT.Corner_Size * (decimal)10000);
             numericUpDown22.Value = SweetFX.CRT.Distance;
-            trackBar22.Value = Convert.ToInt32(SweetFX.CRT.Distance * (decimal)100.00);
+            trackBar22.Value = Convert.ToInt32(SweetFX.CRT.Distance * (decimal)100);
             numericUpDown21.Value = SweetFX.CRT.AngleX;
-            trackBar21.Value = Convert.ToInt32(SweetFX.CRT.AngleX * (decimal)100.00);
+            trackBar21.Value = Convert.ToInt32(SweetFX.CRT.AngleX * (decimal)100);
             numericUpDown20.Value = SweetFX.CRT.AngleY;
-            trackBar20.Value = Convert.ToInt32(SweetFX.CRT.AngleY * (decimal)100.00);
+            trackBar20.Value = Convert.ToInt32(SweetFX.CRT.AngleY * (decimal)100);
             numericUpDown15.Value = SweetFX.CRT.Curvature_Radius;
-            trackBar15.Value = Convert.ToInt32(SweetFX.CRT.Curvature_Radius * (decimal)10.00);
+            trackBar15.Value = Convert.ToInt32(SweetFX.CRT.Curvature_Radius * (decimal)10);
             numericUpDown14.Value = SweetFX.CRT.Overscan;
-            trackBar14.Value = Convert.ToInt32(SweetFX.CRT.Overscan * (decimal)100.00);
+            trackBar14.Value = Convert.ToInt32(SweetFX.CRT.Overscan * (decimal)100);
             checkBox7.Checked = SweetFX.CRT.Curvature;
+            trackBar15.Enabled = SweetFX.CRT.Curvature;
+            numericUpDown15.Enabled = SweetFX.CRT.Curvature;
             checkBox14.Checked = SweetFX.CRT.Oversample;
             // Bloom
             checkBox16.Checked = SweetFX.Bloom.Enabled;
+            bloomToolStripMenuItem.Checked = SweetFX.Bloom.Enabled;
             numericUpDown26.Value = SweetFX.Bloom.Threshold;
-            trackBar26.Value = Convert.ToInt32(SweetFX.Bloom.Threshold * (decimal)100.00);
+            trackBar26.Value = Convert.ToInt32(SweetFX.Bloom.Threshold * (decimal)100);
             numericUpDown28.Value = SweetFX.Bloom.Power;
-            trackBar27.Value = Convert.ToInt32(SweetFX.Bloom.Power * (decimal)1000.00);
+            trackBar27.Value = Convert.ToInt32(SweetFX.Bloom.Power * (decimal)1000);
             numericUpDown27.Value = SweetFX.Bloom.Width;
-            trackBar28.Value = Convert.ToInt32(SweetFX.Bloom.Width * (decimal)10000.00);
+            trackBar28.Value = Convert.ToInt32(SweetFX.Bloom.Width * (decimal)10000);
             // HDR
             checkBox15.Checked = SweetFX.HDR.Enabled;
+            hDRToolStripMenuItem.Checked = SweetFX.HDR.Enabled;
             numericUpDown25.Value = SweetFX.HDR.Power;
-            trackBar24.Value = Convert.ToInt32(SweetFX.HDR.Power * (decimal)100.00);
+            trackBar24.Value = Convert.ToInt32(SweetFX.HDR.Power * (decimal)100);
             numericUpDown24.Value = SweetFX.HDR.Radius;
-            trackBar25.Value = Convert.ToInt32(SweetFX.HDR.Radius * (decimal)100.00);
+            trackBar25.Value = Convert.ToInt32(SweetFX.HDR.Radius * (decimal)100);
             // LumaSharpen
             checkBox20.Checked = SweetFX.LumaSharpen.Enabled;
+            lumaSharpenToolStripMenuItem.Checked = SweetFX.LumaSharpen.Enabled;
             numericUpDown32.Value = SweetFX.LumaSharpen.Strength;
-            trackBar32.Value = Convert.ToInt32(SweetFX.LumaSharpen.Strength * (decimal)100.00);
+            trackBar32.Value = Convert.ToInt32(SweetFX.LumaSharpen.Strength * (decimal)100);
             numericUpDown31.Value = SweetFX.LumaSharpen.Clamp;
-            trackBar31.Value = Convert.ToInt32(SweetFX.LumaSharpen.Clamp * (decimal)1000.00);
+            trackBar31.Value = Convert.ToInt32(SweetFX.LumaSharpen.Clamp * (decimal)1000);
             comboBox5.SelectedIndex = SweetFX.LumaSharpen.Pattern - 1;
             numericUpDown29.Value = SweetFX.LumaSharpen.Offset_Bias;
-            trackBar29.Value = Convert.ToInt32(SweetFX.LumaSharpen.Offset_Bias * (decimal)10.00);
+            trackBar29.Value = Convert.ToInt32(SweetFX.LumaSharpen.Offset_Bias * (decimal)10);
             checkBox19.Checked = SweetFX.LumaSharpen.Show;
             // Levels
             checkBox21.Checked = SweetFX.Levels.Enabled;
+            levelsToolStripMenuItem.Checked = SweetFX.Levels.Enabled;
             numericUpDown35.Value = SweetFX.Levels.Black_Point;
             trackBar48.Value = SweetFX.Levels.Black_Point;
             numericUpDown33.Value = SweetFX.Levels.White_Point;
             trackBar33.Value = SweetFX.Levels.White_Point;
             // Technicolor
             checkBox23.Checked = SweetFX.Technicolor.Enabled;
+            technicolorToolStripMenuItem.Checked = SweetFX.Technicolor.Enabled;
             numericUpDown52.Value = SweetFX.Technicolor.Amount;
-            trackBar52.Value = Convert.ToInt32(SweetFX.Technicolor.Amount * (decimal)100.00);
+            trackBar52.Value = Convert.ToInt32(SweetFX.Technicolor.Amount * (decimal)100);
             numericUpDown51.Value = SweetFX.Technicolor.Power;
-            trackBar51.Value = Convert.ToInt32(SweetFX.Technicolor.Power * (decimal)100.00);
+            trackBar51.Value = Convert.ToInt32(SweetFX.Technicolor.Power * (decimal)100);
             numericUpDown50.Value = SweetFX.Technicolor.Red_Negative_Amount;
-            trackBar50.Value = Convert.ToInt32(SweetFX.Technicolor.Red_Negative_Amount * (decimal)100.00);
+            trackBar50.Value = Convert.ToInt32(SweetFX.Technicolor.Red_Negative_Amount * (decimal)100);
             numericUpDown49.Value = SweetFX.Technicolor.Green_Negative_Amount;
-            trackBar49.Value = Convert.ToInt32(SweetFX.Technicolor.Green_Negative_Amount * (decimal)100.00);
+            trackBar49.Value = Convert.ToInt32(SweetFX.Technicolor.Green_Negative_Amount * (decimal)100);
             numericUpDown48.Value = SweetFX.Technicolor.Blue_Negative_Amount;
-            trackBar35.Value = Convert.ToInt32(SweetFX.Technicolor.Blue_Negative_Amount * (decimal)100.00);
+            trackBar35.Value = Convert.ToInt32(SweetFX.Technicolor.Blue_Negative_Amount * (decimal)100);
             // DPX
             checkBox9.Checked = SweetFX.Cineon_DPX.Enabled;
+            dPXToolStripMenuItem.Checked = SweetFX.Cineon_DPX.Enabled;
             numericUpDown39.Value = SweetFX.Cineon_DPX.Color_Gamma;
-            trackBar39.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Color_Gamma * (decimal)10.00);
+            trackBar39.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Color_Gamma * (decimal)10);
             numericUpDown38.Value = SweetFX.Cineon_DPX.Saturation;
-            trackBar38.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Saturation * (decimal)10.00);
+            trackBar38.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Saturation * (decimal)10);
             numericUpDown36.Value = SweetFX.Cineon_DPX.Blend;
-            trackBar36.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Blend * (decimal)100.00);
+            trackBar36.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Blend * (decimal)100);
             numericUpDown34.Value = SweetFX.Cineon_DPX.Red;
-            trackBar34.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Red * (decimal)100.00);
+            trackBar34.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Red * (decimal)100);
             numericUpDown37.Value = SweetFX.Cineon_DPX.Green;
-            trackBar37.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Green * (decimal)100.00);
+            trackBar37.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Green * (decimal)100);
             numericUpDown40.Value = SweetFX.Cineon_DPX.Blue;
-            trackBar40.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Blue * (decimal)100.00);
+            trackBar40.Value = Convert.ToInt32(SweetFX.Cineon_DPX.Blue * (decimal)100);
             numericUpDown41.Value = SweetFX.Cineon_DPX.RedC;
-            trackBar41.Value = Convert.ToInt32(SweetFX.Cineon_DPX.RedC * (decimal)100.00);
+            trackBar41.Value = Convert.ToInt32(SweetFX.Cineon_DPX.RedC * (decimal)100);
             numericUpDown42.Value = SweetFX.Cineon_DPX.GreenC;
-            trackBar42.Value = Convert.ToInt32(SweetFX.Cineon_DPX.GreenC * (decimal)100.00);
+            trackBar42.Value = Convert.ToInt32(SweetFX.Cineon_DPX.GreenC * (decimal)100);
             numericUpDown43.Value = SweetFX.Cineon_DPX.BlueC;
-            trackBar43.Value = Convert.ToInt32(SweetFX.Cineon_DPX.BlueC * (decimal)100.00);
+            trackBar43.Value = Convert.ToInt32(SweetFX.Cineon_DPX.BlueC * (decimal)100);
             // Monochrome
             checkBox11.Checked = SweetFX.Monochrome.Enabled;
+            monochromeToolStripMenuItem.Checked = SweetFX.Monochrome.Enabled;
             numericUpDown54.Value = SweetFX.Monochrome.Red;
-            trackBar54.Value = Convert.ToInt32(SweetFX.Monochrome.Red * (decimal)100.00);
+            trackBar54.Value = Convert.ToInt32(SweetFX.Monochrome.Red * (decimal)100);
             numericUpDown44.Value = SweetFX.Monochrome.Green;
-            trackBar44.Value = Convert.ToInt32(SweetFX.Monochrome.Green * (decimal)100.00);
+            trackBar44.Value = Convert.ToInt32(SweetFX.Monochrome.Green * (decimal)100);
             numericUpDown45.Value = SweetFX.Monochrome.Blue;
-            trackBar45.Value = Convert.ToInt32(SweetFX.Monochrome.Blue * (decimal)100.00);
+            trackBar45.Value = Convert.ToInt32(SweetFX.Monochrome.Blue * (decimal)100);
             // Lift Gamma Gain
             checkBox13.Checked = SweetFX.Lift_Gamma_Gain.Enabled;
+            liftGammaGainToolStripMenuItem.Checked = SweetFX.Lift_Gamma_Gain.Enabled;
             numericUpDown53.Value = SweetFX.Lift_Gamma_Gain.Lift_Red;
             trackBar53.Value = Convert.ToInt32(SweetFX.Lift_Gamma_Gain.Lift_Red * (decimal)1000);
             numericUpDown46.Value = SweetFX.Lift_Gamma_Gain.Lift_Green;
@@ -225,6 +263,7 @@ namespace SweetFX_Configurator
             trackBar58.Value = Convert.ToInt32(SweetFX.Lift_Gamma_Gain.Gain_Blue * (decimal)1000);
             // Tonemap
             checkBox17.Checked = SweetFX.Tonemap.Enabled;
+            tonemapToolStripMenuItem.Checked = SweetFX.Tonemap.Enabled;
             numericUpDown69.Value = SweetFX.Tonemap.Gamma;
             trackBar69.Value = Convert.ToInt32(SweetFX.Tonemap.Gamma * (decimal)1000);
             numericUpDown67.Value = SweetFX.Tonemap.Exposure;
@@ -243,6 +282,7 @@ namespace SweetFX_Configurator
             trackBar65.Value = Convert.ToInt32(SweetFX.Tonemap.Fog_Blue * (decimal)100);
             // Vibrance
             checkBox18.Checked = SweetFX.Vibrance.Enabled;
+            vibranceToolStripMenuItem.Checked = SweetFX.Vibrance.Enabled;
             numericUpDown76.Value = SweetFX.Vibrance.Vibrance;
             trackBar76.Value = Convert.ToInt32(SweetFX.Vibrance.Vibrance * (decimal)100);
             numericUpDown74.Value = SweetFX.Vibrance.Red;
@@ -253,16 +293,18 @@ namespace SweetFX_Configurator
             trackBar70.Value = Convert.ToInt32(SweetFX.Vibrance.Blue * (decimal)100);
             // Curves
             checkBox24.Checked = SweetFX.Curves.Enabled;
+            curvesToolStripMenuItem.Checked = SweetFX.Curves.Enabled;
             comboBox1.SelectedIndex = SweetFX.Curves.Mode;
-            numericUpDown72.Value = SweetFX.Curves.Formula;
-            trackBar72.Value = Convert.ToInt32(SweetFX.Curves.Formula);
+            comboBox7.SelectedIndex = SweetFX.Curves.Formula - 1;
             numericUpDown73.Value = SweetFX.Curves.Contrast;
             trackBar73.Value = Convert.ToInt32(SweetFX.Curves.Contrast * (decimal)100);
             // Dither
             checkBox26.Checked = SweetFX.Dither.Enabled;
+            ditherToolStripMenuItem.Checked = SweetFX.Dither.Enabled;
             comboBox3.SelectedIndex = SweetFX.Dither.Method - 1;
             // Sepia
             checkBox22.Checked = SweetFX.Sepia.Enabled;
+            sepiaToolStripMenuItem.Checked = SweetFX.Sepia.Enabled;
             numericUpDown82.Value = SweetFX.Sepia.Grey_Power;
             trackBar82.Value = Convert.ToInt32(SweetFX.Sepia.Grey_Power * (decimal)100);
             numericUpDown78.Value = SweetFX.Sepia.Power;
@@ -275,6 +317,7 @@ namespace SweetFX_Configurator
             trackBar71.Value = Convert.ToInt32(SweetFX.Sepia.Blue * (decimal)100);
             // Vignette
             checkBox25.Checked = SweetFX.Vignette.Enabled;
+            vignetteToolStripMenuItem.Checked = SweetFX.Vignette.Enabled;
             numericUpDown77.Value = SweetFX.Vignette.Ratio;
             trackBar77.Value = Convert.ToInt32(SweetFX.Vignette.Ratio * (decimal)100);
             numericUpDown79.Value = SweetFX.Vignette.Radius;
@@ -290,6 +333,7 @@ namespace SweetFX_Configurator
             trackBar85.Value = Convert.ToInt32(SweetFX.Vignette.Center_Y * (decimal)1000);
             // Border
             checkBox28.Checked = SweetFX.Border.Enabled;
+            borderToolStripMenuItem.Checked = SweetFX.Border.Enabled;
             numericUpDown90.Value = SweetFX.Border.Width_X;
             trackBar90.Value = Convert.ToInt32(SweetFX.Border.Width_X);
             numericUpDown88.Value = SweetFX.Border.Width_Y;
@@ -302,6 +346,7 @@ namespace SweetFX_Configurator
             trackBar84.Value = Convert.ToInt32(SweetFX.Border.Blue);
             // Splitscreen
             checkBox27.Checked = SweetFX.Splitscreen.Enabled;
+            splitscreenToolStripMenuItem.Checked = SweetFX.Splitscreen.Enabled;
             comboBox4.SelectedIndex = SweetFX.Splitscreen.Mode - 1;
             //
             StartFormCapture();
@@ -341,7 +386,7 @@ namespace SweetFX_Configurator
             this.trackBar3.Scroll += new System.EventHandler(this.trackBar3_ValueChanged);
             this.numericUpDown4.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
             this.trackBar4.Scroll += new System.EventHandler(this.trackBar4_ValueChanged);
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.comboBox6.SelectedIndexChanged += comboBox6_SelectedIndexChanged;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // FXAA
             checkBox6.CheckedChanged += checkBox6_CheckedChanged;
@@ -514,8 +559,7 @@ namespace SweetFX_Configurator
             // Curves
             checkBox24.CheckedChanged += checkBox24_CheckedChanged;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            numericUpDown72.ValueChanged += numericUpDown72_ValueChanged;
-            trackBar72.Scroll += trackBar72_Scroll;
+            comboBox7.SelectedIndexChanged += comboBox7_SelectedIndexChanged;
             numericUpDown73.ValueChanged += numericUpDown73_ValueChanged;
             trackBar73.Scroll += trackBar73_Scroll;
             // Dither
@@ -577,7 +621,7 @@ namespace SweetFX_Configurator
             this.trackBar3.Scroll -= new System.EventHandler(this.trackBar3_ValueChanged);
             this.numericUpDown4.ValueChanged -= new System.EventHandler(this.numericUpDown4_ValueChanged);
             this.trackBar4.Scroll -= new System.EventHandler(this.trackBar4_ValueChanged);
-            this.checkBox2.CheckedChanged -= new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.comboBox6.SelectedIndexChanged -= new System.EventHandler(this.comboBox6_SelectedIndexChanged);
             this.checkBox3.CheckedChanged -= new System.EventHandler(this.checkBox3_CheckedChanged);
             // FXAA
             checkBox6.CheckedChanged -= checkBox6_CheckedChanged;
@@ -750,8 +794,7 @@ namespace SweetFX_Configurator
             // Curves
             checkBox24.CheckedChanged -= checkBox24_CheckedChanged;
             comboBox1.SelectedIndexChanged -= comboBox1_SelectedIndexChanged;
-            numericUpDown72.ValueChanged -= numericUpDown72_ValueChanged;
-            trackBar72.Scroll -= trackBar72_Scroll;
+            comboBox7.SelectedIndexChanged -= comboBox7_SelectedIndexChanged;
             numericUpDown73.ValueChanged -= numericUpDown73_ValueChanged;
             trackBar73.Scroll -= trackBar73_Scroll;
             // Dither
@@ -890,8 +933,8 @@ namespace SweetFX_Configurator
 
         private void onlyActiveToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
-            Settings.OnlyActive = onlyActiveToolStripMenuItem.Checked;
-            if (onlyActiveToolStripMenuItem.Checked) { HideUnactiveTabs(); }
+            Settings.OnlyActive = showActiveOnlyToolStripMenuItem.Checked;
+            if (showActiveOnlyToolStripMenuItem.Checked) { HideUnactiveTabs(); }
             else { ShowAllTabs(); }
         }
 
@@ -912,7 +955,7 @@ namespace SweetFX_Configurator
             if (!SweetFX.Tonemap.Enabled) { tabControl1.TabPages.Remove(tabPage13); }
             if (!SweetFX.Vibrance.Enabled) { tabControl1.TabPages.Remove(tabPage14); }
             if (!SweetFX.Curves.Enabled) { tabControl1.TabPages.Remove(tabPage15); }
-            if (!SweetFX.Sepia.Enabled && !SweetFX.Dither.Enabled) { tabControl1.TabPages.Remove(tabPage16); ; }
+            if (!SweetFX.Sepia.Enabled && !SweetFX.Dither.Enabled) { tabControl1.TabPages.Remove(tabPage16); }
             if (!SweetFX.Vignette.Enabled) { tabControl1.TabPages.Remove(tabPage17); }
             if (!SweetFX.Border.Enabled) { tabControl1.TabPages.Remove(tabPage18); }
             if (!SweetFX.Splitscreen.Enabled) { tabControl1.TabPages.Remove(tabPage19); }
@@ -942,11 +985,33 @@ namespace SweetFX_Configurator
             tabControl1.TabPages.Add(tabPage19);
         }
 
+        private void tabControl1_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                string file = files[0];
+                if (System.IO.File.ReadAllText(file).ToLower().Contains("use_lumasharpen"))
+                {
+                    if (MessageBox.Show("Are you sure you want to overide all your " + '"' + Settings.LastGame.Name + '"' + " SweetFX settings?", "Sweeter SweetFX", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        System.IO.File.Copy(file, Settings.LastGame.Directory + @"\SweetFX_settings.txt", true);
+                        SweetFX.Load(Settings.LastGame);
+                    }
+                }
+            }
+        }
+
+        private void tabControl1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) { e.Effect = DragDropEffects.Copy; }
+        }
+
         #region SMAA
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SweetFX.SMAA.Color_Edge_Detection = checkBox2.Checked;
+            SweetFX.SMAA.Color_Edge_Detection = (comboBox6.SelectedIndex == 1) ? 0 : 1;
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
@@ -954,9 +1019,24 @@ namespace SweetFX_Configurator
             SweetFX.SMAA.DirectX9_Linear_Blend = checkBox3.Checked;
         }
 
+        private void sMAAToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox1.CheckedChanged -= checkBox1_CheckedChanged;
+            checkBox1.Checked = sMAAToolStripMenuItem.Checked;
+            SweetFX.SMAA.Enabled = checkBox1.Checked;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            if (!SweetFX.SMAA.Enabled) { tabControl1.TabPages.Remove(tabPage1); }
+            else { HideUnactiveTabs(); }
+        }
+
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            sMAAToolStripMenuItem.CheckedChanged -= sMAAToolStripMenuItem_CheckedChanged;
+            sMAAToolStripMenuItem.Checked = checkBox1.Checked;
             SweetFX.SMAA.Enabled = checkBox1.Checked;
+            sMAAToolStripMenuItem.CheckedChanged += sMAAToolStripMenuItem_CheckedChanged;
+            if (!SweetFX.SMAA.Enabled) { tabControl1.TabPages.Remove(tabPage1); }
+            else { HideUnactiveTabs(); }
         }
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)
@@ -1027,9 +1107,24 @@ namespace SweetFX_Configurator
 
         #region FXAA
 
+        private void fXAAToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox6.CheckedChanged -= checkBox6_CheckedChanged;
+            checkBox6.Checked = fXAAToolStripMenuItem.Checked;
+            SweetFX.FXAA.Enabled = checkBox6.Checked;
+            checkBox6.CheckedChanged += checkBox6_CheckedChanged;
+            if (!SweetFX.FXAA.Enabled) { tabControl1.TabPages.Remove(tabPage2); }
+            else { HideUnactiveTabs(); }
+        }
+
         void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
+            fXAAToolStripMenuItem.CheckedChanged -= fXAAToolStripMenuItem_CheckedChanged;
+            fXAAToolStripMenuItem.Checked = checkBox6.Checked;
             SweetFX.FXAA.Enabled = checkBox6.Checked;
+            fXAAToolStripMenuItem.CheckedChanged += fXAAToolStripMenuItem_CheckedChanged;
+            if (!SweetFX.FXAA.Enabled) { tabControl1.TabPages.Remove(tabPage2); }
+            else { HideUnactiveTabs(); }
         }
 
         void numericUpDown8_ValueChanged(object sender, EventArgs e)
@@ -1100,9 +1195,24 @@ namespace SweetFX_Configurator
 
         #region Explosion
 
+        private void explosionCartoonToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox4.CheckedChanged -= checkBox4_CheckedChanged;
+            checkBox4.Checked = explosionCartoonToolStripMenuItem.Checked;
+            SweetFX.Explosion.Enabled = checkBox4.Checked;
+            checkBox4.CheckedChanged += checkBox4_CheckedChanged;
+            if (SweetFX.Explosion.Enabled || SweetFX.Cartoon.Enabled) { HideUnactiveTabs(); }
+            else { tabControl1.TabPages.Remove(tabPage3); }
+        }
+
         void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
+            explosionCartoonToolStripMenuItem.CheckedChanged -= explosionCartoonToolStripMenuItem_CheckedChanged;
+            explosionCartoonToolStripMenuItem.Checked = checkBox4.Checked;
             SweetFX.Explosion.Enabled = checkBox4.Checked;
+            explosionCartoonToolStripMenuItem.CheckedChanged += explosionCartoonToolStripMenuItem_CheckedChanged;
+            if (SweetFX.Explosion.Enabled || SweetFX.Cartoon.Enabled) { HideUnactiveTabs(); }
+            else { tabControl1.TabPages.Remove(tabPage3); }
         }
 
         void numericUpDown12_ValueChanged(object sender, EventArgs e)
@@ -1125,17 +1235,32 @@ namespace SweetFX_Configurator
 
         #region Cartoon
 
+        private void cartoonToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox5.CheckedChanged -= checkBox5_CheckedChanged;
+            checkBox5.Checked = cartoonToolStripMenuItem.Enabled;
+            SweetFX.Cartoon.Enabled = checkBox5.Checked;
+            checkBox5.CheckedChanged += checkBox5_CheckedChanged;
+            if (SweetFX.Explosion.Enabled || SweetFX.Cartoon.Enabled) { HideUnactiveTabs(); }
+            else { tabControl1.TabPages.Remove(tabPage3); }
+        }
+
         void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
+            cartoonToolStripMenuItem.CheckedChanged -= cartoonToolStripMenuItem_CheckedChanged;
+            cartoonToolStripMenuItem.Enabled = checkBox5.Checked;
             SweetFX.Cartoon.Enabled = checkBox5.Checked;
+            cartoonToolStripMenuItem.CheckedChanged += cartoonToolStripMenuItem_CheckedChanged;
+            if (SweetFX.Explosion.Enabled || SweetFX.Cartoon.Enabled) { HideUnactiveTabs(); }
+            else { tabControl1.TabPages.Remove(tabPage3); }
         }
 
         void numericUpDown11_ValueChanged(object sender, EventArgs e)
         {
-            this.trackBar11.Scroll -= new System.EventHandler(this.trackBar11_Scroll);
+            this.trackBar9.Scroll -= new System.EventHandler(this.trackBar9_Scroll);
             trackBar9.Value = Convert.ToInt32(numericUpDown11.Value * (decimal)10);
-            SweetFX.Cartoon.Power = numericUpDown11.Value;
-            this.trackBar11.Scroll += new System.EventHandler(this.trackBar11_Scroll);
+            SweetFX.Cartoon.Power = numericUpDown9.Value;
+            this.trackBar9.Scroll += new System.EventHandler(this.trackBar9_Scroll);
         }
 
         void trackBar9_Scroll(object sender, EventArgs e)
@@ -1166,20 +1291,43 @@ namespace SweetFX_Configurator
 
         #region CRT
 
+        private void cRTToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox12.CheckedChanged -= checkBox12_CheckedChanged;
+            checkBox8.CheckedChanged -= checkBox8_CheckedChanged;
+            SweetFX.CRT.Enabled = cRTToolStripMenuItem.Checked;
+            checkBox12.Checked = cRTToolStripMenuItem.Checked;
+            checkBox8.Checked = cRTToolStripMenuItem.Checked;
+            checkBox12.CheckedChanged += checkBox12_CheckedChanged;
+            checkBox8.CheckedChanged += checkBox8_CheckedChanged;
+            if (!SweetFX.CRT.Enabled) { tabControl1.TabPages.Remove(tabPage4); tabControl1.TabPages.Remove(tabPage5); }
+            else { HideUnactiveTabs(); }
+        }
+
         void checkBox8_CheckedChanged(object sender, EventArgs e)
         {
             checkBox12.CheckedChanged -= checkBox12_CheckedChanged;
+            cRTToolStripMenuItem.CheckedChanged -= cRTToolStripMenuItem_CheckedChanged;
             SweetFX.CRT.Enabled = checkBox8.Checked;
             checkBox12.Checked = checkBox8.Checked;
+            cRTToolStripMenuItem.Checked = checkBox8.Checked;
             checkBox12.CheckedChanged += checkBox12_CheckedChanged;
+            cRTToolStripMenuItem.CheckedChanged += cRTToolStripMenuItem_CheckedChanged;
+            if (!SweetFX.CRT.Enabled) { tabControl1.TabPages.Remove(tabPage4); tabControl1.TabPages.Remove(tabPage5); }
+            else { HideUnactiveTabs(); }
         }
 
         void checkBox12_CheckedChanged(object sender, EventArgs e)
         {
             checkBox8.CheckedChanged -= checkBox8_CheckedChanged;
+            cRTToolStripMenuItem.CheckedChanged -= cRTToolStripMenuItem_CheckedChanged;
             SweetFX.CRT.Enabled = checkBox12.Checked;
             checkBox8.Checked = checkBox12.Checked;
+            cRTToolStripMenuItem.Checked = checkBox12.Checked;
             checkBox8.CheckedChanged += checkBox8_CheckedChanged;
+            cRTToolStripMenuItem.CheckedChanged += cRTToolStripMenuItem_CheckedChanged;
+            if (!SweetFX.CRT.Enabled) { tabControl1.TabPages.Remove(tabPage4); tabControl1.TabPages.Remove(tabPage5); }
+            else { HideUnactiveTabs(); }
         }
 
         void numericUpDown19_ValueChanged(object sender, EventArgs e)
@@ -1382,6 +1530,8 @@ namespace SweetFX_Configurator
         void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
             SweetFX.CRT.Curvature = checkBox7.Checked;
+            trackBar15.Enabled = checkBox7.Checked;
+            numericUpDown15.Enabled = checkBox7.Checked;
         }
 
         void checkBox14_CheckedChanged(object sender, EventArgs e)
@@ -1393,9 +1543,24 @@ namespace SweetFX_Configurator
 
         #region Bloom
 
+        private void bloomToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox16.CheckedChanged -= checkBox16_CheckedChanged;
+            checkBox16.Checked = bloomToolStripMenuItem.Checked;
+            SweetFX.Bloom.Enabled = checkBox16.Checked;
+            checkBox16.CheckedChanged += checkBox16_CheckedChanged;
+            if (SweetFX.Bloom.Enabled || SweetFX.HDR.Enabled) { HideUnactiveTabs(); }
+            else { tabControl1.TabPages.Remove(tabPage6); }
+        }
+
         void checkBox16_CheckedChanged(object sender, EventArgs e)
         {
+            bloomToolStripMenuItem.CheckedChanged -= bloomToolStripMenuItem_CheckedChanged;
+            bloomToolStripMenuItem.Checked = checkBox16.Checked;
             SweetFX.Bloom.Enabled = checkBox16.Checked;
+            bloomToolStripMenuItem.CheckedChanged += bloomToolStripMenuItem_CheckedChanged;
+            if (SweetFX.Bloom.Enabled || SweetFX.HDR.Enabled) { HideUnactiveTabs(); }
+            else { tabControl1.TabPages.Remove(tabPage6); }
         }
 
         void numericUpDown26_ValueChanged(object sender, EventArgs e)
@@ -1450,9 +1615,24 @@ namespace SweetFX_Configurator
 
         #region HDR
 
+        private void hDRToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox15.CheckedChanged -= checkBox15_CheckedChanged;
+            checkBox15.Checked = hDRToolStripMenuItem.Checked;
+            SweetFX.HDR.Enabled = checkBox15.Checked;
+            checkBox15.CheckedChanged += checkBox15_CheckedChanged;
+            if (SweetFX.Bloom.Enabled || SweetFX.HDR.Enabled) { HideUnactiveTabs(); }
+            else { tabControl1.TabPages.Remove(tabPage6); }
+        }
+
         void checkBox15_CheckedChanged(object sender, EventArgs e)
         {
+            hDRToolStripMenuItem.CheckedChanged -= hDRToolStripMenuItem_CheckedChanged;
             SweetFX.HDR.Enabled = checkBox15.Checked;
+            hDRToolStripMenuItem.Checked = checkBox15.Checked;
+            hDRToolStripMenuItem.CheckedChanged += hDRToolStripMenuItem_CheckedChanged;
+            if (SweetFX.Bloom.Enabled || SweetFX.HDR.Enabled) { HideUnactiveTabs(); }
+            else { tabControl1.TabPages.Remove(tabPage6); }
         }
 
         void numericUpDown25_ValueChanged(object sender, EventArgs e)
@@ -1491,9 +1671,24 @@ namespace SweetFX_Configurator
 
         #region LumaSharpen
 
+        private void lumaSharpenToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox20.CheckedChanged -= checkBox20_CheckedChanged;
+            checkBox20.Checked = lumaSharpenToolStripMenuItem.Checked;
+            SweetFX.LumaSharpen.Enabled = checkBox20.Checked;
+            checkBox20.CheckedChanged += checkBox20_CheckedChanged;
+            if (!SweetFX.LumaSharpen.Enabled) { tabControl1.TabPages.Remove(tabPage8); }
+            else { HideUnactiveTabs(); }
+        }
+
         void checkBox20_CheckedChanged(object sender, EventArgs e)
         {
+            lumaSharpenToolStripMenuItem.CheckedChanged -= lumaSharpenToolStripMenuItem_CheckedChanged;
+            lumaSharpenToolStripMenuItem.Checked = checkBox20.Checked;
             SweetFX.LumaSharpen.Enabled = checkBox20.Checked;
+            lumaSharpenToolStripMenuItem.CheckedChanged += lumaSharpenToolStripMenuItem_CheckedChanged;
+            if (!SweetFX.LumaSharpen.Enabled) { tabControl1.TabPages.Remove(tabPage8); }
+            else { HideUnactiveTabs(); }
         }
 
         void numericUpDown32_ValueChanged(object sender, EventArgs e)
@@ -1558,9 +1753,24 @@ namespace SweetFX_Configurator
 
         #region Levels
 
+        private void levelsToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox21.CheckedChanged -= checkBox21_CheckedChanged;
+            checkBox21.Checked = levelsToolStripMenuItem.Checked;
+            SweetFX.Levels.Enabled = checkBox21.Checked;
+            checkBox21.CheckedChanged += checkBox21_CheckedChanged;
+            if (!SweetFX.Levels.Enabled) { tabControl1.TabPages.Remove(tabPage9); }
+            else { HideUnactiveTabs(); }
+        }
+
         void checkBox21_CheckedChanged(object sender, EventArgs e)
         {
+            levelsToolStripMenuItem.CheckedChanged -= levelsToolStripMenuItem_CheckedChanged;
+            levelsToolStripMenuItem.Checked = checkBox21.Checked;
             SweetFX.Levels.Enabled = checkBox21.Checked;
+            levelsToolStripMenuItem.CheckedChanged += levelsToolStripMenuItem_CheckedChanged;
+            if (!SweetFX.Levels.Enabled) { tabControl1.TabPages.Remove(tabPage9); }
+            else { HideUnactiveTabs(); }
         }
 
         void numericUpDown35_ValueChanged(object sender, EventArgs e)
@@ -1599,9 +1809,24 @@ namespace SweetFX_Configurator
 
         #region Technicolor
 
+        private void technicolorToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox23.CheckedChanged -= checkBox23_CheckedChanged;
+            checkBox23.Checked = technicolorToolStripMenuItem.Checked;
+            SweetFX.Technicolor.Enabled = checkBox23.Checked;
+            checkBox23.CheckedChanged += checkBox23_CheckedChanged;
+            if (!SweetFX.Technicolor.Enabled) { tabControl1.TabPages.Remove(tabPage10); }
+            else { HideUnactiveTabs(); }
+        }
+
         void checkBox23_CheckedChanged(object sender, EventArgs e)
         {
+            technicolorToolStripMenuItem.CheckedChanged -= technicolorToolStripMenuItem_CheckedChanged;
+            technicolorToolStripMenuItem.Checked = checkBox23.Checked;
             SweetFX.Technicolor.Enabled = checkBox23.Checked;
+            technicolorToolStripMenuItem.CheckedChanged += technicolorToolStripMenuItem_CheckedChanged;
+            if (!SweetFX.Technicolor.Enabled) { tabControl1.TabPages.Remove(tabPage10); }
+            else { HideUnactiveTabs(); }
         }
 
         void numericUpDown52_ValueChanged(object sender, EventArgs e)
@@ -1688,9 +1913,24 @@ namespace SweetFX_Configurator
 
         #region DPX
 
+        private void dPXToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox9.CheckedChanged -= checkBox9_CheckedChanged;
+            checkBox9.Checked = dPXToolStripMenuItem.Checked;
+            SweetFX.Cineon_DPX.Enabled = checkBox9.Checked;
+            checkBox9.CheckedChanged += checkBox9_CheckedChanged;
+            if (!SweetFX.Cineon_DPX.Enabled) { tabControl1.TabPages.Remove(tabPage7); }
+            else { HideUnactiveTabs(); }
+        }
+
         void checkBox9_CheckedChanged(object sender, EventArgs e)
         {
+            dPXToolStripMenuItem.CheckedChanged -= dPXToolStripMenuItem_CheckedChanged;
+            dPXToolStripMenuItem.Checked = checkBox9.Checked;
             SweetFX.Cineon_DPX.Enabled = checkBox9.Checked;
+            dPXToolStripMenuItem.CheckedChanged += dPXToolStripMenuItem_CheckedChanged;
+            if (!SweetFX.Cineon_DPX.Enabled) { tabControl1.TabPages.Remove(tabPage7); }
+            else { HideUnactiveTabs(); }
         }
 
         void numericUpDown39_ValueChanged(object sender, EventArgs e)
@@ -1841,9 +2081,24 @@ namespace SweetFX_Configurator
 
         #region Monochrome
 
+        private void monochromeToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox11.CheckedChanged -= checkBox11_CheckedChanged;
+            checkBox11.Checked = monochromeToolStripMenuItem.Checked;
+            SweetFX.Monochrome.Enabled = checkBox11.Checked;
+            checkBox11.CheckedChanged += checkBox11_CheckedChanged;
+            if (!SweetFX.Monochrome.Enabled) { tabControl1.TabPages.Remove(tabPage11); }
+            else { HideUnactiveTabs(); }
+        }
+
         void checkBox11_CheckedChanged(object sender, EventArgs e)
         {
+            monochromeToolStripMenuItem.CheckedChanged -= monochromeToolStripMenuItem_CheckedChanged;
+            monochromeToolStripMenuItem.Checked = checkBox11.Checked;
             SweetFX.Monochrome.Enabled = checkBox11.Checked;
+            monochromeToolStripMenuItem.CheckedChanged += monochromeToolStripMenuItem_CheckedChanged;
+            if (!SweetFX.Monochrome.Enabled) { tabControl1.TabPages.Remove(tabPage11); }
+            else { HideUnactiveTabs(); }
         }
 
         void numericUpDown54_ValueChanged(object sender, EventArgs e)
@@ -1898,9 +2153,24 @@ namespace SweetFX_Configurator
 
         #region Lift Gamma Gain
 
+        private void liftGammaGainToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox13.CheckedChanged -= checkBox13_CheckedChanged;
+            checkBox13.Checked = liftGammaGainToolStripMenuItem.Checked;
+            SweetFX.Lift_Gamma_Gain.Enabled = checkBox13.Checked;
+            checkBox13.CheckedChanged += checkBox13_CheckedChanged;
+            if (!SweetFX.Lift_Gamma_Gain.Enabled) { tabControl1.TabPages.Remove(tabPage12); }
+            else { HideUnactiveTabs(); }
+        }
+
         void checkBox13_CheckedChanged(object sender, EventArgs e)
         {
+            liftGammaGainToolStripMenuItem.CheckedChanged -= liftGammaGainToolStripMenuItem_CheckedChanged;
+            liftGammaGainToolStripMenuItem.Checked = checkBox13.Checked;
             SweetFX.Lift_Gamma_Gain.Enabled = checkBox13.Checked;
+            liftGammaGainToolStripMenuItem.CheckedChanged += liftGammaGainToolStripMenuItem_CheckedChanged;
+            if (!SweetFX.Lift_Gamma_Gain.Enabled) { tabControl1.TabPages.Remove(tabPage12); }
+            else { HideUnactiveTabs(); }
         }
 
         void numericUpDown53_ValueChanged(object sender, EventArgs e)
@@ -2051,9 +2321,24 @@ namespace SweetFX_Configurator
 
         #region Tonemap
 
+        private void tonemapToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox17.CheckedChanged -= checkBox17_CheckedChanged;
+            checkBox17.Checked = tonemapToolStripMenuItem.Checked;
+            SweetFX.Tonemap.Enabled = checkBox17.Checked;
+            checkBox17.CheckedChanged += checkBox17_CheckedChanged;
+            if (!SweetFX.Tonemap.Enabled) { tabControl1.TabPages.Remove(tabPage13); }
+            else { HideUnactiveTabs(); }
+        }
+
         void checkBox17_CheckedChanged(object sender, EventArgs e)
         {
+            tonemapToolStripMenuItem.CheckedChanged -= tonemapToolStripMenuItem_CheckedChanged;
             SweetFX.Tonemap.Enabled = checkBox17.Checked;
+            tonemapToolStripMenuItem.Checked = checkBox17.Checked;
+            tonemapToolStripMenuItem.CheckedChanged += tonemapToolStripMenuItem_CheckedChanged;
+            if (!SweetFX.Tonemap.Enabled) { tabControl1.TabPages.Remove(tabPage13); }
+            else { HideUnactiveTabs(); }
         }
 
         void numericUpDown69_ValueChanged(object sender, EventArgs e)
@@ -2188,9 +2473,24 @@ namespace SweetFX_Configurator
 
         #region Vibrance
 
+        private void vibranceToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox18.CheckedChanged -= checkBox18_CheckedChanged;
+            checkBox18.Checked = vibranceToolStripMenuItem.Checked;
+            SweetFX.Vibrance.Enabled = checkBox18.Checked;
+            checkBox18.CheckedChanged += checkBox18_CheckedChanged;
+            if (!SweetFX.Vibrance.Enabled) { tabControl1.TabPages.Remove(tabPage14); }
+            else { HideUnactiveTabs(); }
+        }
+
         void checkBox18_CheckedChanged(object sender, EventArgs e)
         {
+            vibranceToolStripMenuItem.CheckedChanged -= vibranceToolStripMenuItem_CheckedChanged;
+            vibranceToolStripMenuItem.Checked = checkBox18.Checked;
             SweetFX.Vibrance.Enabled = checkBox18.Checked;
+            vibranceToolStripMenuItem.CheckedChanged += vibranceToolStripMenuItem_CheckedChanged;
+            if (!SweetFX.Vibrance.Enabled) { tabControl1.TabPages.Remove(tabPage14); }
+            else { HideUnactiveTabs(); }
         }
 
         void numericUpDown76_ValueChanged(object sender, EventArgs e)
@@ -2261,9 +2561,24 @@ namespace SweetFX_Configurator
 
         #region Curves
 
+        private void curvesToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox24.CheckedChanged -= checkBox24_CheckedChanged;
+            checkBox24.Checked = curvesToolStripMenuItem.Checked;
+            SweetFX.Curves.Enabled = checkBox24.Checked;
+            checkBox24.CheckedChanged += checkBox24_CheckedChanged;
+            if (!SweetFX.Curves.Enabled) { tabControl1.TabPages.Remove(tabPage15); }
+            else { HideUnactiveTabs(); }
+        }
+
         void checkBox24_CheckedChanged(object sender, EventArgs e)
         {
+            curvesToolStripMenuItem.CheckedChanged -= curvesToolStripMenuItem_CheckedChanged;
+            curvesToolStripMenuItem.Checked = checkBox24.Checked;
             SweetFX.Curves.Enabled = checkBox24.Checked;
+            curvesToolStripMenuItem.CheckedChanged += curvesToolStripMenuItem_CheckedChanged;
+            if (!SweetFX.Curves.Enabled) { tabControl1.TabPages.Remove(tabPage15); }
+            else { HideUnactiveTabs(); }
         }
 
         void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -2271,20 +2586,9 @@ namespace SweetFX_Configurator
             SweetFX.Curves.Mode = comboBox1.SelectedIndex;
         }
 
-        void numericUpDown72_ValueChanged(object sender, EventArgs e)
+        void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.trackBar72.Scroll -= new System.EventHandler(this.trackBar72_Scroll);
-            trackBar72.Value = Convert.ToInt32(numericUpDown72.Value);
-            SweetFX.Curves.Formula = trackBar72.Value;
-            this.trackBar72.Scroll += new System.EventHandler(this.trackBar72_Scroll);
-        }
-
-        void trackBar72_Scroll(object sender, EventArgs e)
-        {
-            this.numericUpDown72.ValueChanged -= new System.EventHandler(this.numericUpDown72_ValueChanged);
-            numericUpDown72.Value = (decimal)trackBar72.Value;
-            SweetFX.Curves.Formula = trackBar72.Value;
-            this.numericUpDown72.ValueChanged += new System.EventHandler(this.numericUpDown72_ValueChanged);
+            SweetFX.Curves.Formula = comboBox7.SelectedIndex + 1;
         }
 
         void numericUpDown73_ValueChanged(object sender, EventArgs e)
@@ -2307,9 +2611,24 @@ namespace SweetFX_Configurator
 
         #region Dither
 
+        private void ditherToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox26.CheckedChanged -= checkBox26_CheckedChanged;
+            checkBox26.Checked = ditherToolStripMenuItem.Checked;
+            SweetFX.Dither.Enabled = checkBox26.Checked;
+            checkBox26.CheckedChanged += checkBox26_CheckedChanged;
+            if (SweetFX.Sepia.Enabled || SweetFX.Dither.Enabled) { tabControl1.TabPages.Add(tabPage16); }
+            else { HideUnactiveTabs(); }
+        }
+
         void checkBox26_CheckedChanged(object sender, EventArgs e)
         {
+            ditherToolStripMenuItem.CheckedChanged -= ditherToolStripMenuItem_CheckedChanged;
+            ditherToolStripMenuItem.Checked = checkBox26.Checked;
             SweetFX.Dither.Enabled = checkBox26.Checked;
+            ditherToolStripMenuItem.CheckedChanged += ditherToolStripMenuItem_CheckedChanged;
+            if (SweetFX.Sepia.Enabled || SweetFX.Dither.Enabled) { tabControl1.TabPages.Add(tabPage16); }
+            else { HideUnactiveTabs(); }
         }
 
         void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
@@ -2321,9 +2640,24 @@ namespace SweetFX_Configurator
 
         #region Sepia
 
+        private void sepiaToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox22.CheckedChanged -= checkBox22_CheckedChanged;
+            checkBox22.Checked = sepiaToolStripMenuItem.Checked;
+            SweetFX.Sepia.Enabled = checkBox22.Checked;
+            checkBox22.CheckedChanged += checkBox22_CheckedChanged;
+            if (SweetFX.Sepia.Enabled || SweetFX.Dither.Enabled) { tabControl1.TabPages.Add(tabPage16); }
+            else { HideUnactiveTabs(); }
+        }
+
         void checkBox22_CheckedChanged(object sender, EventArgs e)
         {
+            sepiaToolStripMenuItem.CheckedChanged -= sepiaToolStripMenuItem_CheckedChanged;
+            sepiaToolStripMenuItem.Checked = checkBox22.Checked;
             SweetFX.Sepia.Enabled = checkBox22.Checked;
+            sepiaToolStripMenuItem.CheckedChanged += sepiaToolStripMenuItem_CheckedChanged;
+            if (SweetFX.Sepia.Enabled || SweetFX.Dither.Enabled) { tabControl1.TabPages.Add(tabPage16); }
+            else { HideUnactiveTabs(); }
         }
 
         void numericUpDown82_ValueChanged(object sender, EventArgs e)
@@ -2410,9 +2744,24 @@ namespace SweetFX_Configurator
 
         #region Vignette
 
+        private void vignetteToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox25.CheckedChanged -= checkBox25_CheckedChanged;
+            checkBox25.Checked = vignetteToolStripMenuItem.Checked;
+            SweetFX.Vignette.Enabled = checkBox25.Checked;
+            checkBox25.CheckedChanged += checkBox25_CheckedChanged;
+            if (!SweetFX.Vignette.Enabled) { tabControl1.TabPages.Remove(tabPage17); }
+            else { HideUnactiveTabs(); }
+        }
+
         void checkBox25_CheckedChanged(object sender, EventArgs e)
         {
+            vignetteToolStripMenuItem.CheckedChanged -= vignetteToolStripMenuItem_CheckedChanged;
+            vignetteToolStripMenuItem.Checked = checkBox25.Checked;
             SweetFX.Vignette.Enabled = checkBox25.Checked;
+            vignetteToolStripMenuItem.CheckedChanged += vignetteToolStripMenuItem_CheckedChanged;
+            if (!SweetFX.Vignette.Enabled) { tabControl1.TabPages.Remove(tabPage17); }
+            else { HideUnactiveTabs(); }
         }
 
         void numericUpDown77_ValueChanged(object sender, EventArgs e)
@@ -2520,9 +2869,24 @@ namespace SweetFX_Configurator
 
         #region Border
 
+        private void borderToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox28.CheckedChanged -= checkBox28_CheckedChanged;
+            checkBox28.Checked = borderToolStripMenuItem.Checked;
+            SweetFX.Border.Enabled = checkBox28.Checked;
+            checkBox28.CheckedChanged += checkBox28_CheckedChanged;
+            if (!SweetFX.Border.Enabled) { tabControl1.TabPages.Remove(tabPage18); }
+            else { HideUnactiveTabs(); }
+        }
+
         void checkBox28_CheckedChanged(object sender, EventArgs e)
         {
+            borderToolStripMenuItem.CheckedChanged -= borderToolStripMenuItem_CheckedChanged;
+            borderToolStripMenuItem.Checked = checkBox28.Checked;
             SweetFX.Border.Enabled = checkBox28.Checked;
+            borderToolStripMenuItem.CheckedChanged += borderToolStripMenuItem_CheckedChanged;
+            if (!SweetFX.Border.Enabled) { tabControl1.TabPages.Remove(tabPage18); }
+            else { HideUnactiveTabs(); }
         }
 
         void numericUpDown90_ValueChanged(object sender, EventArgs e)
@@ -2561,7 +2925,7 @@ namespace SweetFX_Configurator
         {
             this.trackBar89.Scroll -= new System.EventHandler(this.trackBar89_Scroll);
             trackBar89.Value = Convert.ToInt32(numericUpDown89.Value);
-            SweetFX.Border.Red = numericUpDown89.Value;
+            SweetFX.Border.Red = trackBar89.Value;
             this.trackBar89.Scroll += new System.EventHandler(this.trackBar89_Scroll);
         }
 
@@ -2577,7 +2941,7 @@ namespace SweetFX_Configurator
         {
             this.trackBar87.Scroll -= new System.EventHandler(this.trackBar87_Scroll);
             trackBar87.Value = Convert.ToInt32(numericUpDown87.Value);
-            SweetFX.Border.Green = numericUpDown87.Value;
+            SweetFX.Border.Green = trackBar87.Value;
             this.trackBar87.Scroll += new System.EventHandler(this.trackBar87_Scroll);
         }
 
@@ -2593,7 +2957,7 @@ namespace SweetFX_Configurator
         {
             this.trackBar84.Scroll -= new System.EventHandler(this.trackBar84_Scroll);
             trackBar84.Value = Convert.ToInt32(numericUpDown84.Value);
-            SweetFX.Border.Blue = numericUpDown84.Value;
+            SweetFX.Border.Blue = trackBar84.Value;
             this.trackBar84.Scroll += new System.EventHandler(this.trackBar84_Scroll);
         }
 
@@ -2609,9 +2973,24 @@ namespace SweetFX_Configurator
 
         #region Splitscreen
 
+        private void splitscreenToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBox27.CheckedChanged -= checkBox27_CheckedChanged;
+            checkBox27.Checked = splitscreenToolStripMenuItem.Checked;
+            SweetFX.Splitscreen.Enabled = checkBox27.Checked;
+            checkBox27.CheckedChanged += checkBox27_CheckedChanged;
+            if (!SweetFX.Splitscreen.Enabled) { tabControl1.TabPages.Remove(tabPage19); }
+            else { HideUnactiveTabs(); }
+        }
+
         void checkBox27_CheckedChanged(object sender, EventArgs e)
         {
+            splitscreenToolStripMenuItem.CheckedChanged -= splitscreenToolStripMenuItem_CheckedChanged;
+            splitscreenToolStripMenuItem.Checked = checkBox27.Checked;
             SweetFX.Splitscreen.Enabled = checkBox27.Checked;
+            splitscreenToolStripMenuItem.CheckedChanged += splitscreenToolStripMenuItem_CheckedChanged;
+            if (!SweetFX.Splitscreen.Enabled) { tabControl1.TabPages.Remove(tabPage19); }
+            else { HideUnactiveTabs(); }
         }
 
         void comboBox4_SelectedIndexChanged(object sender, EventArgs e)

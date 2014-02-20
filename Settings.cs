@@ -11,6 +11,7 @@ namespace SweetFX_Configurator
     {
         private static IniFile ini;
         public static event GameAddedD GameAdded;
+        public static event GameAddedD GameRemoved;
 
         public static void Load()
         {
@@ -199,6 +200,7 @@ namespace SweetFX_Configurator
         public static void DeleteGame(Game _game)
         {
             ini.DeleteSection(gameNameSaferizer(_game.Name));
+            GameRemoved(_game);
         }
 
         public static string gameNameSaferizer(string game_name)
