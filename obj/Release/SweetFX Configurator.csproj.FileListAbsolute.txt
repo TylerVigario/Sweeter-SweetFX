@@ -1,0 +1,17 @@
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Release\ObjectListView.dll
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Release\SweetFX Configurator.csprojResolveAssemblyReference.cache
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Release\SweetFX_Configurator.MainForm.resources
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Release\SweetFX_Configurator.Properties.Resources.resources
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Release\SweetFX Configurator.csproj.GenerateResource.Cache
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Release\Ookii.Dialogs.dll
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Release\SweetFX_Configurator.AddGameForm.resources
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Release\SweetFX_Configurator.InstallManagerForm.resources
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Release\SweetFX_Configurator.AboutForm.resources
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Release\SweetFX_Configurator.SettingsForm.resources
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Release\Sweeter SweetFX.exe.config
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Release\Sweeter SweetFX.exe
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Release\Sweeter SweetFX.pdb
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Release\Sweeter SweetFX.exe
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Release\Sweeter SweetFX.pdb
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Release\CrashReporter.NET.dll
+C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Release\Newtonsoft.Json.dll

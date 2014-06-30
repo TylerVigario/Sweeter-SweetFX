@@ -1,6 +1,6 @@
 ﻿namespace SweetFX_Configurator
 {
-    partial class InstallManagerForm
+    partial class GameManagerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,9 +30,11 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.fastObjectListView1 = new BrightIdeasSoftware.FastObjectListView();
             this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,6 +62,18 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(326, 251);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(56, 23);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Load";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // fastObjectListView1
             // 
             this.fastObjectListView1.AllColumns.Add(this.olvColumn1);
@@ -85,29 +99,43 @@
             // 
             this.olvColumn1.AspectName = "Name";
             this.olvColumn1.CellPadding = null;
-            this.olvColumn1.Text = "Name";
-            this.olvColumn1.Width = 110;
+            this.olvColumn1.Text = "Game";
+            this.olvColumn1.Width = 292;
             // 
             // olvColumn2
             // 
-            this.olvColumn2.AspectName = "Directory";
+            this.olvColumn2.AspectName = "isSweetFXInstalled";
             this.olvColumn2.CellPadding = null;
-            this.olvColumn2.Text = "Directory";
-            this.olvColumn2.Width = 253;
+            this.olvColumn2.Text = "SweetFX";
+            this.olvColumn2.Width = 70;
+            // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.Enabled = false;
+            this.button4.Location = new System.Drawing.Point(264, 251);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(56, 23);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "Install";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // InstallManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(394, 281);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.fastObjectListView1);
             this.Name = "InstallManagerForm";
-            this.Text = "SweetFX Manager";
+            this.Text = "Game Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InstallManagerForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.InstallManagerForm_FormClosed);
-            this.Load += new System.EventHandler(this.InstallManagerForm_Load);
+            this.Load += new System.EventHandler(this.GameManagerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fastObjectListView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -120,5 +148,7 @@
         private BrightIdeasSoftware.OLVColumn olvColumn2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }

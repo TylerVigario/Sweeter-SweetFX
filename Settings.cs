@@ -37,24 +37,24 @@ namespace SweetFX_Configurator
 
         #endregion
 
-        #region InstallManager_Window_Geometry
+        #region GameManager_Window_Geometry
 
-        private static string iwg = null;
+        private static string gmwg = null;
 
-        public static string InstallManager_Window_Geometry
+        public static string GameManager_Window_Geometry
         {
             get
             {
-                if (iwg == null)
+                if (gmwg == null)
                 {
-                    iwg = ini.GetString("Settings", "InstallManager_Window_Geometry", "");
+                    gmwg = ini.GetString("Settings", "GameManager_Window_Geometry", "");
                 }
-                return iwg;
+                return gmwg;
             }
             set
             {
-                ini.WriteValue("Settings", "InstallManager_Window_Geometry", value);
-                iwg = value;
+                ini.WriteValue("Settings", "GameManager_Window_Geometry", value);
+                gmwg = value;
             }
         }
 
@@ -124,6 +124,52 @@ namespace SweetFX_Configurator
             {
                 ini.WriteValue("Settings", "About_Window_Geometry", value);
                 abwg = value;
+            }
+        }
+
+        #endregion
+
+        #region InstallManager_Window_Geometry
+
+        private static string imwg = null;
+
+        public static string InstallManager_Window_Geometry
+        {
+            get
+            {
+                if (imwg == null)
+                {
+                    imwg = ini.GetString("Settings", "InstallManager_Window_Geometry", "");
+                }
+                return imwg;
+            }
+            set
+            {
+                ini.WriteValue("Settings", "InstallManager_Window_Geometry", value);
+                imwg = value;
+            }
+        }
+
+        #endregion
+
+        #region AddInstall_Window_Geometry
+
+        private static string aiwg = null;
+
+        public static string AddInstall_Window_Geometry
+        {
+            get
+            {
+                if (aiwg == null)
+                {
+                    aiwg = ini.GetString("Settings", "AddInstall_Window_Geometry", "");
+                }
+                return aiwg;
+            }
+            set
+            {
+                ini.WriteValue("Settings", "AddInstall_Window_Geometry", value);
+                aiwg = value;
             }
         }
 

@@ -34,6 +34,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gamesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.effectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showActiveOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -400,7 +401,7 @@
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.checkBox27 = new System.Windows.Forms.CheckBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.installManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabPage5.SuspendLayout();
@@ -637,6 +638,7 @@
             // gamesToolStripMenuItem1
             // 
             this.gamesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.installManagerToolStripMenuItem,
             this.addToolStripMenuItem,
             this.toolStripSeparator1});
             this.gamesToolStripMenuItem1.Name = "gamesToolStripMenuItem1";
@@ -649,6 +651,11 @@
             this.addToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.addToolStripMenuItem.Text = "Game Manager";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
             // 
             // effectsToolStripMenuItem
             // 
@@ -6171,10 +6178,12 @@
             this.checkBox27.Text = "Enabled";
             this.checkBox27.UseVisualStyleBackColor = true;
             // 
-            // toolStripSeparator1
+            // installManagerToolStripMenuItem
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
+            this.installManagerToolStripMenuItem.Name = "installManagerToolStripMenuItem";
+            this.installManagerToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.installManagerToolStripMenuItem.Text = "Install Manager";
+            this.installManagerToolStripMenuItem.Click += new System.EventHandler(this.installManagerToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -6188,6 +6197,8 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.Opacity = 0D;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sweeter SweetFX v0.2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
@@ -6799,6 +6810,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem installManagerToolStripMenuItem;
     }
 }
 

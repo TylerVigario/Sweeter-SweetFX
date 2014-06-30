@@ -1,6 +1,6 @@
 ﻿namespace SweetFX_Configurator
 {
-    partial class AddGameForm
+    partial class AddInstallForm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,6 +36,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.vistaFolderBrowserDialog1 = new Ookii.Dialogs.VistaFolderBrowserDialog();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,19 +48,20 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(420, 20);
             this.textBox1.TabIndex = 1;
-            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddGameForm_KeyDown);
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddInstallForm_KeyDown);
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(534, 77);
+            this.groupBox1.Size = new System.Drawing.Size(536, 102);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
@@ -71,7 +73,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(160, 20);
             this.textBox2.TabIndex = 0;
-            this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddGameForm_KeyDown);
+            this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddInstallForm_KeyDown);
             // 
             // label2
             // 
@@ -94,18 +96,18 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(444, 95);
+            this.button2.Location = new System.Drawing.Point(444, 120);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 3;
             this.button2.Text = "Save";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            this.button2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddGameForm_KeyDown);
+            this.button2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddInstallForm_KeyDown);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(36, 95);
+            this.button1.Location = new System.Drawing.Point(36, 120);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -117,22 +119,33 @@
             // 
             this.vistaFolderBrowserDialog1.ShowNewFolderButton = false;
             // 
-            // AddGameForm
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.Location = new System.Drawing.Point(24, 69);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(190, 17);
+            this.checkBox1.TabIndex = 4;
+            this.checkBox1.Text = "Remove source SweetFX directory";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // AddInstallForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(559, 123);
+            this.ClientSize = new System.Drawing.Size(559, 150);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
-            this.Name = "AddGameForm";
+            this.Name = "AddInstallForm";
             this.ShowIcon = false;
-            this.Text = "Add Game";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddGameForm_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddGameForm_FormClosed);
-            this.Load += new System.EventHandler(this.AddGameForm_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddGameForm_KeyDown);
+            this.Text = "Add SweetFX";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddInstallForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddInstallForm_FormClosed);
+            this.Load += new System.EventHandler(this.AddInstallForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddInstallForm_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -149,5 +162,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private Ookii.Dialogs.VistaFolderBrowserDialog vistaFolderBrowserDialog1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

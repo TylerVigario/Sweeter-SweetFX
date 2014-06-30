@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.IO;
 using System.Windows.Forms;
 
 namespace SweetFX_Configurator
@@ -51,8 +53,15 @@ namespace SweetFX_Configurator
                 return;
             }
             Settings.AddGame(new Game(textBox2.Text.Trim(), textBox1.Text.Trim()));
-            // Open Installer
             this.Close();
+        }
+
+        private void AddGameForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                button2_Click(this, null);
+            }
         }
     }
 }

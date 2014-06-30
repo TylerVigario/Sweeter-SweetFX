@@ -9,9 +9,10 @@ namespace SweetFX_Configurator
         private List<Message> MessagePump = new List<Message>();
         private Message _message = new Message("");
         private delegate void SweetFX_SaveSettingsFinishedD();
-        InstallManagerForm install_manager_form;
+        GameManagerForm game_manager_form;
         SettingsForm settings_form;
         AboutForm about_form;
+        InstallManagerForm install_manager_form;
 
         public MainForm()
         {
@@ -23,31 +24,27 @@ namespace SweetFX_Configurator
             Settings.Load();
             WindowGeometry.GeometryFromString(Settings.Main_Window_Geometry, this);
             //
-            Settings.GameAdded += Settings_GameAdded;
             Settings.GameRemoved += Settings_GameRemoved;
             List<Game> _gms = Settings.GetGames();
             foreach (Game _game in _gms)
             {
-                ToolStripMenuItem item = new ToolStripMenuItem();
-                item.Text = _game.Name;
-                item.Click += item_Click;
-                gamesToolStripMenuItem1.DropDownItems.Add(item);
+                if (_game.SweetFX > 0) { game_manager_form_SweetFXInstalled(_game); }
             }
             //
             SweetFX.SaveSettingsFinished += SweetFX_SaveSettingsFinished;
             SweetFX.GameLoaded += SweetFX_GameLoaded;
-            if (Settings.LastGame != null && Settings.LastGame.isSweetFXInstalled)
+            if (Settings.LastGame != null && Settings.LastGame.SweetFX > 0)
             {
+                this.Opacity = 100;
+                this.ShowInTaskbar = true;
                 showActiveOnlyToolStripMenuItem.Checked = Settings.OnlyActive;
                 SweetFX.Load(Settings.LastGame);
             }
             else
             {
-                this.Opacity = 0;
-                this.ShowInTaskbar = false;
-                install_manager_form = new InstallManagerForm();
-                install_manager_form.FormClosed += install_manager_form_FormClosed;
-                install_manager_form.Show();
+                game_manager_form = new GameManagerForm(false);
+                game_manager_form.FormClosed += game_manager_form_FormClosed;
+                game_manager_form.Show();
             }
             //
             tabControl1.SelectedIndex = Settings.LastTab;
@@ -67,15 +64,6 @@ namespace SweetFX_Configurator
             LoadSFXConfig();
             SetMessage(new Message("Game loaded: " + Settings.LastGame.Name, 0));
             if (showActiveOnlyToolStripMenuItem.Checked) { HideUnactiveTabs(); }
-        }
-
-        void Settings_GameAdded(Game _g)
-        {
-            if (this.Opacity == 0)
-            {
-                SweetFX.Load(_g);
-            }
-            gamesToolStripMenuItem1.DropDownItems.Add(_g.Name);
         }
 
         void Settings_GameRemoved(Game _g)
@@ -331,6 +319,20 @@ namespace SweetFX_Configurator
             trackBar86.Value = Convert.ToInt32(SweetFX.Vignette.Center_X * (decimal)1000);
             numericUpDown85.Value = SweetFX.Vignette.Center_Y;
             trackBar85.Value = Convert.ToInt32(SweetFX.Vignette.Center_Y * (decimal)1000);
+            if (SweetFX.Vignette.Type == 1)
+            {
+                numericUpDown86.Enabled = true;
+                trackBar86.Enabled = true;
+                numericUpDown85.Enabled = true;
+                trackBar85.Enabled = true;
+            }
+            else
+            {
+                numericUpDown86.Enabled = false;
+                trackBar86.Enabled = false;
+                numericUpDown85.Enabled = false;
+                trackBar85.Enabled = false;
+            }
             // Border
             checkBox28.Checked = SweetFX.Border.Enabled;
             borderToolStripMenuItem.Checked = SweetFX.Border.Enabled;
@@ -885,18 +887,33 @@ namespace SweetFX_Configurator
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!InstallManagerForm.isOpen)
+            if (!GameManagerForm.isOpen)
             {
-                install_manager_form = new InstallManagerForm();
-                install_manager_form.FormClosed += install_manager_form_FormClosed;
-                install_manager_form.Show();
+                game_manager_form = new GameManagerForm();
+                game_manager_form.FormClosed += game_manager_form_FormClosed;
+                game_manager_form.SweetFXInstalled += game_manager_form_SweetFXInstalled;
+                game_manager_form.SweetFXUninstalled += game_manager_form_SweetFXUninstalled;
+                game_manager_form.Show();
             }
-            else { install_manager_form.BringToFront(); }
+            else { game_manager_form.BringToFront(); }
         }
 
-        void install_manager_form_FormClosed(object sender, FormClosedEventArgs e)
+        void game_manager_form_SweetFXInstalled(Game _g)
         {
-            install_manager_form.Dispose();
+            ToolStripMenuItem item = new ToolStripMenuItem();
+            item.Text = _g.Name;
+            item.Click += item_Click;
+            gamesToolStripMenuItem1.DropDownItems.Add(item);
+        }
+
+        void game_manager_form_SweetFXUninstalled(Game _g)
+        {
+            Settings_GameRemoved(_g);
+        }
+
+        void game_manager_form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            game_manager_form.Dispose();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1005,6 +1022,22 @@ namespace SweetFX_Configurator
         private void tabControl1_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop)) { e.Effect = DragDropEffects.Copy; }
+        }
+
+        private void installManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!InstallManagerForm.isOpen)
+            {
+                install_manager_form = new InstallManagerForm();
+                install_manager_form.FormClosed += install_manager_form_FormClosed;
+                install_manager_form.Show();
+            }
+            else { install_manager_form.BringToFront(); }
+        }
+
+        void install_manager_form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            install_manager_form.Dispose();
         }
 
         #region SMAA
@@ -2106,6 +2139,106 @@ namespace SweetFX_Configurator
             this.trackBar54.Scroll -= new System.EventHandler(this.trackBar54_Scroll);
             trackBar54.Value = Convert.ToInt32(numericUpDown54.Value * (decimal)100);
             SweetFX.Monochrome.Red = numericUpDown54.Value;
+            //
+            decimal over = (SweetFX.Monochrome.Red + SweetFX.Monochrome.Green + SweetFX.Monochrome.Blue) - 1;
+            if (over != 0)
+            {
+                this.trackBar44.Scroll -= new System.EventHandler(this.trackBar44_Scroll);
+                this.numericUpDown44.ValueChanged -= new System.EventHandler(this.numericUpDown44_ValueChanged);
+                this.trackBar45.Scroll -= new System.EventHandler(this.trackBar45_Scroll);
+                this.numericUpDown45.ValueChanged -= new System.EventHandler(this.numericUpDown45_ValueChanged);
+                //
+                decimal check = SweetFX.Monochrome.Green - SweetFX.Monochrome.Blue;
+                if (over > 0)
+                {
+                    decimal green = 0;
+                    decimal blue = 0;
+                    if (check > 0)
+                    {
+                        decimal overflow = check - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            green = (over - overflow) + subtract;
+                            blue = overflow - subtract;
+                        }
+                        else { green = over; }
+                    }
+                    else if (check < 0)
+                    {
+                        decimal overflow = (check * -1) - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            blue = (over - overflow) + subtract;
+                            green = overflow - subtract;
+                        }
+                        else { blue = over; }
+                    }
+                    else
+                    {
+                        decimal subtract = Math.Round(over / 2, 2);
+                        blue = subtract;
+                        green = over - subtract;
+                    }
+                    SweetFX.Monochrome.Green -= green;
+                    trackBar44.Value -= Convert.ToInt32(green * 100);
+                    numericUpDown44.Value -= green;
+                    SweetFX.Monochrome.Blue -= blue;
+                    trackBar45.Value -= Convert.ToInt32(blue * 100);
+                    numericUpDown45.Value -= blue;
+                }
+                else
+                {
+                    over = over * -1;
+                    decimal green = 0;
+                    decimal blue = 0;
+                    if (check < 0)
+                    {
+                        decimal overflow = (check * -1) - over;
+                        if (overflow > 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            green = (over - overflow) + subtract;
+                            blue = overflow - subtract;
+                        }
+                        else { green = over; }
+                    }
+                    else if (check > 0)
+                    {
+                        decimal overflow = check - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            blue = (over - overflow) + subtract;
+                            green = overflow - subtract;
+                        }
+                        else { blue = over; }
+                    }
+                    else
+                    {
+                        decimal subtract = Math.Round(over / 2, 2);
+                        blue = subtract;
+                        green = over - subtract;
+                    }
+                    SweetFX.Monochrome.Green += green;
+                    trackBar44.Value += Convert.ToInt32(green * 100);
+                    numericUpDown44.Value += green;
+                    SweetFX.Monochrome.Blue += blue;
+                    trackBar45.Value += Convert.ToInt32(blue * 100);
+                    numericUpDown45.Value += blue;
+                }
+                //
+                this.trackBar44.Scroll += new System.EventHandler(this.trackBar44_Scroll);
+                this.numericUpDown44.ValueChanged += new System.EventHandler(this.numericUpDown44_ValueChanged);
+                this.trackBar45.Scroll += new System.EventHandler(this.trackBar45_Scroll);
+                this.numericUpDown45.ValueChanged += new System.EventHandler(this.numericUpDown45_ValueChanged);
+            }
+            //
             this.trackBar54.Scroll += new System.EventHandler(this.trackBar54_Scroll);
         }
 
@@ -2114,6 +2247,104 @@ namespace SweetFX_Configurator
             this.numericUpDown54.ValueChanged -= new System.EventHandler(this.numericUpDown54_ValueChanged);
             numericUpDown54.Value = (decimal)trackBar54.Value / (decimal)100;
             SweetFX.Monochrome.Red = numericUpDown54.Value;
+            decimal over = (SweetFX.Monochrome.Red + SweetFX.Monochrome.Green + SweetFX.Monochrome.Blue) - 1;
+            if (over != 0)
+            {
+                this.trackBar44.Scroll -= new System.EventHandler(this.trackBar44_Scroll);
+                this.numericUpDown44.ValueChanged -= new System.EventHandler(this.numericUpDown44_ValueChanged);
+                this.trackBar45.Scroll -= new System.EventHandler(this.trackBar45_Scroll);
+                this.numericUpDown45.ValueChanged -= new System.EventHandler(this.numericUpDown45_ValueChanged);
+                //
+                decimal check = SweetFX.Monochrome.Green - SweetFX.Monochrome.Blue;
+                if (over > 0)
+                {
+                    decimal green = 0;
+                    decimal blue = 0;
+                    if (check > 0)
+                    {
+                        decimal overflow = check - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            green = (over - overflow) + subtract;
+                            blue = overflow - subtract;
+                        }
+                        else { green = over; }
+                    }
+                    else if (check < 0)
+                    {
+                        decimal overflow = (check * -1) - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            blue = (over - overflow) + subtract;
+                            green = overflow - subtract;
+                        }
+                        else { blue = over; }
+                    }
+                    else
+                    {
+                        decimal subtract = Math.Round(over / 2, 2);
+                        blue = subtract;
+                        green = over - subtract;
+                    }
+                    SweetFX.Monochrome.Green -= green;
+                    trackBar44.Value -= Convert.ToInt32(green * 100);
+                    numericUpDown44.Value -= green;
+                    SweetFX.Monochrome.Blue -= blue;
+                    trackBar45.Value -= Convert.ToInt32(blue * 100);
+                    numericUpDown45.Value -= blue;
+                }
+                else
+                {
+                    over = over * -1;
+                    decimal green = 0;
+                    decimal blue = 0;
+                    if (check < 0)
+                    {
+                        decimal overflow = (check * -1) - over;
+                        if (overflow > 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            green = (over - overflow) + subtract;
+                            blue = overflow - subtract;
+                        }
+                        else { green = over; }
+                    }
+                    else if (check > 0)
+                    {
+                        decimal overflow = check - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            blue = (over - overflow) + subtract;
+                            green = overflow - subtract;
+                        }
+                        else { blue = over; }
+                    }
+                    else
+                    {
+                        decimal subtract = Math.Round(over / 2, 2);
+                        blue = subtract;
+                        green = over - subtract;
+                    }
+                    SweetFX.Monochrome.Green += green;
+                    trackBar44.Value += Convert.ToInt32(green * 100);
+                    numericUpDown44.Value += green;
+                    SweetFX.Monochrome.Blue += blue;
+                    trackBar45.Value += Convert.ToInt32(blue * 100);
+                    numericUpDown45.Value += blue;
+                }
+                //
+                this.trackBar44.Scroll += new System.EventHandler(this.trackBar44_Scroll);
+                this.numericUpDown44.ValueChanged += new System.EventHandler(this.numericUpDown44_ValueChanged);
+                this.trackBar45.Scroll += new System.EventHandler(this.trackBar45_Scroll);
+                this.numericUpDown45.ValueChanged += new System.EventHandler(this.numericUpDown45_ValueChanged);
+            }
             this.numericUpDown54.ValueChanged += new System.EventHandler(this.numericUpDown54_ValueChanged);
         }
 
@@ -2121,7 +2352,105 @@ namespace SweetFX_Configurator
         {
             this.trackBar44.Scroll -= new System.EventHandler(this.trackBar44_Scroll);
             trackBar44.Value = Convert.ToInt32(numericUpDown44.Value * (decimal)100);
-            SweetFX.Monochrome.Green = numericUpDown4.Value;
+            SweetFX.Monochrome.Green = numericUpDown44.Value;
+            decimal over = (SweetFX.Monochrome.Red + SweetFX.Monochrome.Green + SweetFX.Monochrome.Blue) - 1;
+            if (over != 0)
+            {
+                this.trackBar54.Scroll -= new System.EventHandler(this.trackBar54_Scroll);
+                this.numericUpDown54.ValueChanged -= new System.EventHandler(this.numericUpDown54_ValueChanged);
+                this.trackBar45.Scroll -= new System.EventHandler(this.trackBar45_Scroll);
+                this.numericUpDown45.ValueChanged -= new System.EventHandler(this.numericUpDown45_ValueChanged);
+                //
+                decimal check = SweetFX.Monochrome.Red - SweetFX.Monochrome.Blue;
+                if (over > 0)
+                {
+                    decimal green = 0;
+                    decimal blue = 0;
+                    if (check > 0)
+                    {
+                        decimal overflow = check - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            green = (over - overflow) + subtract;
+                            blue = overflow - subtract;
+                        }
+                        else { green = over; }
+                    }
+                    else if (check < 0)
+                    {
+                        decimal overflow = (check * -1) - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            blue = (over - overflow) + subtract;
+                            green = overflow - subtract;
+                        }
+                        else { blue = over; }
+                    }
+                    else
+                    {
+                        decimal subtract = Math.Round(over / 2, 2);
+                        blue = subtract;
+                        green = over - subtract;
+                    }
+                    SweetFX.Monochrome.Red -= green;
+                    trackBar54.Value -= Convert.ToInt32(green * 100);
+                    numericUpDown54.Value -= green;
+                    SweetFX.Monochrome.Blue -= blue;
+                    trackBar45.Value -= Convert.ToInt32(blue * 100);
+                    numericUpDown45.Value -= blue;
+                }
+                else
+                {
+                    over = over * -1;
+                    decimal green = 0;
+                    decimal blue = 0;
+                    if (check < 0)
+                    {
+                        decimal overflow = (check * -1) - over;
+                        if (overflow > 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            green = (over - overflow) + subtract;
+                            blue = overflow - subtract;
+                        }
+                        else { green = over; }
+                    }
+                    else if (check > 0)
+                    {
+                        decimal overflow = check - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            blue = (over - overflow) + subtract;
+                            green = overflow - subtract;
+                        }
+                        else { blue = over; }
+                    }
+                    else
+                    {
+                        decimal subtract = Math.Round(over / 2, 2);
+                        blue = subtract;
+                        green = over - subtract;
+                    }
+                    SweetFX.Monochrome.Red += green;
+                    trackBar54.Value += Convert.ToInt32(green * 100);
+                    numericUpDown54.Value += green;
+                    SweetFX.Monochrome.Blue += blue;
+                    trackBar45.Value += Convert.ToInt32(blue * 100);
+                    numericUpDown45.Value += blue;
+                }
+                //
+                this.trackBar54.Scroll += new System.EventHandler(this.trackBar54_Scroll);
+                this.numericUpDown54.ValueChanged += new System.EventHandler(this.numericUpDown54_ValueChanged);
+                this.trackBar45.Scroll += new System.EventHandler(this.trackBar45_Scroll);
+                this.numericUpDown45.ValueChanged += new System.EventHandler(this.numericUpDown45_ValueChanged);
+            }
             this.trackBar44.Scroll += new System.EventHandler(this.trackBar44_Scroll);
         }
 
@@ -2130,6 +2459,104 @@ namespace SweetFX_Configurator
             this.numericUpDown44.ValueChanged -= new System.EventHandler(this.numericUpDown44_ValueChanged);
             numericUpDown44.Value = (decimal)trackBar44.Value / (decimal)100;
             SweetFX.Monochrome.Green = numericUpDown44.Value;
+            decimal over = (SweetFX.Monochrome.Red + SweetFX.Monochrome.Green + SweetFX.Monochrome.Blue) - 1;
+            if (over != 0)
+            {
+                this.trackBar54.Scroll -= new System.EventHandler(this.trackBar54_Scroll);
+                this.numericUpDown54.ValueChanged -= new System.EventHandler(this.numericUpDown54_ValueChanged);
+                this.trackBar45.Scroll -= new System.EventHandler(this.trackBar45_Scroll);
+                this.numericUpDown45.ValueChanged -= new System.EventHandler(this.numericUpDown45_ValueChanged);
+                //
+                decimal check = SweetFX.Monochrome.Red - SweetFX.Monochrome.Blue;
+                if (over > 0)
+                {
+                    decimal green = 0;
+                    decimal blue = 0;
+                    if (check > 0)
+                    {
+                        decimal overflow = check - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            green = (over - overflow) + subtract;
+                            blue = overflow - subtract;
+                        }
+                        else { green = over; }
+                    }
+                    else if (check < 0)
+                    {
+                        decimal overflow = (check * -1) - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            blue = (over - overflow) + subtract;
+                            green = overflow - subtract;
+                        }
+                        else { blue = over; }
+                    }
+                    else
+                    {
+                        decimal subtract = Math.Round(over / 2, 2);
+                        blue = subtract;
+                        green = over - subtract;
+                    }
+                    SweetFX.Monochrome.Red -= green;
+                    trackBar54.Value -= Convert.ToInt32(green * 100);
+                    numericUpDown54.Value -= green;
+                    SweetFX.Monochrome.Blue -= blue;
+                    trackBar45.Value -= Convert.ToInt32(blue * 100);
+                    numericUpDown45.Value -= blue;
+                }
+                else
+                {
+                    over = over * -1;
+                    decimal green = 0;
+                    decimal blue = 0;
+                    if (check < 0)
+                    {
+                        decimal overflow = (check * -1) - over;
+                        if (overflow > 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            green = (over - overflow) + subtract;
+                            blue = overflow - subtract;
+                        }
+                        else { green = over; }
+                    }
+                    else if (check > 0)
+                    {
+                        decimal overflow = check - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            blue = (over - overflow) + subtract;
+                            green = overflow - subtract;
+                        }
+                        else { blue = over; }
+                    }
+                    else
+                    {
+                        decimal subtract = Math.Round(over / 2, 2);
+                        blue = subtract;
+                        green = over - subtract;
+                    }
+                    SweetFX.Monochrome.Red += green;
+                    trackBar54.Value += Convert.ToInt32(green * 100);
+                    numericUpDown54.Value += green;
+                    SweetFX.Monochrome.Blue += blue;
+                    trackBar45.Value += Convert.ToInt32(blue * 100);
+                    numericUpDown45.Value += blue;
+                }
+                //
+                this.trackBar54.Scroll += new System.EventHandler(this.trackBar54_Scroll);
+                this.numericUpDown54.ValueChanged += new System.EventHandler(this.numericUpDown54_ValueChanged);
+                this.trackBar45.Scroll += new System.EventHandler(this.trackBar45_Scroll);
+                this.numericUpDown45.ValueChanged += new System.EventHandler(this.numericUpDown45_ValueChanged);
+            }
             this.numericUpDown44.ValueChanged += new System.EventHandler(this.numericUpDown44_ValueChanged);
         }
 
@@ -2138,6 +2565,104 @@ namespace SweetFX_Configurator
             this.trackBar45.Scroll -= new System.EventHandler(this.trackBar45_Scroll);
             trackBar45.Value = Convert.ToInt32(numericUpDown45.Value * (decimal)100);
             SweetFX.Monochrome.Blue = numericUpDown45.Value;
+            decimal over = (SweetFX.Monochrome.Red + SweetFX.Monochrome.Green + SweetFX.Monochrome.Blue) - 1;
+            if (over != 0)
+            {
+                this.trackBar54.Scroll -= new System.EventHandler(this.trackBar54_Scroll);
+                this.numericUpDown54.ValueChanged -= new System.EventHandler(this.numericUpDown54_ValueChanged);
+                this.trackBar44.Scroll -= new System.EventHandler(this.trackBar44_Scroll);
+                this.numericUpDown44.ValueChanged -= new System.EventHandler(this.numericUpDown44_ValueChanged);
+                //
+                decimal check = SweetFX.Monochrome.Red - SweetFX.Monochrome.Green;
+                if (over > 0)
+                {
+                    decimal green = 0;
+                    decimal blue = 0;
+                    if (check > 0)
+                    {
+                        decimal overflow = check - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            green = (over - overflow) + subtract;
+                            blue = overflow - subtract;
+                        }
+                        else { green = over; }
+                    }
+                    else if (check < 0)
+                    {
+                        decimal overflow = (check * -1) - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            blue = (over - overflow) + subtract;
+                            green = overflow - subtract;
+                        }
+                        else { blue = over; }
+                    }
+                    else
+                    {
+                        decimal subtract = Math.Round(over / 2, 2);
+                        blue = subtract;
+                        green = over - subtract;
+                    }
+                    SweetFX.Monochrome.Red -= green;
+                    trackBar54.Value -= Convert.ToInt32(green * 100);
+                    numericUpDown54.Value -= green;
+                    SweetFX.Monochrome.Green -= blue;
+                    trackBar44.Value -= Convert.ToInt32(blue * 100);
+                    numericUpDown44.Value -= blue;
+                }
+                else
+                {
+                    over = over * -1;
+                    decimal green = 0;
+                    decimal blue = 0;
+                    if (check < 0)
+                    {
+                        decimal overflow = (check * -1) - over;
+                        if (overflow > 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            green = (over - overflow) + subtract;
+                            blue = overflow - subtract;
+                        }
+                        else { green = over; }
+                    }
+                    else if (check > 0)
+                    {
+                        decimal overflow = check - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            blue = (over - overflow) + subtract;
+                            green = overflow - subtract;
+                        }
+                        else { blue = over; }
+                    }
+                    else
+                    {
+                        decimal subtract = Math.Round(over / 2, 2);
+                        blue = subtract;
+                        green = over - subtract;
+                    }
+                    SweetFX.Monochrome.Red += green;
+                    trackBar54.Value += Convert.ToInt32(green * 100);
+                    numericUpDown54.Value += green;
+                    SweetFX.Monochrome.Green += blue;
+                    trackBar44.Value += Convert.ToInt32(blue * 100);
+                    numericUpDown44.Value += blue;
+                }
+                //
+                this.trackBar54.Scroll += new System.EventHandler(this.trackBar54_Scroll);
+                this.numericUpDown54.ValueChanged += new System.EventHandler(this.numericUpDown54_ValueChanged);
+                this.trackBar44.Scroll += new System.EventHandler(this.trackBar44_Scroll);
+                this.numericUpDown44.ValueChanged += new System.EventHandler(this.numericUpDown44_ValueChanged);
+            }
             this.trackBar45.Scroll += new System.EventHandler(this.trackBar45_Scroll);
         }
 
@@ -2146,6 +2671,104 @@ namespace SweetFX_Configurator
             this.numericUpDown45.ValueChanged -= new System.EventHandler(this.numericUpDown45_ValueChanged);
             numericUpDown45.Value = (decimal)trackBar45.Value / (decimal)100;
             SweetFX.Monochrome.Blue = numericUpDown45.Value;
+            decimal over = (SweetFX.Monochrome.Red + SweetFX.Monochrome.Green + SweetFX.Monochrome.Blue) - 1;
+            if (over != 0)
+            {
+                this.trackBar54.Scroll -= new System.EventHandler(this.trackBar54_Scroll);
+                this.numericUpDown54.ValueChanged -= new System.EventHandler(this.numericUpDown54_ValueChanged);
+                this.trackBar44.Scroll -= new System.EventHandler(this.trackBar44_Scroll);
+                this.numericUpDown44.ValueChanged -= new System.EventHandler(this.numericUpDown44_ValueChanged);
+                //
+                decimal check = SweetFX.Monochrome.Red - SweetFX.Monochrome.Green;
+                if (over > 0)
+                {
+                    decimal green = 0;
+                    decimal blue = 0;
+                    if (check > 0)
+                    {
+                        decimal overflow = check - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            green = (over - overflow) + subtract;
+                            blue = overflow - subtract;
+                        }
+                        else { green = over; }
+                    }
+                    else if (check < 0)
+                    {
+                        decimal overflow = (check * -1) - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            blue = (over - overflow) + subtract;
+                            green = overflow - subtract;
+                        }
+                        else { blue = over; }
+                    }
+                    else
+                    {
+                        decimal subtract = Math.Round(over / 2, 2);
+                        blue = subtract;
+                        green = over - subtract;
+                    }
+                    SweetFX.Monochrome.Red -= green;
+                    trackBar54.Value -= Convert.ToInt32(green * 100);
+                    numericUpDown54.Value -= green;
+                    SweetFX.Monochrome.Green -= blue;
+                    trackBar44.Value -= Convert.ToInt32(blue * 100);
+                    numericUpDown44.Value -= blue;
+                }
+                else
+                {
+                    over = over * -1;
+                    decimal green = 0;
+                    decimal blue = 0;
+                    if (check < 0)
+                    {
+                        decimal overflow = (check * -1) - over;
+                        if (overflow > 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            green = (over - overflow) + subtract;
+                            blue = overflow - subtract;
+                        }
+                        else { green = over; }
+                    }
+                    else if (check > 0)
+                    {
+                        decimal overflow = check - over;
+                        if (overflow < 0)
+                        {
+                            overflow = overflow * -1;
+                            decimal subtract = Math.Round(overflow / 2, 2);
+                            blue = (over - overflow) + subtract;
+                            green = overflow - subtract;
+                        }
+                        else { blue = over; }
+                    }
+                    else
+                    {
+                        decimal subtract = Math.Round(over / 2, 2);
+                        blue = subtract;
+                        green = over - subtract;
+                    }
+                    SweetFX.Monochrome.Red += green;
+                    trackBar54.Value += Convert.ToInt32(green * 100);
+                    numericUpDown54.Value += green;
+                    SweetFX.Monochrome.Green += blue;
+                    trackBar44.Value += Convert.ToInt32(blue * 100);
+                    numericUpDown44.Value += blue;
+                }
+                //
+                this.trackBar54.Scroll += new System.EventHandler(this.trackBar54_Scroll);
+                this.numericUpDown54.ValueChanged += new System.EventHandler(this.numericUpDown54_ValueChanged);
+                this.trackBar44.Scroll += new System.EventHandler(this.trackBar44_Scroll);
+                this.numericUpDown44.ValueChanged += new System.EventHandler(this.numericUpDown44_ValueChanged);
+            }
             this.numericUpDown45.ValueChanged += new System.EventHandler(this.numericUpDown45_ValueChanged);
         }
 
@@ -2831,6 +3454,20 @@ namespace SweetFX_Configurator
         void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             SweetFX.Vignette.Type = comboBox2.SelectedIndex + 1;
+            if (SweetFX.Vignette.Type == 1)
+            {
+                numericUpDown86.Enabled = true;
+                trackBar86.Enabled = true;
+                numericUpDown85.Enabled = true;
+                trackBar85.Enabled = true;
+            }
+            else
+            {
+                numericUpDown86.Enabled = false;
+                trackBar86.Enabled = false;
+                numericUpDown85.Enabled = false;
+                trackBar85.Enabled = false;
+            }
         }
 
         void numericUpDown86_ValueChanged(object sender, EventArgs e)

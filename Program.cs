@@ -14,9 +14,9 @@ namespace SweetFX_Configurator
         private static void Main()
         {
             Application.ThreadException += ApplicationThreadException;
-
+            //
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
-
+            //
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
