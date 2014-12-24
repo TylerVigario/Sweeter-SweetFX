@@ -50,7 +50,7 @@ namespace SweetFX_Configurator
         public static void Load(Game g)
         {
             if (_loading) { return; }
-            if (!File.Exists(g.Directory + @"\SweetFX_settings.txt")) { return; }
+            if (!File.Exists(g.DirectoryInfo.FullName + @"\SweetFX_settings.txt")) { return; }
             _loading = true;
             Settings.LastGame = g;
             if (SaveSettingQueue.Count > 0) { SaveSettingWorker(); }
@@ -75,7 +75,7 @@ namespace SweetFX_Configurator
             Dither = new _Dither();
             Border = new _Border();
             Splitscreen = new _Splitscreen();
-            string[] lines = File.ReadAllLines(g.Directory + @"\SweetFX_settings.txt");
+            string[] lines = File.ReadAllLines(g.DirectoryInfo.FullName + @"\SweetFX_settings.txt");
             foreach (string line in lines)
             {
                 if (line.StartsWith("#define"))
@@ -502,7 +502,7 @@ namespace SweetFX_Configurator
 
         private static void SaveSettingWorker()
         {
-            string[] lines = File.ReadAllLines(Settings.LastGame.Directory + @"\SweetFX_settings.txt");
+            string[] lines = File.ReadAllLines(Settings.LastGame.DirectoryInfo.FullName + @"\SweetFX_settings.txt");
             for (int i = 0; i < lines.Length; i++)
             {
                 string low_line = lines[i].ToLower();
@@ -538,7 +538,7 @@ namespace SweetFX_Configurator
                     }
                 }
             }
-            File.WriteAllLines(Settings.LastGame.Directory + @"\SweetFX_settings.txt", lines);
+            File.WriteAllLines(Settings.LastGame.DirectoryInfo.FullName + @"\SweetFX_settings.txt", lines);
             _timer.Enabled = false;
             _timer.Stop();
             SaveSettingsFinished();

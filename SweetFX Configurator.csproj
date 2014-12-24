@@ -75,18 +75,6 @@
     <Compile Include="AddGameForm.Designer.cs">
       <DependentUpon>AddGameForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddInstallForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddInstallForm.Designer.cs">
-      <DependentUpon>AddInstallForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InstallForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InstallForm.Designer.cs">
-      <DependentUpon>InstallForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="InstallManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,12 +111,6 @@
     <EmbeddedResource Include="AddGameForm.resx">
       <DependentUpon>AddGameForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddInstallForm.resx">
-      <DependentUpon>AddInstallForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InstallForm.resx">
-      <DependentUpon>InstallForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="InstallManagerForm.resx">
       <DependentUpon>InstallManagerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +144,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\MSDN\Better ComboBox Source\WindowsForms1.1 Sample\BetterComboBox\BetterComboBox.csproj">
+      <Project>{1577B938-31D0-44C8-AB05-991F5673F89C}</Project>
+      <Name>BetterComboBox</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

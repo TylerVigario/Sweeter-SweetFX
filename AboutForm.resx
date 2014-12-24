@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>Ookii.Dialogs - Sven Groot, http://www.ookii.org/Software/Dialogs/
+CrashReporter.NET - https://crashreporterdotnet.codeplex.com/
+Json.NET - James Newton-King, http://james.newtonking.com/json
+ObjectListView - Phillip Piper, http://objectlistview.sourceforge.net/cs/index.html
+Samuel Allen, http://www.codeproject.com/Articles/25510/Restore-Form-Position-and-Size-in-C
+IniFile
+</value>
+  </data>
 </root>

@@ -28,22 +28,24 @@ namespace SweetFX_Configurator
             List<Game> _gms = Settings.GetGames();
             foreach (Game _game in _gms)
             {
-                if (_game.SweetFX > 0) { game_manager_form_SweetFXInstalled(_game); }
+                if (_game.SweetFX_Install != null) { game_manager_form_SweetFXInstalled(_game); }
             }
             //
             SweetFX.SaveSettingsFinished += SweetFX_SaveSettingsFinished;
+            showActiveOnlyToolStripMenuItem.Checked = Settings.OnlyActive;
             SweetFX.GameLoaded += SweetFX_GameLoaded;
-            if (Settings.LastGame != null && Settings.LastGame.SweetFX > 0)
+            if (Settings.LastGame != null && Settings.LastGame.SweetFX_Install != null)
             {
                 this.Opacity = 100;
                 this.ShowInTaskbar = true;
-                showActiveOnlyToolStripMenuItem.Checked = Settings.OnlyActive;
                 SweetFX.Load(Settings.LastGame);
             }
             else
             {
                 game_manager_form = new GameManagerForm(false);
                 game_manager_form.FormClosed += game_manager_form_FormClosed;
+                game_manager_form.SweetFXInstalled += game_manager_form_SweetFXInstalled;
+                game_manager_form.SweetFXUninstalled += game_manager_form_SweetFXUninstalled;
                 game_manager_form.Show();
             }
             //
@@ -1012,7 +1014,7 @@ namespace SweetFX_Configurator
                 {
                     if (MessageBox.Show("Are you sure you want to overide all your " + '"' + Settings.LastGame.Name + '"' + " SweetFX settings?", "Sweeter SweetFX", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        System.IO.File.Copy(file, Settings.LastGame.Directory + @"\SweetFX_settings.txt", true);
+                        System.IO.File.Copy(file, Settings.LastGame.DirectoryInfo.FullName + @"\SweetFX_settings.txt", true);
                         SweetFX.Load(Settings.LastGame);
                     }
                 }
@@ -1058,8 +1060,9 @@ namespace SweetFX_Configurator
             checkBox1.Checked = sMAAToolStripMenuItem.Checked;
             SweetFX.SMAA.Enabled = checkBox1.Checked;
             checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.SMAA.Enabled) { tabControl1.TabPages.Remove(tabPage1); }
-            else { HideUnactiveTabs(); }
+            else { HideUnactiveTabs(); tabControl1.SelectedTab = tabPage1; }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -1068,6 +1071,7 @@ namespace SweetFX_Configurator
             sMAAToolStripMenuItem.Checked = checkBox1.Checked;
             SweetFX.SMAA.Enabled = checkBox1.Checked;
             sMAAToolStripMenuItem.CheckedChanged += sMAAToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.SMAA.Enabled) { tabControl1.TabPages.Remove(tabPage1); }
             else { HideUnactiveTabs(); }
         }
@@ -1146,6 +1150,7 @@ namespace SweetFX_Configurator
             checkBox6.Checked = fXAAToolStripMenuItem.Checked;
             SweetFX.FXAA.Enabled = checkBox6.Checked;
             checkBox6.CheckedChanged += checkBox6_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.FXAA.Enabled) { tabControl1.TabPages.Remove(tabPage2); }
             else { HideUnactiveTabs(); }
         }
@@ -1156,6 +1161,7 @@ namespace SweetFX_Configurator
             fXAAToolStripMenuItem.Checked = checkBox6.Checked;
             SweetFX.FXAA.Enabled = checkBox6.Checked;
             fXAAToolStripMenuItem.CheckedChanged += fXAAToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.FXAA.Enabled) { tabControl1.TabPages.Remove(tabPage2); }
             else { HideUnactiveTabs(); }
         }
@@ -1234,7 +1240,8 @@ namespace SweetFX_Configurator
             checkBox4.Checked = explosionCartoonToolStripMenuItem.Checked;
             SweetFX.Explosion.Enabled = checkBox4.Checked;
             checkBox4.CheckedChanged += checkBox4_CheckedChanged;
-            if (SweetFX.Explosion.Enabled || SweetFX.Cartoon.Enabled) { HideUnactiveTabs(); }
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
+            if (SweetFX.Explosion.Enabled || SweetFX.Cartoon.Enabled) { HideUnactiveTabs(); tabControl1.SelectedTab = tabPage3; }
             else { tabControl1.TabPages.Remove(tabPage3); }
         }
 
@@ -1244,6 +1251,7 @@ namespace SweetFX_Configurator
             explosionCartoonToolStripMenuItem.Checked = checkBox4.Checked;
             SweetFX.Explosion.Enabled = checkBox4.Checked;
             explosionCartoonToolStripMenuItem.CheckedChanged += explosionCartoonToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (SweetFX.Explosion.Enabled || SweetFX.Cartoon.Enabled) { HideUnactiveTabs(); }
             else { tabControl1.TabPages.Remove(tabPage3); }
         }
@@ -1274,6 +1282,7 @@ namespace SweetFX_Configurator
             checkBox5.Checked = cartoonToolStripMenuItem.Enabled;
             SweetFX.Cartoon.Enabled = checkBox5.Checked;
             checkBox5.CheckedChanged += checkBox5_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (SweetFX.Explosion.Enabled || SweetFX.Cartoon.Enabled) { HideUnactiveTabs(); }
             else { tabControl1.TabPages.Remove(tabPage3); }
         }
@@ -1284,6 +1293,7 @@ namespace SweetFX_Configurator
             cartoonToolStripMenuItem.Enabled = checkBox5.Checked;
             SweetFX.Cartoon.Enabled = checkBox5.Checked;
             cartoonToolStripMenuItem.CheckedChanged += cartoonToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (SweetFX.Explosion.Enabled || SweetFX.Cartoon.Enabled) { HideUnactiveTabs(); }
             else { tabControl1.TabPages.Remove(tabPage3); }
         }
@@ -1333,6 +1343,7 @@ namespace SweetFX_Configurator
             checkBox8.Checked = cRTToolStripMenuItem.Checked;
             checkBox12.CheckedChanged += checkBox12_CheckedChanged;
             checkBox8.CheckedChanged += checkBox8_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.CRT.Enabled) { tabControl1.TabPages.Remove(tabPage4); tabControl1.TabPages.Remove(tabPage5); }
             else { HideUnactiveTabs(); }
         }
@@ -1346,6 +1357,7 @@ namespace SweetFX_Configurator
             cRTToolStripMenuItem.Checked = checkBox8.Checked;
             checkBox12.CheckedChanged += checkBox12_CheckedChanged;
             cRTToolStripMenuItem.CheckedChanged += cRTToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.CRT.Enabled) { tabControl1.TabPages.Remove(tabPage4); tabControl1.TabPages.Remove(tabPage5); }
             else { HideUnactiveTabs(); }
         }
@@ -1359,6 +1371,7 @@ namespace SweetFX_Configurator
             cRTToolStripMenuItem.Checked = checkBox12.Checked;
             checkBox8.CheckedChanged += checkBox8_CheckedChanged;
             cRTToolStripMenuItem.CheckedChanged += cRTToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.CRT.Enabled) { tabControl1.TabPages.Remove(tabPage4); tabControl1.TabPages.Remove(tabPage5); }
             else { HideUnactiveTabs(); }
         }
@@ -1582,6 +1595,7 @@ namespace SweetFX_Configurator
             checkBox16.Checked = bloomToolStripMenuItem.Checked;
             SweetFX.Bloom.Enabled = checkBox16.Checked;
             checkBox16.CheckedChanged += checkBox16_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (SweetFX.Bloom.Enabled || SweetFX.HDR.Enabled) { HideUnactiveTabs(); }
             else { tabControl1.TabPages.Remove(tabPage6); }
         }
@@ -1592,6 +1606,7 @@ namespace SweetFX_Configurator
             bloomToolStripMenuItem.Checked = checkBox16.Checked;
             SweetFX.Bloom.Enabled = checkBox16.Checked;
             bloomToolStripMenuItem.CheckedChanged += bloomToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (SweetFX.Bloom.Enabled || SweetFX.HDR.Enabled) { HideUnactiveTabs(); }
             else { tabControl1.TabPages.Remove(tabPage6); }
         }
@@ -1654,6 +1669,7 @@ namespace SweetFX_Configurator
             checkBox15.Checked = hDRToolStripMenuItem.Checked;
             SweetFX.HDR.Enabled = checkBox15.Checked;
             checkBox15.CheckedChanged += checkBox15_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (SweetFX.Bloom.Enabled || SweetFX.HDR.Enabled) { HideUnactiveTabs(); }
             else { tabControl1.TabPages.Remove(tabPage6); }
         }
@@ -1664,6 +1680,7 @@ namespace SweetFX_Configurator
             SweetFX.HDR.Enabled = checkBox15.Checked;
             hDRToolStripMenuItem.Checked = checkBox15.Checked;
             hDRToolStripMenuItem.CheckedChanged += hDRToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (SweetFX.Bloom.Enabled || SweetFX.HDR.Enabled) { HideUnactiveTabs(); }
             else { tabControl1.TabPages.Remove(tabPage6); }
         }
@@ -1710,6 +1727,7 @@ namespace SweetFX_Configurator
             checkBox20.Checked = lumaSharpenToolStripMenuItem.Checked;
             SweetFX.LumaSharpen.Enabled = checkBox20.Checked;
             checkBox20.CheckedChanged += checkBox20_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.LumaSharpen.Enabled) { tabControl1.TabPages.Remove(tabPage8); }
             else { HideUnactiveTabs(); }
         }
@@ -1720,6 +1738,7 @@ namespace SweetFX_Configurator
             lumaSharpenToolStripMenuItem.Checked = checkBox20.Checked;
             SweetFX.LumaSharpen.Enabled = checkBox20.Checked;
             lumaSharpenToolStripMenuItem.CheckedChanged += lumaSharpenToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.LumaSharpen.Enabled) { tabControl1.TabPages.Remove(tabPage8); }
             else { HideUnactiveTabs(); }
         }
@@ -1792,6 +1811,7 @@ namespace SweetFX_Configurator
             checkBox21.Checked = levelsToolStripMenuItem.Checked;
             SweetFX.Levels.Enabled = checkBox21.Checked;
             checkBox21.CheckedChanged += checkBox21_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Levels.Enabled) { tabControl1.TabPages.Remove(tabPage9); }
             else { HideUnactiveTabs(); }
         }
@@ -1802,6 +1822,7 @@ namespace SweetFX_Configurator
             levelsToolStripMenuItem.Checked = checkBox21.Checked;
             SweetFX.Levels.Enabled = checkBox21.Checked;
             levelsToolStripMenuItem.CheckedChanged += levelsToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Levels.Enabled) { tabControl1.TabPages.Remove(tabPage9); }
             else { HideUnactiveTabs(); }
         }
@@ -1848,6 +1869,7 @@ namespace SweetFX_Configurator
             checkBox23.Checked = technicolorToolStripMenuItem.Checked;
             SweetFX.Technicolor.Enabled = checkBox23.Checked;
             checkBox23.CheckedChanged += checkBox23_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Technicolor.Enabled) { tabControl1.TabPages.Remove(tabPage10); }
             else { HideUnactiveTabs(); }
         }
@@ -1858,6 +1880,7 @@ namespace SweetFX_Configurator
             technicolorToolStripMenuItem.Checked = checkBox23.Checked;
             SweetFX.Technicolor.Enabled = checkBox23.Checked;
             technicolorToolStripMenuItem.CheckedChanged += technicolorToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Technicolor.Enabled) { tabControl1.TabPages.Remove(tabPage10); }
             else { HideUnactiveTabs(); }
         }
@@ -1952,6 +1975,7 @@ namespace SweetFX_Configurator
             checkBox9.Checked = dPXToolStripMenuItem.Checked;
             SweetFX.Cineon_DPX.Enabled = checkBox9.Checked;
             checkBox9.CheckedChanged += checkBox9_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Cineon_DPX.Enabled) { tabControl1.TabPages.Remove(tabPage7); }
             else { HideUnactiveTabs(); }
         }
@@ -1962,6 +1986,7 @@ namespace SweetFX_Configurator
             dPXToolStripMenuItem.Checked = checkBox9.Checked;
             SweetFX.Cineon_DPX.Enabled = checkBox9.Checked;
             dPXToolStripMenuItem.CheckedChanged += dPXToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Cineon_DPX.Enabled) { tabControl1.TabPages.Remove(tabPage7); }
             else { HideUnactiveTabs(); }
         }
@@ -2120,6 +2145,7 @@ namespace SweetFX_Configurator
             checkBox11.Checked = monochromeToolStripMenuItem.Checked;
             SweetFX.Monochrome.Enabled = checkBox11.Checked;
             checkBox11.CheckedChanged += checkBox11_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Monochrome.Enabled) { tabControl1.TabPages.Remove(tabPage11); }
             else { HideUnactiveTabs(); }
         }
@@ -2130,6 +2156,7 @@ namespace SweetFX_Configurator
             monochromeToolStripMenuItem.Checked = checkBox11.Checked;
             SweetFX.Monochrome.Enabled = checkBox11.Checked;
             monochromeToolStripMenuItem.CheckedChanged += monochromeToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Monochrome.Enabled) { tabControl1.TabPages.Remove(tabPage11); }
             else { HideUnactiveTabs(); }
         }
@@ -2782,6 +2809,7 @@ namespace SweetFX_Configurator
             checkBox13.Checked = liftGammaGainToolStripMenuItem.Checked;
             SweetFX.Lift_Gamma_Gain.Enabled = checkBox13.Checked;
             checkBox13.CheckedChanged += checkBox13_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Lift_Gamma_Gain.Enabled) { tabControl1.TabPages.Remove(tabPage12); }
             else { HideUnactiveTabs(); }
         }
@@ -2792,6 +2820,7 @@ namespace SweetFX_Configurator
             liftGammaGainToolStripMenuItem.Checked = checkBox13.Checked;
             SweetFX.Lift_Gamma_Gain.Enabled = checkBox13.Checked;
             liftGammaGainToolStripMenuItem.CheckedChanged += liftGammaGainToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Lift_Gamma_Gain.Enabled) { tabControl1.TabPages.Remove(tabPage12); }
             else { HideUnactiveTabs(); }
         }
@@ -2950,6 +2979,7 @@ namespace SweetFX_Configurator
             checkBox17.Checked = tonemapToolStripMenuItem.Checked;
             SweetFX.Tonemap.Enabled = checkBox17.Checked;
             checkBox17.CheckedChanged += checkBox17_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Tonemap.Enabled) { tabControl1.TabPages.Remove(tabPage13); }
             else { HideUnactiveTabs(); }
         }
@@ -2960,6 +2990,7 @@ namespace SweetFX_Configurator
             SweetFX.Tonemap.Enabled = checkBox17.Checked;
             tonemapToolStripMenuItem.Checked = checkBox17.Checked;
             tonemapToolStripMenuItem.CheckedChanged += tonemapToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Tonemap.Enabled) { tabControl1.TabPages.Remove(tabPage13); }
             else { HideUnactiveTabs(); }
         }
@@ -3102,6 +3133,7 @@ namespace SweetFX_Configurator
             checkBox18.Checked = vibranceToolStripMenuItem.Checked;
             SweetFX.Vibrance.Enabled = checkBox18.Checked;
             checkBox18.CheckedChanged += checkBox18_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Vibrance.Enabled) { tabControl1.TabPages.Remove(tabPage14); }
             else { HideUnactiveTabs(); }
         }
@@ -3112,6 +3144,7 @@ namespace SweetFX_Configurator
             vibranceToolStripMenuItem.Checked = checkBox18.Checked;
             SweetFX.Vibrance.Enabled = checkBox18.Checked;
             vibranceToolStripMenuItem.CheckedChanged += vibranceToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Vibrance.Enabled) { tabControl1.TabPages.Remove(tabPage14); }
             else { HideUnactiveTabs(); }
         }
@@ -3190,6 +3223,7 @@ namespace SweetFX_Configurator
             checkBox24.Checked = curvesToolStripMenuItem.Checked;
             SweetFX.Curves.Enabled = checkBox24.Checked;
             checkBox24.CheckedChanged += checkBox24_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Curves.Enabled) { tabControl1.TabPages.Remove(tabPage15); }
             else { HideUnactiveTabs(); }
         }
@@ -3200,6 +3234,7 @@ namespace SweetFX_Configurator
             curvesToolStripMenuItem.Checked = checkBox24.Checked;
             SweetFX.Curves.Enabled = checkBox24.Checked;
             curvesToolStripMenuItem.CheckedChanged += curvesToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Curves.Enabled) { tabControl1.TabPages.Remove(tabPage15); }
             else { HideUnactiveTabs(); }
         }
@@ -3240,6 +3275,7 @@ namespace SweetFX_Configurator
             checkBox26.Checked = ditherToolStripMenuItem.Checked;
             SweetFX.Dither.Enabled = checkBox26.Checked;
             checkBox26.CheckedChanged += checkBox26_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (SweetFX.Sepia.Enabled || SweetFX.Dither.Enabled) { tabControl1.TabPages.Add(tabPage16); }
             else { HideUnactiveTabs(); }
         }
@@ -3250,6 +3286,7 @@ namespace SweetFX_Configurator
             ditherToolStripMenuItem.Checked = checkBox26.Checked;
             SweetFX.Dither.Enabled = checkBox26.Checked;
             ditherToolStripMenuItem.CheckedChanged += ditherToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (SweetFX.Sepia.Enabled || SweetFX.Dither.Enabled) { tabControl1.TabPages.Add(tabPage16); }
             else { HideUnactiveTabs(); }
         }
@@ -3269,6 +3306,7 @@ namespace SweetFX_Configurator
             checkBox22.Checked = sepiaToolStripMenuItem.Checked;
             SweetFX.Sepia.Enabled = checkBox22.Checked;
             checkBox22.CheckedChanged += checkBox22_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (SweetFX.Sepia.Enabled || SweetFX.Dither.Enabled) { tabControl1.TabPages.Add(tabPage16); }
             else { HideUnactiveTabs(); }
         }
@@ -3279,6 +3317,7 @@ namespace SweetFX_Configurator
             sepiaToolStripMenuItem.Checked = checkBox22.Checked;
             SweetFX.Sepia.Enabled = checkBox22.Checked;
             sepiaToolStripMenuItem.CheckedChanged += sepiaToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (SweetFX.Sepia.Enabled || SweetFX.Dither.Enabled) { tabControl1.TabPages.Add(tabPage16); }
             else { HideUnactiveTabs(); }
         }
@@ -3373,6 +3412,7 @@ namespace SweetFX_Configurator
             checkBox25.Checked = vignetteToolStripMenuItem.Checked;
             SweetFX.Vignette.Enabled = checkBox25.Checked;
             checkBox25.CheckedChanged += checkBox25_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Vignette.Enabled) { tabControl1.TabPages.Remove(tabPage17); }
             else { HideUnactiveTabs(); }
         }
@@ -3383,6 +3423,7 @@ namespace SweetFX_Configurator
             vignetteToolStripMenuItem.Checked = checkBox25.Checked;
             SweetFX.Vignette.Enabled = checkBox25.Checked;
             vignetteToolStripMenuItem.CheckedChanged += vignetteToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Vignette.Enabled) { tabControl1.TabPages.Remove(tabPage17); }
             else { HideUnactiveTabs(); }
         }
@@ -3512,6 +3553,7 @@ namespace SweetFX_Configurator
             checkBox28.Checked = borderToolStripMenuItem.Checked;
             SweetFX.Border.Enabled = checkBox28.Checked;
             checkBox28.CheckedChanged += checkBox28_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Border.Enabled) { tabControl1.TabPages.Remove(tabPage18); }
             else { HideUnactiveTabs(); }
         }
@@ -3522,6 +3564,7 @@ namespace SweetFX_Configurator
             borderToolStripMenuItem.Checked = checkBox28.Checked;
             SweetFX.Border.Enabled = checkBox28.Checked;
             borderToolStripMenuItem.CheckedChanged += borderToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Border.Enabled) { tabControl1.TabPages.Remove(tabPage18); }
             else { HideUnactiveTabs(); }
         }
@@ -3616,6 +3659,7 @@ namespace SweetFX_Configurator
             checkBox27.Checked = splitscreenToolStripMenuItem.Checked;
             SweetFX.Splitscreen.Enabled = checkBox27.Checked;
             checkBox27.CheckedChanged += checkBox27_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Splitscreen.Enabled) { tabControl1.TabPages.Remove(tabPage19); }
             else { HideUnactiveTabs(); }
         }
@@ -3626,6 +3670,7 @@ namespace SweetFX_Configurator
             splitscreenToolStripMenuItem.Checked = checkBox27.Checked;
             SweetFX.Splitscreen.Enabled = checkBox27.Checked;
             splitscreenToolStripMenuItem.CheckedChanged += splitscreenToolStripMenuItem_CheckedChanged;
+            if (!showActiveOnlyToolStripMenuItem.Checked) return;
             if (!SweetFX.Splitscreen.Enabled) { tabControl1.TabPages.Remove(tabPage19); }
             else { HideUnactiveTabs(); }
         }

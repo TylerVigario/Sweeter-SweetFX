@@ -188,7 +188,11 @@ namespace SweetFX_Configurator
                     string section = ini.GetString("Settings", "Last_Game", "");
                     if (String.IsNullOrEmpty(section)) { return null; }
                     section = gameNameSaferizer(section);
-                    _lg = new Game(ini.GetString(section, "Name", ""), ini.GetString(section, "Directory" , ""));
+                    bool exists = false;
+                    foreach (string sec in ini.GetSectionNames()) { if (sec == section) { exists = true; } }
+                    if (exists)
+                        _lg = new Game(ini.GetString(section, "Name", ""), new DirectoryInfo(ini.GetString(section, "Directory", "")));
+                    else { return null; }
                 }
                 return _lg;
             }
@@ -219,7 +223,7 @@ namespace SweetFX_Configurator
         public static Game GetGame(string game)
         {
             string section = gameNameSaferizer(game);
-            return new Game(ini.GetString(section, "Name", ""), ini.GetString(section, "Directory", ""));
+            return new Game(ini.GetString(section, "Name", ""), new DirectoryInfo(ini.GetString(section, "Directory", "")));
         }
 
         public static List<Game> GetGames()
@@ -228,8 +232,7 @@ namespace SweetFX_Configurator
             List<Game> games = new List<Game>();
             foreach (string key in game_keys)
             {
-                if (key != "Settings") { games.Add(new Game(ini.GetString(key, "Name", ""),
-                                                            ini.GetString(key, "Directory", ""))); }
+                if (key != "Settings") { games.Add(new Game(ini.GetString(key, "Name", ""), new DirectoryInfo(ini.GetString(key, "Directory", "")))); }
             }
             return games;
         }
@@ -238,7 +241,7 @@ namespace SweetFX_Configurator
         {
             string section = gameNameSaferizer(_game.Name);
             ini.WriteValue(section, "Name", _game.Name);
-            ini.WriteValue(section, "Directory", _game.Directory);
+            ini.WriteValue(section, "Directory", _game.DirectoryInfo.FullName);
             LastGame = _game;
             GameAdded(_game);
         }

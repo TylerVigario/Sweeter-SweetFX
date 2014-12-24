@@ -33,6 +33,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gamesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.installManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.effectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -401,7 +402,6 @@
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.checkBox27 = new System.Windows.Forms.CheckBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.installManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabPage5.SuspendLayout();
@@ -609,6 +609,7 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 350);
@@ -625,13 +626,14 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gamesToolStripMenuItem1,
             this.effectsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(623, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(623, 27);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -642,20 +644,28 @@
             this.addToolStripMenuItem,
             this.toolStripSeparator1});
             this.gamesToolStripMenuItem1.Name = "gamesToolStripMenuItem1";
-            this.gamesToolStripMenuItem1.Size = new System.Drawing.Size(55, 20);
+            this.gamesToolStripMenuItem1.Size = new System.Drawing.Size(63, 23);
             this.gamesToolStripMenuItem1.Text = "Games";
+            // 
+            // installManagerToolStripMenuItem
+            // 
+            this.installManagerToolStripMenuItem.Name = "installManagerToolStripMenuItem";
+            this.installManagerToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
+            this.installManagerToolStripMenuItem.Text = "Install Manager";
+            this.installManagerToolStripMenuItem.Visible = false;
+            this.installManagerToolStripMenuItem.Click += new System.EventHandler(this.installManagerToolStripMenuItem_Click);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
             this.addToolStripMenuItem.Text = "Game Manager";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(170, 6);
             // 
             // effectsToolStripMenuItem
             // 
@@ -684,27 +694,27 @@
             this.borderToolStripMenuItem,
             this.splitscreenToolStripMenuItem});
             this.effectsToolStripMenuItem.Name = "effectsToolStripMenuItem";
-            this.effectsToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.effectsToolStripMenuItem.Size = new System.Drawing.Size(60, 23);
             this.effectsToolStripMenuItem.Text = "Effects";
             // 
             // showActiveOnlyToolStripMenuItem
             // 
             this.showActiveOnlyToolStripMenuItem.CheckOnClick = true;
             this.showActiveOnlyToolStripMenuItem.Name = "showActiveOnlyToolStripMenuItem";
-            this.showActiveOnlyToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.showActiveOnlyToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.showActiveOnlyToolStripMenuItem.Text = "Only Show Active";
             this.showActiveOnlyToolStripMenuItem.Click += new System.EventHandler(this.onlyActiveToolStripMenuItem_CheckedChanged);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(182, 6);
             // 
             // sMAAToolStripMenuItem
             // 
             this.sMAAToolStripMenuItem.CheckOnClick = true;
             this.sMAAToolStripMenuItem.Name = "sMAAToolStripMenuItem";
-            this.sMAAToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.sMAAToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.sMAAToolStripMenuItem.Text = "SMAA";
             this.sMAAToolStripMenuItem.CheckedChanged += new System.EventHandler(this.sMAAToolStripMenuItem_CheckedChanged);
             // 
@@ -712,7 +722,7 @@
             // 
             this.fXAAToolStripMenuItem.CheckOnClick = true;
             this.fXAAToolStripMenuItem.Name = "fXAAToolStripMenuItem";
-            this.fXAAToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.fXAAToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.fXAAToolStripMenuItem.Text = "FXAA";
             this.fXAAToolStripMenuItem.CheckedChanged += new System.EventHandler(this.fXAAToolStripMenuItem_CheckedChanged);
             // 
@@ -720,7 +730,7 @@
             // 
             this.explosionCartoonToolStripMenuItem.CheckOnClick = true;
             this.explosionCartoonToolStripMenuItem.Name = "explosionCartoonToolStripMenuItem";
-            this.explosionCartoonToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.explosionCartoonToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.explosionCartoonToolStripMenuItem.Text = "Explosion";
             this.explosionCartoonToolStripMenuItem.CheckedChanged += new System.EventHandler(this.explosionCartoonToolStripMenuItem_CheckedChanged);
             // 
@@ -728,7 +738,7 @@
             // 
             this.cartoonToolStripMenuItem.CheckOnClick = true;
             this.cartoonToolStripMenuItem.Name = "cartoonToolStripMenuItem";
-            this.cartoonToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.cartoonToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.cartoonToolStripMenuItem.Text = "Cartoon";
             this.cartoonToolStripMenuItem.CheckedChanged += new System.EventHandler(this.cartoonToolStripMenuItem_CheckedChanged);
             // 
@@ -736,7 +746,7 @@
             // 
             this.cRTToolStripMenuItem.CheckOnClick = true;
             this.cRTToolStripMenuItem.Name = "cRTToolStripMenuItem";
-            this.cRTToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.cRTToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.cRTToolStripMenuItem.Text = "CRT";
             this.cRTToolStripMenuItem.CheckedChanged += new System.EventHandler(this.cRTToolStripMenuItem_CheckedChanged);
             // 
@@ -744,7 +754,7 @@
             // 
             this.bloomToolStripMenuItem.CheckOnClick = true;
             this.bloomToolStripMenuItem.Name = "bloomToolStripMenuItem";
-            this.bloomToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.bloomToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.bloomToolStripMenuItem.Text = "Bloom";
             this.bloomToolStripMenuItem.CheckedChanged += new System.EventHandler(this.bloomToolStripMenuItem_CheckedChanged);
             // 
@@ -752,7 +762,7 @@
             // 
             this.hDRToolStripMenuItem.CheckOnClick = true;
             this.hDRToolStripMenuItem.Name = "hDRToolStripMenuItem";
-            this.hDRToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.hDRToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.hDRToolStripMenuItem.Text = "HDR";
             this.hDRToolStripMenuItem.CheckedChanged += new System.EventHandler(this.hDRToolStripMenuItem_CheckedChanged);
             // 
@@ -760,7 +770,7 @@
             // 
             this.lumaSharpenToolStripMenuItem.CheckOnClick = true;
             this.lumaSharpenToolStripMenuItem.Name = "lumaSharpenToolStripMenuItem";
-            this.lumaSharpenToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.lumaSharpenToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.lumaSharpenToolStripMenuItem.Text = "LumaSharpen";
             this.lumaSharpenToolStripMenuItem.CheckedChanged += new System.EventHandler(this.lumaSharpenToolStripMenuItem_CheckedChanged);
             // 
@@ -768,7 +778,7 @@
             // 
             this.levelsToolStripMenuItem.CheckOnClick = true;
             this.levelsToolStripMenuItem.Name = "levelsToolStripMenuItem";
-            this.levelsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.levelsToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.levelsToolStripMenuItem.Text = "Levels";
             this.levelsToolStripMenuItem.CheckedChanged += new System.EventHandler(this.levelsToolStripMenuItem_CheckedChanged);
             // 
@@ -776,7 +786,7 @@
             // 
             this.technicolorToolStripMenuItem.CheckOnClick = true;
             this.technicolorToolStripMenuItem.Name = "technicolorToolStripMenuItem";
-            this.technicolorToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.technicolorToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.technicolorToolStripMenuItem.Text = "Technicolor";
             this.technicolorToolStripMenuItem.CheckedChanged += new System.EventHandler(this.technicolorToolStripMenuItem_CheckedChanged);
             // 
@@ -784,7 +794,7 @@
             // 
             this.dPXToolStripMenuItem.CheckOnClick = true;
             this.dPXToolStripMenuItem.Name = "dPXToolStripMenuItem";
-            this.dPXToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.dPXToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.dPXToolStripMenuItem.Text = "DPX";
             this.dPXToolStripMenuItem.CheckedChanged += new System.EventHandler(this.dPXToolStripMenuItem_CheckedChanged);
             // 
@@ -792,7 +802,7 @@
             // 
             this.monochromeToolStripMenuItem.CheckOnClick = true;
             this.monochromeToolStripMenuItem.Name = "monochromeToolStripMenuItem";
-            this.monochromeToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.monochromeToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.monochromeToolStripMenuItem.Text = "Monochrome";
             this.monochromeToolStripMenuItem.CheckedChanged += new System.EventHandler(this.monochromeToolStripMenuItem_CheckedChanged);
             // 
@@ -800,7 +810,7 @@
             // 
             this.liftGammaGainToolStripMenuItem.CheckOnClick = true;
             this.liftGammaGainToolStripMenuItem.Name = "liftGammaGainToolStripMenuItem";
-            this.liftGammaGainToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.liftGammaGainToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.liftGammaGainToolStripMenuItem.Text = "Lift Gamma Gain";
             this.liftGammaGainToolStripMenuItem.CheckedChanged += new System.EventHandler(this.liftGammaGainToolStripMenuItem_CheckedChanged);
             // 
@@ -808,7 +818,7 @@
             // 
             this.tonemapToolStripMenuItem.CheckOnClick = true;
             this.tonemapToolStripMenuItem.Name = "tonemapToolStripMenuItem";
-            this.tonemapToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.tonemapToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.tonemapToolStripMenuItem.Text = "Tonemap";
             this.tonemapToolStripMenuItem.CheckedChanged += new System.EventHandler(this.tonemapToolStripMenuItem_CheckedChanged);
             // 
@@ -816,7 +826,7 @@
             // 
             this.vibranceToolStripMenuItem.CheckOnClick = true;
             this.vibranceToolStripMenuItem.Name = "vibranceToolStripMenuItem";
-            this.vibranceToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.vibranceToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.vibranceToolStripMenuItem.Text = "Vibrance";
             this.vibranceToolStripMenuItem.CheckedChanged += new System.EventHandler(this.vibranceToolStripMenuItem_CheckedChanged);
             // 
@@ -824,7 +834,7 @@
             // 
             this.curvesToolStripMenuItem.CheckOnClick = true;
             this.curvesToolStripMenuItem.Name = "curvesToolStripMenuItem";
-            this.curvesToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.curvesToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.curvesToolStripMenuItem.Text = "Curves";
             this.curvesToolStripMenuItem.CheckedChanged += new System.EventHandler(this.curvesToolStripMenuItem_CheckedChanged);
             // 
@@ -832,7 +842,7 @@
             // 
             this.sepiaToolStripMenuItem.CheckOnClick = true;
             this.sepiaToolStripMenuItem.Name = "sepiaToolStripMenuItem";
-            this.sepiaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.sepiaToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.sepiaToolStripMenuItem.Text = "Sepia";
             this.sepiaToolStripMenuItem.CheckedChanged += new System.EventHandler(this.sepiaToolStripMenuItem_CheckedChanged);
             // 
@@ -840,7 +850,7 @@
             // 
             this.ditherToolStripMenuItem.CheckOnClick = true;
             this.ditherToolStripMenuItem.Name = "ditherToolStripMenuItem";
-            this.ditherToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.ditherToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.ditherToolStripMenuItem.Text = "Dither";
             this.ditherToolStripMenuItem.CheckedChanged += new System.EventHandler(this.ditherToolStripMenuItem_CheckedChanged);
             // 
@@ -848,7 +858,7 @@
             // 
             this.vignetteToolStripMenuItem.CheckOnClick = true;
             this.vignetteToolStripMenuItem.Name = "vignetteToolStripMenuItem";
-            this.vignetteToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.vignetteToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.vignetteToolStripMenuItem.Text = "Vignette";
             this.vignetteToolStripMenuItem.CheckedChanged += new System.EventHandler(this.vignetteToolStripMenuItem_CheckedChanged);
             // 
@@ -856,7 +866,7 @@
             // 
             this.borderToolStripMenuItem.CheckOnClick = true;
             this.borderToolStripMenuItem.Name = "borderToolStripMenuItem";
-            this.borderToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.borderToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.borderToolStripMenuItem.Text = "Border";
             this.borderToolStripMenuItem.CheckedChanged += new System.EventHandler(this.borderToolStripMenuItem_CheckedChanged);
             // 
@@ -864,7 +874,7 @@
             // 
             this.splitscreenToolStripMenuItem.CheckOnClick = true;
             this.splitscreenToolStripMenuItem.Name = "splitscreenToolStripMenuItem";
-            this.splitscreenToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.splitscreenToolStripMenuItem.Size = new System.Drawing.Size(185, 24);
             this.splitscreenToolStripMenuItem.Text = "Splitscreen";
             this.splitscreenToolStripMenuItem.CheckedChanged += new System.EventHandler(this.splitscreenToolStripMenuItem_CheckedChanged);
             // 
@@ -874,20 +884,20 @@
             this.settingsToolStripMenuItem2,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(49, 23);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // settingsToolStripMenuItem2
             // 
             this.settingsToolStripMenuItem2.Name = "settingsToolStripMenuItem2";
-            this.settingsToolStripMenuItem2.Size = new System.Drawing.Size(116, 22);
+            this.settingsToolStripMenuItem2.Size = new System.Drawing.Size(127, 24);
             this.settingsToolStripMenuItem2.Text = "Settings";
             this.settingsToolStripMenuItem2.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(127, 24);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -930,7 +940,7 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(315, 170);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(90, 13);
+            this.label13.Size = new System.Drawing.Size(102, 15);
             this.label13.TabIndex = 20;
             this.label13.Text = "Scanline Intensity";
             this.toolTip1.SetToolTip(this.label13, "Scanlines intensity (use integer values preferably)");
@@ -943,7 +953,7 @@
             this.trackBar13.Maximum = 40;
             this.trackBar13.Minimum = 20;
             this.trackBar13.Name = "trackBar13";
-            this.trackBar13.Size = new System.Drawing.Size(275, 45);
+            this.trackBar13.Size = new System.Drawing.Size(275, 50);
             this.trackBar13.TabIndex = 19;
             this.trackBar13.Value = 20;
             // 
@@ -1011,7 +1021,7 @@
             this.trackBar10.Maximum = 30;
             this.trackBar10.Minimum = 10;
             this.trackBar10.Name = "trackBar10";
-            this.trackBar10.Size = new System.Drawing.Size(275, 45);
+            this.trackBar10.Size = new System.Drawing.Size(275, 50);
             this.trackBar10.TabIndex = 16;
             this.trackBar10.Value = 12;
             // 
@@ -1020,7 +1030,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(30, 170);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 13);
+            this.label10.Size = new System.Drawing.Size(65, 15);
             this.label10.TabIndex = 15;
             this.label10.Text = "Brightness";
             this.toolTip1.SetToolTip(this.label10, "Used to boost brightness a little");
@@ -1131,7 +1141,7 @@
             this.checkBox10.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox10.Location = new System.Drawing.Point(318, 245);
             this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(114, 17);
+            this.checkBox10.Size = new System.Drawing.Size(129, 19);
             this.checkBox10.TabIndex = 10;
             this.checkBox10.Text = "Scanline Gaussian";
             this.toolTip1.SetToolTip(this.checkBox10, "Use the \"new nongaussian scanlines bloom effect\"");
@@ -1143,7 +1153,7 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(315, 93);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(81, 13);
+            this.label16.Size = new System.Drawing.Size(97, 15);
             this.label16.TabIndex = 8;
             this.label16.Text = "Monitor Gamma";
             this.toolTip1.SetToolTip(this.label16, "Gamma of display monitor");
@@ -1155,7 +1165,7 @@
             this.trackBar16.Location = new System.Drawing.Point(299, 117);
             this.trackBar16.Maximum = 40;
             this.trackBar16.Name = "trackBar16";
-            this.trackBar16.Size = new System.Drawing.Size(275, 45);
+            this.trackBar16.Size = new System.Drawing.Size(275, 50);
             this.trackBar16.TabIndex = 7;
             this.trackBar16.TickFrequency = 3;
             this.trackBar16.Value = 24;
@@ -1167,7 +1177,7 @@
             this.trackBar17.Location = new System.Drawing.Point(14, 117);
             this.trackBar17.Maximum = 40;
             this.trackBar17.Name = "trackBar17";
-            this.trackBar17.Size = new System.Drawing.Size(275, 45);
+            this.trackBar17.Size = new System.Drawing.Size(275, 50);
             this.trackBar17.TabIndex = 6;
             this.trackBar17.TickFrequency = 3;
             this.trackBar17.Value = 22;
@@ -1177,7 +1187,7 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(30, 93);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(43, 13);
+            this.label17.Size = new System.Drawing.Size(52, 15);
             this.label17.TabIndex = 5;
             this.label17.Text = "Gamma";
             this.toolTip1.SetToolTip(this.label17, "Gamma of simulated CRT");
@@ -1190,7 +1200,7 @@
             this.trackBar18.Maximum = 80;
             this.trackBar18.Minimum = 10;
             this.trackBar18.Name = "trackBar18";
-            this.trackBar18.Size = new System.Drawing.Size(275, 45);
+            this.trackBar18.Size = new System.Drawing.Size(275, 50);
             this.trackBar18.TabIndex = 4;
             this.trackBar18.TickFrequency = 5;
             this.trackBar18.Value = 20;
@@ -1201,7 +1211,7 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(315, 16);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(57, 13);
+            this.label18.Size = new System.Drawing.Size(66, 15);
             this.label18.TabIndex = 3;
             this.label18.Text = "Resolution";
             this.toolTip1.SetToolTip(this.label18, "Input size coefficent (low values gives the \"low-res retro look\")");
@@ -1212,7 +1222,7 @@
             this.trackBar19.Location = new System.Drawing.Point(14, 42);
             this.trackBar19.Maximum = 100;
             this.trackBar19.Name = "trackBar19";
-            this.trackBar19.Size = new System.Drawing.Size(275, 45);
+            this.trackBar19.Size = new System.Drawing.Size(275, 50);
             this.trackBar19.TabIndex = 2;
             this.trackBar19.TickFrequency = 5;
             this.trackBar19.Value = 100;
@@ -1222,7 +1232,7 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(30, 16);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(43, 13);
+            this.label19.Size = new System.Drawing.Size(49, 15);
             this.label19.TabIndex = 1;
             this.label19.Text = "Amount";
             this.toolTip1.SetToolTip(this.label19, "Amount of CRT effect you want");
@@ -1233,10 +1243,10 @@
             this.checkBox12.AutoSize = true;
             this.checkBox12.Checked = true;
             this.checkBox12.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox12.Location = new System.Drawing.Point(519, 268);
+            this.checkBox12.Location = new System.Drawing.Point(512, 266);
             this.checkBox12.Name = "checkBox12";
             this.checkBox12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox12.Size = new System.Drawing.Size(65, 17);
+            this.checkBox12.Size = new System.Drawing.Size(72, 19);
             this.checkBox12.TabIndex = 0;
             this.checkBox12.Text = "Enabled";
             this.checkBox12.UseVisualStyleBackColor = true;
@@ -1275,10 +1285,10 @@
             this.checkBox5.AutoSize = true;
             this.checkBox5.Checked = true;
             this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox5.Location = new System.Drawing.Point(216, 254);
+            this.checkBox5.Location = new System.Drawing.Point(209, 252);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox5.Size = new System.Drawing.Size(65, 17);
+            this.checkBox5.Size = new System.Drawing.Size(72, 19);
             this.checkBox5.TabIndex = 17;
             this.checkBox5.Text = "Enabled";
             this.checkBox5.UseVisualStyleBackColor = true;
@@ -1288,7 +1298,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(27, 24);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 13);
+            this.label9.Size = new System.Drawing.Size(42, 15);
             this.label9.TabIndex = 1;
             this.label9.Text = "Power";
             this.toolTip1.SetToolTip(this.label9, "Amount of effect you want");
@@ -1301,7 +1311,7 @@
             this.trackBar9.Maximum = 100;
             this.trackBar9.Minimum = 1;
             this.trackBar9.Name = "trackBar9";
-            this.trackBar9.Size = new System.Drawing.Size(263, 45);
+            this.trackBar9.Size = new System.Drawing.Size(263, 50);
             this.trackBar9.TabIndex = 2;
             this.trackBar9.TickFrequency = 5;
             this.trackBar9.Value = 15;
@@ -1370,7 +1380,7 @@
             this.trackBar11.Maximum = 80;
             this.trackBar11.Minimum = 1;
             this.trackBar11.Name = "trackBar11";
-            this.trackBar11.Size = new System.Drawing.Size(263, 45);
+            this.trackBar11.Size = new System.Drawing.Size(263, 50);
             this.trackBar11.TabIndex = 6;
             this.trackBar11.TickFrequency = 5;
             this.trackBar11.Value = 15;
@@ -1380,7 +1390,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(27, 103);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(62, 13);
+            this.label11.Size = new System.Drawing.Size(71, 15);
             this.label11.TabIndex = 5;
             this.label11.Text = "Edge Slope";
             this.toolTip1.SetToolTip(this.label11, "Raise this to filter out fainter edges. You might need to increase the power to c" +
@@ -1405,10 +1415,10 @@
             this.checkBox4.AutoSize = true;
             this.checkBox4.Checked = true;
             this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox4.Location = new System.Drawing.Point(17, 255);
+            this.checkBox4.Location = new System.Drawing.Point(10, 253);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.checkBox4.Size = new System.Drawing.Size(65, 17);
+            this.checkBox4.Size = new System.Drawing.Size(72, 19);
             this.checkBox4.TabIndex = 17;
             this.checkBox4.Text = "Enabled";
             this.checkBox4.UseVisualStyleBackColor = true;
@@ -1418,7 +1428,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(27, 24);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(40, 13);
+            this.label12.Size = new System.Drawing.Size(46, 15);
             this.label12.TabIndex = 1;
             this.label12.Text = "Radius";
             this.toolTip1.SetToolTip(this.label12, "Amount of effect you want");
@@ -1431,7 +1441,7 @@
             this.trackBar12.Maximum = 1000;
             this.trackBar12.Minimum = 2;
             this.trackBar12.Name = "trackBar12";
-            this.trackBar12.Size = new System.Drawing.Size(263, 45);
+            this.trackBar12.Size = new System.Drawing.Size(263, 50);
             this.trackBar12.TabIndex = 2;
             this.trackBar12.TickFrequency = 25;
             this.trackBar12.Value = 25;
@@ -1581,7 +1591,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(315, 93);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 13);
+            this.label1.Size = new System.Drawing.Size(118, 15);
             this.label1.TabIndex = 8;
             this.label1.Text = "Edge Threshold Min";
             this.toolTip1.SetToolTip(this.label1, "Trims the algorithm from processing darks");
@@ -1594,7 +1604,7 @@
             this.trackBar5.Location = new System.Drawing.Point(299, 117);
             this.trackBar5.Maximum = 1000;
             this.trackBar5.Name = "trackBar5";
-            this.trackBar5.Size = new System.Drawing.Size(275, 45);
+            this.trackBar5.Size = new System.Drawing.Size(275, 50);
             this.trackBar5.TabIndex = 7;
             this.trackBar5.TickFrequency = 25;
             this.trackBar5.Value = 1000;
@@ -1606,7 +1616,7 @@
             this.trackBar6.Location = new System.Drawing.Point(14, 117);
             this.trackBar6.Maximum = 15000;
             this.trackBar6.Name = "trackBar6";
-            this.trackBar6.Size = new System.Drawing.Size(275, 45);
+            this.trackBar6.Size = new System.Drawing.Size(275, 50);
             this.trackBar6.TabIndex = 6;
             this.trackBar6.TickFrequency = 250;
             this.trackBar6.Value = 250;
@@ -1616,7 +1626,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(30, 93);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(82, 13);
+            this.label6.Size = new System.Drawing.Size(94, 15);
             this.label6.TabIndex = 5;
             this.label6.Text = "Edge Threshold";
             this.toolTip1.SetToolTip(this.label6, "The minimum amount of local contrast required to apply algorithm");
@@ -1629,7 +1639,7 @@
             this.trackBar7.Location = new System.Drawing.Point(299, 40);
             this.trackBar7.Maximum = 1000;
             this.trackBar7.Name = "trackBar7";
-            this.trackBar7.Size = new System.Drawing.Size(275, 45);
+            this.trackBar7.Size = new System.Drawing.Size(275, 50);
             this.trackBar7.TabIndex = 4;
             this.trackBar7.TickFrequency = 25;
             this.trackBar7.Value = 400;
@@ -1640,7 +1650,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(315, 16);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 13);
+            this.label7.Size = new System.Drawing.Size(45, 15);
             this.label7.TabIndex = 3;
             this.label7.Text = "Subpix";
             this.toolTip1.SetToolTip(this.label7, "Amount of sub-pixel aliasing removal");
@@ -1653,7 +1663,7 @@
             this.trackBar8.Maximum = 9;
             this.trackBar8.Minimum = 1;
             this.trackBar8.Name = "trackBar8";
-            this.trackBar8.Size = new System.Drawing.Size(275, 45);
+            this.trackBar8.Size = new System.Drawing.Size(275, 50);
             this.trackBar8.TabIndex = 2;
             this.trackBar8.Value = 9;
             // 
@@ -1662,7 +1672,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(30, 16);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 13);
+            this.label8.Size = new System.Drawing.Size(82, 15);
             this.label8.TabIndex = 1;
             this.label8.Text = "Quality Preset";
             // 
@@ -1672,10 +1682,10 @@
             this.checkBox6.AutoSize = true;
             this.checkBox6.Checked = true;
             this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox6.Location = new System.Drawing.Point(519, 268);
+            this.checkBox6.Location = new System.Drawing.Point(512, 266);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox6.Size = new System.Drawing.Size(65, 17);
+            this.checkBox6.Size = new System.Drawing.Size(72, 19);
             this.checkBox6.TabIndex = 0;
             this.checkBox6.Text = "Enabled";
             this.checkBox6.UseVisualStyleBackColor = true;
@@ -1711,7 +1721,7 @@
             this.label102.AutoSize = true;
             this.label102.Location = new System.Drawing.Point(30, 169);
             this.label102.Name = "label102";
-            this.label102.Size = new System.Drawing.Size(79, 13);
+            this.label102.Size = new System.Drawing.Size(89, 15);
             this.label102.TabIndex = 16;
             this.label102.Text = "Edge detection";
             this.toolTip1.SetToolTip(this.label102, "Using DX9 HARDWARE? (software version doesn\'t matter) if so this needs to be 1 - " +
@@ -1724,7 +1734,7 @@
             this.comboBox6.Items.AddRange(new object[] {
             "Color (more accurate)",
             "Luma (faster)"});
-            this.comboBox6.Location = new System.Drawing.Point(115, 163);
+            this.comboBox6.Location = new System.Drawing.Point(125, 163);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(134, 21);
             this.comboBox6.TabIndex = 15;
@@ -1805,7 +1815,7 @@
             this.checkBox3.AutoSize = true;
             this.checkBox3.Location = new System.Drawing.Point(335, 165);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(129, 17);
+            this.checkBox3.Size = new System.Drawing.Size(146, 19);
             this.checkBox3.TabIndex = 10;
             this.checkBox3.Text = "DirectX9 Linear Blend";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -1816,7 +1826,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(315, 93);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 13);
+            this.label5.Size = new System.Drawing.Size(101, 15);
             this.label5.TabIndex = 8;
             this.label5.Text = "Corner Rounding";
             this.toolTip1.SetToolTip(this.label5, "Determines the percent of antialiasing to apply to corners");
@@ -1828,7 +1838,7 @@
             this.trackBar4.Location = new System.Drawing.Point(299, 117);
             this.trackBar4.Maximum = 100;
             this.trackBar4.Name = "trackBar4";
-            this.trackBar4.Size = new System.Drawing.Size(275, 45);
+            this.trackBar4.Size = new System.Drawing.Size(275, 50);
             this.trackBar4.TabIndex = 7;
             this.trackBar4.TickFrequency = 5;
             // 
@@ -1839,7 +1849,7 @@
             this.trackBar3.Location = new System.Drawing.Point(14, 117);
             this.trackBar3.Maximum = 16;
             this.trackBar3.Name = "trackBar3";
-            this.trackBar3.Size = new System.Drawing.Size(275, 45);
+            this.trackBar3.Size = new System.Drawing.Size(275, 50);
             this.trackBar3.TabIndex = 6;
             this.trackBar3.Value = 6;
             // 
@@ -1848,7 +1858,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(30, 93);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 13);
+            this.label4.Size = new System.Drawing.Size(136, 15);
             this.label4.TabIndex = 5;
             this.label4.Text = "Max Search Steps Diag";
             this.toolTip1.SetToolTip(this.label4, "Determines the radius SMAA will search for diagonal aliased edges");
@@ -1860,7 +1870,7 @@
             this.trackBar2.Location = new System.Drawing.Point(299, 40);
             this.trackBar2.Maximum = 98;
             this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(275, 45);
+            this.trackBar2.Size = new System.Drawing.Size(275, 50);
             this.trackBar2.TabIndex = 4;
             this.trackBar2.TickFrequency = 5;
             this.trackBar2.Value = 16;
@@ -1871,7 +1881,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(315, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 13);
+            this.label3.Size = new System.Drawing.Size(107, 15);
             this.label3.TabIndex = 3;
             this.label3.Text = "Max Search Steps";
             this.toolTip1.SetToolTip(this.label3, "Determines the radius SMAA will search for aliased edges");
@@ -1884,7 +1894,7 @@
             this.trackBar1.Maximum = 20;
             this.trackBar1.Minimum = 5;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(275, 45);
+            this.trackBar1.Size = new System.Drawing.Size(275, 50);
             this.trackBar1.TabIndex = 2;
             this.trackBar1.Value = 8;
             // 
@@ -1893,7 +1903,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(30, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.Size = new System.Drawing.Size(62, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "Threshold";
             this.toolTip1.SetToolTip(this.label2, "Edge detection threshold");
@@ -1904,10 +1914,10 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(519, 268);
+            this.checkBox1.Location = new System.Drawing.Point(512, 266);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox1.Size = new System.Drawing.Size(65, 17);
+            this.checkBox1.Size = new System.Drawing.Size(72, 19);
             this.checkBox1.TabIndex = 0;
             this.checkBox1.Text = "Enabled";
             this.toolTip1.SetToolTip(this.checkBox1, "Smoothens jagged lines using the SMAA technique");
@@ -1982,7 +1992,7 @@
             this.checkBox14.AutoSize = true;
             this.checkBox14.Location = new System.Drawing.Point(154, 245);
             this.checkBox14.Name = "checkBox14";
-            this.checkBox14.Size = new System.Drawing.Size(82, 17);
+            this.checkBox14.Size = new System.Drawing.Size(92, 19);
             this.checkBox14.TabIndex = 21;
             this.checkBox14.Text = "Oversample";
             this.toolTip1.SetToolTip(this.checkBox14, "Enable 3x oversampling of the beam profile (warning : performance hit)");
@@ -1993,7 +2003,7 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(315, 170);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(53, 13);
+            this.label14.Size = new System.Drawing.Size(58, 15);
             this.label14.TabIndex = 20;
             this.label14.Text = "Overscan";
             // 
@@ -2005,7 +2015,7 @@
             this.trackBar14.Maximum = 110;
             this.trackBar14.Minimum = 100;
             this.trackBar14.Name = "trackBar14";
-            this.trackBar14.Size = new System.Drawing.Size(275, 45);
+            this.trackBar14.Size = new System.Drawing.Size(275, 50);
             this.trackBar14.TabIndex = 19;
             this.trackBar14.Value = 100;
             // 
@@ -2067,7 +2077,7 @@
             this.trackBar15.Location = new System.Drawing.Point(14, 194);
             this.trackBar15.Maximum = 20;
             this.trackBar15.Name = "trackBar15";
-            this.trackBar15.Size = new System.Drawing.Size(275, 45);
+            this.trackBar15.Size = new System.Drawing.Size(275, 50);
             this.trackBar15.TabIndex = 16;
             this.trackBar15.Value = 20;
             // 
@@ -2076,7 +2086,7 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(30, 170);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(89, 13);
+            this.label15.Size = new System.Drawing.Size(101, 15);
             this.label15.TabIndex = 15;
             this.label15.Text = "Curvature Radius";
             this.toolTip1.SetToolTip(this.label15, "Curvature Radius (only effective when Curvature is enabled)");
@@ -2187,7 +2197,7 @@
             this.checkBox7.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox7.Location = new System.Drawing.Point(33, 245);
             this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(72, 17);
+            this.checkBox7.Size = new System.Drawing.Size(78, 19);
             this.checkBox7.TabIndex = 10;
             this.checkBox7.Text = "Curvature";
             this.toolTip1.SetToolTip(this.checkBox7, "\"Barrel effect\"");
@@ -2199,7 +2209,7 @@
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(315, 93);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(44, 13);
+            this.label24.Size = new System.Drawing.Size(48, 15);
             this.label24.TabIndex = 8;
             this.label24.Text = "Angle Y";
             this.toolTip1.SetToolTip(this.label24, "Tilt angle in radians (Y coordinates)");
@@ -2212,7 +2222,7 @@
             this.trackBar20.Maximum = 20;
             this.trackBar20.Minimum = -20;
             this.trackBar20.Name = "trackBar20";
-            this.trackBar20.Size = new System.Drawing.Size(275, 45);
+            this.trackBar20.Size = new System.Drawing.Size(275, 50);
             this.trackBar20.TabIndex = 7;
             this.trackBar20.TickFrequency = 2;
             this.trackBar20.Value = -15;
@@ -2225,7 +2235,7 @@
             this.trackBar21.Maximum = 20;
             this.trackBar21.Minimum = -20;
             this.trackBar21.Name = "trackBar21";
-            this.trackBar21.Size = new System.Drawing.Size(275, 45);
+            this.trackBar21.Size = new System.Drawing.Size(275, 50);
             this.trackBar21.TabIndex = 6;
             this.trackBar21.TickFrequency = 2;
             // 
@@ -2234,7 +2244,7 @@
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(30, 93);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(44, 13);
+            this.label25.Size = new System.Drawing.Size(49, 15);
             this.label25.TabIndex = 5;
             this.label25.Text = "Angle X";
             this.toolTip1.SetToolTip(this.label25, "Tilt angle in radians (X coordinates)");
@@ -2246,7 +2256,7 @@
             this.trackBar22.Location = new System.Drawing.Point(299, 40);
             this.trackBar22.Maximum = 400;
             this.trackBar22.Name = "trackBar22";
-            this.trackBar22.Size = new System.Drawing.Size(275, 45);
+            this.trackBar22.Size = new System.Drawing.Size(275, 50);
             this.trackBar22.TabIndex = 4;
             this.trackBar22.TickFrequency = 15;
             this.trackBar22.Value = 200;
@@ -2257,7 +2267,7 @@
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(315, 16);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(49, 13);
+            this.label26.Size = new System.Drawing.Size(55, 15);
             this.label26.TabIndex = 3;
             this.label26.Text = "Distance";
             this.toolTip1.SetToolTip(this.label26, "Simulated distance from viewer to monitor");
@@ -2269,7 +2279,7 @@
             this.trackBar23.Location = new System.Drawing.Point(14, 42);
             this.trackBar23.Maximum = 10000;
             this.trackBar23.Name = "trackBar23";
-            this.trackBar23.Size = new System.Drawing.Size(275, 45);
+            this.trackBar23.Size = new System.Drawing.Size(275, 50);
             this.trackBar23.TabIndex = 2;
             this.trackBar23.TickFrequency = 300;
             this.trackBar23.Value = 100;
@@ -2279,7 +2289,7 @@
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(30, 16);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(61, 13);
+            this.label27.Size = new System.Drawing.Size(71, 15);
             this.label27.TabIndex = 1;
             this.label27.Text = "Corner Size";
             this.toolTip1.SetToolTip(this.label27, "Higher values, more rounded corner");
@@ -2290,10 +2300,10 @@
             this.checkBox8.AutoSize = true;
             this.checkBox8.Checked = true;
             this.checkBox8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox8.Location = new System.Drawing.Point(519, 268);
+            this.checkBox8.Location = new System.Drawing.Point(512, 266);
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox8.Size = new System.Drawing.Size(65, 17);
+            this.checkBox8.Size = new System.Drawing.Size(72, 19);
             this.checkBox8.TabIndex = 0;
             this.checkBox8.Text = "Enabled";
             this.checkBox8.UseVisualStyleBackColor = true;
@@ -2332,10 +2342,10 @@
             this.checkBox15.AutoSize = true;
             this.checkBox15.Checked = true;
             this.checkBox15.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox15.Location = new System.Drawing.Point(216, 254);
+            this.checkBox15.Location = new System.Drawing.Point(209, 252);
             this.checkBox15.Name = "checkBox15";
             this.checkBox15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox15.Size = new System.Drawing.Size(65, 17);
+            this.checkBox15.Size = new System.Drawing.Size(72, 19);
             this.checkBox15.TabIndex = 17;
             this.checkBox15.Text = "Enabled";
             this.checkBox15.UseVisualStyleBackColor = true;
@@ -2345,7 +2355,7 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(27, 24);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(37, 13);
+            this.label20.Size = new System.Drawing.Size(42, 15);
             this.label20.TabIndex = 1;
             this.label20.Text = "Power";
             this.toolTip1.SetToolTip(this.label20, "Strangely lowering this makes the image brighter");
@@ -2357,7 +2367,7 @@
             this.trackBar24.Location = new System.Drawing.Point(6, 50);
             this.trackBar24.Maximum = 800;
             this.trackBar24.Name = "trackBar24";
-            this.trackBar24.Size = new System.Drawing.Size(263, 45);
+            this.trackBar24.Size = new System.Drawing.Size(263, 50);
             this.trackBar24.TabIndex = 2;
             this.trackBar24.TickFrequency = 25;
             this.trackBar24.Value = 130;
@@ -2415,7 +2425,7 @@
             this.trackBar25.Location = new System.Drawing.Point(6, 127);
             this.trackBar25.Maximum = 800;
             this.trackBar25.Name = "trackBar25";
-            this.trackBar25.Size = new System.Drawing.Size(263, 45);
+            this.trackBar25.Size = new System.Drawing.Size(263, 50);
             this.trackBar25.TabIndex = 6;
             this.trackBar25.TickFrequency = 25;
             this.trackBar25.Value = 87;
@@ -2425,7 +2435,7 @@
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(27, 103);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(40, 13);
+            this.label21.Size = new System.Drawing.Size(46, 15);
             this.label21.TabIndex = 5;
             this.label21.Text = "Radius";
             this.toolTip1.SetToolTip(this.label21, "Raising this seems to make the effect stronger and also brighter");
@@ -2454,7 +2464,7 @@
             this.label32.AutoSize = true;
             this.label32.Location = new System.Drawing.Point(27, 180);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(35, 13);
+            this.label32.Size = new System.Drawing.Size(38, 15);
             this.label32.TabIndex = 23;
             this.label32.Text = "Width";
             this.toolTip1.SetToolTip(this.label32, "Width of the bloom");
@@ -2464,7 +2474,7 @@
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(27, 103);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(37, 13);
+            this.label23.Size = new System.Drawing.Size(42, 15);
             this.label23.TabIndex = 22;
             this.label23.Text = "Power";
             this.toolTip1.SetToolTip(this.label23, "Strength of the bloom");
@@ -2499,7 +2509,7 @@
             this.trackBar28.Location = new System.Drawing.Point(6, 204);
             this.trackBar28.Maximum = 10000;
             this.trackBar28.Name = "trackBar28";
-            this.trackBar28.Size = new System.Drawing.Size(263, 45);
+            this.trackBar28.Size = new System.Drawing.Size(263, 50);
             this.trackBar28.TabIndex = 20;
             this.trackBar28.TickFrequency = 305;
             this.trackBar28.Value = 25;
@@ -2534,7 +2544,7 @@
             this.trackBar27.Location = new System.Drawing.Point(6, 127);
             this.trackBar27.Maximum = 8000;
             this.trackBar27.Name = "trackBar27";
-            this.trackBar27.Size = new System.Drawing.Size(263, 45);
+            this.trackBar27.Size = new System.Drawing.Size(263, 50);
             this.trackBar27.TabIndex = 18;
             this.trackBar27.TickFrequency = 260;
             this.trackBar27.Value = 1446;
@@ -2545,10 +2555,10 @@
             this.checkBox16.AutoSize = true;
             this.checkBox16.Checked = true;
             this.checkBox16.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox16.Location = new System.Drawing.Point(17, 255);
+            this.checkBox16.Location = new System.Drawing.Point(10, 253);
             this.checkBox16.Name = "checkBox16";
             this.checkBox16.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.checkBox16.Size = new System.Drawing.Size(65, 17);
+            this.checkBox16.Size = new System.Drawing.Size(72, 19);
             this.checkBox16.TabIndex = 17;
             this.checkBox16.Text = "Enabled";
             this.checkBox16.UseVisualStyleBackColor = true;
@@ -2558,7 +2568,7 @@
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(27, 24);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(54, 13);
+            this.label22.Size = new System.Drawing.Size(62, 15);
             this.label22.TabIndex = 1;
             this.label22.Text = "Threshold";
             this.toolTip1.SetToolTip(this.label22, "Threshold for what is a bright light (that causes bloom) and what isn\'t");
@@ -2570,7 +2580,7 @@
             this.trackBar26.Location = new System.Drawing.Point(6, 50);
             this.trackBar26.Maximum = 5000;
             this.trackBar26.Name = "trackBar26";
-            this.trackBar26.Size = new System.Drawing.Size(263, 45);
+            this.trackBar26.Size = new System.Drawing.Size(263, 50);
             this.trackBar26.TabIndex = 2;
             this.trackBar26.TickFrequency = 250;
             this.trackBar26.Value = 2025;
@@ -2718,7 +2728,7 @@
             this.checkBox19.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox19.Location = new System.Drawing.Point(33, 159);
             this.checkBox19.Name = "checkBox19";
-            this.checkBox19.Size = new System.Drawing.Size(96, 17);
+            this.checkBox19.Size = new System.Drawing.Size(107, 19);
             this.checkBox19.TabIndex = 9;
             this.checkBox19.Text = "Show Sharpen";
             this.toolTip1.SetToolTip(this.checkBox19, "Visualize the strength of the sharpen (multiplied by 4 to see it better)");
@@ -2730,7 +2740,7 @@
             this.label33.AutoSize = true;
             this.label33.Location = new System.Drawing.Point(315, 93);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(58, 13);
+            this.label33.Size = new System.Drawing.Size(65, 15);
             this.label33.TabIndex = 8;
             this.label33.Text = "Offset Bias";
             this.toolTip1.SetToolTip(this.label33, "Offset bias adjusts the radius of the sampling pattern");
@@ -2742,7 +2752,7 @@
             this.trackBar29.Location = new System.Drawing.Point(299, 117);
             this.trackBar29.Maximum = 60;
             this.trackBar29.Name = "trackBar29";
-            this.trackBar29.Size = new System.Drawing.Size(275, 45);
+            this.trackBar29.Size = new System.Drawing.Size(275, 50);
             this.trackBar29.TabIndex = 7;
             this.trackBar29.TickFrequency = 3;
             this.trackBar29.Value = 10;
@@ -2752,7 +2762,7 @@
             this.label34.AutoSize = true;
             this.label34.Location = new System.Drawing.Point(58, 93);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(41, 13);
+            this.label34.Size = new System.Drawing.Size(46, 15);
             this.label34.TabIndex = 5;
             this.label34.Text = "Pattern";
             this.toolTip1.SetToolTip(this.label34, "Choose a sample pattern");
@@ -2765,7 +2775,7 @@
             this.trackBar31.Location = new System.Drawing.Point(299, 40);
             this.trackBar31.Maximum = 1000;
             this.trackBar31.Name = "trackBar31";
-            this.trackBar31.Size = new System.Drawing.Size(275, 45);
+            this.trackBar31.Size = new System.Drawing.Size(275, 50);
             this.trackBar31.TabIndex = 4;
             this.trackBar31.TickFrequency = 25;
             this.trackBar31.Value = 35;
@@ -2776,7 +2786,7 @@
             this.label35.AutoSize = true;
             this.label35.Location = new System.Drawing.Point(315, 16);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(36, 13);
+            this.label35.Size = new System.Drawing.Size(43, 15);
             this.label35.TabIndex = 3;
             this.label35.Text = "Clamp";
             this.toolTip1.SetToolTip(this.label35, "Limits maximum amount of sharpening a pixel recieves");
@@ -2789,7 +2799,7 @@
             this.trackBar32.Maximum = 300;
             this.trackBar32.Minimum = 10;
             this.trackBar32.Name = "trackBar32";
-            this.trackBar32.Size = new System.Drawing.Size(275, 45);
+            this.trackBar32.Size = new System.Drawing.Size(275, 50);
             this.trackBar32.TabIndex = 2;
             this.trackBar32.TickFrequency = 10;
             this.trackBar32.Value = 65;
@@ -2799,7 +2809,7 @@
             this.label36.AutoSize = true;
             this.label36.Location = new System.Drawing.Point(30, 16);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(47, 13);
+            this.label36.Size = new System.Drawing.Size(53, 15);
             this.label36.TabIndex = 1;
             this.label36.Text = "Strength";
             this.toolTip1.SetToolTip(this.label36, "Strength of the sharpening");
@@ -2810,10 +2820,10 @@
             this.checkBox20.AutoSize = true;
             this.checkBox20.Checked = true;
             this.checkBox20.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox20.Location = new System.Drawing.Point(519, 268);
+            this.checkBox20.Location = new System.Drawing.Point(512, 266);
             this.checkBox20.Name = "checkBox20";
             this.checkBox20.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox20.Size = new System.Drawing.Size(65, 17);
+            this.checkBox20.Size = new System.Drawing.Size(72, 19);
             this.checkBox20.TabIndex = 0;
             this.checkBox20.Text = "Enabled";
             this.checkBox20.UseVisualStyleBackColor = true;
@@ -2877,7 +2887,7 @@
             this.label37.AutoSize = true;
             this.label37.Location = new System.Drawing.Point(30, 93);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(62, 13);
+            this.label37.Size = new System.Drawing.Size(69, 15);
             this.label37.TabIndex = 8;
             this.label37.Text = "White Point";
             this.toolTip1.SetToolTip(this.label37, "The new white point. Everything brighter than this becomes completely white");
@@ -2889,7 +2899,7 @@
             this.trackBar33.Location = new System.Drawing.Point(14, 117);
             this.trackBar33.Maximum = 255;
             this.trackBar33.Name = "trackBar33";
-            this.trackBar33.Size = new System.Drawing.Size(560, 45);
+            this.trackBar33.Size = new System.Drawing.Size(560, 50);
             this.trackBar33.TabIndex = 7;
             this.trackBar33.TickFrequency = 5;
             this.trackBar33.Value = 235;
@@ -2900,7 +2910,7 @@
             this.trackBar48.Location = new System.Drawing.Point(14, 42);
             this.trackBar48.Maximum = 255;
             this.trackBar48.Name = "trackBar48";
-            this.trackBar48.Size = new System.Drawing.Size(560, 45);
+            this.trackBar48.Size = new System.Drawing.Size(560, 50);
             this.trackBar48.TabIndex = 2;
             this.trackBar48.TickFrequency = 5;
             this.trackBar48.Value = 16;
@@ -2910,7 +2920,7 @@
             this.label40.AutoSize = true;
             this.label40.Location = new System.Drawing.Point(30, 16);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(61, 13);
+            this.label40.Size = new System.Drawing.Size(68, 15);
             this.label40.TabIndex = 1;
             this.label40.Text = "Black Point";
             this.toolTip1.SetToolTip(this.label40, "The black point is the new black - literally. Everything darker than this will be" +
@@ -2922,10 +2932,10 @@
             this.checkBox21.AutoSize = true;
             this.checkBox21.Checked = true;
             this.checkBox21.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox21.Location = new System.Drawing.Point(519, 268);
+            this.checkBox21.Location = new System.Drawing.Point(512, 266);
             this.checkBox21.Name = "checkBox21";
             this.checkBox21.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox21.Size = new System.Drawing.Size(65, 17);
+            this.checkBox21.Size = new System.Drawing.Size(72, 19);
             this.checkBox21.TabIndex = 0;
             this.checkBox21.Text = "Enabled";
             this.checkBox21.UseVisualStyleBackColor = true;
@@ -2985,7 +2995,7 @@
             this.trackBar35.Location = new System.Drawing.Point(14, 194);
             this.trackBar35.Maximum = 100;
             this.trackBar35.Name = "trackBar35";
-            this.trackBar35.Size = new System.Drawing.Size(275, 45);
+            this.trackBar35.Size = new System.Drawing.Size(275, 50);
             this.trackBar35.TabIndex = 16;
             this.trackBar35.TickFrequency = 4;
             this.trackBar35.Value = 88;
@@ -2995,7 +3005,7 @@
             this.label39.AutoSize = true;
             this.label39.Location = new System.Drawing.Point(30, 170);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(113, 13);
+            this.label39.Size = new System.Drawing.Size(128, 15);
             this.label39.TabIndex = 15;
             this.label39.Text = "Blue Negative Amount";
             // 
@@ -3099,7 +3109,7 @@
             this.label41.AutoSize = true;
             this.label41.Location = new System.Drawing.Point(315, 93);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(121, 13);
+            this.label41.Size = new System.Drawing.Size(137, 15);
             this.label41.TabIndex = 8;
             this.label41.Text = "Green Negative Amount";
             // 
@@ -3110,7 +3120,7 @@
             this.trackBar49.Location = new System.Drawing.Point(299, 117);
             this.trackBar49.Maximum = 100;
             this.trackBar49.Name = "trackBar49";
-            this.trackBar49.Size = new System.Drawing.Size(275, 45);
+            this.trackBar49.Size = new System.Drawing.Size(275, 50);
             this.trackBar49.TabIndex = 7;
             this.trackBar49.TickFrequency = 4;
             this.trackBar49.Value = 88;
@@ -3121,7 +3131,7 @@
             this.trackBar50.Location = new System.Drawing.Point(14, 117);
             this.trackBar50.Maximum = 100;
             this.trackBar50.Name = "trackBar50";
-            this.trackBar50.Size = new System.Drawing.Size(275, 45);
+            this.trackBar50.Size = new System.Drawing.Size(275, 50);
             this.trackBar50.TabIndex = 6;
             this.trackBar50.TickFrequency = 4;
             this.trackBar50.Value = 88;
@@ -3131,7 +3141,7 @@
             this.label42.AutoSize = true;
             this.label42.Location = new System.Drawing.Point(30, 93);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(112, 13);
+            this.label42.Size = new System.Drawing.Size(126, 15);
             this.label42.TabIndex = 5;
             this.label42.Text = "Red Negative Amount";
             // 
@@ -3142,7 +3152,7 @@
             this.trackBar51.Location = new System.Drawing.Point(299, 40);
             this.trackBar51.Maximum = 800;
             this.trackBar51.Name = "trackBar51";
-            this.trackBar51.Size = new System.Drawing.Size(275, 45);
+            this.trackBar51.Size = new System.Drawing.Size(275, 50);
             this.trackBar51.TabIndex = 4;
             this.trackBar51.TickFrequency = 25;
             this.trackBar51.Value = 400;
@@ -3153,7 +3163,7 @@
             this.label43.AutoSize = true;
             this.label43.Location = new System.Drawing.Point(315, 16);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(37, 13);
+            this.label43.Size = new System.Drawing.Size(42, 15);
             this.label43.TabIndex = 3;
             this.label43.Text = "Power";
             // 
@@ -3164,7 +3174,7 @@
             this.trackBar52.Location = new System.Drawing.Point(14, 42);
             this.trackBar52.Maximum = 800;
             this.trackBar52.Name = "trackBar52";
-            this.trackBar52.Size = new System.Drawing.Size(275, 45);
+            this.trackBar52.Size = new System.Drawing.Size(275, 50);
             this.trackBar52.TabIndex = 2;
             this.trackBar52.TickFrequency = 25;
             this.trackBar52.Value = 800;
@@ -3174,7 +3184,7 @@
             this.label44.AutoSize = true;
             this.label44.Location = new System.Drawing.Point(30, 16);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(43, 13);
+            this.label44.Size = new System.Drawing.Size(49, 15);
             this.label44.TabIndex = 1;
             this.label44.Text = "Amount";
             // 
@@ -3184,10 +3194,10 @@
             this.checkBox23.AutoSize = true;
             this.checkBox23.Checked = true;
             this.checkBox23.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox23.Location = new System.Drawing.Point(519, 268);
+            this.checkBox23.Location = new System.Drawing.Point(512, 266);
             this.checkBox23.Name = "checkBox23";
             this.checkBox23.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox23.Size = new System.Drawing.Size(65, 17);
+            this.checkBox23.Size = new System.Drawing.Size(72, 19);
             this.checkBox23.TabIndex = 0;
             this.checkBox23.Text = "Enabled";
             this.checkBox23.UseVisualStyleBackColor = true;
@@ -3235,7 +3245,7 @@
             this.label48.AutoSize = true;
             this.label48.Location = new System.Drawing.Point(280, 256);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(35, 13);
+            this.label48.Size = new System.Drawing.Size(40, 15);
             this.label48.TabIndex = 32;
             this.label48.Text = "BlueC";
             // 
@@ -3244,7 +3254,7 @@
             this.label47.AutoSize = true;
             this.label47.Location = new System.Drawing.Point(229, 256);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(43, 13);
+            this.label47.Size = new System.Drawing.Size(49, 15);
             this.label47.TabIndex = 31;
             this.label47.Text = "GreenC";
             // 
@@ -3253,7 +3263,7 @@
             this.label46.AutoSize = true;
             this.label46.Location = new System.Drawing.Point(178, 256);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(34, 13);
+            this.label46.Size = new System.Drawing.Size(38, 15);
             this.label46.TabIndex = 30;
             this.label46.Text = "RedC";
             // 
@@ -3262,7 +3272,7 @@
             this.label45.AutoSize = true;
             this.label45.Location = new System.Drawing.Point(127, 256);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(28, 13);
+            this.label45.Size = new System.Drawing.Size(32, 15);
             this.label45.TabIndex = 29;
             this.label45.Text = "Blue";
             // 
@@ -3271,7 +3281,7 @@
             this.label30.AutoSize = true;
             this.label30.Location = new System.Drawing.Point(76, 256);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(36, 13);
+            this.label30.Size = new System.Drawing.Size(41, 15);
             this.label30.TabIndex = 28;
             this.label30.Text = "Green";
             // 
@@ -3280,7 +3290,7 @@
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(25, 256);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(27, 13);
+            this.label28.Size = new System.Drawing.Size(30, 15);
             this.label28.TabIndex = 27;
             this.label28.Text = "Red";
             // 
@@ -3467,7 +3477,7 @@
             this.trackBar43.Minimum = 20;
             this.trackBar43.Name = "trackBar43";
             this.trackBar43.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar43.Size = new System.Drawing.Size(45, 151);
+            this.trackBar43.Size = new System.Drawing.Size(50, 151);
             this.trackBar43.TabIndex = 20;
             this.trackBar43.TickFrequency = 2;
             this.trackBar43.Value = 34;
@@ -3481,7 +3491,7 @@
             this.trackBar42.Minimum = 20;
             this.trackBar42.Name = "trackBar42";
             this.trackBar42.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar42.Size = new System.Drawing.Size(45, 149);
+            this.trackBar42.Size = new System.Drawing.Size(50, 149);
             this.trackBar42.TabIndex = 19;
             this.trackBar42.TickFrequency = 2;
             this.trackBar42.Value = 36;
@@ -3495,7 +3505,7 @@
             this.trackBar41.Minimum = 20;
             this.trackBar41.Name = "trackBar41";
             this.trackBar41.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar41.Size = new System.Drawing.Size(45, 151);
+            this.trackBar41.Size = new System.Drawing.Size(50, 151);
             this.trackBar41.TabIndex = 18;
             this.trackBar41.TickFrequency = 2;
             this.trackBar41.Value = 36;
@@ -3509,7 +3519,7 @@
             this.trackBar40.Minimum = 100;
             this.trackBar40.Name = "trackBar40";
             this.trackBar40.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar40.Size = new System.Drawing.Size(45, 151);
+            this.trackBar40.Size = new System.Drawing.Size(50, 151);
             this.trackBar40.TabIndex = 17;
             this.trackBar40.TickFrequency = 50;
             this.trackBar40.Value = 800;
@@ -3523,7 +3533,7 @@
             this.trackBar37.Minimum = 100;
             this.trackBar37.Name = "trackBar37";
             this.trackBar37.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar37.Size = new System.Drawing.Size(45, 151);
+            this.trackBar37.Size = new System.Drawing.Size(50, 151);
             this.trackBar37.TabIndex = 16;
             this.trackBar37.TickFrequency = 50;
             this.trackBar37.Value = 800;
@@ -3537,7 +3547,7 @@
             this.trackBar34.Minimum = 100;
             this.trackBar34.Name = "trackBar34";
             this.trackBar34.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar34.Size = new System.Drawing.Size(45, 151);
+            this.trackBar34.Size = new System.Drawing.Size(50, 151);
             this.trackBar34.TabIndex = 15;
             this.trackBar34.TickFrequency = 50;
             this.trackBar34.Value = 800;
@@ -3624,7 +3634,7 @@
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(354, 93);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(34, 13);
+            this.label29.Size = new System.Drawing.Size(39, 15);
             this.label29.TabIndex = 8;
             this.label29.Text = "Blend";
             this.toolTip1.SetToolTip(this.label29, "How strong the effect should be.");
@@ -3636,7 +3646,7 @@
             this.trackBar36.Location = new System.Drawing.Point(334, 117);
             this.trackBar36.Maximum = 100;
             this.trackBar36.Name = "trackBar36";
-            this.trackBar36.Size = new System.Drawing.Size(240, 45);
+            this.trackBar36.Size = new System.Drawing.Size(240, 50);
             this.trackBar36.TabIndex = 7;
             this.trackBar36.TickFrequency = 5;
             this.trackBar36.Value = 20;
@@ -3648,7 +3658,7 @@
             this.trackBar38.Location = new System.Drawing.Point(299, 40);
             this.trackBar38.Maximum = 80;
             this.trackBar38.Name = "trackBar38";
-            this.trackBar38.Size = new System.Drawing.Size(275, 45);
+            this.trackBar38.Size = new System.Drawing.Size(275, 50);
             this.trackBar38.TabIndex = 4;
             this.trackBar38.TickFrequency = 3;
             this.trackBar38.Value = 30;
@@ -3659,7 +3669,7 @@
             this.label31.AutoSize = true;
             this.label31.Location = new System.Drawing.Point(315, 16);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(55, 13);
+            this.label31.Size = new System.Drawing.Size(63, 15);
             this.label31.TabIndex = 3;
             this.label31.Text = "Saturation";
             this.toolTip1.SetToolTip(this.label31, "Adjust saturation of the effect. 1.0 is neutral.");
@@ -3671,7 +3681,7 @@
             this.trackBar39.Maximum = 25;
             this.trackBar39.Minimum = 1;
             this.trackBar39.Name = "trackBar39";
-            this.trackBar39.Size = new System.Drawing.Size(275, 45);
+            this.trackBar39.Size = new System.Drawing.Size(275, 50);
             this.trackBar39.TabIndex = 2;
             this.trackBar39.Value = 25;
             // 
@@ -3680,7 +3690,7 @@
             this.label38.AutoSize = true;
             this.label38.Location = new System.Drawing.Point(30, 16);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(70, 13);
+            this.label38.Size = new System.Drawing.Size(84, 15);
             this.label38.TabIndex = 1;
             this.label38.Text = "Color Gamma";
             this.toolTip1.SetToolTip(this.label38, "Adjusts the colorfulness of the effect in a manner similar to Vibrance. 1.0 is ne" +
@@ -3692,10 +3702,10 @@
             this.checkBox9.AutoSize = true;
             this.checkBox9.Checked = true;
             this.checkBox9.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox9.Location = new System.Drawing.Point(519, 268);
+            this.checkBox9.Location = new System.Drawing.Point(512, 266);
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox9.Size = new System.Drawing.Size(65, 17);
+            this.checkBox9.Size = new System.Drawing.Size(72, 19);
             this.checkBox9.TabIndex = 0;
             this.checkBox9.Text = "Enabled";
             this.checkBox9.UseVisualStyleBackColor = true;
@@ -3726,7 +3736,7 @@
             this.label51.AutoSize = true;
             this.label51.Location = new System.Drawing.Point(127, 199);
             this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(28, 13);
+            this.label51.Size = new System.Drawing.Size(32, 15);
             this.label51.TabIndex = 34;
             this.label51.Text = "Blue";
             // 
@@ -3735,7 +3745,7 @@
             this.label50.AutoSize = true;
             this.label50.Location = new System.Drawing.Point(76, 199);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(36, 13);
+            this.label50.Size = new System.Drawing.Size(41, 15);
             this.label50.TabIndex = 33;
             this.label50.Text = "Green";
             // 
@@ -3744,7 +3754,7 @@
             this.label49.AutoSize = true;
             this.label49.Location = new System.Drawing.Point(25, 199);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(27, 13);
+            this.label49.Size = new System.Drawing.Size(30, 15);
             this.label49.TabIndex = 32;
             this.label49.Text = "Red";
             // 
@@ -3756,7 +3766,7 @@
             this.trackBar45.Maximum = 100;
             this.trackBar45.Name = "trackBar45";
             this.trackBar45.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar45.Size = new System.Drawing.Size(45, 151);
+            this.trackBar45.Size = new System.Drawing.Size(50, 151);
             this.trackBar45.TabIndex = 31;
             this.trackBar45.TickFrequency = 5;
             this.trackBar45.Value = 41;
@@ -3769,7 +3779,7 @@
             this.trackBar44.Maximum = 100;
             this.trackBar44.Name = "trackBar44";
             this.trackBar44.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar44.Size = new System.Drawing.Size(45, 151);
+            this.trackBar44.Size = new System.Drawing.Size(50, 151);
             this.trackBar44.TabIndex = 30;
             this.trackBar44.TickFrequency = 5;
             this.trackBar44.Value = 41;
@@ -3827,7 +3837,7 @@
             this.label54.AutoSize = true;
             this.label54.Location = new System.Drawing.Point(43, 223);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(95, 13);
+            this.label54.Size = new System.Drawing.Size(108, 15);
             this.label54.TabIndex = 27;
             this.label54.Text = "Conversion Values";
             this.toolTip1.SetToolTip(this.label54, "Percentage of RGB to include (should sum up to 1.00)");
@@ -3864,7 +3874,7 @@
             this.trackBar54.Maximum = 100;
             this.trackBar54.Name = "trackBar54";
             this.trackBar54.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar54.Size = new System.Drawing.Size(45, 151);
+            this.trackBar54.Size = new System.Drawing.Size(50, 151);
             this.trackBar54.TabIndex = 15;
             this.trackBar54.TickFrequency = 5;
             this.trackBar54.Value = 18;
@@ -3875,10 +3885,10 @@
             this.checkBox11.AutoSize = true;
             this.checkBox11.Checked = true;
             this.checkBox11.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox11.Location = new System.Drawing.Point(519, 268);
+            this.checkBox11.Location = new System.Drawing.Point(512, 266);
             this.checkBox11.Name = "checkBox11";
             this.checkBox11.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox11.Size = new System.Drawing.Size(65, 17);
+            this.checkBox11.Size = new System.Drawing.Size(72, 19);
             this.checkBox11.TabIndex = 0;
             this.checkBox11.Text = "Enabled";
             this.checkBox11.UseVisualStyleBackColor = true;
@@ -3980,7 +3990,7 @@
             this.trackBar58.Maximum = 2000;
             this.trackBar58.Name = "trackBar58";
             this.trackBar58.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar58.Size = new System.Drawing.Size(45, 151);
+            this.trackBar58.Size = new System.Drawing.Size(50, 151);
             this.trackBar58.TabIndex = 76;
             this.trackBar58.TickFrequency = 70;
             this.trackBar58.Value = 1000;
@@ -3993,7 +4003,7 @@
             this.trackBar59.Maximum = 2000;
             this.trackBar59.Name = "trackBar59";
             this.trackBar59.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar59.Size = new System.Drawing.Size(45, 151);
+            this.trackBar59.Size = new System.Drawing.Size(50, 151);
             this.trackBar59.TabIndex = 75;
             this.trackBar59.TickFrequency = 70;
             this.trackBar59.Value = 1000;
@@ -4003,7 +4013,7 @@
             this.label61.AutoSize = true;
             this.label61.Location = new System.Drawing.Point(510, 199);
             this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(28, 13);
+            this.label61.Size = new System.Drawing.Size(32, 15);
             this.label61.TabIndex = 74;
             this.label61.Text = "Blue";
             // 
@@ -4012,7 +4022,7 @@
             this.label62.AutoSize = true;
             this.label62.Location = new System.Drawing.Point(459, 199);
             this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(36, 13);
+            this.label62.Size = new System.Drawing.Size(41, 15);
             this.label62.TabIndex = 73;
             this.label62.Text = "Green";
             // 
@@ -4021,7 +4031,7 @@
             this.label63.AutoSize = true;
             this.label63.Location = new System.Drawing.Point(408, 199);
             this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(27, 13);
+            this.label63.Size = new System.Drawing.Size(30, 15);
             this.label63.TabIndex = 72;
             this.label63.Text = "Red";
             // 
@@ -4030,7 +4040,7 @@
             this.label64.AutoSize = true;
             this.label64.Location = new System.Drawing.Point(446, 223);
             this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(29, 13);
+            this.label64.Size = new System.Drawing.Size(33, 15);
             this.label64.TabIndex = 71;
             this.label64.Text = "Gain";
             this.toolTip1.SetToolTip(this.label64, "Adjust highlights for Red, Green and Blue");
@@ -4067,7 +4077,7 @@
             this.trackBar60.Maximum = 2000;
             this.trackBar60.Name = "trackBar60";
             this.trackBar60.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar60.Size = new System.Drawing.Size(45, 151);
+            this.trackBar60.Size = new System.Drawing.Size(50, 151);
             this.trackBar60.TabIndex = 69;
             this.trackBar60.TickFrequency = 70;
             this.trackBar60.Value = 1000;
@@ -4128,7 +4138,7 @@
             this.trackBar55.Maximum = 2000;
             this.trackBar55.Name = "trackBar55";
             this.trackBar55.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar55.Size = new System.Drawing.Size(45, 151);
+            this.trackBar55.Size = new System.Drawing.Size(50, 151);
             this.trackBar55.TabIndex = 66;
             this.trackBar55.TickFrequency = 70;
             this.trackBar55.Value = 1000;
@@ -4141,7 +4151,7 @@
             this.trackBar56.Maximum = 2000;
             this.trackBar56.Name = "trackBar56";
             this.trackBar56.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar56.Size = new System.Drawing.Size(45, 151);
+            this.trackBar56.Size = new System.Drawing.Size(50, 151);
             this.trackBar56.TabIndex = 65;
             this.trackBar56.TickFrequency = 70;
             this.trackBar56.Value = 1000;
@@ -4151,7 +4161,7 @@
             this.label57.AutoSize = true;
             this.label57.Location = new System.Drawing.Point(320, 199);
             this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(28, 13);
+            this.label57.Size = new System.Drawing.Size(32, 15);
             this.label57.TabIndex = 64;
             this.label57.Text = "Blue";
             // 
@@ -4160,7 +4170,7 @@
             this.label58.AutoSize = true;
             this.label58.Location = new System.Drawing.Point(269, 199);
             this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(36, 13);
+            this.label58.Size = new System.Drawing.Size(41, 15);
             this.label58.TabIndex = 63;
             this.label58.Text = "Green";
             // 
@@ -4169,7 +4179,7 @@
             this.label59.AutoSize = true;
             this.label59.Location = new System.Drawing.Point(218, 199);
             this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(27, 13);
+            this.label59.Size = new System.Drawing.Size(30, 15);
             this.label59.TabIndex = 62;
             this.label59.Text = "Red";
             // 
@@ -4178,7 +4188,7 @@
             this.label60.AutoSize = true;
             this.label60.Location = new System.Drawing.Point(256, 223);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(43, 13);
+            this.label60.Size = new System.Drawing.Size(52, 15);
             this.label60.TabIndex = 61;
             this.label60.Text = "Gamma";
             this.toolTip1.SetToolTip(this.label60, "Adjust midtones for Red, Green and Blue");
@@ -4215,7 +4225,7 @@
             this.trackBar57.Maximum = 2000;
             this.trackBar57.Name = "trackBar57";
             this.trackBar57.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar57.Size = new System.Drawing.Size(45, 151);
+            this.trackBar57.Size = new System.Drawing.Size(50, 151);
             this.trackBar57.TabIndex = 59;
             this.trackBar57.TickFrequency = 70;
             this.trackBar57.Value = 1000;
@@ -4276,7 +4286,7 @@
             this.trackBar47.Maximum = 2000;
             this.trackBar47.Name = "trackBar47";
             this.trackBar47.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar47.Size = new System.Drawing.Size(45, 151);
+            this.trackBar47.Size = new System.Drawing.Size(50, 151);
             this.trackBar47.TabIndex = 56;
             this.trackBar47.TickFrequency = 70;
             this.trackBar47.Value = 1000;
@@ -4289,7 +4299,7 @@
             this.trackBar46.Maximum = 2000;
             this.trackBar46.Name = "trackBar46";
             this.trackBar46.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar46.Size = new System.Drawing.Size(45, 151);
+            this.trackBar46.Size = new System.Drawing.Size(50, 151);
             this.trackBar46.TabIndex = 55;
             this.trackBar46.TickFrequency = 70;
             this.trackBar46.Value = 1000;
@@ -4299,7 +4309,7 @@
             this.label52.AutoSize = true;
             this.label52.Location = new System.Drawing.Point(127, 199);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(28, 13);
+            this.label52.Size = new System.Drawing.Size(32, 15);
             this.label52.TabIndex = 34;
             this.label52.Text = "Blue";
             // 
@@ -4308,7 +4318,7 @@
             this.label53.AutoSize = true;
             this.label53.Location = new System.Drawing.Point(76, 199);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(36, 13);
+            this.label53.Size = new System.Drawing.Size(41, 15);
             this.label53.TabIndex = 33;
             this.label53.Text = "Green";
             // 
@@ -4317,7 +4327,7 @@
             this.label55.AutoSize = true;
             this.label55.Location = new System.Drawing.Point(25, 199);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(27, 13);
+            this.label55.Size = new System.Drawing.Size(30, 15);
             this.label55.TabIndex = 32;
             this.label55.Text = "Red";
             // 
@@ -4326,7 +4336,7 @@
             this.label56.AutoSize = true;
             this.label56.Location = new System.Drawing.Point(63, 223);
             this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(21, 13);
+            this.label56.Size = new System.Drawing.Size(23, 15);
             this.label56.TabIndex = 27;
             this.label56.Text = "Lift";
             this.toolTip1.SetToolTip(this.label56, "Adjust shadows for Red, Green and Blue");
@@ -4363,7 +4373,7 @@
             this.trackBar53.Maximum = 2000;
             this.trackBar53.Name = "trackBar53";
             this.trackBar53.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar53.Size = new System.Drawing.Size(45, 151);
+            this.trackBar53.Size = new System.Drawing.Size(50, 151);
             this.trackBar53.TabIndex = 15;
             this.trackBar53.TickFrequency = 70;
             this.trackBar53.Value = 1000;
@@ -4372,10 +4382,10 @@
             // 
             this.checkBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox13.AutoSize = true;
-            this.checkBox13.Location = new System.Drawing.Point(519, 268);
+            this.checkBox13.Location = new System.Drawing.Point(512, 266);
             this.checkBox13.Name = "checkBox13";
             this.checkBox13.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox13.Size = new System.Drawing.Size(65, 17);
+            this.checkBox13.Size = new System.Drawing.Size(72, 19);
             this.checkBox13.TabIndex = 0;
             this.checkBox13.Text = "Enabled";
             this.checkBox13.UseVisualStyleBackColor = true;
@@ -4448,7 +4458,7 @@
             this.trackBar65.Maximum = 255;
             this.trackBar65.Name = "trackBar65";
             this.trackBar65.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar65.Size = new System.Drawing.Size(45, 136);
+            this.trackBar65.Size = new System.Drawing.Size(50, 136);
             this.trackBar65.TabIndex = 41;
             this.trackBar65.TickFrequency = 20;
             this.trackBar65.Value = 255;
@@ -4480,7 +4490,7 @@
             this.trackBar64.Maximum = 255;
             this.trackBar64.Name = "trackBar64";
             this.trackBar64.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar64.Size = new System.Drawing.Size(45, 136);
+            this.trackBar64.Size = new System.Drawing.Size(50, 136);
             this.trackBar64.TabIndex = 39;
             this.trackBar64.TickFrequency = 20;
             // 
@@ -4509,7 +4519,7 @@
             this.label67.AutoSize = true;
             this.label67.Location = new System.Drawing.Point(30, 218);
             this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(36, 13);
+            this.label67.Size = new System.Drawing.Size(40, 15);
             this.label67.TabIndex = 37;
             this.label67.Text = "Defog";
             this.toolTip1.SetToolTip(this.label67, "How much of the color tint to remove");
@@ -4521,7 +4531,7 @@
             this.trackBar63.Location = new System.Drawing.Point(18, 242);
             this.trackBar63.Maximum = 1000;
             this.trackBar63.Name = "trackBar63";
-            this.trackBar63.Size = new System.Drawing.Size(275, 45);
+            this.trackBar63.Size = new System.Drawing.Size(275, 50);
             this.trackBar63.TabIndex = 36;
             this.trackBar63.TickFrequency = 35;
             // 
@@ -4534,7 +4544,7 @@
             this.trackBar62.Maximum = 1000;
             this.trackBar62.Minimum = -1000;
             this.trackBar62.Name = "trackBar62";
-            this.trackBar62.Size = new System.Drawing.Size(275, 45);
+            this.trackBar62.Size = new System.Drawing.Size(275, 50);
             this.trackBar62.TabIndex = 35;
             this.trackBar62.TickFrequency = 50;
             // 
@@ -4568,7 +4578,7 @@
             this.label66.AutoSize = true;
             this.label66.Location = new System.Drawing.Point(377, 82);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(52, 13);
+            this.label66.Size = new System.Drawing.Size(60, 15);
             this.label66.TabIndex = 33;
             this.label66.Text = "Fog Color";
             this.toolTip1.SetToolTip(this.label66, "What color to remove - default is blue");
@@ -4598,7 +4608,7 @@
             this.label65.AutoSize = true;
             this.label65.Location = new System.Drawing.Point(30, 150);
             this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(40, 13);
+            this.label65.Size = new System.Drawing.Size(45, 15);
             this.label65.TabIndex = 31;
             this.label65.Text = "Bleach";
             this.toolTip1.SetToolTip(this.label65, "Brightens the shadows and fades the colors");
@@ -4610,7 +4620,7 @@
             this.trackBar61.Location = new System.Drawing.Point(18, 174);
             this.trackBar61.Maximum = 1000;
             this.trackBar61.Name = "trackBar61";
-            this.trackBar61.Size = new System.Drawing.Size(275, 45);
+            this.trackBar61.Size = new System.Drawing.Size(275, 50);
             this.trackBar61.TabIndex = 30;
             this.trackBar61.TickFrequency = 35;
             // 
@@ -4619,7 +4629,7 @@
             this.label68.AutoSize = true;
             this.label68.Location = new System.Drawing.Point(466, 263);
             this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(28, 13);
+            this.label68.Size = new System.Drawing.Size(32, 15);
             this.label68.TabIndex = 29;
             this.label68.Text = "Blue";
             // 
@@ -4628,7 +4638,7 @@
             this.label69.AutoSize = true;
             this.label69.Location = new System.Drawing.Point(415, 263);
             this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(36, 13);
+            this.label69.Size = new System.Drawing.Size(41, 15);
             this.label69.TabIndex = 28;
             this.label69.Text = "Green";
             // 
@@ -4637,7 +4647,7 @@
             this.label70.AutoSize = true;
             this.label70.Location = new System.Drawing.Point(364, 263);
             this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(27, 13);
+            this.label70.Size = new System.Drawing.Size(30, 15);
             this.label70.TabIndex = 27;
             this.label70.Text = "Red";
             // 
@@ -4668,7 +4678,7 @@
             this.trackBar66.Maximum = 255;
             this.trackBar66.Name = "trackBar66";
             this.trackBar66.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar66.Size = new System.Drawing.Size(45, 136);
+            this.trackBar66.Size = new System.Drawing.Size(50, 136);
             this.trackBar66.TabIndex = 15;
             this.trackBar66.TickFrequency = 20;
             // 
@@ -4725,7 +4735,7 @@
             this.label71.AutoSize = true;
             this.label71.Location = new System.Drawing.Point(30, 81);
             this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(51, 13);
+            this.label71.Size = new System.Drawing.Size(59, 15);
             this.label71.TabIndex = 8;
             this.label71.Text = "Exposure";
             this.toolTip1.SetToolTip(this.label71, "Adjust exposure");
@@ -4739,7 +4749,7 @@
             this.trackBar67.Maximum = 1000;
             this.trackBar67.Minimum = -1000;
             this.trackBar67.Name = "trackBar67";
-            this.trackBar67.Size = new System.Drawing.Size(275, 45);
+            this.trackBar67.Size = new System.Drawing.Size(275, 50);
             this.trackBar67.TabIndex = 7;
             this.trackBar67.TickFrequency = 50;
             // 
@@ -4749,7 +4759,7 @@
             this.label72.AutoSize = true;
             this.label72.Location = new System.Drawing.Point(315, 16);
             this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(55, 13);
+            this.label72.Size = new System.Drawing.Size(63, 15);
             this.label72.TabIndex = 3;
             this.label72.Text = "Saturation";
             this.toolTip1.SetToolTip(this.label72, "Adjust saturation");
@@ -4761,7 +4771,7 @@
             this.trackBar69.Location = new System.Drawing.Point(18, 38);
             this.trackBar69.Maximum = 2000;
             this.trackBar69.Name = "trackBar69";
-            this.trackBar69.Size = new System.Drawing.Size(275, 45);
+            this.trackBar69.Size = new System.Drawing.Size(275, 50);
             this.trackBar69.TabIndex = 2;
             this.trackBar69.TickFrequency = 50;
             this.trackBar69.Value = 1000;
@@ -4771,7 +4781,7 @@
             this.label73.AutoSize = true;
             this.label73.Location = new System.Drawing.Point(30, 16);
             this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(43, 13);
+            this.label73.Size = new System.Drawing.Size(52, 15);
             this.label73.TabIndex = 1;
             this.label73.Text = "Gamma";
             this.toolTip1.SetToolTip(this.label73, "Adjust midtones. 1.000 is neutral.");
@@ -4782,10 +4792,10 @@
             this.checkBox17.AutoSize = true;
             this.checkBox17.Checked = true;
             this.checkBox17.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox17.Location = new System.Drawing.Point(519, 268);
+            this.checkBox17.Location = new System.Drawing.Point(512, 266);
             this.checkBox17.Name = "checkBox17";
             this.checkBox17.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox17.Size = new System.Drawing.Size(65, 17);
+            this.checkBox17.Size = new System.Drawing.Size(72, 19);
             this.checkBox17.TabIndex = 0;
             this.checkBox17.Text = "Enabled";
             this.checkBox17.UseVisualStyleBackColor = true;
@@ -4852,7 +4862,7 @@
             this.trackBar70.Minimum = -1000;
             this.trackBar70.Name = "trackBar70";
             this.trackBar70.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar70.Size = new System.Drawing.Size(45, 136);
+            this.trackBar70.Size = new System.Drawing.Size(50, 136);
             this.trackBar70.TabIndex = 36;
             this.trackBar70.TickFrequency = 100;
             this.trackBar70.Value = 100;
@@ -4895,7 +4905,7 @@
             this.trackBar68.Minimum = -1000;
             this.trackBar68.Name = "trackBar68";
             this.trackBar68.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar68.Size = new System.Drawing.Size(45, 136);
+            this.trackBar68.Size = new System.Drawing.Size(50, 136);
             this.trackBar68.TabIndex = 34;
             this.trackBar68.TickFrequency = 100;
             this.trackBar68.Value = 100;
@@ -4906,7 +4916,7 @@
             this.label75.AutoSize = true;
             this.label75.Location = new System.Drawing.Point(377, 82);
             this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(46, 13);
+            this.label75.Size = new System.Drawing.Size(52, 15);
             this.label75.TabIndex = 33;
             this.label75.Text = "Balance";
             this.toolTip1.SetToolTip(this.label75, "A per channel multiplier to the Vibrance strength so you can give more boost to c" +
@@ -4917,7 +4927,7 @@
             this.label77.AutoSize = true;
             this.label77.Location = new System.Drawing.Point(466, 263);
             this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(28, 13);
+            this.label77.Size = new System.Drawing.Size(32, 15);
             this.label77.TabIndex = 29;
             this.label77.Text = "Blue";
             // 
@@ -4926,7 +4936,7 @@
             this.label78.AutoSize = true;
             this.label78.Location = new System.Drawing.Point(415, 263);
             this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(36, 13);
+            this.label78.Size = new System.Drawing.Size(41, 15);
             this.label78.TabIndex = 28;
             this.label78.Text = "Green";
             // 
@@ -4935,7 +4945,7 @@
             this.label79.AutoSize = true;
             this.label79.Location = new System.Drawing.Point(364, 263);
             this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(27, 13);
+            this.label79.Size = new System.Drawing.Size(30, 15);
             this.label79.TabIndex = 27;
             this.label79.Text = "Red";
             // 
@@ -4977,7 +4987,7 @@
             this.trackBar74.Minimum = -1000;
             this.trackBar74.Name = "trackBar74";
             this.trackBar74.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar74.Size = new System.Drawing.Size(45, 136);
+            this.trackBar74.Size = new System.Drawing.Size(50, 136);
             this.trackBar74.TabIndex = 15;
             this.trackBar74.TickFrequency = 100;
             this.trackBar74.Value = 100;
@@ -5018,7 +5028,7 @@
             this.trackBar76.Maximum = 100;
             this.trackBar76.Minimum = -100;
             this.trackBar76.Name = "trackBar76";
-            this.trackBar76.Size = new System.Drawing.Size(275, 45);
+            this.trackBar76.Size = new System.Drawing.Size(275, 50);
             this.trackBar76.TabIndex = 2;
             this.trackBar76.TickFrequency = 5;
             this.trackBar76.Value = 97;
@@ -5028,7 +5038,7 @@
             this.label82.AutoSize = true;
             this.label82.Location = new System.Drawing.Point(30, 16);
             this.label82.Name = "label82";
-            this.label82.Size = new System.Drawing.Size(49, 13);
+            this.label82.Size = new System.Drawing.Size(55, 15);
             this.label82.TabIndex = 1;
             this.label82.Text = "Vibrance";
             this.toolTip1.SetToolTip(this.label82, "Intelligently saturates (or desaturates if you use negative values) the pixels de" +
@@ -5040,10 +5050,10 @@
             this.checkBox18.AutoSize = true;
             this.checkBox18.Checked = true;
             this.checkBox18.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox18.Location = new System.Drawing.Point(519, 268);
+            this.checkBox18.Location = new System.Drawing.Point(512, 266);
             this.checkBox18.Name = "checkBox18";
             this.checkBox18.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox18.Size = new System.Drawing.Size(65, 17);
+            this.checkBox18.Size = new System.Drawing.Size(72, 19);
             this.checkBox18.TabIndex = 0;
             this.checkBox18.Text = "Enabled";
             this.checkBox18.UseVisualStyleBackColor = true;
@@ -5133,7 +5143,7 @@
             this.label76.AutoSize = true;
             this.label76.Location = new System.Drawing.Point(59, 94);
             this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(44, 13);
+            this.label76.Size = new System.Drawing.Size(53, 15);
             this.label76.TabIndex = 5;
             this.label76.Text = "Formula";
             this.toolTip1.SetToolTip(this.label76, "The contrast s-curve you want to use");
@@ -5147,7 +5157,7 @@
             this.trackBar73.Maximum = 100;
             this.trackBar73.Minimum = -100;
             this.trackBar73.Name = "trackBar73";
-            this.trackBar73.Size = new System.Drawing.Size(275, 45);
+            this.trackBar73.Size = new System.Drawing.Size(275, 50);
             this.trackBar73.TabIndex = 4;
             this.trackBar73.TickFrequency = 5;
             this.trackBar73.Value = 15;
@@ -5158,7 +5168,7 @@
             this.label80.AutoSize = true;
             this.label80.Location = new System.Drawing.Point(315, 16);
             this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(46, 13);
+            this.label80.Size = new System.Drawing.Size(52, 15);
             this.label80.TabIndex = 3;
             this.label80.Text = "Contrast";
             this.toolTip1.SetToolTip(this.label80, "The amount of contrast you want");
@@ -5168,7 +5178,7 @@
             this.label81.AutoSize = true;
             this.label81.Location = new System.Drawing.Point(59, 35);
             this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(34, 13);
+            this.label81.Size = new System.Drawing.Size(39, 15);
             this.label81.TabIndex = 1;
             this.label81.Text = "Mode";
             this.toolTip1.SetToolTip(this.label81, "Choose what to apply contrast to");
@@ -5179,10 +5189,10 @@
             this.checkBox24.AutoSize = true;
             this.checkBox24.Checked = true;
             this.checkBox24.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox24.Location = new System.Drawing.Point(519, 268);
+            this.checkBox24.Location = new System.Drawing.Point(512, 266);
             this.checkBox24.Name = "checkBox24";
             this.checkBox24.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox24.Size = new System.Drawing.Size(65, 17);
+            this.checkBox24.Size = new System.Drawing.Size(72, 19);
             this.checkBox24.TabIndex = 0;
             this.checkBox24.Text = "Enabled";
             this.checkBox24.UseVisualStyleBackColor = true;
@@ -5232,7 +5242,7 @@
             this.label97.AutoSize = true;
             this.label97.Location = new System.Drawing.Point(28, 38);
             this.label97.Name = "label97";
-            this.label97.Size = new System.Drawing.Size(43, 13);
+            this.label97.Size = new System.Drawing.Size(49, 15);
             this.label97.TabIndex = 3;
             this.label97.Text = "Method";
             // 
@@ -5254,10 +5264,10 @@
             this.checkBox26.AutoSize = true;
             this.checkBox26.Checked = true;
             this.checkBox26.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox26.Location = new System.Drawing.Point(6, 135);
+            this.checkBox26.Location = new System.Drawing.Point(-1, 133);
             this.checkBox26.Name = "checkBox26";
             this.checkBox26.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.checkBox26.Size = new System.Drawing.Size(65, 17);
+            this.checkBox26.Size = new System.Drawing.Size(72, 19);
             this.checkBox26.TabIndex = 1;
             this.checkBox26.Text = "Enabled";
             this.checkBox26.UseVisualStyleBackColor = true;
@@ -5294,7 +5304,7 @@
             this.trackBar71.Maximum = 255;
             this.trackBar71.Name = "trackBar71";
             this.trackBar71.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar71.Size = new System.Drawing.Size(45, 136);
+            this.trackBar71.Size = new System.Drawing.Size(50, 136);
             this.trackBar71.TabIndex = 41;
             this.trackBar71.TickFrequency = 20;
             this.trackBar71.Value = 90;
@@ -5331,7 +5341,7 @@
             this.trackBar75.Maximum = 255;
             this.trackBar75.Name = "trackBar75";
             this.trackBar75.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar75.Size = new System.Drawing.Size(45, 136);
+            this.trackBar75.Size = new System.Drawing.Size(50, 136);
             this.trackBar75.TabIndex = 39;
             this.trackBar75.TickFrequency = 20;
             this.trackBar75.Value = 110;
@@ -5344,7 +5354,7 @@
             this.trackBar78.Location = new System.Drawing.Point(299, 38);
             this.trackBar78.Maximum = 100;
             this.trackBar78.Name = "trackBar78";
-            this.trackBar78.Size = new System.Drawing.Size(275, 45);
+            this.trackBar78.Size = new System.Drawing.Size(275, 50);
             this.trackBar78.TabIndex = 35;
             this.trackBar78.TickFrequency = 3;
             this.trackBar78.Value = 58;
@@ -5379,7 +5389,7 @@
             this.label83.AutoSize = true;
             this.label83.Location = new System.Drawing.Point(377, 82);
             this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(59, 13);
+            this.label83.Size = new System.Drawing.Size(67, 15);
             this.label83.TabIndex = 33;
             this.label83.Text = "Color Tone";
             this.toolTip1.SetToolTip(this.label83, "What color to tint the image");
@@ -5389,7 +5399,7 @@
             this.label85.AutoSize = true;
             this.label85.Location = new System.Drawing.Point(466, 263);
             this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(28, 13);
+            this.label85.Size = new System.Drawing.Size(32, 15);
             this.label85.TabIndex = 29;
             this.label85.Text = "Blue";
             // 
@@ -5398,7 +5408,7 @@
             this.label86.AutoSize = true;
             this.label86.Location = new System.Drawing.Point(415, 263);
             this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(36, 13);
+            this.label86.Size = new System.Drawing.Size(41, 15);
             this.label86.TabIndex = 28;
             this.label86.Text = "Green";
             // 
@@ -5407,7 +5417,7 @@
             this.label87.AutoSize = true;
             this.label87.Location = new System.Drawing.Point(364, 263);
             this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(27, 13);
+            this.label87.Size = new System.Drawing.Size(30, 15);
             this.label87.TabIndex = 27;
             this.label87.Text = "Red";
             // 
@@ -5443,7 +5453,7 @@
             this.trackBar80.Maximum = 255;
             this.trackBar80.Name = "trackBar80";
             this.trackBar80.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar80.Size = new System.Drawing.Size(45, 136);
+            this.trackBar80.Size = new System.Drawing.Size(50, 136);
             this.trackBar80.TabIndex = 15;
             this.trackBar80.TickFrequency = 20;
             this.trackBar80.Value = 140;
@@ -5477,7 +5487,7 @@
             this.label89.AutoSize = true;
             this.label89.Location = new System.Drawing.Point(315, 16);
             this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(37, 13);
+            this.label89.Size = new System.Drawing.Size(42, 15);
             this.label89.TabIndex = 3;
             this.label89.Text = "Power";
             this.toolTip1.SetToolTip(this.label89, "How much to tint the image");
@@ -5489,7 +5499,7 @@
             this.trackBar82.Location = new System.Drawing.Point(18, 38);
             this.trackBar82.Maximum = 100;
             this.trackBar82.Name = "trackBar82";
-            this.trackBar82.Size = new System.Drawing.Size(275, 45);
+            this.trackBar82.Size = new System.Drawing.Size(275, 50);
             this.trackBar82.TabIndex = 2;
             this.trackBar82.TickFrequency = 3;
             this.trackBar82.Value = 11;
@@ -5499,7 +5509,7 @@
             this.label90.AutoSize = true;
             this.label90.Location = new System.Drawing.Point(30, 16);
             this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(62, 13);
+            this.label90.Size = new System.Drawing.Size(70, 15);
             this.label90.TabIndex = 1;
             this.label90.Text = "Grey Power";
             this.toolTip1.SetToolTip(this.label90, "How much desaturate the image before tinting it");
@@ -5510,10 +5520,10 @@
             this.checkBox22.AutoSize = true;
             this.checkBox22.Checked = true;
             this.checkBox22.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox22.Location = new System.Drawing.Point(519, 268);
+            this.checkBox22.Location = new System.Drawing.Point(512, 266);
             this.checkBox22.Name = "checkBox22";
             this.checkBox22.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox22.Size = new System.Drawing.Size(65, 17);
+            this.checkBox22.Size = new System.Drawing.Size(72, 19);
             this.checkBox22.TabIndex = 0;
             this.checkBox22.Text = "Enabled";
             this.checkBox22.UseVisualStyleBackColor = true;
@@ -5580,7 +5590,7 @@
             this.trackBar85.Maximum = 1000;
             this.trackBar85.Name = "trackBar85";
             this.trackBar85.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar85.Size = new System.Drawing.Size(45, 151);
+            this.trackBar85.Size = new System.Drawing.Size(50, 151);
             this.trackBar85.TabIndex = 46;
             this.trackBar85.TickFrequency = 50;
             this.trackBar85.Value = 500;
@@ -5591,7 +5601,7 @@
             this.label94.AutoSize = true;
             this.label94.Location = new System.Drawing.Point(205, 257);
             this.label94.Name = "label94";
-            this.label94.Size = new System.Drawing.Size(38, 13);
+            this.label94.Size = new System.Drawing.Size(43, 15);
             this.label94.TabIndex = 45;
             this.label94.Text = "Center";
             this.toolTip1.SetToolTip(this.label94, "Center of effect");
@@ -5628,7 +5638,7 @@
             this.trackBar86.Maximum = 1000;
             this.trackBar86.Name = "trackBar86";
             this.trackBar86.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar86.Size = new System.Drawing.Size(45, 151);
+            this.trackBar86.Size = new System.Drawing.Size(50, 151);
             this.trackBar86.TabIndex = 41;
             this.trackBar86.TickFrequency = 50;
             this.trackBar86.Value = 500;
@@ -5665,7 +5675,7 @@
             this.trackBar83.Maximum = 16;
             this.trackBar83.Minimum = 2;
             this.trackBar83.Name = "trackBar83";
-            this.trackBar83.Size = new System.Drawing.Size(275, 45);
+            this.trackBar83.Size = new System.Drawing.Size(275, 50);
             this.trackBar83.TabIndex = 20;
             this.trackBar83.Value = 8;
             // 
@@ -5675,7 +5685,7 @@
             this.label92.AutoSize = true;
             this.label92.Location = new System.Drawing.Point(315, 146);
             this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(34, 13);
+            this.label92.Size = new System.Drawing.Size(39, 15);
             this.label92.TabIndex = 19;
             this.label92.Text = "Slope";
             this.toolTip1.SetToolTip(this.label92, "How far away from the center the change should start to really grow strong (odd n" +
@@ -5719,7 +5729,7 @@
             this.trackBar81.Maximum = 100;
             this.trackBar81.Minimum = -200;
             this.trackBar81.Name = "trackBar81";
-            this.trackBar81.Size = new System.Drawing.Size(275, 45);
+            this.trackBar81.Size = new System.Drawing.Size(275, 50);
             this.trackBar81.TabIndex = 17;
             this.trackBar81.TickFrequency = 7;
             this.trackBar81.Value = -100;
@@ -5730,7 +5740,7 @@
             this.label91.AutoSize = true;
             this.label91.Location = new System.Drawing.Point(314, 80);
             this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(43, 13);
+            this.label91.Size = new System.Drawing.Size(49, 15);
             this.label91.TabIndex = 16;
             this.label91.Text = "Amount";
             this.toolTip1.SetToolTip(this.label91, "Strength of black. -2.00 = Max Black, 1.00 = Max White");
@@ -5813,7 +5823,7 @@
             this.trackBar77.Maximum = 600;
             this.trackBar77.Minimum = 15;
             this.trackBar77.Name = "trackBar77";
-            this.trackBar77.Size = new System.Drawing.Size(275, 45);
+            this.trackBar77.Size = new System.Drawing.Size(275, 50);
             this.trackBar77.TabIndex = 6;
             this.trackBar77.TickFrequency = 21;
             this.trackBar77.Value = 100;
@@ -5823,7 +5833,7 @@
             this.label74.AutoSize = true;
             this.label74.Location = new System.Drawing.Point(32, 16);
             this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(32, 13);
+            this.label74.Size = new System.Drawing.Size(36, 15);
             this.label74.TabIndex = 5;
             this.label74.Text = "Ratio";
             this.toolTip1.SetToolTip(this.label74, "Sets a width to height ratio");
@@ -5837,7 +5847,7 @@
             this.trackBar79.Maximum = 300;
             this.trackBar79.Minimum = -100;
             this.trackBar79.Name = "trackBar79";
-            this.trackBar79.Size = new System.Drawing.Size(275, 45);
+            this.trackBar79.Size = new System.Drawing.Size(275, 50);
             this.trackBar79.TabIndex = 4;
             this.trackBar79.TickFrequency = 10;
             this.trackBar79.Value = 100;
@@ -5848,7 +5858,7 @@
             this.label84.AutoSize = true;
             this.label84.Location = new System.Drawing.Point(315, 16);
             this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(40, 13);
+            this.label84.Size = new System.Drawing.Size(46, 15);
             this.label84.TabIndex = 3;
             this.label84.Text = "Radius";
             this.toolTip1.SetToolTip(this.label84, "Lower values = stronger radial effect from center");
@@ -5858,7 +5868,7 @@
             this.label88.AutoSize = true;
             this.label88.Location = new System.Drawing.Point(32, 106);
             this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(31, 13);
+            this.label88.Size = new System.Drawing.Size(33, 15);
             this.label88.TabIndex = 1;
             this.label88.Text = "Type";
             // 
@@ -5868,10 +5878,10 @@
             this.checkBox25.AutoSize = true;
             this.checkBox25.Checked = true;
             this.checkBox25.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox25.Location = new System.Drawing.Point(519, 268);
+            this.checkBox25.Location = new System.Drawing.Point(512, 266);
             this.checkBox25.Name = "checkBox25";
             this.checkBox25.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox25.Size = new System.Drawing.Size(65, 17);
+            this.checkBox25.Size = new System.Drawing.Size(72, 19);
             this.checkBox25.TabIndex = 0;
             this.checkBox25.Text = "Enabled";
             this.checkBox25.UseVisualStyleBackColor = true;
@@ -5929,7 +5939,7 @@
             this.trackBar84.Maximum = 255;
             this.trackBar84.Name = "trackBar84";
             this.trackBar84.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar84.Size = new System.Drawing.Size(45, 136);
+            this.trackBar84.Size = new System.Drawing.Size(50, 136);
             this.trackBar84.TabIndex = 41;
             this.trackBar84.TickFrequency = 20;
             this.trackBar84.Value = 90;
@@ -5960,7 +5970,7 @@
             this.trackBar87.Maximum = 255;
             this.trackBar87.Name = "trackBar87";
             this.trackBar87.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar87.Size = new System.Drawing.Size(45, 136);
+            this.trackBar87.Size = new System.Drawing.Size(50, 136);
             this.trackBar87.TabIndex = 39;
             this.trackBar87.TickFrequency = 20;
             this.trackBar87.Value = 110;
@@ -5973,7 +5983,7 @@
             this.trackBar88.Location = new System.Drawing.Point(299, 38);
             this.trackBar88.Maximum = 2048;
             this.trackBar88.Name = "trackBar88";
-            this.trackBar88.Size = new System.Drawing.Size(275, 45);
+            this.trackBar88.Size = new System.Drawing.Size(275, 50);
             this.trackBar88.TabIndex = 35;
             this.trackBar88.TickFrequency = 50;
             this.trackBar88.Value = 20;
@@ -6002,7 +6012,7 @@
             this.label95.AutoSize = true;
             this.label95.Location = new System.Drawing.Point(377, 82);
             this.label95.Name = "label95";
-            this.label95.Size = new System.Drawing.Size(31, 13);
+            this.label95.Size = new System.Drawing.Size(36, 15);
             this.label95.TabIndex = 33;
             this.label95.Text = "Color";
             this.toolTip1.SetToolTip(this.label95, "What color the border should be");
@@ -6012,7 +6022,7 @@
             this.label96.AutoSize = true;
             this.label96.Location = new System.Drawing.Point(466, 263);
             this.label96.Name = "label96";
-            this.label96.Size = new System.Drawing.Size(28, 13);
+            this.label96.Size = new System.Drawing.Size(32, 15);
             this.label96.TabIndex = 29;
             this.label96.Text = "Blue";
             // 
@@ -6021,7 +6031,7 @@
             this.label98.AutoSize = true;
             this.label98.Location = new System.Drawing.Point(415, 263);
             this.label98.Name = "label98";
-            this.label98.Size = new System.Drawing.Size(36, 13);
+            this.label98.Size = new System.Drawing.Size(41, 15);
             this.label98.TabIndex = 28;
             this.label98.Text = "Green";
             // 
@@ -6030,7 +6040,7 @@
             this.label99.AutoSize = true;
             this.label99.Location = new System.Drawing.Point(364, 263);
             this.label99.Name = "label99";
-            this.label99.Size = new System.Drawing.Size(27, 13);
+            this.label99.Size = new System.Drawing.Size(30, 15);
             this.label99.TabIndex = 27;
             this.label99.Text = "Red";
             // 
@@ -6060,7 +6070,7 @@
             this.trackBar89.Maximum = 255;
             this.trackBar89.Name = "trackBar89";
             this.trackBar89.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar89.Size = new System.Drawing.Size(45, 136);
+            this.trackBar89.Size = new System.Drawing.Size(50, 136);
             this.trackBar89.TabIndex = 15;
             this.trackBar89.TickFrequency = 20;
             this.trackBar89.Value = 140;
@@ -6088,7 +6098,7 @@
             this.label100.AutoSize = true;
             this.label100.Location = new System.Drawing.Point(315, 16);
             this.label100.Name = "label100";
-            this.label100.Size = new System.Drawing.Size(45, 13);
+            this.label100.Size = new System.Drawing.Size(48, 15);
             this.label100.TabIndex = 3;
             this.label100.Text = "Width Y";
             this.toolTip1.SetToolTip(this.label100, "Width Pixel width of the border");
@@ -6100,7 +6110,7 @@
             this.trackBar90.Location = new System.Drawing.Point(18, 38);
             this.trackBar90.Maximum = 2048;
             this.trackBar90.Name = "trackBar90";
-            this.trackBar90.Size = new System.Drawing.Size(275, 45);
+            this.trackBar90.Size = new System.Drawing.Size(275, 50);
             this.trackBar90.TabIndex = 2;
             this.trackBar90.TickFrequency = 50;
             this.trackBar90.Value = 1;
@@ -6110,7 +6120,7 @@
             this.label101.AutoSize = true;
             this.label101.Location = new System.Drawing.Point(30, 16);
             this.label101.Name = "label101";
-            this.label101.Size = new System.Drawing.Size(45, 13);
+            this.label101.Size = new System.Drawing.Size(49, 15);
             this.label101.TabIndex = 1;
             this.label101.Text = "Width X";
             this.toolTip1.SetToolTip(this.label101, "Pixel width of the border");
@@ -6121,10 +6131,10 @@
             this.checkBox28.AutoSize = true;
             this.checkBox28.Checked = true;
             this.checkBox28.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox28.Location = new System.Drawing.Point(519, 268);
+            this.checkBox28.Location = new System.Drawing.Point(512, 266);
             this.checkBox28.Name = "checkBox28";
             this.checkBox28.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox28.Size = new System.Drawing.Size(65, 17);
+            this.checkBox28.Size = new System.Drawing.Size(72, 19);
             this.checkBox28.TabIndex = 0;
             this.checkBox28.Text = "Enabled";
             this.checkBox28.UseVisualStyleBackColor = true;
@@ -6147,7 +6157,7 @@
             this.label93.AutoSize = true;
             this.label93.Location = new System.Drawing.Point(95, 54);
             this.label93.Name = "label93";
-            this.label93.Size = new System.Drawing.Size(34, 13);
+            this.label93.Size = new System.Drawing.Size(39, 15);
             this.label93.TabIndex = 2;
             this.label93.Text = "Mode";
             // 
@@ -6173,17 +6183,10 @@
             this.checkBox27.Location = new System.Drawing.Point(519, 268);
             this.checkBox27.Name = "checkBox27";
             this.checkBox27.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox27.Size = new System.Drawing.Size(65, 17);
+            this.checkBox27.Size = new System.Drawing.Size(72, 19);
             this.checkBox27.TabIndex = 0;
             this.checkBox27.Text = "Enabled";
             this.checkBox27.UseVisualStyleBackColor = true;
-            // 
-            // installManagerToolStripMenuItem
-            // 
-            this.installManagerToolStripMenuItem.Name = "installManagerToolStripMenuItem";
-            this.installManagerToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.installManagerToolStripMenuItem.Text = "Install Manager";
-            this.installManagerToolStripMenuItem.Click += new System.EventHandler(this.installManagerToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -6200,7 +6203,7 @@
             this.Opacity = 0D;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sweeter SweetFX v0.2";
+            this.Text = "Sweeter SweetFX - Alpha v3";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);

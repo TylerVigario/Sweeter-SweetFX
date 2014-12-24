@@ -52,7 +52,7 @@ namespace SweetFX_Configurator
                 MessageBox.Show("Click Browse to select the game directory");
                 return;
             }
-            Settings.AddGame(new Game(textBox2.Text.Trim(), textBox1.Text.Trim()));
+            Settings.AddGame(new Game(textBox2.Text.Trim(), new DirectoryInfo(textBox1.Text.Trim())));
             this.Close();
         }
 
