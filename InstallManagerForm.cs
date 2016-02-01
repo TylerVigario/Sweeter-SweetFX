@@ -44,7 +44,7 @@ namespace SweetFX_Configurator
             SweetFX_Install _install = (SweetFX_Install)fastObjectListView1.SelectedObject;
             if (MessageBox.Show("Are you sure you want to remove " + '"' + _install.Name + '"' + "?", "Remove SweetFX Installation", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                Directory.Delete(_install.DirectoryInfo.FullName);
+                Directory.Delete(_install.Directory.FullName);
             }
         }
 
@@ -67,11 +67,18 @@ namespace SweetFX_Configurator
     {
         public SweetFX_Install(DirectoryInfo _folder)
         {
-            this.DirectoryInfo = _folder;
+            Name = _folder.Name;
+            Directory = _folder;
         }
 
-        public string Name { get { return this.DirectoryInfo.Name; } }
+        public SweetFX_Install(string _name, DirectoryInfo _folder)
+        {
+            Name = _name;
+            Directory = _folder;
+        }
 
-        public DirectoryInfo DirectoryInfo { get; set; }
+        public string Name { get; set; }
+
+        public DirectoryInfo Directory { get; set; }
     }
 }

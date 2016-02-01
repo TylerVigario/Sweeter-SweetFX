@@ -6,76 +6,26 @@ using Ookii.Dialogs;
 
 namespace SweetFX_Configurator
 {
-    public delegate void SaveSettingsFinishedD();
+    public delegate void SettingsSavedD();
     public delegate void GameLoadedD();
 
-    public static class SweetFX
+    public static class SweetFX_Parser
     {
-        #region Hide Me
-
         private static bool _loading = false;
         private static List<Setting> SaveSettingQueue = new List<Setting>();
         private static Timer _timer = new Timer(5000);
-        public static event SaveSettingsFinishedD SaveSettingsFinished;
+        public static event SettingsSavedD SettingsSaved;
         public static event GameLoadedD GameLoaded;
 
-        public static _SMAA SMAA;
-        public static _FXAA FXAA;
-        public static _Explosion Explosion;
-        public static _Cartoon Cartoon;
-        public static _CRT CRT;
-        public static _Bloom Bloom;
-        public static _HDR HDR;
-        public static _LumaSharpen LumaSharpen;
-        public static _Levels Levels;
-        public static _Technicolor Technicolor;
-        public static _Cineon_DPX Cineon_DPX;
-        public static _Monochrome Monochrome;
-        public static _Lift_Gamma_Gain Lift_Gamma_Gain;
-        public static _Tonemap Tonemap;
-        public static _Vibrance Vibrance;
-        public static _Curves Curves;
-        public static _Sepia Sepia;
-        public static _Vignette Vignette;
-        public static _Dither Dither;
-        public static _Border Border;
-        public static _Splitscreen Splitscreen;
-
-        #endregion
-
-        /// <summary>
-        /// Parse and load a SweetFX config file
-        /// </summary>
-        /// <param name="file">Full file path</param>
         public static void Load(Game g)
         {
             if (_loading) { return; }
-            if (!File.Exists(g.DirectoryInfo.FullName + @"\SweetFX_settings.txt")) { return; }
+            if (!File.Exists(g.Directory.FullName + @"\SweetFX_settings.txt")) { return; }
             _loading = true;
             Settings.LastGame = g;
-            if (SaveSettingQueue.Count > 0) { SaveSettingWorker(); }
-            SMAA = new _SMAA();
-            FXAA = new _FXAA();
-            Explosion = new _Explosion();
-            Cartoon = new _Cartoon();
-            CRT = new _CRT();
-            Bloom = new _Bloom();
-            HDR = new _HDR();
-            LumaSharpen = new _LumaSharpen();
-            Levels = new _Levels();
-            Technicolor = new _Technicolor();
-            Cineon_DPX = new _Cineon_DPX();
-            Monochrome = new _Monochrome();
-            Lift_Gamma_Gain = new _Lift_Gamma_Gain();
-            Tonemap = new _Tonemap();
-            Vibrance = new _Vibrance();
-            Curves = new _Curves();
-            Sepia = new _Sepia();
-            Vignette = new _Vignette();
-            Dither = new _Dither();
-            Border = new _Border();
-            Splitscreen = new _Splitscreen();
-            string[] lines = File.ReadAllLines(g.DirectoryInfo.FullName + @"\SweetFX_settings.txt");
+            if (SaveSettingQueue.Count > 0) { _timer_Elapsed(null, null); }
+            g.SweetFX = new _SweetFX();
+            string[] lines = File.ReadAllLines(g.Directory.FullName + @"\SweetFX_settings.txt");
             foreach (string line in lines)
             {
                 if (line.StartsWith("#define"))
@@ -105,351 +55,351 @@ namespace SweetFX_Configurator
                     {
                         // SMAA
                         case "use_smaa_antialiasing":
-                            SMAA.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_FXAA_ANTIALIASING", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.SMAA.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_FXAA_ANTIALIASING", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "smaa_threshold":
-                            SMAA.Threshold = OutOfRangeCheck("SMAA_THRESHOLD", Convert.ToDecimal(value), new decimal[] { (decimal)0.05, (decimal)0.20 });
+                            Settings.LastGame.SweetFX.SMAA.Threshold = OutOfRangeCheck("SMAA_THRESHOLD", Convert.ToDecimal(value), new decimal[] { (decimal)0.05, (decimal)0.20 });
                             break;
                         case "smaa_max_search_steps":
-                            SMAA.Max_Search_Steps = OutOfRangeCheck("SMAA_MAX_SEARCH_STEPS", Convert.ToInt32(value), new int[] { 0, 98 });
+                            Settings.LastGame.SweetFX.SMAA.Max_Search_Steps = OutOfRangeCheck("SMAA_MAX_SEARCH_STEPS", Convert.ToInt32(value), new int[] { 0, 98 });
                             break;
                         case "smaa_max_search_steps_diag":
-                            SMAA.Max_Search_Steps_Diag = OutOfRangeCheck("SMAA_MAX_SEARCH_STEPS_DIAG", Convert.ToInt32(value), new int[] { 0, 16 });
+                            Settings.LastGame.SweetFX.SMAA.Max_Search_Steps_Diag = OutOfRangeCheck("SMAA_MAX_SEARCH_STEPS_DIAG", Convert.ToInt32(value), new int[] { 0, 16 });
                             break;
                         case "smaa_corner_rounding":
-                            SMAA.Corner_Rounding = OutOfRangeCheck("SMAA_CORNER_ROUNDING", Convert.ToInt32(value), new int[] { 0, 100 });
+                            Settings.LastGame.SweetFX.SMAA.Corner_Rounding = OutOfRangeCheck("SMAA_CORNER_ROUNDING", Convert.ToInt32(value), new int[] { 0, 100 });
                             break;
                         case "color_edge_detection":
-                            SMAA.Color_Edge_Detection = OutOfRangeCheck("COLOR_EDGE_DETECTION", Convert.ToInt32(value), new int[] { 0, 1 });
+                            Settings.LastGame.SweetFX.SMAA.Color_Edge_Detection = OutOfRangeCheck("COLOR_EDGE_DETECTION", Convert.ToInt32(value), new int[] { 0, 1 });
                             break;
                         case "smaa_directx9_linear_blend":
-                            SMAA.DirectX9_Linear_Blend = Convert.ToBoolean(OutOfRangeCheck("SMAA_DIRECTX9_LINEAR_BLEND", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.SMAA.DirectX9_Linear_Blend = Convert.ToBoolean(OutOfRangeCheck("SMAA_DIRECTX9_LINEAR_BLEND", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         // FXAA
                         case "use_fxaa_antialiasing":
-                            FXAA.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_FXAA_ANTIALIASING", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.FXAA.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_FXAA_ANTIALIASING", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "fxaa_quality__preset":
-                            FXAA.Quality_Preset = OutOfRangeCheck("FXAA_QUALITY__PRESET", Convert.ToInt32(value), new int[] { 1, 9 });
+                            Settings.LastGame.SweetFX.FXAA.Quality_Preset = OutOfRangeCheck("FXAA_QUALITY__PRESET", Convert.ToInt32(value), new int[] { 1, 9 });
                             break;
                         case "fxaa_subpix":
-                            FXAA.Subpix = OutOfRangeCheck("fxaa_Subpix", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.FXAA.Subpix = OutOfRangeCheck("fxaa_Subpix", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "fxaa_edgethreshold":
-                            FXAA.Edge_Threshold = OutOfRangeCheck("fxaa_EdgeThreshold", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.FXAA.Edge_Threshold = OutOfRangeCheck("fxaa_EdgeThreshold", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "fxaa_edgethresholdmin":
-                            FXAA.Edge_Threshold_Min = OutOfRangeCheck("fxaa_EdgeThresholdMin", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.FXAA.Edge_Threshold_Min = OutOfRangeCheck("fxaa_EdgeThresholdMin", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         // Explosion
                         case "use_explosion":
-                            Explosion.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_EXPLOSION", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.Explosion.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_EXPLOSION", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "explosion_radius":
-                            Explosion.Radius = OutOfRangeCheck("Explosion_Radius", Convert.ToDecimal(value), new decimal[] { (decimal)0.2, (decimal)100 });
+                            Settings.LastGame.SweetFX.Explosion.Radius = OutOfRangeCheck("Explosion_Radius", Convert.ToDecimal(value), new decimal[] { (decimal)0.2, (decimal)100 });
                             break;
                         // Cartoon
                         case "use_cartoon":
-                            Cartoon.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_CARTOON", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.Cartoon.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_CARTOON", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "cartoonpower":
-                            Cartoon.Power = OutOfRangeCheck("CartoonPower", Convert.ToDecimal(value), new decimal[] { (decimal)0.1, (decimal)10 });
+                            Settings.LastGame.SweetFX.Cartoon.Power = OutOfRangeCheck("CartoonPower", Convert.ToDecimal(value), new decimal[] { (decimal)0.1, (decimal)10 });
                             break;
                         case "cartoonedgeslope":
-                            Cartoon.Edge_Slope = OutOfRangeCheck("CartoonEdgeSlope", Convert.ToDecimal(value), new decimal[] { (decimal)0.1, (decimal)8 });
+                            Settings.LastGame.SweetFX.Cartoon.Edge_Slope = OutOfRangeCheck("CartoonEdgeSlope", Convert.ToDecimal(value), new decimal[] { (decimal)0.1, (decimal)8 });
                             break;
                         // CRT
                         case "use_advanced_crt":
-                            CRT.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_ADVANCED_CRT", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.CRT.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_ADVANCED_CRT", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "crtamount":
-                            CRT.Amount = OutOfRangeCheck("CRTAmount", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.CRT.Amount = OutOfRangeCheck("CRTAmount", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "crtresolution":
-                            CRT.Resolution = OutOfRangeCheck("CRTResolution", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)8 });
+                            Settings.LastGame.SweetFX.CRT.Resolution = OutOfRangeCheck("CRTResolution", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)8 });
                             break;
                         case "crtgamma":
-                            CRT.Gamma = OutOfRangeCheck("CRTgamma", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)4 });
+                            Settings.LastGame.SweetFX.CRT.Gamma = OutOfRangeCheck("CRTgamma", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)4 });
                             break;
                         case "crtmonitorgamma":
-                            CRT.Monitor_Gamma = OutOfRangeCheck("CRTmonitorgamma", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)4 });
+                            Settings.LastGame.SweetFX.CRT.Monitor_Gamma = OutOfRangeCheck("CRTmonitorgamma", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)4 });
                             break;
                         case "crtbrightness":
-                            CRT.Brightness = OutOfRangeCheck("CRTBrightness", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)3 });
+                            Settings.LastGame.SweetFX.CRT.Brightness = OutOfRangeCheck("CRTBrightness", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)3 });
                             break;
                         case "crtscanlineintensity":
-                            CRT.Scanline_Intensity = OutOfRangeCheck("CRTScanlineIntensity", Convert.ToDecimal(value), new decimal[] { (decimal)2, (decimal)4 });
+                            Settings.LastGame.SweetFX.CRT.Scanline_Intensity = OutOfRangeCheck("CRTScanlineIntensity", Convert.ToDecimal(value), new decimal[] { (decimal)2, (decimal)4 });
                             break;
                         case "crtscanlinegaussian":
-                            CRT.Scanline_Gaussian = Convert.ToBoolean(OutOfRangeCheck("CRTScanlineGaussian", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.CRT.Scanline_Gaussian = Convert.ToBoolean(OutOfRangeCheck("CRTScanlineGaussian", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "crtcurvature":
-                            CRT.Curvature = Convert.ToBoolean(OutOfRangeCheck("CRTCurvature", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.CRT.Curvature = Convert.ToBoolean(OutOfRangeCheck("CRTCurvature", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "crtcurvatureradius":
-                            CRT.Curvature_Radius = OutOfRangeCheck("CRTCurvatureRadius", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)2 });
+                            Settings.LastGame.SweetFX.CRT.Curvature_Radius = OutOfRangeCheck("CRTCurvatureRadius", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)2 });
                             break;
                         case "crtcornersize":
-                            CRT.Corner_Size = OutOfRangeCheck("CRTCornerSize", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.CRT.Corner_Size = OutOfRangeCheck("CRTCornerSize", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "crtdistance":
-                            CRT.Distance = OutOfRangeCheck("CRTDistance", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)4 });
+                            Settings.LastGame.SweetFX.CRT.Distance = OutOfRangeCheck("CRTDistance", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)4 });
                             break;
                         case "crtanglex":
-                            CRT.AngleX = OutOfRangeCheck("CRTAngleX", Convert.ToDecimal(value), new decimal[] { (decimal)-0.2, (decimal)0.2 });
+                            Settings.LastGame.SweetFX.CRT.AngleX = OutOfRangeCheck("CRTAngleX", Convert.ToDecimal(value), new decimal[] { (decimal)-0.2, (decimal)0.2 });
                             break;
                         case "crtangley":
-                            CRT.AngleY = OutOfRangeCheck("CRTAngleY", Convert.ToDecimal(value), new decimal[] { (decimal)-0.2, (decimal)0.2 });
+                            Settings.LastGame.SweetFX.CRT.AngleY = OutOfRangeCheck("CRTAngleY", Convert.ToDecimal(value), new decimal[] { (decimal)-0.2, (decimal)0.2 });
                             break;
                         case "crtoverscan":
-                            CRT.Overscan = OutOfRangeCheck("CRTOverScan", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)1.1 });
+                            Settings.LastGame.SweetFX.CRT.Overscan = OutOfRangeCheck("CRTOverScan", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)1.1 });
                             break;
                         case "crtoversample":
-                            CRT.Oversample = Convert.ToBoolean(OutOfRangeCheck("CRTOversample", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.CRT.Oversample = Convert.ToBoolean(OutOfRangeCheck("CRTOversample", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         // Bloom
                         case "use_bloom":
-                            Bloom.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_BLOOM", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.Bloom.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_BLOOM", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "bloomthreshold":
-                            Bloom.Threshold = OutOfRangeCheck("BloomThreshold", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)50 });
+                            Settings.LastGame.SweetFX.Bloom.Threshold = OutOfRangeCheck("BloomThreshold", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)50 });
                             break;
                         case "bloompower":
-                            Bloom.Power = OutOfRangeCheck("BloomPower", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)8 });
+                            Settings.LastGame.SweetFX.Bloom.Power = OutOfRangeCheck("BloomPower", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)8 });
                             break;
                         case "bloomwidth":
-                            Bloom.Width = OutOfRangeCheck("BloomWidth", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.Bloom.Width = OutOfRangeCheck("BloomWidth", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         // HDR
                         case "use_hdr":
-                            HDR.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_HDR", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.HDR.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_HDR", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "hdrpower":
-                            HDR.Power = OutOfRangeCheck("HDRPower", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)8 });
+                            Settings.LastGame.SweetFX.HDR.Power = OutOfRangeCheck("HDRPower", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)8 });
                             break;
                         case "radius2":
-                            HDR.Radius = OutOfRangeCheck("radius2", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)8 });
+                            Settings.LastGame.SweetFX.HDR.Radius = OutOfRangeCheck("radius2", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)8 });
                             break;
                         // LumaSharpen
                         case "use_lumasharpen":
-                            LumaSharpen.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_LUMASHARPEN", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.LumaSharpen.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_LUMASHARPEN", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "sharp_strength":
-                            LumaSharpen.Strength = OutOfRangeCheck("sharp_strength", Convert.ToDecimal(value), new decimal[] { (decimal)0.10, (decimal)3 });
+                            Settings.LastGame.SweetFX.LumaSharpen.Strength = OutOfRangeCheck("sharp_strength", Convert.ToDecimal(value), new decimal[] { (decimal)0.10, (decimal)3 });
                             break;
                         case "sharp_clamp":
-                            LumaSharpen.Clamp = OutOfRangeCheck("sharp_clamp", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.LumaSharpen.Clamp = OutOfRangeCheck("sharp_clamp", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "pattern":
-                            LumaSharpen.Pattern = OutOfRangeCheck("pattern", Convert.ToInt32(value), new int[] { 1, 4 });
+                            Settings.LastGame.SweetFX.LumaSharpen.Pattern = OutOfRangeCheck("pattern", Convert.ToInt32(value), new int[] { 1, 4 });
                             break;
                         case "offset_bias":
-                            LumaSharpen.Offset_Bias = OutOfRangeCheck("offset_bias", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)6 });
+                            Settings.LastGame.SweetFX.LumaSharpen.Offset_Bias = OutOfRangeCheck("offset_bias", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)6 });
                             break;
                         case "show_sharpen":
-                            LumaSharpen.Show = Convert.ToBoolean(OutOfRangeCheck("show_sharpen", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.LumaSharpen.Show = Convert.ToBoolean(OutOfRangeCheck("show_sharpen", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         // Levels
                         case "use_levels":
-                            Levels.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_LEVELS", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.Levels.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_LEVELS", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "levels_black_point":
-                            Levels.Black_Point = OutOfRangeCheck("Levels_black_point", Convert.ToInt32(value), new int[] { 0, 255 });
+                            Settings.LastGame.SweetFX.Levels.Black_Point = OutOfRangeCheck("Levels_black_point", Convert.ToInt32(value), new int[] { 0, 255 });
                             break;
                         case "levels_white_point":
-                            Levels.White_Point = OutOfRangeCheck("Levels_white_point", Convert.ToInt32(value), new int[] { 0, 255 });
+                            Settings.LastGame.SweetFX.Levels.White_Point = OutOfRangeCheck("Levels_white_point", Convert.ToInt32(value), new int[] { 0, 255 });
                             break;
                         // Technicolor
                         case "use_technicolor":
-                            Technicolor.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_TECHNICOLOR", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.Technicolor.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_TECHNICOLOR", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "techniamount":
-                            Technicolor.Amount = OutOfRangeCheck("TechniAmount", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.Technicolor.Amount = OutOfRangeCheck("TechniAmount", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "technipower":
-                            Technicolor.Power = OutOfRangeCheck("TechniPower", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)8 });
+                            Settings.LastGame.SweetFX.Technicolor.Power = OutOfRangeCheck("TechniPower", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)8 });
                             break;
                         case "rednegativeamount":
-                            Technicolor.Red_Negative_Amount = OutOfRangeCheck("redNegativeAmount", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.Technicolor.Red_Negative_Amount = OutOfRangeCheck("redNegativeAmount", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "greennegativeamount":
-                            Technicolor.Green_Negative_Amount = OutOfRangeCheck("greenNegativeAmount", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.Technicolor.Green_Negative_Amount = OutOfRangeCheck("greenNegativeAmount", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "bluenegativeamount":
-                            Technicolor.Blue_Negative_Amount = OutOfRangeCheck("blueNegativeAmount", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.Technicolor.Blue_Negative_Amount = OutOfRangeCheck("blueNegativeAmount", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         // Cineon DPX
                         case "use_dpx":
-                            Cineon_DPX.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_DPX", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.Cineon_DPX.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_DPX", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "red":
-                            Cineon_DPX.Red = OutOfRangeCheck("Red", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)15 });
+                            Settings.LastGame.SweetFX.Cineon_DPX.Red = OutOfRangeCheck("Red", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)15 });
                             break;
                         case "green":
-                            Cineon_DPX.Green = OutOfRangeCheck("Green", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)15 });
+                            Settings.LastGame.SweetFX.Cineon_DPX.Green = OutOfRangeCheck("Green", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)15 });
                             break;
                         case "blue":
-                            Cineon_DPX.Blue = OutOfRangeCheck("Blue", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)15 });
+                            Settings.LastGame.SweetFX.Cineon_DPX.Blue = OutOfRangeCheck("Blue", Convert.ToDecimal(value), new decimal[] { (decimal)1, (decimal)15 });
                             break;
                         case "colorgamma":
-                            Cineon_DPX.Color_Gamma = OutOfRangeCheck("ColorGamma", Convert.ToDecimal(value), new decimal[] { (decimal)0.1, (decimal)2.5 });
+                            Settings.LastGame.SweetFX.Cineon_DPX.Color_Gamma = OutOfRangeCheck("ColorGamma", Convert.ToDecimal(value), new decimal[] { (decimal)0.1, (decimal)2.5 });
                             break;
                         case "dpxsaturation":
-                            Cineon_DPX.Saturation = OutOfRangeCheck("DPXSaturation", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)8 });
+                            Settings.LastGame.SweetFX.Cineon_DPX.Saturation = OutOfRangeCheck("DPXSaturation", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)8 });
                             break;
                         case "redc":
-                            Cineon_DPX.RedC = OutOfRangeCheck("RedC", Convert.ToDecimal(value), new decimal[] { (decimal)0.2, (decimal)0.6 });
+                            Settings.LastGame.SweetFX.Cineon_DPX.RedC = OutOfRangeCheck("RedC", Convert.ToDecimal(value), new decimal[] { (decimal)0.2, (decimal)0.6 });
                             break;
                         case "greenc":
-                            Cineon_DPX.GreenC = OutOfRangeCheck("GreenC", Convert.ToDecimal(value), new decimal[] { (decimal)0.2, (decimal)0.6 });
+                            Settings.LastGame.SweetFX.Cineon_DPX.GreenC = OutOfRangeCheck("GreenC", Convert.ToDecimal(value), new decimal[] { (decimal)0.2, (decimal)0.6 });
                             break;
                         case "bluec":
-                            Cineon_DPX.BlueC = OutOfRangeCheck("BlueC", Convert.ToDecimal(value), new decimal[] { (decimal)0.2, (decimal)0.6 });
+                            Settings.LastGame.SweetFX.Cineon_DPX.BlueC = OutOfRangeCheck("BlueC", Convert.ToDecimal(value), new decimal[] { (decimal)0.2, (decimal)0.6 });
                             break;
                         case "blend":
-                            Cineon_DPX.Blend = OutOfRangeCheck("Blend", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.Cineon_DPX.Blend = OutOfRangeCheck("Blend", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         // Monochrome
                         case "use_monochrome":
-                            Monochrome.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_MONOCHROME", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.Monochrome.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_MONOCHROME", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "monochrome_conversion_values":
-                            Monochrome.Red = OutOfRangeCheck("monochrome_conversion_values", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)1 });
-                            Monochrome.Green = OutOfRangeCheck("monochrome_conversion_values", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)1 });
-                            Monochrome.Blue = OutOfRangeCheck("monochrome_conversion_values", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.Monochrome.Red = OutOfRangeCheck("monochrome_conversion_values", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.Monochrome.Green = OutOfRangeCheck("monochrome_conversion_values", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.Monochrome.Blue = OutOfRangeCheck("monochrome_conversion_values", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         // Lift Gamma Gain
                         case "use_liftgammagain":
-                            Lift_Gamma_Gain.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_LIFTGAMMAGAIN", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.Lift_Gamma_Gain.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_LIFTGAMMAGAIN", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "rgb_lift":
-                            Lift_Gamma_Gain.Lift_Red = OutOfRangeCheck("RGB_Lift", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)2 });
-                            Lift_Gamma_Gain.Lift_Green = OutOfRangeCheck("RGB_Lift", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2 });
-                            Lift_Gamma_Gain.Lift_Blue = OutOfRangeCheck("RGB_Lift", Convert.ToDecimal(_rgb[2].Trim()), new decimal[] { (decimal)0, (decimal)2 });
+                            Settings.LastGame.SweetFX.Lift_Gamma_Gain.Lift_Red = OutOfRangeCheck("RGB_Lift", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)2 });
+                            Settings.LastGame.SweetFX.Lift_Gamma_Gain.Lift_Green = OutOfRangeCheck("RGB_Lift", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2 });
+                            Settings.LastGame.SweetFX.Lift_Gamma_Gain.Lift_Blue = OutOfRangeCheck("RGB_Lift", Convert.ToDecimal(_rgb[2].Trim()), new decimal[] { (decimal)0, (decimal)2 });
                             break;
                         case "rgb_gamma":
-                            Lift_Gamma_Gain.Gamma_Red = OutOfRangeCheck("RGB_Gamma", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)2 });
-                            Lift_Gamma_Gain.Gamma_Green = OutOfRangeCheck("RGB_Gamma", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2 });
-                            Lift_Gamma_Gain.Gamma_Blue = OutOfRangeCheck("RGB_Gamma", Convert.ToDecimal(_rgb[2].Trim()), new decimal[] { (decimal)0, (decimal)2 });
+                            Settings.LastGame.SweetFX.Lift_Gamma_Gain.Gamma_Red = OutOfRangeCheck("RGB_Gamma", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)2 });
+                            Settings.LastGame.SweetFX.Lift_Gamma_Gain.Gamma_Green = OutOfRangeCheck("RGB_Gamma", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2 });
+                            Settings.LastGame.SweetFX.Lift_Gamma_Gain.Gamma_Blue = OutOfRangeCheck("RGB_Gamma", Convert.ToDecimal(_rgb[2].Trim()), new decimal[] { (decimal)0, (decimal)2 });
                             break;
                         case "rgb_gain":
-                            Lift_Gamma_Gain.Gain_Red = OutOfRangeCheck("RGB_Gain", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)2 });
-                            Lift_Gamma_Gain.Gain_Green = OutOfRangeCheck("RGB_Gain", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2 });
-                            Lift_Gamma_Gain.Gain_Blue = OutOfRangeCheck("RGB_Gain", Convert.ToDecimal(_rgb[2].Trim()), new decimal[] { (decimal)0, (decimal)2 });
+                            Settings.LastGame.SweetFX.Lift_Gamma_Gain.Gain_Red = OutOfRangeCheck("RGB_Gain", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)2 });
+                            Settings.LastGame.SweetFX.Lift_Gamma_Gain.Gain_Green = OutOfRangeCheck("RGB_Gain", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2 });
+                            Settings.LastGame.SweetFX.Lift_Gamma_Gain.Gain_Blue = OutOfRangeCheck("RGB_Gain", Convert.ToDecimal(_rgb[2].Trim()), new decimal[] { (decimal)0, (decimal)2 });
                             break;
                         // Tonemap
                         case "use_tonemap":
-                            Tonemap.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_TONEMAP", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.Tonemap.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_TONEMAP", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "gamma":
-                            Tonemap.Gamma = OutOfRangeCheck("Gamma", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)2 });
+                            Settings.LastGame.SweetFX.Tonemap.Gamma = OutOfRangeCheck("Gamma", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)2 });
                             break;
                         case "exposure":
-                            Tonemap.Exposure = OutOfRangeCheck("Exposure", Convert.ToDecimal(value), new decimal[] { (decimal)-1, (decimal)1 });
+                            Settings.LastGame.SweetFX.Tonemap.Exposure = OutOfRangeCheck("Exposure", Convert.ToDecimal(value), new decimal[] { (decimal)-1, (decimal)1 });
                             break;
                         case "saturation":
-                            Tonemap.Saturation = OutOfRangeCheck("Saturation", Convert.ToDecimal(value), new decimal[] { (decimal)-1, (decimal)1 });
+                            Settings.LastGame.SweetFX.Tonemap.Saturation = OutOfRangeCheck("Saturation", Convert.ToDecimal(value), new decimal[] { (decimal)-1, (decimal)1 });
                             break;
                         case "bleach":
-                            Tonemap.Bleach = OutOfRangeCheck("Bleach", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.Tonemap.Bleach = OutOfRangeCheck("Bleach", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "defog":
-                            Tonemap.Defog = OutOfRangeCheck("Defog", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.Tonemap.Defog = OutOfRangeCheck("Defog", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "fogcolor":
-                            Tonemap.Fog_Red = OutOfRangeCheck("FogColor", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
-                            Tonemap.Fog_Green = OutOfRangeCheck("FogColor", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
-                            Tonemap.Fog_Blue = OutOfRangeCheck("FogColor", Convert.ToDecimal(_rgb[2].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
+                            Settings.LastGame.SweetFX.Tonemap.Fog_Red = OutOfRangeCheck("FogColor", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
+                            Settings.LastGame.SweetFX.Tonemap.Fog_Green = OutOfRangeCheck("FogColor", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
+                            Settings.LastGame.SweetFX.Tonemap.Fog_Blue = OutOfRangeCheck("FogColor", Convert.ToDecimal(_rgb[2].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
                             break;
                         // Vibrance
                         case "use_vibrance":
-                            Vibrance.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_VIBRANCE", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.Vibrance.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_VIBRANCE", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "vibrance":
-                            Vibrance.Vibrance = OutOfRangeCheck("Vibrance", Convert.ToDecimal(value), new decimal[] { (decimal)-1, (decimal)1 });
+                            Settings.LastGame.SweetFX.Vibrance.Vibrance = OutOfRangeCheck("Vibrance", Convert.ToDecimal(value), new decimal[] { (decimal)-1, (decimal)1 });
                             break;
                         case "vibrance_rgb_balance":
-                            Vibrance.Red = OutOfRangeCheck("Vibrance_RGB_balance", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)-10, (decimal)10 });
-                            Vibrance.Green = OutOfRangeCheck("Vibrance_RGB_balance", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)-10, (decimal)10 });
-                            Vibrance.Blue = OutOfRangeCheck("Vibrance_RGB_balance", Convert.ToDecimal(_rgb[2].Trim()), new decimal[] { (decimal)-10, (decimal)10 });
+                            Settings.LastGame.SweetFX.Vibrance.Red = OutOfRangeCheck("Vibrance_RGB_balance", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)-10, (decimal)10 });
+                            Settings.LastGame.SweetFX.Vibrance.Green = OutOfRangeCheck("Vibrance_RGB_balance", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)-10, (decimal)10 });
+                            Settings.LastGame.SweetFX.Vibrance.Blue = OutOfRangeCheck("Vibrance_RGB_balance", Convert.ToDecimal(_rgb[2].Trim()), new decimal[] { (decimal)-10, (decimal)10 });
                             break;
                         // Curves
                         case "use_curves":
-                            Curves.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_CURVES", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.Curves.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_CURVES", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "curves_mode":
-                            Curves.Mode = OutOfRangeCheck("Curves_mode", Convert.ToInt32(value), new int[] { 0, 2 });
+                            Settings.LastGame.SweetFX.Curves.Mode = OutOfRangeCheck("Curves_mode", Convert.ToInt32(value), new int[] { 0, 2 });
                             break;
                         case "curves_contrast":
-                            Curves.Contrast = OutOfRangeCheck("Curves_contrast", Convert.ToDecimal(value), new decimal[] { (decimal)-1, (decimal)1 });
+                            Settings.LastGame.SweetFX.Curves.Contrast = OutOfRangeCheck("Curves_contrast", Convert.ToDecimal(value), new decimal[] { (decimal)-1, (decimal)1 });
                             break;
                         case "curves_formula":
-                            Curves.Formula = OutOfRangeCheck("Curves_formula", Convert.ToInt32(value), new int[] { 1, 10 });
+                            Settings.LastGame.SweetFX.Curves.Formula = OutOfRangeCheck("Curves_formula", Convert.ToInt32(value), new int[] { 1, 10 });
                             break;
                         // Sepia
                         case "use_sepia":
-                            Sepia.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_SEPIA", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.Sepia.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_SEPIA", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "colortone":
-                            Sepia.Red = OutOfRangeCheck("ColorTone", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
-                            Sepia.Green = OutOfRangeCheck("ColorTone", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
-                            Sepia.Blue = OutOfRangeCheck("ColorTone", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
+                            Settings.LastGame.SweetFX.Sepia.Red = OutOfRangeCheck("ColorTone", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
+                            Settings.LastGame.SweetFX.Sepia.Green = OutOfRangeCheck("ColorTone", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
+                            Settings.LastGame.SweetFX.Sepia.Blue = OutOfRangeCheck("ColorTone", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)2.55 });
                             break;
                         case "greypower":
-                            Sepia.Grey_Power = OutOfRangeCheck("GreyPower", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.Sepia.Grey_Power = OutOfRangeCheck("GreyPower", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         case "sepiapower":
-                            Sepia.Power = OutOfRangeCheck("SepiaPower", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.Sepia.Power = OutOfRangeCheck("SepiaPower", Convert.ToDecimal(value), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         // Vignette
                         case "use_vignette":
-                            Vignette.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_VIGNETTE", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.Vignette.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_VIGNETTE", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "vignettetype":
-                            Vignette.Type = OutOfRangeCheck("VignetteType", Convert.ToInt32(value), new int[] { 1, 3 });
+                            Settings.LastGame.SweetFX.Vignette.Type = OutOfRangeCheck("VignetteType", Convert.ToInt32(value), new int[] { 1, 3 });
                             break;
                         case "vignetteratio":
-                            Vignette.Ratio = OutOfRangeCheck("VignetteRatio", Convert.ToDecimal(value), new decimal[] { (decimal)0.15, (decimal)6 });
+                            Settings.LastGame.SweetFX.Vignette.Ratio = OutOfRangeCheck("VignetteRatio", Convert.ToDecimal(value), new decimal[] { (decimal)0.15, (decimal)6 });
                             break;
                         case "vignetteradius":
-                            Vignette.Radius = OutOfRangeCheck("VignetteRadius", Convert.ToDecimal(value), new decimal[] { (decimal)-1, (decimal)3 });
+                            Settings.LastGame.SweetFX.Vignette.Radius = OutOfRangeCheck("VignetteRadius", Convert.ToDecimal(value), new decimal[] { (decimal)-1, (decimal)3 });
                             break;
                         case "vignetteamount":
-                            Vignette.Amount = OutOfRangeCheck("VignetteAmount", Convert.ToDecimal(value), new decimal[] { (decimal)-2, (decimal)1 });
+                            Settings.LastGame.SweetFX.Vignette.Amount = OutOfRangeCheck("VignetteAmount", Convert.ToDecimal(value), new decimal[] { (decimal)-2, (decimal)1 });
                             break;
                         case "vignetteslope":
-                            Vignette.Slope = OutOfRangeCheck("VignetteSlope", Convert.ToInt32(value), new int[] { 2, 16 });
+                            Settings.LastGame.SweetFX.Vignette.Slope = OutOfRangeCheck("VignetteSlope", Convert.ToInt32(value), new int[] { 2, 16 });
                             break;
                         case "vignettecenter":
-                            Vignette.Center_X = OutOfRangeCheck("VignetteCenter", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)1 });
-                            Vignette.Center_Y = OutOfRangeCheck("VignetteCenter", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.Vignette.Center_X = OutOfRangeCheck("VignetteCenter", Convert.ToDecimal(_rgb[0].Trim()), new decimal[] { (decimal)0, (decimal)1 });
+                            Settings.LastGame.SweetFX.Vignette.Center_Y = OutOfRangeCheck("VignetteCenter", Convert.ToDecimal(_rgb[1].Trim()), new decimal[] { (decimal)0, (decimal)1 });
                             break;
                         // Vignette
                         case "use_dither":
-                            Dither.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_VIGNETTE", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.Dither.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_VIGNETTE", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "dither_method":
-                            Dither.Method = OutOfRangeCheck("dither_method", Convert.ToInt32(value), new int[] { 1, 2 });
+                            Settings.LastGame.SweetFX.Dither.Method = OutOfRangeCheck("dither_method", Convert.ToInt32(value), new int[] { 1, 2 });
                             break;
                         // Border
                         case "use_border":
-                            Border.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_BORDER", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.Border.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_BORDER", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "border_width":
-                            Border.Width_X = OutOfRangeCheck("border_width", Convert.ToInt32(_rgb[0].Trim()), new int[] { 0, 2048 });
-                            Border.Width_Y = OutOfRangeCheck("border_width", Convert.ToInt32(_rgb[1].Trim()), new int[] { 0, 2048 });
+                            Settings.LastGame.SweetFX.Border.Width_X = OutOfRangeCheck("border_width", Convert.ToInt32(_rgb[0].Trim()), new int[] { 0, 2048 });
+                            Settings.LastGame.SweetFX.Border.Width_Y = OutOfRangeCheck("border_width", Convert.ToInt32(_rgb[1].Trim()), new int[] { 0, 2048 });
                             break;
                         case "border_color":
-                            Border.Red = OutOfRangeCheck("border_color", Convert.ToInt32(_rgb[0].Trim()), new int[] { 0, 255 });
-                            Border.Green = OutOfRangeCheck("border_color", Convert.ToInt32(_rgb[1].Trim()), new int[] { 0, 255 });
-                            Border.Blue = OutOfRangeCheck("border_color", Convert.ToInt32(_rgb[2].Trim()), new int[] { 0, 255 });
+                            Settings.LastGame.SweetFX.Border.Red = OutOfRangeCheck("border_color", Convert.ToInt32(_rgb[0].Trim()), new int[] { 0, 255 });
+                            Settings.LastGame.SweetFX.Border.Green = OutOfRangeCheck("border_color", Convert.ToInt32(_rgb[1].Trim()), new int[] { 0, 255 });
+                            Settings.LastGame.SweetFX.Border.Blue = OutOfRangeCheck("border_color", Convert.ToInt32(_rgb[2].Trim()), new int[] { 0, 255 });
                             break;
                         // Splitscreen
                         case "use_splitscreen":
-                            Splitscreen.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_SPLITSCREEN", Convert.ToInt32(value), new int[] { 0, 1 }));
+                            Settings.LastGame.SweetFX.Splitscreen.Enabled = Convert.ToBoolean(OutOfRangeCheck("USE_SPLITSCREEN", Convert.ToInt32(value), new int[] { 0, 1 }));
                             break;
                         case "splitscreen_mode":
-                            Splitscreen.Mode = OutOfRangeCheck("splitscreen_mode", Convert.ToInt32(value), new int[] { 1, 6 });
+                            Settings.LastGame.SweetFX.Splitscreen.Mode = OutOfRangeCheck("splitscreen_mode", Convert.ToInt32(value), new int[] { 1, 6 });
                             break;
                     }
                 }
@@ -459,29 +409,21 @@ namespace SweetFX_Configurator
             _loading = false;
         }
 
-        /// <summary>
-        /// Unload all SweetFX config memory objects
-        /// </summary>
         public static void Unload()
         {
-            SMAA = null;
-            FXAA = null;
-            Explosion = null;
-            Cartoon = null;
-            CRT = null;
-            Bloom = null;
-            HDR = null;
-            LumaSharpen = null;
-            Levels = null;
-            Technicolor = null;
-            Cineon_DPX = null;
+            Settings.LastGame.SweetFX.SMAA = null;
+            Settings.LastGame.SweetFX.FXAA = null;
+            Settings.LastGame.SweetFX.Explosion = null;
+            Settings.LastGame.SweetFX.Cartoon = null;
+            Settings.LastGame.SweetFX.CRT = null;
+            Settings.LastGame.SweetFX.Bloom = null;
+            Settings.LastGame.SweetFX.HDR = null;
+            Settings.LastGame.SweetFX.LumaSharpen = null;
+            Settings.LastGame.SweetFX.Levels = null;
+            Settings.LastGame.SweetFX.Technicolor = null;
+            Settings.LastGame.SweetFX.Cineon_DPX = null;
         }
 
-        /// <summary>
-        /// Save SweetFX setting to config file
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
         public static void SaveSetting(Setting set, bool bypass = false)
         {
             if (!bypass && _loading) { return; }
@@ -500,9 +442,16 @@ namespace SweetFX_Configurator
             _timer.Start();
         }
 
-        private static void SaveSettingWorker()
+        public static void Dispose()
         {
-            string[] lines = File.ReadAllLines(Settings.LastGame.DirectoryInfo.FullName + @"\SweetFX_settings.txt");
+            if (SaveSettingQueue.Count > 0) { _timer_Elapsed(null, null); }
+            Unload();
+            _timer.Dispose();
+        }
+
+        private static void _timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            string[] lines = File.ReadAllLines(Settings.LastGame.Directory.FullName + @"\SweetFX_settings.txt");
             for (int i = 0; i < lines.Length; i++)
             {
                 string low_line = lines[i].ToLower();
@@ -538,22 +487,10 @@ namespace SweetFX_Configurator
                     }
                 }
             }
-            File.WriteAllLines(Settings.LastGame.DirectoryInfo.FullName + @"\SweetFX_settings.txt", lines);
+            File.WriteAllLines(Settings.LastGame.Directory.FullName + @"\SweetFX_settings.txt", lines);
             _timer.Enabled = false;
             _timer.Stop();
-            SaveSettingsFinished();
-        }
-
-        public static void Dispose()
-        {
-            if (SaveSettingQueue.Count > 0) { SaveSettingWorker(); }
-            Unload();
-            _timer.Dispose();
-        }
-
-        private static void _timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            SaveSettingWorker();
+            SettingsSaved();
         }
 
         public static int OutOfRangeCheck(string setting, int value, int[] range)
@@ -587,6 +524,56 @@ namespace SweetFX_Configurator
             if (task.Show() == yes_button) { SaveSetting(new Setting(setting.ToLower(), new_value.ToString()), true); return new_value; }
             else { Environment.Exit(0); return 0; }
         }
+    }
+
+    public class _SweetFX
+    {
+        public _SweetFX()
+        {
+            SMAA = new _SMAA();
+            FXAA = new _FXAA();
+            Explosion = new _Explosion();
+            Cartoon = new _Cartoon();
+            CRT = new _CRT();
+            Bloom = new _Bloom();
+            HDR = new _HDR();
+            LumaSharpen = new _LumaSharpen();
+            Levels = new _Levels();
+            Technicolor = new _Technicolor();
+            Cineon_DPX = new _Cineon_DPX();
+            Monochrome = new _Monochrome();
+            Lift_Gamma_Gain = new _Lift_Gamma_Gain();
+            Tonemap = new _Tonemap();
+            Vibrance = new _Vibrance();
+            Curves = new _Curves();
+            Sepia = new _Sepia();
+            Vignette = new _Vignette();
+            Dither = new _Dither();
+            Border = new _Border();
+            Splitscreen = new _Splitscreen();
+        }
+
+        public _SMAA SMAA { get; set; }
+        public _FXAA FXAA { get; set; }
+        public _Explosion Explosion { get; set; }
+        public _Cartoon Cartoon { get; set; }
+        public _CRT CRT { get; set; }
+        public _Bloom Bloom { get; set; }
+        public _HDR HDR { get; set; }
+        public _LumaSharpen LumaSharpen { get; set; }
+        public _Levels Levels { get; set; }
+        public _Technicolor Technicolor { get; set; }
+        public _Cineon_DPX Cineon_DPX { get; set; }
+        public _Monochrome Monochrome { get; set; }
+        public _Lift_Gamma_Gain Lift_Gamma_Gain { get; set; }
+        public _Tonemap Tonemap { get; set; }
+        public _Vibrance Vibrance { get; set; }
+        public _Curves Curves { get; set; }
+        public _Sepia Sepia { get; set; }
+        public _Vignette Vignette { get; set; }
+        public _Dither Dither { get; set; }
+        public _Border Border { get; set; }
+        public _Splitscreen Splitscreen { get; set; }
     }
 
     public class Setting
@@ -625,7 +612,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_smaa_antialiasing", (Convert.ToInt32(value)).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_smaa_antialiasing", (Convert.ToInt32(value)).ToString()));
             }
         }
 
@@ -635,7 +622,7 @@ namespace SweetFX_Configurator
             set
             {
                 _threshold = value;
-                SweetFX.SaveSetting(new Setting("smaa_threshold", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("smaa_threshold", value.ToString()));
             }
         }
 
@@ -645,7 +632,7 @@ namespace SweetFX_Configurator
             set
             {
                 _max_search_steps = value;
-                SweetFX.SaveSetting(new Setting("smaa_max_search_steps", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("smaa_max_search_steps", value.ToString()));
             }
         }
 
@@ -655,7 +642,7 @@ namespace SweetFX_Configurator
             set
             {
                 _max_search_steps_diag = value;
-                SweetFX.SaveSetting(new Setting("smaa_max_search_steps_diag", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("smaa_max_search_steps_diag", value.ToString()));
             }
         }
 
@@ -665,7 +652,7 @@ namespace SweetFX_Configurator
             set
             {
                 _corner_rounding = value;
-                SweetFX.SaveSetting(new Setting("smaa_corner_rounding", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("smaa_corner_rounding", value.ToString()));
             }
         }
 
@@ -675,7 +662,7 @@ namespace SweetFX_Configurator
             set
             {
                 _color_edge_detection = value;
-                SweetFX.SaveSetting(new Setting("color_edge_detection", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("color_edge_detection", value.ToString()));
             }
         }
 
@@ -685,7 +672,7 @@ namespace SweetFX_Configurator
             set
             {
                 _directx9_linear_blend = value;
-                SweetFX.SaveSetting(new Setting("smaa_directx9_linear_blend", (Convert.ToInt32(value)).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("smaa_directx9_linear_blend", (Convert.ToInt32(value)).ToString()));
             }
         }
     }
@@ -704,7 +691,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_fxaa_antialiasing", (Convert.ToInt32(value)).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_fxaa_antialiasing", (Convert.ToInt32(value)).ToString()));
             }
         }
 
@@ -716,7 +703,7 @@ namespace SweetFX_Configurator
                 if (value < 1) { return; }
                 if (value > 9) { return; }
                 _quality_preset = value;
-                SweetFX.SaveSetting(new Setting("fxaa_quality__preset", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("fxaa_quality__preset", value.ToString()));
             }
         }
 
@@ -726,7 +713,7 @@ namespace SweetFX_Configurator
             set
             {
                 _subpix = value;
-                SweetFX.SaveSetting(new Setting("fxaa_subpix", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("fxaa_subpix", value.ToString()));
             }
         }
 
@@ -736,7 +723,7 @@ namespace SweetFX_Configurator
             set
             {
                 _edge_threshold = value;
-                SweetFX.SaveSetting(new Setting("fxaa_edgethreshold", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("fxaa_edgethreshold", value.ToString()));
             }
         }
 
@@ -746,7 +733,7 @@ namespace SweetFX_Configurator
             set
             {
                 _edge_threshold_min = value;
-                SweetFX.SaveSetting(new Setting("fxaa_edgethresholdmin", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("fxaa_edgethresholdmin", value.ToString()));
             }
         }
     }
@@ -762,7 +749,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_explosion", (Convert.ToInt32(value)).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_explosion", (Convert.ToInt32(value)).ToString()));
             }
         }
 
@@ -772,7 +759,7 @@ namespace SweetFX_Configurator
             set
             {
                 _radius = value;
-                SweetFX.SaveSetting(new Setting("explosion_radius", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("explosion_radius", value.ToString()));
             }
         }
     }
@@ -789,7 +776,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_cartoon", (Convert.ToInt32(value)).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_cartoon", (Convert.ToInt32(value)).ToString()));
             }
         }
 
@@ -799,7 +786,7 @@ namespace SweetFX_Configurator
             set
             {
                 _power = value;
-                SweetFX.SaveSetting(new Setting("cartoonpower", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("cartoonpower", value.ToString()));
             }
         }
 
@@ -809,7 +796,7 @@ namespace SweetFX_Configurator
             set
             {
                 _edge_slope = value;
-                SweetFX.SaveSetting(new Setting("cartoonedgeslope", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("cartoonedgeslope", value.ToString()));
             }
         }
     }
@@ -839,7 +826,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_advanced_crt", (Convert.ToInt32(value)).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_advanced_crt", (Convert.ToInt32(value)).ToString()));
             }
         }
 
@@ -849,7 +836,7 @@ namespace SweetFX_Configurator
             set
             {
                 _amount = value;
-                SweetFX.SaveSetting(new Setting("crtamount", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("crtamount", value.ToString()));
             }
         }
 
@@ -859,7 +846,7 @@ namespace SweetFX_Configurator
             set
             {
                 _resolution = value;
-                SweetFX.SaveSetting(new Setting("crtresolution", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("crtresolution", value.ToString()));
             }
         }
 
@@ -869,7 +856,7 @@ namespace SweetFX_Configurator
             set
             {
                 _gamma = value;
-                SweetFX.SaveSetting(new Setting("crtgamma", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("crtgamma", value.ToString()));
             }
         }
 
@@ -879,7 +866,7 @@ namespace SweetFX_Configurator
             set
             {
                 _monitor_gamma = value;
-                SweetFX.SaveSetting(new Setting("crtmonitorgamma", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("crtmonitorgamma", value.ToString()));
             }
         }
 
@@ -889,7 +876,7 @@ namespace SweetFX_Configurator
             set
             {
                 _brightness = value;
-                SweetFX.SaveSetting(new Setting("crtbrightness", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("crtbrightness", value.ToString()));
             }
         }
 
@@ -899,7 +886,7 @@ namespace SweetFX_Configurator
             set
             {
                 _scanline_intensity = value;
-                SweetFX.SaveSetting(new Setting("crtscanlineintensity", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("crtscanlineintensity", value.ToString()));
             }
         }
 
@@ -909,7 +896,7 @@ namespace SweetFX_Configurator
             set
             {
                 _scanline_gaussian = value;
-                SweetFX.SaveSetting(new Setting("crtscanlinegaussian", (Convert.ToInt32(value)).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("crtscanlinegaussian", (Convert.ToInt32(value)).ToString()));
             }
         }
 
@@ -919,7 +906,7 @@ namespace SweetFX_Configurator
             set
             {
                 _curvature = value;
-                SweetFX.SaveSetting(new Setting("crtcurvature", (Convert.ToInt32(value)).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("crtcurvature", (Convert.ToInt32(value)).ToString()));
             }
         }
 
@@ -929,7 +916,7 @@ namespace SweetFX_Configurator
             set
             {
                 _curvature_radius = value;
-                SweetFX.SaveSetting(new Setting("crtcurvatureradius", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("crtcurvatureradius", value.ToString()));
             }
         }
 
@@ -939,7 +926,7 @@ namespace SweetFX_Configurator
             set
             {
                 _corner_size = value;
-                SweetFX.SaveSetting(new Setting("crtcornersize", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("crtcornersize", value.ToString()));
             }
         }
 
@@ -949,7 +936,7 @@ namespace SweetFX_Configurator
             set
             {
                 _distance = value;
-                SweetFX.SaveSetting(new Setting("crtdistance", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("crtdistance", value.ToString()));
             }
         }
 
@@ -959,7 +946,7 @@ namespace SweetFX_Configurator
             set
             {
                 _angle_x = value;
-                SweetFX.SaveSetting(new Setting("crtanglex", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("crtanglex", value.ToString()));
             }
         }
 
@@ -969,7 +956,7 @@ namespace SweetFX_Configurator
             set
             {
                 _angle_y = value;
-                SweetFX.SaveSetting(new Setting("crtangley", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("crtangley", value.ToString()));
             }
         }
 
@@ -979,7 +966,7 @@ namespace SweetFX_Configurator
             set
             {
                 _overscan = value;
-                SweetFX.SaveSetting(new Setting("crtoverscan", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("crtoverscan", value.ToString()));
             }
         }
 
@@ -989,7 +976,7 @@ namespace SweetFX_Configurator
             set
             {
                 _oversample = value;
-                SweetFX.SaveSetting(new Setting("crtoversample", (Convert.ToInt32(value)).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("crtoversample", (Convert.ToInt32(value)).ToString()));
             }
         }
     }
@@ -1007,7 +994,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_bloom", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_bloom", Convert.ToInt32(value).ToString()));
             }
         }
 
@@ -1017,7 +1004,7 @@ namespace SweetFX_Configurator
             set
             {
                 _threshold = value;
-                SweetFX.SaveSetting(new Setting("bloomthreshold", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("bloomthreshold", value.ToString()));
             }
         }
 
@@ -1027,7 +1014,7 @@ namespace SweetFX_Configurator
             set
             {
                 _power = value;
-                SweetFX.SaveSetting(new Setting("bloompower", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("bloompower", value.ToString()));
             }
         }
 
@@ -1037,7 +1024,7 @@ namespace SweetFX_Configurator
             set
             {
                 _width = value;
-                SweetFX.SaveSetting(new Setting("bloomwidth", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("bloomwidth", value.ToString()));
             }
         }
     }
@@ -1054,7 +1041,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_hdr", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_hdr", Convert.ToInt32(value).ToString()));
             }
         }
 
@@ -1064,7 +1051,7 @@ namespace SweetFX_Configurator
             set
             {
                 _power = value;
-                SweetFX.SaveSetting(new Setting("hdrpower", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("hdrpower", value.ToString()));
             }
         }
 
@@ -1074,7 +1061,7 @@ namespace SweetFX_Configurator
             set
             {
                 _radius = value;
-                SweetFX.SaveSetting(new Setting("radius2", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("radius2", value.ToString()));
             }
         }
     }
@@ -1094,7 +1081,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_lumasharpen", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_lumasharpen", Convert.ToInt32(value).ToString()));
             }
         }
 
@@ -1104,7 +1091,7 @@ namespace SweetFX_Configurator
             set
             {
                 _strength = value;
-                SweetFX.SaveSetting(new Setting("sharp_strength", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("sharp_strength", value.ToString()));
             }
         }
 
@@ -1114,7 +1101,7 @@ namespace SweetFX_Configurator
             set
             {
                 _clamp = value;
-                SweetFX.SaveSetting(new Setting("sharp_clamp", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("sharp_clamp", value.ToString()));
             }
         }
 
@@ -1124,7 +1111,7 @@ namespace SweetFX_Configurator
             set
             {
                 _pattern = value;
-                SweetFX.SaveSetting(new Setting("pattern", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("pattern", value.ToString()));
             }
         }
 
@@ -1134,7 +1121,7 @@ namespace SweetFX_Configurator
             set
             {
                 _offset_bias = value;
-                SweetFX.SaveSetting(new Setting("offset_bias", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("offset_bias", value.ToString()));
             }
         }
 
@@ -1144,7 +1131,7 @@ namespace SweetFX_Configurator
             set
             {
                 _show = value;
-                SweetFX.SaveSetting(new Setting("show_sharpen", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("show_sharpen", Convert.ToInt32(value).ToString()));
             }
         }
     }
@@ -1161,7 +1148,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_levels", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_levels", Convert.ToInt32(value).ToString()));
             }
         }
 
@@ -1171,7 +1158,7 @@ namespace SweetFX_Configurator
             set
             {
                 _black_point = value;
-                SweetFX.SaveSetting(new Setting("levels_black_point", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("levels_black_point", value.ToString()));
             }
         }
 
@@ -1181,7 +1168,7 @@ namespace SweetFX_Configurator
             set
             {
                 _white_point = value;
-                SweetFX.SaveSetting(new Setting("levels_white_point", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("levels_white_point", value.ToString()));
             }
         }
     }
@@ -1201,7 +1188,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_technicolor", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_technicolor", Convert.ToInt32(value).ToString()));
             }
         }
 
@@ -1211,7 +1198,7 @@ namespace SweetFX_Configurator
             set
             {
                 _amount = value;
-                SweetFX.SaveSetting(new Setting("techniamount", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("techniamount", value.ToString()));
             }
         }
 
@@ -1221,7 +1208,7 @@ namespace SweetFX_Configurator
             set
             {
                 _power = value;
-                SweetFX.SaveSetting(new Setting("technipower", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("technipower", value.ToString()));
             }
         }
 
@@ -1231,7 +1218,7 @@ namespace SweetFX_Configurator
             set
             {
                 _red_negative_amount = value;
-                SweetFX.SaveSetting(new Setting("rednegativeamount", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("rednegativeamount", value.ToString()));
             }
         }
 
@@ -1241,7 +1228,7 @@ namespace SweetFX_Configurator
             set
             {
                 _green_negative_amount = value;
-                SweetFX.SaveSetting(new Setting("greennegativeamount", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("greennegativeamount", value.ToString()));
             }
         }
 
@@ -1251,7 +1238,7 @@ namespace SweetFX_Configurator
             set
             {
                 _blue_negative_amount = value;
-                SweetFX.SaveSetting(new Setting("bluenegativeamount", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("bluenegativeamount", value.ToString()));
             }
         }
     }
@@ -1275,7 +1262,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_dpx", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_dpx", Convert.ToInt32(value).ToString()));
             }
         }
 
@@ -1285,7 +1272,7 @@ namespace SweetFX_Configurator
             set
             {
                 _red = value;
-                SweetFX.SaveSetting(new Setting("red", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("red", value.ToString()));
             }
         }
 
@@ -1295,7 +1282,7 @@ namespace SweetFX_Configurator
             set
             {
                 _green = value;
-                SweetFX.SaveSetting(new Setting("green", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("green", value.ToString()));
             }
         }
 
@@ -1305,7 +1292,7 @@ namespace SweetFX_Configurator
             set
             {
                 _blue = value;
-                SweetFX.SaveSetting(new Setting("blue", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("blue", value.ToString()));
             }
         }
 
@@ -1315,7 +1302,7 @@ namespace SweetFX_Configurator
             set
             {
                 _color_gamma = value;
-                SweetFX.SaveSetting(new Setting("colorgamma", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("colorgamma", value.ToString()));
             }
         }
 
@@ -1325,7 +1312,7 @@ namespace SweetFX_Configurator
             set
             {
                 _saturation = value;
-                SweetFX.SaveSetting(new Setting("dpxsaturation", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("dpxsaturation", value.ToString()));
             }
         }
 
@@ -1335,7 +1322,7 @@ namespace SweetFX_Configurator
             set
             {
                 _redc = value;
-                SweetFX.SaveSetting(new Setting("redc", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("redc", value.ToString()));
             }
         }
 
@@ -1345,7 +1332,7 @@ namespace SweetFX_Configurator
             set
             {
                 _greenc = value;
-                SweetFX.SaveSetting(new Setting("greenc", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("greenc", value.ToString()));
             }
         }
 
@@ -1355,7 +1342,7 @@ namespace SweetFX_Configurator
             set
             {
                 _bluec = value;
-                SweetFX.SaveSetting(new Setting("bluec", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("bluec", value.ToString()));
             }
         }
 
@@ -1365,7 +1352,7 @@ namespace SweetFX_Configurator
             set
             {
                 _blend = value;
-                SweetFX.SaveSetting(new Setting("blend", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("blend", value.ToString()));
             }
         }
     }
@@ -1383,7 +1370,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_monochrome", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_monochrome", Convert.ToInt32(value).ToString()));
             }
         }
 
@@ -1393,7 +1380,7 @@ namespace SweetFX_Configurator
             set
             {
                 _red = value;
-                SweetFX.SaveSetting(new Setting("monochrome_conversion_values", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("monochrome_conversion_values", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1403,7 +1390,7 @@ namespace SweetFX_Configurator
             set
             {
                 _green = value;
-                SweetFX.SaveSetting(new Setting("monochrome_conversion_values", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("monochrome_conversion_values", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1413,7 +1400,7 @@ namespace SweetFX_Configurator
             set
             {
                 _blue = value;
-                SweetFX.SaveSetting(new Setting("monochrome_conversion_values", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("monochrome_conversion_values", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
     }
@@ -1437,7 +1424,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_liftgammagain", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_liftgammagain", Convert.ToInt32(value).ToString()));
             }
         }
 
@@ -1447,7 +1434,7 @@ namespace SweetFX_Configurator
             set
             {
                 _lift_red = value;
-                SweetFX.SaveSetting(new Setting("rgb_lift", _lift_red + ", " + _lift_green + ", " + _lift_blue));
+                SweetFX_Parser.SaveSetting(new Setting("rgb_lift", _lift_red + ", " + _lift_green + ", " + _lift_blue));
             }
         }
 
@@ -1457,7 +1444,7 @@ namespace SweetFX_Configurator
             set
             {
                 _lift_green = value;
-                SweetFX.SaveSetting(new Setting("rgb_lift", _lift_red + ", " + _lift_green + ", " + _lift_blue));
+                SweetFX_Parser.SaveSetting(new Setting("rgb_lift", _lift_red + ", " + _lift_green + ", " + _lift_blue));
             }
         }
 
@@ -1467,7 +1454,7 @@ namespace SweetFX_Configurator
             set
             {
                 _lift_blue = value;
-                SweetFX.SaveSetting(new Setting("rgb_lift", _lift_red + ", " + _lift_green + ", " + _lift_blue));
+                SweetFX_Parser.SaveSetting(new Setting("rgb_lift", _lift_red + ", " + _lift_green + ", " + _lift_blue));
             }
         }
 
@@ -1477,7 +1464,7 @@ namespace SweetFX_Configurator
             set
             {
                 _gamma_red = value;
-                SweetFX.SaveSetting(new Setting("rgb_gamma", _gamma_red + ", " + _gamma_green + ", " + _gamma_blue));
+                SweetFX_Parser.SaveSetting(new Setting("rgb_gamma", _gamma_red + ", " + _gamma_green + ", " + _gamma_blue));
             }
         }
 
@@ -1487,7 +1474,7 @@ namespace SweetFX_Configurator
             set
             {
                 _gamma_green = value;
-                SweetFX.SaveSetting(new Setting("rgb_gamma", _gamma_red + ", " + _gamma_green + ", " + _gamma_blue));
+                SweetFX_Parser.SaveSetting(new Setting("rgb_gamma", _gamma_red + ", " + _gamma_green + ", " + _gamma_blue));
             }
         }
 
@@ -1497,7 +1484,7 @@ namespace SweetFX_Configurator
             set
             {
                 _gamma_blue = value;
-                SweetFX.SaveSetting(new Setting("rgb_gamma", _gamma_red + ", " + _gamma_green + ", " + _gamma_blue));
+                SweetFX_Parser.SaveSetting(new Setting("rgb_gamma", _gamma_red + ", " + _gamma_green + ", " + _gamma_blue));
             }
         }
 
@@ -1507,7 +1494,7 @@ namespace SweetFX_Configurator
             set
             {
                 _gain_red = value;
-                SweetFX.SaveSetting(new Setting("rgb_gain", _gain_red + ", " + _gain_green + ", " + _gain_blue));
+                SweetFX_Parser.SaveSetting(new Setting("rgb_gain", _gain_red + ", " + _gain_green + ", " + _gain_blue));
             }
         }
 
@@ -1517,7 +1504,7 @@ namespace SweetFX_Configurator
             set
             {
                 _gain_green = value;
-                SweetFX.SaveSetting(new Setting("rgb_gain", _gain_red + ", " + _gain_green + ", " + _gain_blue));
+                SweetFX_Parser.SaveSetting(new Setting("rgb_gain", _gain_red + ", " + _gain_green + ", " + _gain_blue));
             }
         }
 
@@ -1527,7 +1514,7 @@ namespace SweetFX_Configurator
             set
             {
                 _gain_blue = value;
-                SweetFX.SaveSetting(new Setting("rgb_gain", _gain_red + ", " + _gain_green + ", " + _gain_blue));
+                SweetFX_Parser.SaveSetting(new Setting("rgb_gain", _gain_red + ", " + _gain_green + ", " + _gain_blue));
             }
         }
     }
@@ -1550,7 +1537,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_tonemap", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_tonemap", Convert.ToInt32(value).ToString()));
             }
         }
 
@@ -1560,7 +1547,7 @@ namespace SweetFX_Configurator
             set
             {
                 _gamma = value;
-                SweetFX.SaveSetting(new Setting("gamma", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("gamma", value.ToString()));
             }
         }
 
@@ -1570,7 +1557,7 @@ namespace SweetFX_Configurator
             set
             {
                 _exposure = value;
-                SweetFX.SaveSetting(new Setting("exposure", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("exposure", value.ToString()));
             }
         }
 
@@ -1580,7 +1567,7 @@ namespace SweetFX_Configurator
             set
             {
                 _saturation = value;
-                SweetFX.SaveSetting(new Setting("saturation", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("saturation", value.ToString()));
             }
         }
 
@@ -1590,7 +1577,7 @@ namespace SweetFX_Configurator
             set
             {
                 _bleach = value;
-                SweetFX.SaveSetting(new Setting("bleach", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("bleach", value.ToString()));
             }
         }
 
@@ -1600,7 +1587,7 @@ namespace SweetFX_Configurator
             set
             {
                 _defog = value;
-                SweetFX.SaveSetting(new Setting("defog", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("defog", value.ToString()));
             }
         }
 
@@ -1610,7 +1597,7 @@ namespace SweetFX_Configurator
             set
             {
                 _fog_red = value;
-                SweetFX.SaveSetting(new Setting("fogcolor", _fog_red.ToString() + ", " + _fog_green + ", " + _fog_blue));
+                SweetFX_Parser.SaveSetting(new Setting("fogcolor", _fog_red.ToString() + ", " + _fog_green + ", " + _fog_blue));
             }
         }
 
@@ -1620,7 +1607,7 @@ namespace SweetFX_Configurator
             set
             {
                 _fog_green = value;
-                SweetFX.SaveSetting(new Setting("fogcolor", _fog_red.ToString() + ", " + _fog_green + ", " + _fog_blue));
+                SweetFX_Parser.SaveSetting(new Setting("fogcolor", _fog_red.ToString() + ", " + _fog_green + ", " + _fog_blue));
             }
         }
 
@@ -1630,7 +1617,7 @@ namespace SweetFX_Configurator
             set
             {
                 _fog_blue = value;
-                SweetFX.SaveSetting(new Setting("fogcolor", _fog_red.ToString() + ", " + _fog_green + ", " + _fog_blue));
+                SweetFX_Parser.SaveSetting(new Setting("fogcolor", _fog_red.ToString() + ", " + _fog_green + ", " + _fog_blue));
             }
         }
     }
@@ -1649,7 +1636,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_vibrance", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_vibrance", Convert.ToInt32(value).ToString()));
             }
         }
 
@@ -1659,7 +1646,7 @@ namespace SweetFX_Configurator
             set
             {
                 vibrance_ = value;
-                SweetFX.SaveSetting(new Setting("vibrance", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("vibrance", value.ToString()));
             }
         }
 
@@ -1669,7 +1656,7 @@ namespace SweetFX_Configurator
             set
             {
                 _red = value;
-                SweetFX.SaveSetting(new Setting("vibrance_rgb_balance", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("vibrance_rgb_balance", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1679,7 +1666,7 @@ namespace SweetFX_Configurator
             set
             {
                 _green = value;
-                SweetFX.SaveSetting(new Setting("vibrance_rgb_balance", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("vibrance_rgb_balance", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1689,7 +1676,7 @@ namespace SweetFX_Configurator
             set
             {
                 _blue = value;
-                SweetFX.SaveSetting(new Setting("vibrance_rgb_balance", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("vibrance_rgb_balance", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
     }
@@ -1707,7 +1694,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_curves", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_curves", Convert.ToInt32(value).ToString()));
             }
         }
 
@@ -1717,7 +1704,7 @@ namespace SweetFX_Configurator
             set
             {
                 _mode = value;
-                SweetFX.SaveSetting(new Setting("curves_mode", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("curves_mode", value.ToString()));
             }
         }
 
@@ -1727,7 +1714,7 @@ namespace SweetFX_Configurator
             set
             {
                 _contrast = value;
-                SweetFX.SaveSetting(new Setting("curves_contrast", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("curves_contrast", value.ToString()));
             }
         }
 
@@ -1737,7 +1724,7 @@ namespace SweetFX_Configurator
             set
             {
                 _formula = value;
-                SweetFX.SaveSetting(new Setting("curves_formula", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("curves_formula", value.ToString()));
             }
         }
     }
@@ -1757,7 +1744,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_sepia", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_sepia", Convert.ToInt32(value).ToString()));
             }
         }
 
@@ -1767,7 +1754,7 @@ namespace SweetFX_Configurator
             set
             {
                 _red = value;
-                SweetFX.SaveSetting(new Setting("colortone", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("colortone", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1777,7 +1764,7 @@ namespace SweetFX_Configurator
             set
             {
                 _green = value;
-                SweetFX.SaveSetting(new Setting("colortone", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("colortone", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1787,7 +1774,7 @@ namespace SweetFX_Configurator
             set
             {
                 _blue = value;
-                SweetFX.SaveSetting(new Setting("colortone", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("colortone", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1797,7 +1784,7 @@ namespace SweetFX_Configurator
             set
             {
                 _grey_power = value;
-                SweetFX.SaveSetting(new Setting("greypower", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("greypower", value.ToString()));
             }
         }
 
@@ -1807,7 +1794,7 @@ namespace SweetFX_Configurator
             set
             {
                 _power = value;
-                SweetFX.SaveSetting(new Setting("sepiapower", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("sepiapower", value.ToString()));
             }
         }
     }
@@ -1829,7 +1816,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_vignette", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_vignette", Convert.ToInt32(value).ToString()));
             }
         }
 
@@ -1839,7 +1826,7 @@ namespace SweetFX_Configurator
             set
             {
                 _type = value;
-                SweetFX.SaveSetting(new Setting("vignettetype", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("vignettetype", value.ToString()));
             }
         }
 
@@ -1849,7 +1836,7 @@ namespace SweetFX_Configurator
             set
             {
                 _ratio = value;
-                SweetFX.SaveSetting(new Setting("vignetteratio", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("vignetteratio", value.ToString()));
             }
         }
 
@@ -1859,7 +1846,7 @@ namespace SweetFX_Configurator
             set
             {
                 _radius = value;
-                SweetFX.SaveSetting(new Setting("vignetteradius", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("vignetteradius", value.ToString()));
             }
         }
 
@@ -1869,7 +1856,7 @@ namespace SweetFX_Configurator
             set
             {
                 _amount = value;
-                SweetFX.SaveSetting(new Setting("vignetteamount", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("vignetteamount", value.ToString()));
             }
         }
 
@@ -1879,7 +1866,7 @@ namespace SweetFX_Configurator
             set
             {
                 _slope = value;
-                SweetFX.SaveSetting(new Setting("vignetteslope", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("vignetteslope", value.ToString()));
             }
         }
 
@@ -1889,7 +1876,7 @@ namespace SweetFX_Configurator
             set
             {
                 _center_x = value;
-                SweetFX.SaveSetting(new Setting("vignettecenter", _center_x + ", " + _center_y));
+                SweetFX_Parser.SaveSetting(new Setting("vignettecenter", _center_x + ", " + _center_y));
             }
         }
 
@@ -1899,7 +1886,7 @@ namespace SweetFX_Configurator
             set
             {
                 _center_y = value;
-                SweetFX.SaveSetting(new Setting("vignettecenter", _center_x + ", " + _center_y));
+                SweetFX_Parser.SaveSetting(new Setting("vignettecenter", _center_x + ", " + _center_y));
             }
         }
     }
@@ -1915,7 +1902,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_dither", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_dither", Convert.ToInt32(value).ToString()));
             }
         }
 
@@ -1925,7 +1912,7 @@ namespace SweetFX_Configurator
             set
             {
                 _method = value;
-                SweetFX.SaveSetting(new Setting("dithermethod", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("dithermethod", value.ToString()));
             }
         }
     }
@@ -1945,7 +1932,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_border", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_border", Convert.ToInt32(value).ToString()));
             }
         }
 
@@ -1955,7 +1942,7 @@ namespace SweetFX_Configurator
             set
             {
                 _width_x = value;
-                SweetFX.SaveSetting(new Setting("border_width", _width_x + ", " + _width_y));
+                SweetFX_Parser.SaveSetting(new Setting("border_width", _width_x + ", " + _width_y));
             }
         }
 
@@ -1965,7 +1952,7 @@ namespace SweetFX_Configurator
             set
             {
                 _width_y = value;
-                SweetFX.SaveSetting(new Setting("border_width", _width_x + ", " + _width_y));
+                SweetFX_Parser.SaveSetting(new Setting("border_width", _width_x + ", " + _width_y));
             }
         }
 
@@ -1975,7 +1962,7 @@ namespace SweetFX_Configurator
             set
             {
                 _red = value;
-                SweetFX.SaveSetting(new Setting("border_color", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("border_color", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1985,7 +1972,7 @@ namespace SweetFX_Configurator
             set
             {
                 _green = value;
-                SweetFX.SaveSetting(new Setting("border_color", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("border_color", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
 
@@ -1995,7 +1982,7 @@ namespace SweetFX_Configurator
             set
             {
                 _blue = value;
-                SweetFX.SaveSetting(new Setting("border_color", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("border_color", _red.ToString() + ", " + _green.ToString() + ", " + _blue.ToString()));
             }
         }
     }
@@ -2011,7 +1998,7 @@ namespace SweetFX_Configurator
             set
             {
                 _enabled = value;
-                SweetFX.SaveSetting(new Setting("use_splitscreen", Convert.ToInt32(value).ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("use_splitscreen", Convert.ToInt32(value).ToString()));
             }
         }
 
@@ -2021,7 +2008,7 @@ namespace SweetFX_Configurator
             set
             {
                 _mode = value;
-                SweetFX.SaveSetting(new Setting("splitscreen_mode", value.ToString()));
+                SweetFX_Parser.SaveSetting(new Setting("splitscreen_mode", value.ToString()));
             }
         }
     }

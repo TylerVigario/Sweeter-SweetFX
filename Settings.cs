@@ -5,13 +5,9 @@ using System.Collections.Generic;
 
 namespace SweetFX_Configurator
 {
-    public delegate void GameAddedD(Game _g);
-
     public static class Settings
     {
         private static IniFile ini;
-        public static event GameAddedD GameAdded;
-        public static event GameAddedD GameRemoved;
 
         public static void Load()
         {
@@ -241,15 +237,21 @@ namespace SweetFX_Configurator
         {
             string section = gameNameSaferizer(_game.Name);
             ini.WriteValue(section, "Name", _game.Name);
-            ini.WriteValue(section, "Directory", _game.DirectoryInfo.FullName);
-            LastGame = _game;
-            GameAdded(_game);
+            ini.WriteValue(section, "Directory", _game.Directory.FullName);;
+        }
+
+        public static void EditGame(Game old_game, Game new_game)
+        {
+            string section = gameNameSaferizer(old_game.Name);
+            ini.DeleteSection(section);
+            section = gameNameSaferizer(new_game.Name);
+            ini.WriteValue(section, "Name", new_game.Name);
+            ini.WriteValue(section, "Directory", new_game.Directory.FullName);
         }
 
         public static void DeleteGame(Game _game)
         {
             ini.DeleteSection(gameNameSaferizer(_game.Name));
-            GameRemoved(_game);
         }
 
         public static string gameNameSaferizer(string game_name)

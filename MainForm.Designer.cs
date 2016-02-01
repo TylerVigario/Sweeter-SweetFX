@@ -890,14 +890,14 @@
             // settingsToolStripMenuItem2
             // 
             this.settingsToolStripMenuItem2.Name = "settingsToolStripMenuItem2";
-            this.settingsToolStripMenuItem2.Size = new System.Drawing.Size(127, 24);
+            this.settingsToolStripMenuItem2.Size = new System.Drawing.Size(162, 24);
             this.settingsToolStripMenuItem2.Text = "Settings";
             this.settingsToolStripMenuItem2.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(127, 24);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -930,7 +930,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(591, 290);
+            this.tabPage5.Size = new System.Drawing.Size(615, 297);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "CRT";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1044,7 +1044,7 @@
             0,
             0,
             65536});
-            this.numericUpDown16.Location = new System.Drawing.Point(494, 91);
+            this.numericUpDown16.Location = new System.Drawing.Point(518, 91);
             this.numericUpDown16.Maximum = new decimal(new int[] {
             40,
             0,
@@ -1091,7 +1091,7 @@
             0,
             0,
             65536});
-            this.numericUpDown18.Location = new System.Drawing.Point(494, 14);
+            this.numericUpDown18.Location = new System.Drawing.Point(518, 14);
             this.numericUpDown18.Maximum = new decimal(new int[] {
             80,
             0,
@@ -1151,7 +1151,7 @@
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(315, 93);
+            this.label16.Location = new System.Drawing.Point(339, 93);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(97, 15);
             this.label16.TabIndex = 8;
@@ -1162,7 +1162,7 @@
             // 
             this.trackBar16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar16.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar16.Location = new System.Drawing.Point(299, 117);
+            this.trackBar16.Location = new System.Drawing.Point(323, 117);
             this.trackBar16.Maximum = 40;
             this.trackBar16.Name = "trackBar16";
             this.trackBar16.Size = new System.Drawing.Size(275, 50);
@@ -1196,7 +1196,7 @@
             // 
             this.trackBar18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar18.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar18.Location = new System.Drawing.Point(299, 40);
+            this.trackBar18.Location = new System.Drawing.Point(323, 40);
             this.trackBar18.Maximum = 80;
             this.trackBar18.Minimum = 10;
             this.trackBar18.Name = "trackBar18";
@@ -1209,7 +1209,7 @@
             // 
             this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(315, 16);
+            this.label18.Location = new System.Drawing.Point(339, 16);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(66, 15);
             this.label18.TabIndex = 3;
@@ -1243,7 +1243,7 @@
             this.checkBox12.AutoSize = true;
             this.checkBox12.Checked = true;
             this.checkBox12.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox12.Location = new System.Drawing.Point(512, 266);
+            this.checkBox12.Location = new System.Drawing.Point(536, 273);
             this.checkBox12.Name = "checkBox12";
             this.checkBox12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox12.Size = new System.Drawing.Size(72, 19);
@@ -1258,7 +1258,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(591, 290);
+            this.tabPage3.Size = new System.Drawing.Size(615, 297);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Explosion/Cartoon";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1487,7 +1487,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(591, 290);
+            this.tabPage2.Size = new System.Drawing.Size(615, 297);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "FXAA";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1501,7 +1501,7 @@
             0,
             0,
             196608});
-            this.numericUpDown5.Location = new System.Drawing.Point(494, 91);
+            this.numericUpDown5.Location = new System.Drawing.Point(518, 91);
             this.numericUpDown5.Maximum = new decimal(new int[] {
             10,
             0,
@@ -1548,7 +1548,7 @@
             0,
             0,
             196608});
-            this.numericUpDown7.Location = new System.Drawing.Point(494, 14);
+            this.numericUpDown7.Location = new System.Drawing.Point(518, 14);
             this.numericUpDown7.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1589,7 +1589,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(315, 93);
+            this.label1.Location = new System.Drawing.Point(339, 93);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 15);
             this.label1.TabIndex = 8;
@@ -1601,7 +1601,7 @@
             this.trackBar5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar5.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar5.LargeChange = 10;
-            this.trackBar5.Location = new System.Drawing.Point(299, 117);
+            this.trackBar5.Location = new System.Drawing.Point(323, 117);
             this.trackBar5.Maximum = 1000;
             this.trackBar5.Name = "trackBar5";
             this.trackBar5.Size = new System.Drawing.Size(275, 50);
@@ -1636,7 +1636,7 @@
             this.trackBar7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar7.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar7.LargeChange = 10;
-            this.trackBar7.Location = new System.Drawing.Point(299, 40);
+            this.trackBar7.Location = new System.Drawing.Point(323, 40);
             this.trackBar7.Maximum = 1000;
             this.trackBar7.Name = "trackBar7";
             this.trackBar7.Size = new System.Drawing.Size(275, 50);
@@ -1648,7 +1648,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(315, 16);
+            this.label7.Location = new System.Drawing.Point(339, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 15);
             this.label7.TabIndex = 3;
@@ -1682,7 +1682,7 @@
             this.checkBox6.AutoSize = true;
             this.checkBox6.Checked = true;
             this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox6.Location = new System.Drawing.Point(512, 266);
+            this.checkBox6.Location = new System.Drawing.Point(536, 273);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox6.Size = new System.Drawing.Size(72, 19);
@@ -1711,7 +1711,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(591, 290);
+            this.tabPage1.Size = new System.Drawing.Size(615, 297);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "SMAA";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1742,7 +1742,7 @@
             // numericUpDown4
             // 
             this.numericUpDown4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown4.Location = new System.Drawing.Point(494, 91);
+            this.numericUpDown4.Location = new System.Drawing.Point(518, 91);
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(63, 20);
             this.numericUpDown4.TabIndex = 14;
@@ -1767,7 +1767,7 @@
             // numericUpDown2
             // 
             this.numericUpDown2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown2.Location = new System.Drawing.Point(494, 14);
+            this.numericUpDown2.Location = new System.Drawing.Point(518, 14);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             98,
             0,
@@ -1824,7 +1824,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(315, 93);
+            this.label5.Location = new System.Drawing.Point(339, 93);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 15);
             this.label5.TabIndex = 8;
@@ -1835,7 +1835,7 @@
             // 
             this.trackBar4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar4.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar4.Location = new System.Drawing.Point(299, 117);
+            this.trackBar4.Location = new System.Drawing.Point(323, 117);
             this.trackBar4.Maximum = 100;
             this.trackBar4.Name = "trackBar4";
             this.trackBar4.Size = new System.Drawing.Size(275, 50);
@@ -1867,7 +1867,7 @@
             // 
             this.trackBar2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar2.Location = new System.Drawing.Point(299, 40);
+            this.trackBar2.Location = new System.Drawing.Point(323, 40);
             this.trackBar2.Maximum = 98;
             this.trackBar2.Name = "trackBar2";
             this.trackBar2.Size = new System.Drawing.Size(275, 50);
@@ -1879,7 +1879,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(315, 16);
+            this.label3.Location = new System.Drawing.Point(339, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 15);
             this.label3.TabIndex = 3;
@@ -1914,7 +1914,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(512, 266);
+            this.checkBox1.Location = new System.Drawing.Point(536, 273);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox1.Size = new System.Drawing.Size(72, 19);
@@ -1926,9 +1926,6 @@
             // tabControl1
             // 
             this.tabControl1.AllowDrop = true;
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -1948,10 +1945,11 @@
             this.tabControl1.Controls.Add(this.tabPage17);
             this.tabControl1.Controls.Add(this.tabPage18);
             this.tabControl1.Controls.Add(this.tabPage19);
-            this.tabControl1.Location = new System.Drawing.Point(12, 27);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(599, 316);
+            this.tabControl1.Size = new System.Drawing.Size(623, 323);
             this.tabControl1.TabIndex = 8;
             this.tabControl1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tabControl1_DragDrop);
             this.tabControl1.DragEnter += new System.Windows.Forms.DragEventHandler(this.tabControl1_DragEnter);
@@ -1982,7 +1980,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(591, 290);
+            this.tabPage4.Size = new System.Drawing.Size(615, 297);
             this.tabPage4.TabIndex = 6;
             this.tabPage4.Text = "CRT (cont.)";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -2100,7 +2098,7 @@
             0,
             0,
             131072});
-            this.numericUpDown20.Location = new System.Drawing.Point(494, 91);
+            this.numericUpDown20.Location = new System.Drawing.Point(518, 91);
             this.numericUpDown20.Maximum = new decimal(new int[] {
             20,
             0,
@@ -2152,7 +2150,7 @@
             0,
             0,
             131072});
-            this.numericUpDown22.Location = new System.Drawing.Point(494, 14);
+            this.numericUpDown22.Location = new System.Drawing.Point(518, 14);
             this.numericUpDown22.Maximum = new decimal(new int[] {
             40,
             0,
@@ -2207,7 +2205,7 @@
             // 
             this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(315, 93);
+            this.label24.Location = new System.Drawing.Point(339, 93);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(48, 15);
             this.label24.TabIndex = 8;
@@ -2218,7 +2216,7 @@
             // 
             this.trackBar20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar20.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar20.Location = new System.Drawing.Point(299, 117);
+            this.trackBar20.Location = new System.Drawing.Point(323, 117);
             this.trackBar20.Maximum = 20;
             this.trackBar20.Minimum = -20;
             this.trackBar20.Name = "trackBar20";
@@ -2253,7 +2251,7 @@
             // 
             this.trackBar22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar22.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar22.Location = new System.Drawing.Point(299, 40);
+            this.trackBar22.Location = new System.Drawing.Point(323, 40);
             this.trackBar22.Maximum = 400;
             this.trackBar22.Name = "trackBar22";
             this.trackBar22.Size = new System.Drawing.Size(275, 50);
@@ -2265,7 +2263,7 @@
             // 
             this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(315, 16);
+            this.label26.Location = new System.Drawing.Point(339, 16);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(55, 15);
             this.label26.TabIndex = 3;
@@ -2300,7 +2298,7 @@
             this.checkBox8.AutoSize = true;
             this.checkBox8.Checked = true;
             this.checkBox8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox8.Location = new System.Drawing.Point(512, 266);
+            this.checkBox8.Location = new System.Drawing.Point(536, 273);
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox8.Size = new System.Drawing.Size(72, 19);
@@ -2315,7 +2313,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(591, 290);
+            this.tabPage6.Size = new System.Drawing.Size(615, 297);
             this.tabPage6.TabIndex = 8;
             this.tabPage6.Text = "Bloom/HDR";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -2626,7 +2624,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(591, 290);
+            this.tabPage8.Size = new System.Drawing.Size(615, 297);
             this.tabPage8.TabIndex = 9;
             this.tabPage8.Text = "LumaSharpen";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -2654,7 +2652,7 @@
             0,
             0,
             65536});
-            this.numericUpDown29.Location = new System.Drawing.Point(494, 91);
+            this.numericUpDown29.Location = new System.Drawing.Point(518, 91);
             this.numericUpDown29.Maximum = new decimal(new int[] {
             60,
             0,
@@ -2678,7 +2676,7 @@
             0,
             0,
             196608});
-            this.numericUpDown31.Location = new System.Drawing.Point(494, 14);
+            this.numericUpDown31.Location = new System.Drawing.Point(518, 14);
             this.numericUpDown31.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -2738,7 +2736,7 @@
             // 
             this.label33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(315, 93);
+            this.label33.Location = new System.Drawing.Point(339, 93);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(65, 15);
             this.label33.TabIndex = 8;
@@ -2749,7 +2747,7 @@
             // 
             this.trackBar29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar29.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar29.Location = new System.Drawing.Point(299, 117);
+            this.trackBar29.Location = new System.Drawing.Point(323, 117);
             this.trackBar29.Maximum = 60;
             this.trackBar29.Name = "trackBar29";
             this.trackBar29.Size = new System.Drawing.Size(275, 50);
@@ -2772,7 +2770,7 @@
             this.trackBar31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar31.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar31.LargeChange = 10;
-            this.trackBar31.Location = new System.Drawing.Point(299, 40);
+            this.trackBar31.Location = new System.Drawing.Point(323, 40);
             this.trackBar31.Maximum = 1000;
             this.trackBar31.Name = "trackBar31";
             this.trackBar31.Size = new System.Drawing.Size(275, 50);
@@ -2784,7 +2782,7 @@
             // 
             this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(315, 16);
+            this.label35.Location = new System.Drawing.Point(339, 16);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(43, 15);
             this.label35.TabIndex = 3;
@@ -2820,7 +2818,7 @@
             this.checkBox20.AutoSize = true;
             this.checkBox20.Checked = true;
             this.checkBox20.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox20.Location = new System.Drawing.Point(512, 266);
+            this.checkBox20.Location = new System.Drawing.Point(536, 273);
             this.checkBox20.Name = "checkBox20";
             this.checkBox20.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox20.Size = new System.Drawing.Size(72, 19);
@@ -2840,7 +2838,7 @@
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(591, 290);
+            this.tabPage9.Size = new System.Drawing.Size(615, 297);
             this.tabPage9.TabIndex = 10;
             this.tabPage9.Text = "Levels";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -2848,7 +2846,7 @@
             // numericUpDown33
             // 
             this.numericUpDown33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown33.Location = new System.Drawing.Point(494, 91);
+            this.numericUpDown33.Location = new System.Drawing.Point(518, 91);
             this.numericUpDown33.Maximum = new decimal(new int[] {
             255,
             0,
@@ -2866,7 +2864,7 @@
             // numericUpDown35
             // 
             this.numericUpDown35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown35.Location = new System.Drawing.Point(494, 14);
+            this.numericUpDown35.Location = new System.Drawing.Point(518, 14);
             this.numericUpDown35.Maximum = new decimal(new int[] {
             255,
             0,
@@ -2885,7 +2883,7 @@
             // 
             this.label37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(30, 93);
+            this.label37.Location = new System.Drawing.Point(54, 93);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(69, 15);
             this.label37.TabIndex = 8;
@@ -2896,7 +2894,7 @@
             // 
             this.trackBar33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar33.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar33.Location = new System.Drawing.Point(14, 117);
+            this.trackBar33.Location = new System.Drawing.Point(38, 117);
             this.trackBar33.Maximum = 255;
             this.trackBar33.Name = "trackBar33";
             this.trackBar33.Size = new System.Drawing.Size(560, 50);
@@ -2932,7 +2930,7 @@
             this.checkBox21.AutoSize = true;
             this.checkBox21.Checked = true;
             this.checkBox21.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox21.Location = new System.Drawing.Point(512, 266);
+            this.checkBox21.Location = new System.Drawing.Point(536, 273);
             this.checkBox21.Name = "checkBox21";
             this.checkBox21.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox21.Size = new System.Drawing.Size(72, 19);
@@ -2961,7 +2959,7 @@
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(591, 290);
+            this.tabPage10.Size = new System.Drawing.Size(615, 297);
             this.tabPage10.TabIndex = 11;
             this.tabPage10.Text = "Technicolor";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -3018,7 +3016,7 @@
             0,
             0,
             131072});
-            this.numericUpDown49.Location = new System.Drawing.Point(494, 91);
+            this.numericUpDown49.Location = new System.Drawing.Point(518, 91);
             this.numericUpDown49.Maximum = new decimal(new int[] {
             100,
             0,
@@ -3065,7 +3063,7 @@
             0,
             0,
             131072});
-            this.numericUpDown51.Location = new System.Drawing.Point(494, 14);
+            this.numericUpDown51.Location = new System.Drawing.Point(518, 14);
             this.numericUpDown51.Maximum = new decimal(new int[] {
             800,
             0,
@@ -3107,7 +3105,7 @@
             // 
             this.label41.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(315, 93);
+            this.label41.Location = new System.Drawing.Point(339, 93);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(137, 15);
             this.label41.TabIndex = 8;
@@ -3117,7 +3115,7 @@
             // 
             this.trackBar49.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar49.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar49.Location = new System.Drawing.Point(299, 117);
+            this.trackBar49.Location = new System.Drawing.Point(323, 117);
             this.trackBar49.Maximum = 100;
             this.trackBar49.Name = "trackBar49";
             this.trackBar49.Size = new System.Drawing.Size(275, 50);
@@ -3149,7 +3147,7 @@
             // 
             this.trackBar51.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar51.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar51.Location = new System.Drawing.Point(299, 40);
+            this.trackBar51.Location = new System.Drawing.Point(323, 40);
             this.trackBar51.Maximum = 800;
             this.trackBar51.Name = "trackBar51";
             this.trackBar51.Size = new System.Drawing.Size(275, 50);
@@ -3161,7 +3159,7 @@
             // 
             this.label43.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(315, 16);
+            this.label43.Location = new System.Drawing.Point(339, 16);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(42, 15);
             this.label43.TabIndex = 3;
@@ -3194,7 +3192,7 @@
             this.checkBox23.AutoSize = true;
             this.checkBox23.Checked = true;
             this.checkBox23.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox23.Location = new System.Drawing.Point(512, 266);
+            this.checkBox23.Location = new System.Drawing.Point(536, 273);
             this.checkBox23.Name = "checkBox23";
             this.checkBox23.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox23.Size = new System.Drawing.Size(72, 19);
@@ -3235,7 +3233,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(591, 290);
+            this.tabPage7.Size = new System.Drawing.Size(615, 297);
             this.tabPage7.TabIndex = 12;
             this.tabPage7.Text = "DPX";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -3303,7 +3301,7 @@
             0,
             0,
             131072});
-            this.numericUpDown43.Location = new System.Drawing.Point(283, 76);
+            this.numericUpDown43.Location = new System.Drawing.Point(307, 76);
             this.numericUpDown43.Maximum = new decimal(new int[] {
             60,
             0,
@@ -3332,7 +3330,7 @@
             0,
             0,
             131072});
-            this.numericUpDown42.Location = new System.Drawing.Point(232, 76);
+            this.numericUpDown42.Location = new System.Drawing.Point(256, 76);
             this.numericUpDown42.Maximum = new decimal(new int[] {
             60,
             0,
@@ -3361,7 +3359,7 @@
             0,
             0,
             131072});
-            this.numericUpDown41.Location = new System.Drawing.Point(181, 76);
+            this.numericUpDown41.Location = new System.Drawing.Point(205, 76);
             this.numericUpDown41.Maximum = new decimal(new int[] {
             60,
             0,
@@ -3390,7 +3388,7 @@
             0,
             0,
             131072});
-            this.numericUpDown40.Location = new System.Drawing.Point(130, 76);
+            this.numericUpDown40.Location = new System.Drawing.Point(154, 76);
             this.numericUpDown40.Maximum = new decimal(new int[] {
             15,
             0,
@@ -3419,7 +3417,7 @@
             0,
             0,
             131072});
-            this.numericUpDown37.Location = new System.Drawing.Point(79, 76);
+            this.numericUpDown37.Location = new System.Drawing.Point(103, 76);
             this.numericUpDown37.Maximum = new decimal(new int[] {
             15,
             0,
@@ -3448,7 +3446,7 @@
             0,
             0,
             131072});
-            this.numericUpDown34.Location = new System.Drawing.Point(28, 76);
+            this.numericUpDown34.Location = new System.Drawing.Point(52, 76);
             this.numericUpDown34.Maximum = new decimal(new int[] {
             15,
             0,
@@ -3472,7 +3470,7 @@
             // 
             this.trackBar43.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar43.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar43.Location = new System.Drawing.Point(283, 102);
+            this.trackBar43.Location = new System.Drawing.Point(307, 102);
             this.trackBar43.Maximum = 60;
             this.trackBar43.Minimum = 20;
             this.trackBar43.Name = "trackBar43";
@@ -3486,7 +3484,7 @@
             // 
             this.trackBar42.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar42.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar42.Location = new System.Drawing.Point(232, 104);
+            this.trackBar42.Location = new System.Drawing.Point(256, 104);
             this.trackBar42.Maximum = 60;
             this.trackBar42.Minimum = 20;
             this.trackBar42.Name = "trackBar42";
@@ -3500,7 +3498,7 @@
             // 
             this.trackBar41.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar41.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar41.Location = new System.Drawing.Point(181, 102);
+            this.trackBar41.Location = new System.Drawing.Point(205, 102);
             this.trackBar41.Maximum = 60;
             this.trackBar41.Minimum = 20;
             this.trackBar41.Name = "trackBar41";
@@ -3514,7 +3512,7 @@
             // 
             this.trackBar40.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar40.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar40.Location = new System.Drawing.Point(130, 102);
+            this.trackBar40.Location = new System.Drawing.Point(154, 102);
             this.trackBar40.Maximum = 1500;
             this.trackBar40.Minimum = 100;
             this.trackBar40.Name = "trackBar40";
@@ -3528,7 +3526,7 @@
             // 
             this.trackBar37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar37.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar37.Location = new System.Drawing.Point(79, 102);
+            this.trackBar37.Location = new System.Drawing.Point(103, 102);
             this.trackBar37.Maximum = 1500;
             this.trackBar37.Minimum = 100;
             this.trackBar37.Name = "trackBar37";
@@ -3542,7 +3540,7 @@
             // 
             this.trackBar34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar34.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar34.Location = new System.Drawing.Point(28, 102);
+            this.trackBar34.Location = new System.Drawing.Point(52, 102);
             this.trackBar34.Maximum = 1500;
             this.trackBar34.Minimum = 100;
             this.trackBar34.Name = "trackBar34";
@@ -3561,7 +3559,7 @@
             0,
             0,
             131072});
-            this.numericUpDown36.Location = new System.Drawing.Point(494, 91);
+            this.numericUpDown36.Location = new System.Drawing.Point(518, 91);
             this.numericUpDown36.Maximum = new decimal(new int[] {
             100,
             0,
@@ -3585,7 +3583,7 @@
             0,
             0,
             65536});
-            this.numericUpDown38.Location = new System.Drawing.Point(494, 14);
+            this.numericUpDown38.Location = new System.Drawing.Point(518, 14);
             this.numericUpDown38.Maximum = new decimal(new int[] {
             800,
             0,
@@ -3632,7 +3630,7 @@
             // 
             this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(354, 93);
+            this.label29.Location = new System.Drawing.Point(378, 93);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(39, 15);
             this.label29.TabIndex = 8;
@@ -3643,7 +3641,7 @@
             // 
             this.trackBar36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar36.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar36.Location = new System.Drawing.Point(334, 117);
+            this.trackBar36.Location = new System.Drawing.Point(358, 117);
             this.trackBar36.Maximum = 100;
             this.trackBar36.Name = "trackBar36";
             this.trackBar36.Size = new System.Drawing.Size(240, 50);
@@ -3655,7 +3653,7 @@
             // 
             this.trackBar38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar38.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar38.Location = new System.Drawing.Point(299, 40);
+            this.trackBar38.Location = new System.Drawing.Point(323, 40);
             this.trackBar38.Maximum = 80;
             this.trackBar38.Name = "trackBar38";
             this.trackBar38.Size = new System.Drawing.Size(275, 50);
@@ -3667,7 +3665,7 @@
             // 
             this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(315, 16);
+            this.label31.Location = new System.Drawing.Point(339, 16);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(63, 15);
             this.label31.TabIndex = 3;
@@ -3702,7 +3700,7 @@
             this.checkBox9.AutoSize = true;
             this.checkBox9.Checked = true;
             this.checkBox9.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox9.Location = new System.Drawing.Point(512, 266);
+            this.checkBox9.Location = new System.Drawing.Point(536, 273);
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox9.Size = new System.Drawing.Size(72, 19);
@@ -3726,7 +3724,7 @@
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(591, 290);
+            this.tabPage11.Size = new System.Drawing.Size(615, 297);
             this.tabPage11.TabIndex = 13;
             this.tabPage11.Text = "Monochrome";
             this.tabPage11.UseVisualStyleBackColor = true;
@@ -3762,7 +3760,7 @@
             // 
             this.trackBar45.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar45.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar45.Location = new System.Drawing.Point(130, 45);
+            this.trackBar45.Location = new System.Drawing.Point(154, 45);
             this.trackBar45.Maximum = 100;
             this.trackBar45.Name = "trackBar45";
             this.trackBar45.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -3775,7 +3773,7 @@
             // 
             this.trackBar44.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar44.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar44.Location = new System.Drawing.Point(79, 45);
+            this.trackBar44.Location = new System.Drawing.Point(103, 45);
             this.trackBar44.Maximum = 100;
             this.trackBar44.Name = "trackBar44";
             this.trackBar44.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -3793,7 +3791,7 @@
             0,
             0,
             131072});
-            this.numericUpDown45.Location = new System.Drawing.Point(130, 19);
+            this.numericUpDown45.Location = new System.Drawing.Point(154, 19);
             this.numericUpDown45.Maximum = new decimal(new int[] {
             100,
             0,
@@ -3817,7 +3815,7 @@
             0,
             0,
             131072});
-            this.numericUpDown44.Location = new System.Drawing.Point(79, 19);
+            this.numericUpDown44.Location = new System.Drawing.Point(103, 19);
             this.numericUpDown44.Maximum = new decimal(new int[] {
             100,
             0,
@@ -3851,7 +3849,7 @@
             0,
             0,
             131072});
-            this.numericUpDown54.Location = new System.Drawing.Point(28, 19);
+            this.numericUpDown54.Location = new System.Drawing.Point(52, 19);
             this.numericUpDown54.Maximum = new decimal(new int[] {
             100,
             0,
@@ -3870,7 +3868,7 @@
             // 
             this.trackBar54.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar54.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar54.Location = new System.Drawing.Point(28, 45);
+            this.trackBar54.Location = new System.Drawing.Point(52, 45);
             this.trackBar54.Maximum = 100;
             this.trackBar54.Name = "trackBar54";
             this.trackBar54.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -3885,7 +3883,7 @@
             this.checkBox11.AutoSize = true;
             this.checkBox11.Checked = true;
             this.checkBox11.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox11.Location = new System.Drawing.Point(512, 266);
+            this.checkBox11.Location = new System.Drawing.Point(536, 273);
             this.checkBox11.Name = "checkBox11";
             this.checkBox11.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox11.Size = new System.Drawing.Size(72, 19);
@@ -3929,7 +3927,7 @@
             this.tabPage12.Location = new System.Drawing.Point(4, 22);
             this.tabPage12.Name = "tabPage12";
             this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage12.Size = new System.Drawing.Size(591, 290);
+            this.tabPage12.Size = new System.Drawing.Size(615, 297);
             this.tabPage12.TabIndex = 14;
             this.tabPage12.Text = "Lift Gamma Gain";
             this.tabPage12.UseVisualStyleBackColor = true;
@@ -3943,7 +3941,7 @@
             0,
             0,
             196608});
-            this.numericUpDown58.Location = new System.Drawing.Point(510, 19);
+            this.numericUpDown58.Location = new System.Drawing.Point(534, 19);
             this.numericUpDown58.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -3967,7 +3965,7 @@
             0,
             0,
             196608});
-            this.numericUpDown59.Location = new System.Drawing.Point(459, 19);
+            this.numericUpDown59.Location = new System.Drawing.Point(483, 19);
             this.numericUpDown59.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -3986,7 +3984,7 @@
             // 
             this.trackBar58.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar58.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar58.Location = new System.Drawing.Point(513, 45);
+            this.trackBar58.Location = new System.Drawing.Point(537, 45);
             this.trackBar58.Maximum = 2000;
             this.trackBar58.Name = "trackBar58";
             this.trackBar58.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -3999,7 +3997,7 @@
             // 
             this.trackBar59.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar59.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar59.Location = new System.Drawing.Point(462, 45);
+            this.trackBar59.Location = new System.Drawing.Point(486, 45);
             this.trackBar59.Maximum = 2000;
             this.trackBar59.Name = "trackBar59";
             this.trackBar59.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -4054,7 +4052,7 @@
             0,
             0,
             196608});
-            this.numericUpDown60.Location = new System.Drawing.Point(408, 19);
+            this.numericUpDown60.Location = new System.Drawing.Point(432, 19);
             this.numericUpDown60.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -4073,7 +4071,7 @@
             // 
             this.trackBar60.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar60.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar60.Location = new System.Drawing.Point(411, 45);
+            this.trackBar60.Location = new System.Drawing.Point(435, 45);
             this.trackBar60.Maximum = 2000;
             this.trackBar60.Name = "trackBar60";
             this.trackBar60.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -4091,7 +4089,7 @@
             0,
             0,
             196608});
-            this.numericUpDown55.Location = new System.Drawing.Point(320, 19);
+            this.numericUpDown55.Location = new System.Drawing.Point(344, 19);
             this.numericUpDown55.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -4115,7 +4113,7 @@
             0,
             0,
             196608});
-            this.numericUpDown56.Location = new System.Drawing.Point(269, 19);
+            this.numericUpDown56.Location = new System.Drawing.Point(293, 19);
             this.numericUpDown56.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -4134,7 +4132,7 @@
             // 
             this.trackBar55.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar55.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar55.Location = new System.Drawing.Point(323, 45);
+            this.trackBar55.Location = new System.Drawing.Point(347, 45);
             this.trackBar55.Maximum = 2000;
             this.trackBar55.Name = "trackBar55";
             this.trackBar55.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -4147,7 +4145,7 @@
             // 
             this.trackBar56.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar56.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar56.Location = new System.Drawing.Point(272, 45);
+            this.trackBar56.Location = new System.Drawing.Point(296, 45);
             this.trackBar56.Maximum = 2000;
             this.trackBar56.Name = "trackBar56";
             this.trackBar56.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -4202,7 +4200,7 @@
             0,
             0,
             196608});
-            this.numericUpDown57.Location = new System.Drawing.Point(218, 19);
+            this.numericUpDown57.Location = new System.Drawing.Point(242, 19);
             this.numericUpDown57.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -4221,7 +4219,7 @@
             // 
             this.trackBar57.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar57.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar57.Location = new System.Drawing.Point(221, 45);
+            this.trackBar57.Location = new System.Drawing.Point(245, 45);
             this.trackBar57.Maximum = 2000;
             this.trackBar57.Name = "trackBar57";
             this.trackBar57.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -4239,7 +4237,7 @@
             0,
             0,
             196608});
-            this.numericUpDown47.Location = new System.Drawing.Point(127, 19);
+            this.numericUpDown47.Location = new System.Drawing.Point(151, 19);
             this.numericUpDown47.Maximum = new decimal(new int[] {
             200,
             0,
@@ -4263,7 +4261,7 @@
             0,
             0,
             196608});
-            this.numericUpDown46.Location = new System.Drawing.Point(76, 19);
+            this.numericUpDown46.Location = new System.Drawing.Point(100, 19);
             this.numericUpDown46.Maximum = new decimal(new int[] {
             200,
             0,
@@ -4282,7 +4280,7 @@
             // 
             this.trackBar47.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar47.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar47.Location = new System.Drawing.Point(130, 45);
+            this.trackBar47.Location = new System.Drawing.Point(154, 45);
             this.trackBar47.Maximum = 2000;
             this.trackBar47.Name = "trackBar47";
             this.trackBar47.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -4295,7 +4293,7 @@
             // 
             this.trackBar46.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar46.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar46.Location = new System.Drawing.Point(79, 45);
+            this.trackBar46.Location = new System.Drawing.Point(103, 45);
             this.trackBar46.Maximum = 2000;
             this.trackBar46.Name = "trackBar46";
             this.trackBar46.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -4350,7 +4348,7 @@
             0,
             0,
             196608});
-            this.numericUpDown53.Location = new System.Drawing.Point(25, 19);
+            this.numericUpDown53.Location = new System.Drawing.Point(49, 19);
             this.numericUpDown53.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -4369,7 +4367,7 @@
             // 
             this.trackBar53.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar53.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar53.Location = new System.Drawing.Point(28, 45);
+            this.trackBar53.Location = new System.Drawing.Point(52, 45);
             this.trackBar53.Maximum = 2000;
             this.trackBar53.Name = "trackBar53";
             this.trackBar53.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -4382,7 +4380,7 @@
             // 
             this.checkBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox13.AutoSize = true;
-            this.checkBox13.Location = new System.Drawing.Point(512, 266);
+            this.checkBox13.Location = new System.Drawing.Point(536, 273);
             this.checkBox13.Name = "checkBox13";
             this.checkBox13.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox13.Size = new System.Drawing.Size(72, 19);
@@ -4421,7 +4419,7 @@
             this.tabPage13.Location = new System.Drawing.Point(4, 22);
             this.tabPage13.Name = "tabPage13";
             this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage13.Size = new System.Drawing.Size(591, 290);
+            this.tabPage13.Size = new System.Drawing.Size(615, 297);
             this.tabPage13.TabIndex = 15;
             this.tabPage13.Text = "Tonemap";
             this.tabPage13.UseVisualStyleBackColor = true;
@@ -4435,7 +4433,7 @@
             0,
             0,
             131072});
-            this.numericUpDown65.Location = new System.Drawing.Point(469, 98);
+            this.numericUpDown65.Location = new System.Drawing.Point(493, 98);
             this.numericUpDown65.Maximum = new decimal(new int[] {
             255,
             0,
@@ -4454,7 +4452,7 @@
             // 
             this.trackBar65.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar65.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar65.Location = new System.Drawing.Point(469, 124);
+            this.trackBar65.Location = new System.Drawing.Point(493, 124);
             this.trackBar65.Maximum = 255;
             this.trackBar65.Name = "trackBar65";
             this.trackBar65.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -4472,7 +4470,7 @@
             0,
             0,
             131072});
-            this.numericUpDown64.Location = new System.Drawing.Point(418, 98);
+            this.numericUpDown64.Location = new System.Drawing.Point(442, 98);
             this.numericUpDown64.Maximum = new decimal(new int[] {
             255,
             0,
@@ -4486,7 +4484,7 @@
             // 
             this.trackBar64.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar64.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar64.Location = new System.Drawing.Point(418, 124);
+            this.trackBar64.Location = new System.Drawing.Point(442, 124);
             this.trackBar64.Maximum = 255;
             this.trackBar64.Name = "trackBar64";
             this.trackBar64.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -4503,7 +4501,7 @@
             0,
             0,
             196608});
-            this.numericUpDown63.Location = new System.Drawing.Point(207, 216);
+            this.numericUpDown63.Location = new System.Drawing.Point(231, 216);
             this.numericUpDown63.Maximum = new decimal(new int[] {
             100,
             0,
@@ -4517,7 +4515,7 @@
             // 
             this.label67.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(30, 218);
+            this.label67.Location = new System.Drawing.Point(54, 218);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(40, 15);
             this.label67.TabIndex = 37;
@@ -4528,7 +4526,7 @@
             // 
             this.trackBar63.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar63.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar63.Location = new System.Drawing.Point(18, 242);
+            this.trackBar63.Location = new System.Drawing.Point(42, 242);
             this.trackBar63.Maximum = 1000;
             this.trackBar63.Name = "trackBar63";
             this.trackBar63.Size = new System.Drawing.Size(275, 50);
@@ -4540,7 +4538,7 @@
             this.trackBar62.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar62.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar62.LargeChange = 10;
-            this.trackBar62.Location = new System.Drawing.Point(299, 38);
+            this.trackBar62.Location = new System.Drawing.Point(323, 38);
             this.trackBar62.Maximum = 1000;
             this.trackBar62.Minimum = -1000;
             this.trackBar62.Name = "trackBar62";
@@ -4557,7 +4555,7 @@
             0,
             0,
             196608});
-            this.numericUpDown62.Location = new System.Drawing.Point(493, 16);
+            this.numericUpDown62.Location = new System.Drawing.Point(517, 16);
             this.numericUpDown62.Maximum = new decimal(new int[] {
             100,
             0,
@@ -4576,7 +4574,7 @@
             // 
             this.label66.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label66.AutoSize = true;
-            this.label66.Location = new System.Drawing.Point(377, 82);
+            this.label66.Location = new System.Drawing.Point(401, 82);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(60, 15);
             this.label66.TabIndex = 33;
@@ -4592,7 +4590,7 @@
             0,
             0,
             196608});
-            this.numericUpDown61.Location = new System.Drawing.Point(207, 148);
+            this.numericUpDown61.Location = new System.Drawing.Point(231, 148);
             this.numericUpDown61.Maximum = new decimal(new int[] {
             100,
             0,
@@ -4606,7 +4604,7 @@
             // 
             this.label65.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label65.AutoSize = true;
-            this.label65.Location = new System.Drawing.Point(30, 150);
+            this.label65.Location = new System.Drawing.Point(54, 150);
             this.label65.Name = "label65";
             this.label65.Size = new System.Drawing.Size(45, 15);
             this.label65.TabIndex = 31;
@@ -4617,7 +4615,7 @@
             // 
             this.trackBar61.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar61.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar61.Location = new System.Drawing.Point(18, 174);
+            this.trackBar61.Location = new System.Drawing.Point(42, 174);
             this.trackBar61.Maximum = 1000;
             this.trackBar61.Name = "trackBar61";
             this.trackBar61.Size = new System.Drawing.Size(275, 50);
@@ -4660,7 +4658,7 @@
             0,
             0,
             131072});
-            this.numericUpDown66.Location = new System.Drawing.Point(367, 98);
+            this.numericUpDown66.Location = new System.Drawing.Point(391, 98);
             this.numericUpDown66.Maximum = new decimal(new int[] {
             255,
             0,
@@ -4674,7 +4672,7 @@
             // 
             this.trackBar66.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar66.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar66.Location = new System.Drawing.Point(367, 124);
+            this.trackBar66.Location = new System.Drawing.Point(391, 124);
             this.trackBar66.Maximum = 255;
             this.trackBar66.Name = "trackBar66";
             this.trackBar66.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -4691,7 +4689,7 @@
             0,
             0,
             196608});
-            this.numericUpDown67.Location = new System.Drawing.Point(207, 79);
+            this.numericUpDown67.Location = new System.Drawing.Point(231, 79);
             this.numericUpDown67.Maximum = new decimal(new int[] {
             100,
             0,
@@ -4733,7 +4731,7 @@
             // 
             this.label71.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(30, 81);
+            this.label71.Location = new System.Drawing.Point(54, 81);
             this.label71.Name = "label71";
             this.label71.Size = new System.Drawing.Size(59, 15);
             this.label71.TabIndex = 8;
@@ -4745,7 +4743,7 @@
             this.trackBar67.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar67.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar67.LargeChange = 10;
-            this.trackBar67.Location = new System.Drawing.Point(18, 105);
+            this.trackBar67.Location = new System.Drawing.Point(42, 105);
             this.trackBar67.Maximum = 1000;
             this.trackBar67.Minimum = -1000;
             this.trackBar67.Name = "trackBar67";
@@ -4757,7 +4755,7 @@
             // 
             this.label72.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label72.AutoSize = true;
-            this.label72.Location = new System.Drawing.Point(315, 16);
+            this.label72.Location = new System.Drawing.Point(339, 16);
             this.label72.Name = "label72";
             this.label72.Size = new System.Drawing.Size(63, 15);
             this.label72.TabIndex = 3;
@@ -4792,7 +4790,7 @@
             this.checkBox17.AutoSize = true;
             this.checkBox17.Checked = true;
             this.checkBox17.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox17.Location = new System.Drawing.Point(512, 266);
+            this.checkBox17.Location = new System.Drawing.Point(536, 273);
             this.checkBox17.Name = "checkBox17";
             this.checkBox17.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox17.Size = new System.Drawing.Size(72, 19);
@@ -4819,7 +4817,7 @@
             this.tabPage14.Location = new System.Drawing.Point(4, 22);
             this.tabPage14.Name = "tabPage14";
             this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage14.Size = new System.Drawing.Size(591, 290);
+            this.tabPage14.Size = new System.Drawing.Size(615, 297);
             this.tabPage14.TabIndex = 16;
             this.tabPage14.Text = "Vibrance";
             this.tabPage14.UseVisualStyleBackColor = true;
@@ -4833,7 +4831,7 @@
             0,
             0,
             131072});
-            this.numericUpDown70.Location = new System.Drawing.Point(464, 98);
+            this.numericUpDown70.Location = new System.Drawing.Point(488, 98);
             this.numericUpDown70.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -4857,7 +4855,7 @@
             // 
             this.trackBar70.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar70.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar70.Location = new System.Drawing.Point(469, 124);
+            this.trackBar70.Location = new System.Drawing.Point(493, 124);
             this.trackBar70.Maximum = 1000;
             this.trackBar70.Minimum = -1000;
             this.trackBar70.Name = "trackBar70";
@@ -4876,7 +4874,7 @@
             0,
             0,
             131072});
-            this.numericUpDown68.Location = new System.Drawing.Point(413, 98);
+            this.numericUpDown68.Location = new System.Drawing.Point(437, 98);
             this.numericUpDown68.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -4900,7 +4898,7 @@
             // 
             this.trackBar68.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar68.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar68.Location = new System.Drawing.Point(418, 124);
+            this.trackBar68.Location = new System.Drawing.Point(442, 124);
             this.trackBar68.Maximum = 1000;
             this.trackBar68.Minimum = -1000;
             this.trackBar68.Name = "trackBar68";
@@ -4914,7 +4912,7 @@
             // 
             this.label75.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label75.AutoSize = true;
-            this.label75.Location = new System.Drawing.Point(377, 82);
+            this.label75.Location = new System.Drawing.Point(401, 82);
             this.label75.Name = "label75";
             this.label75.Size = new System.Drawing.Size(52, 15);
             this.label75.TabIndex = 33;
@@ -4958,7 +4956,7 @@
             0,
             0,
             131072});
-            this.numericUpDown74.Location = new System.Drawing.Point(362, 98);
+            this.numericUpDown74.Location = new System.Drawing.Point(386, 98);
             this.numericUpDown74.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -4982,7 +4980,7 @@
             // 
             this.trackBar74.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar74.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar74.Location = new System.Drawing.Point(367, 124);
+            this.trackBar74.Location = new System.Drawing.Point(391, 124);
             this.trackBar74.Maximum = 1000;
             this.trackBar74.Minimum = -1000;
             this.trackBar74.Name = "trackBar74";
@@ -5050,7 +5048,7 @@
             this.checkBox18.AutoSize = true;
             this.checkBox18.Checked = true;
             this.checkBox18.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox18.Location = new System.Drawing.Point(512, 266);
+            this.checkBox18.Location = new System.Drawing.Point(536, 273);
             this.checkBox18.Name = "checkBox18";
             this.checkBox18.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox18.Size = new System.Drawing.Size(72, 19);
@@ -5071,7 +5069,7 @@
             this.tabPage15.Location = new System.Drawing.Point(4, 22);
             this.tabPage15.Name = "tabPage15";
             this.tabPage15.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage15.Size = new System.Drawing.Size(591, 290);
+            this.tabPage15.Size = new System.Drawing.Size(615, 297);
             this.tabPage15.TabIndex = 17;
             this.tabPage15.Text = "Curves";
             this.tabPage15.UseVisualStyleBackColor = true;
@@ -5118,7 +5116,7 @@
             0,
             0,
             131072});
-            this.numericUpDown73.Location = new System.Drawing.Point(494, 14);
+            this.numericUpDown73.Location = new System.Drawing.Point(518, 14);
             this.numericUpDown73.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -5153,7 +5151,7 @@
             this.trackBar73.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar73.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar73.LargeChange = 10;
-            this.trackBar73.Location = new System.Drawing.Point(299, 40);
+            this.trackBar73.Location = new System.Drawing.Point(323, 40);
             this.trackBar73.Maximum = 100;
             this.trackBar73.Minimum = -100;
             this.trackBar73.Name = "trackBar73";
@@ -5166,7 +5164,7 @@
             // 
             this.label80.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label80.AutoSize = true;
-            this.label80.Location = new System.Drawing.Point(315, 16);
+            this.label80.Location = new System.Drawing.Point(339, 16);
             this.label80.Name = "label80";
             this.label80.Size = new System.Drawing.Size(52, 15);
             this.label80.TabIndex = 3;
@@ -5189,7 +5187,7 @@
             this.checkBox24.AutoSize = true;
             this.checkBox24.Checked = true;
             this.checkBox24.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox24.Location = new System.Drawing.Point(512, 266);
+            this.checkBox24.Location = new System.Drawing.Point(536, 273);
             this.checkBox24.Name = "checkBox24";
             this.checkBox24.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox24.Size = new System.Drawing.Size(72, 19);
@@ -5220,7 +5218,7 @@
             this.tabPage16.Location = new System.Drawing.Point(4, 22);
             this.tabPage16.Name = "tabPage16";
             this.tabPage16.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage16.Size = new System.Drawing.Size(591, 290);
+            this.tabPage16.Size = new System.Drawing.Size(615, 297);
             this.tabPage16.TabIndex = 18;
             this.tabPage16.Text = "Sepia/Dither";
             this.tabPage16.UseVisualStyleBackColor = true;
@@ -5281,7 +5279,7 @@
             0,
             0,
             131072});
-            this.numericUpDown71.Location = new System.Drawing.Point(469, 98);
+            this.numericUpDown71.Location = new System.Drawing.Point(493, 98);
             this.numericUpDown71.Maximum = new decimal(new int[] {
             255,
             0,
@@ -5300,7 +5298,7 @@
             // 
             this.trackBar71.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar71.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar71.Location = new System.Drawing.Point(469, 124);
+            this.trackBar71.Location = new System.Drawing.Point(493, 124);
             this.trackBar71.Maximum = 255;
             this.trackBar71.Name = "trackBar71";
             this.trackBar71.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -5318,7 +5316,7 @@
             0,
             0,
             131072});
-            this.numericUpDown75.Location = new System.Drawing.Point(418, 98);
+            this.numericUpDown75.Location = new System.Drawing.Point(442, 98);
             this.numericUpDown75.Maximum = new decimal(new int[] {
             255,
             0,
@@ -5337,7 +5335,7 @@
             // 
             this.trackBar75.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar75.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar75.Location = new System.Drawing.Point(418, 124);
+            this.trackBar75.Location = new System.Drawing.Point(442, 124);
             this.trackBar75.Maximum = 255;
             this.trackBar75.Name = "trackBar75";
             this.trackBar75.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -5351,7 +5349,7 @@
             this.trackBar78.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar78.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar78.LargeChange = 10;
-            this.trackBar78.Location = new System.Drawing.Point(299, 38);
+            this.trackBar78.Location = new System.Drawing.Point(323, 38);
             this.trackBar78.Maximum = 100;
             this.trackBar78.Name = "trackBar78";
             this.trackBar78.Size = new System.Drawing.Size(275, 50);
@@ -5368,7 +5366,7 @@
             0,
             0,
             131072});
-            this.numericUpDown78.Location = new System.Drawing.Point(493, 16);
+            this.numericUpDown78.Location = new System.Drawing.Point(517, 16);
             this.numericUpDown78.Maximum = new decimal(new int[] {
             100,
             0,
@@ -5387,7 +5385,7 @@
             // 
             this.label83.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label83.AutoSize = true;
-            this.label83.Location = new System.Drawing.Point(377, 82);
+            this.label83.Location = new System.Drawing.Point(401, 82);
             this.label83.Name = "label83";
             this.label83.Size = new System.Drawing.Size(67, 15);
             this.label83.TabIndex = 33;
@@ -5430,7 +5428,7 @@
             0,
             0,
             131072});
-            this.numericUpDown80.Location = new System.Drawing.Point(367, 98);
+            this.numericUpDown80.Location = new System.Drawing.Point(391, 98);
             this.numericUpDown80.Maximum = new decimal(new int[] {
             255,
             0,
@@ -5449,7 +5447,7 @@
             // 
             this.trackBar80.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar80.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar80.Location = new System.Drawing.Point(367, 124);
+            this.trackBar80.Location = new System.Drawing.Point(391, 124);
             this.trackBar80.Maximum = 255;
             this.trackBar80.Name = "trackBar80";
             this.trackBar80.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -5485,7 +5483,7 @@
             // 
             this.label89.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label89.AutoSize = true;
-            this.label89.Location = new System.Drawing.Point(315, 16);
+            this.label89.Location = new System.Drawing.Point(339, 16);
             this.label89.Name = "label89";
             this.label89.Size = new System.Drawing.Size(42, 15);
             this.label89.TabIndex = 3;
@@ -5520,7 +5518,7 @@
             this.checkBox22.AutoSize = true;
             this.checkBox22.Checked = true;
             this.checkBox22.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox22.Location = new System.Drawing.Point(512, 266);
+            this.checkBox22.Location = new System.Drawing.Point(536, 273);
             this.checkBox22.Name = "checkBox22";
             this.checkBox22.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox22.Size = new System.Drawing.Size(72, 19);
@@ -5553,7 +5551,7 @@
             this.tabPage17.Location = new System.Drawing.Point(4, 22);
             this.tabPage17.Name = "tabPage17";
             this.tabPage17.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage17.Size = new System.Drawing.Size(591, 290);
+            this.tabPage17.Size = new System.Drawing.Size(615, 297);
             this.tabPage17.TabIndex = 19;
             this.tabPage17.Text = "Vignette";
             this.tabPage17.UseVisualStyleBackColor = true;
@@ -5567,7 +5565,7 @@
             0,
             0,
             196608});
-            this.numericUpDown85.Location = new System.Drawing.Point(237, 78);
+            this.numericUpDown85.Location = new System.Drawing.Point(261, 78);
             this.numericUpDown85.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -5586,7 +5584,7 @@
             // 
             this.trackBar85.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar85.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar85.Location = new System.Drawing.Point(237, 103);
+            this.trackBar85.Location = new System.Drawing.Point(261, 103);
             this.trackBar85.Maximum = 1000;
             this.trackBar85.Name = "trackBar85";
             this.trackBar85.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -5599,7 +5597,7 @@
             // 
             this.label94.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label94.AutoSize = true;
-            this.label94.Location = new System.Drawing.Point(205, 257);
+            this.label94.Location = new System.Drawing.Point(229, 257);
             this.label94.Name = "label94";
             this.label94.Size = new System.Drawing.Size(43, 15);
             this.label94.TabIndex = 45;
@@ -5615,7 +5613,7 @@
             0,
             0,
             196608});
-            this.numericUpDown86.Location = new System.Drawing.Point(179, 78);
+            this.numericUpDown86.Location = new System.Drawing.Point(203, 78);
             this.numericUpDown86.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -5634,7 +5632,7 @@
             // 
             this.trackBar86.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar86.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar86.Location = new System.Drawing.Point(186, 103);
+            this.trackBar86.Location = new System.Drawing.Point(210, 103);
             this.trackBar86.Maximum = 1000;
             this.trackBar86.Name = "trackBar86";
             this.trackBar86.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -5646,7 +5644,7 @@
             // numericUpDown83
             // 
             this.numericUpDown83.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown83.Location = new System.Drawing.Point(492, 144);
+            this.numericUpDown83.Location = new System.Drawing.Point(516, 144);
             this.numericUpDown83.Maximum = new decimal(new int[] {
             16,
             0,
@@ -5671,7 +5669,7 @@
             this.trackBar83.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar83.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar83.LargeChange = 10;
-            this.trackBar83.Location = new System.Drawing.Point(299, 170);
+            this.trackBar83.Location = new System.Drawing.Point(323, 170);
             this.trackBar83.Maximum = 16;
             this.trackBar83.Minimum = 2;
             this.trackBar83.Name = "trackBar83";
@@ -5683,7 +5681,7 @@
             // 
             this.label92.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label92.AutoSize = true;
-            this.label92.Location = new System.Drawing.Point(315, 146);
+            this.label92.Location = new System.Drawing.Point(339, 146);
             this.label92.Name = "label92";
             this.label92.Size = new System.Drawing.Size(39, 15);
             this.label92.TabIndex = 19;
@@ -5700,7 +5698,7 @@
             0,
             0,
             131072});
-            this.numericUpDown81.Location = new System.Drawing.Point(493, 78);
+            this.numericUpDown81.Location = new System.Drawing.Point(517, 78);
             this.numericUpDown81.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -5725,7 +5723,7 @@
             this.trackBar81.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar81.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar81.LargeChange = 10;
-            this.trackBar81.Location = new System.Drawing.Point(298, 104);
+            this.trackBar81.Location = new System.Drawing.Point(322, 104);
             this.trackBar81.Maximum = 100;
             this.trackBar81.Minimum = -200;
             this.trackBar81.Name = "trackBar81";
@@ -5738,7 +5736,7 @@
             // 
             this.label91.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label91.AutoSize = true;
-            this.label91.Location = new System.Drawing.Point(314, 80);
+            this.label91.Location = new System.Drawing.Point(338, 80);
             this.label91.Name = "label91";
             this.label91.Size = new System.Drawing.Size(49, 15);
             this.label91.TabIndex = 16;
@@ -5795,7 +5793,7 @@
             0,
             0,
             131072});
-            this.numericUpDown79.Location = new System.Drawing.Point(494, 14);
+            this.numericUpDown79.Location = new System.Drawing.Point(518, 14);
             this.numericUpDown79.Maximum = new decimal(new int[] {
             300,
             0,
@@ -5843,7 +5841,7 @@
             this.trackBar79.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar79.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar79.LargeChange = 10;
-            this.trackBar79.Location = new System.Drawing.Point(299, 40);
+            this.trackBar79.Location = new System.Drawing.Point(323, 40);
             this.trackBar79.Maximum = 300;
             this.trackBar79.Minimum = -100;
             this.trackBar79.Name = "trackBar79";
@@ -5856,7 +5854,7 @@
             // 
             this.label84.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label84.AutoSize = true;
-            this.label84.Location = new System.Drawing.Point(315, 16);
+            this.label84.Location = new System.Drawing.Point(339, 16);
             this.label84.Name = "label84";
             this.label84.Size = new System.Drawing.Size(46, 15);
             this.label84.TabIndex = 3;
@@ -5878,7 +5876,7 @@
             this.checkBox25.AutoSize = true;
             this.checkBox25.Checked = true;
             this.checkBox25.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox25.Location = new System.Drawing.Point(512, 266);
+            this.checkBox25.Location = new System.Drawing.Point(536, 273);
             this.checkBox25.Name = "checkBox25";
             this.checkBox25.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox25.Size = new System.Drawing.Size(72, 19);
@@ -5908,7 +5906,7 @@
             this.tabPage18.Location = new System.Drawing.Point(4, 22);
             this.tabPage18.Name = "tabPage18";
             this.tabPage18.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage18.Size = new System.Drawing.Size(591, 290);
+            this.tabPage18.Size = new System.Drawing.Size(615, 297);
             this.tabPage18.TabIndex = 20;
             this.tabPage18.Text = "Border";
             this.tabPage18.UseVisualStyleBackColor = true;
@@ -5916,7 +5914,7 @@
             // numericUpDown84
             // 
             this.numericUpDown84.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown84.Location = new System.Drawing.Point(469, 98);
+            this.numericUpDown84.Location = new System.Drawing.Point(493, 98);
             this.numericUpDown84.Maximum = new decimal(new int[] {
             255,
             0,
@@ -5935,7 +5933,7 @@
             // 
             this.trackBar84.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar84.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar84.Location = new System.Drawing.Point(469, 124);
+            this.trackBar84.Location = new System.Drawing.Point(493, 124);
             this.trackBar84.Maximum = 255;
             this.trackBar84.Name = "trackBar84";
             this.trackBar84.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -5947,7 +5945,7 @@
             // numericUpDown87
             // 
             this.numericUpDown87.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown87.Location = new System.Drawing.Point(418, 98);
+            this.numericUpDown87.Location = new System.Drawing.Point(442, 98);
             this.numericUpDown87.Maximum = new decimal(new int[] {
             255,
             0,
@@ -5966,7 +5964,7 @@
             // 
             this.trackBar87.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar87.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar87.Location = new System.Drawing.Point(418, 124);
+            this.trackBar87.Location = new System.Drawing.Point(442, 124);
             this.trackBar87.Maximum = 255;
             this.trackBar87.Name = "trackBar87";
             this.trackBar87.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -5980,7 +5978,7 @@
             this.trackBar88.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar88.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.trackBar88.LargeChange = 10;
-            this.trackBar88.Location = new System.Drawing.Point(299, 38);
+            this.trackBar88.Location = new System.Drawing.Point(323, 38);
             this.trackBar88.Maximum = 2048;
             this.trackBar88.Name = "trackBar88";
             this.trackBar88.Size = new System.Drawing.Size(275, 50);
@@ -5991,7 +5989,7 @@
             // numericUpDown88
             // 
             this.numericUpDown88.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown88.Location = new System.Drawing.Point(493, 16);
+            this.numericUpDown88.Location = new System.Drawing.Point(517, 16);
             this.numericUpDown88.Maximum = new decimal(new int[] {
             2048,
             0,
@@ -6010,7 +6008,7 @@
             // 
             this.label95.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label95.AutoSize = true;
-            this.label95.Location = new System.Drawing.Point(377, 82);
+            this.label95.Location = new System.Drawing.Point(401, 82);
             this.label95.Name = "label95";
             this.label95.Size = new System.Drawing.Size(36, 15);
             this.label95.TabIndex = 33;
@@ -6047,7 +6045,7 @@
             // numericUpDown89
             // 
             this.numericUpDown89.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown89.Location = new System.Drawing.Point(367, 98);
+            this.numericUpDown89.Location = new System.Drawing.Point(391, 98);
             this.numericUpDown89.Maximum = new decimal(new int[] {
             255,
             0,
@@ -6066,7 +6064,7 @@
             // 
             this.trackBar89.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar89.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBar89.Location = new System.Drawing.Point(367, 124);
+            this.trackBar89.Location = new System.Drawing.Point(391, 124);
             this.trackBar89.Maximum = 255;
             this.trackBar89.Name = "trackBar89";
             this.trackBar89.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -6096,7 +6094,7 @@
             // 
             this.label100.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label100.AutoSize = true;
-            this.label100.Location = new System.Drawing.Point(315, 16);
+            this.label100.Location = new System.Drawing.Point(339, 16);
             this.label100.Name = "label100";
             this.label100.Size = new System.Drawing.Size(48, 15);
             this.label100.TabIndex = 3;
@@ -6131,7 +6129,7 @@
             this.checkBox28.AutoSize = true;
             this.checkBox28.Checked = true;
             this.checkBox28.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox28.Location = new System.Drawing.Point(512, 266);
+            this.checkBox28.Location = new System.Drawing.Point(536, 273);
             this.checkBox28.Name = "checkBox28";
             this.checkBox28.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox28.Size = new System.Drawing.Size(72, 19);
@@ -6147,7 +6145,7 @@
             this.tabPage19.Location = new System.Drawing.Point(4, 22);
             this.tabPage19.Name = "tabPage19";
             this.tabPage19.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage19.Size = new System.Drawing.Size(591, 290);
+            this.tabPage19.Size = new System.Drawing.Size(615, 297);
             this.tabPage19.TabIndex = 21;
             this.tabPage19.Text = "Splitscreen";
             this.tabPage19.UseVisualStyleBackColor = true;

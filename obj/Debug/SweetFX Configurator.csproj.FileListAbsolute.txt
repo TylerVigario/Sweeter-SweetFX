@@ -31,7 +31,6 @@ C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\swe
 C:\Users\logicPwn\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX_Configurator.AddInstallForm.resources
 D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\Sweeter SweetFX.exe.config
 D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\Sweeter SweetFX.exe
-D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX Configurator.csprojResolveAssemblyReference.cache
 D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX_Configurator.AboutForm.resources
 D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX_Configurator.AddGameForm.resources
 D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX_Configurator.InstallManagerForm.resources
@@ -43,9 +42,7 @@ D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurat
 D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\Sweeter SweetFX.exe
 D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\Sweeter SweetFX.pdb
 D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\CrashReporter.NET.dll
-D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\Newtonsoft.Json.dll
 D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\ObjectListView.dll
 D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\Ookii.Dialogs.dll
 D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\Sweeter SweetFX.pdb
-D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\BetterComboBox.dll
-D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\bin\Debug\BetterComboBox.pdb
+D:\Documents\Visual Studio 2012\Projects\SweetFX Configurator\sweetfx-configurator\obj\Debug\SweetFX Configurator.csprojResolveAssemblyReference.cache

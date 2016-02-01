@@ -1,19 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 
 namespace SweetFX_Configurator
 {
+    public delegate void GameD(Game _g);
+    public delegate void GameEditedD(Game old_game, Game new_game);
+
     public partial class GameManagerForm : Form
     {
+        public static event GameD AddGame;
+        public static event GameD RemoveGame;
+        public static event GameEditedD GameEdited;
+        //
         AddGameForm add_game_form;
         private static bool _open = false;
-        private List<Game> Games;
         private bool no_close;
-        public event GameAddedD SweetFXInstalled;
-        public event GameAddedD SweetFXUninstalled;
         Keys key_toggle;
         Keys key_screenshot;
         Keys key_reload;
@@ -31,16 +34,14 @@ namespace SweetFX_Configurator
         private void GameManagerForm_Load(object sender, EventArgs e)
         {
             WindowGeometry.GeometryFromString(Settings.GameManager_Window_Geometry, this);
-            this.olvColumn2.AspectToStringConverter = delegate(object x)
+            this.olvColumn2.AspectToStringConverter = delegate (object x)
             {
                 SweetFX_Install sfx = (SweetFX_Install)x;
                 if (sfx == null) { return "None"; }
                 return sfx.Name;
             };
             // Load games
-            Games = Settings.GetGames();
-            fastObjectListView1.SetObjects(Games);
-            Settings.GameAdded += Settings_GameAdded;
+            fastObjectListView1.SetObjects(Settings.GetGames());
             // Load running processes
             Process[] procs = Process.GetProcesses();
             Array.Sort<Process>(procs, delegate (Process proc1, Process proc2) { return proc1.ProcessName.CompareTo(proc2.ProcessName); });
@@ -48,12 +49,6 @@ namespace SweetFX_Configurator
             // Load available SweetFX installs
             foreach (SweetFX_Install sfx in InstallManagerForm.GetSweetFXInstalls()) { comboBox1.Items.Add(sfx.Name); };
             comboBox1.SelectedIndex = 0;
-        }
-
-        void Settings_GameAdded(Game _g)
-        {
-            Games.Add(_g);
-            fastObjectListView1.AddObject(_g);
         }
 
         private void InstallManagerForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -74,9 +69,15 @@ namespace SweetFX_Configurator
             {
                 add_game_form = new AddGameForm();
                 add_game_form.FormClosed += add_game_form_FormClosed;
+                add_game_form.GameAdded += Add_game_form_GameAdded;
                 add_game_form.Show();
             }
             else { add_game_form.BringToFront(); }
+        }
+
+        private void Add_game_form_GameAdded(Game _g)
+        {
+            fastObjectListView1.AddObject(_g);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -90,14 +91,15 @@ namespace SweetFX_Configurator
             Game _g = (Game)fastObjectListView1.SelectedObject;
             if (_g.SweetFX_Install != null)
             {
-                SweetFX.Load(_g);
+                SweetFX_Parser.Load(_g);
                 no_close = true;
             }
         }
 
+        // Add common files sweep
         private void button4_Click(object sender, EventArgs e)
         {
-            Game game = (Game)fastObjectListView1.SelectedObject;
+            Game _game = (Game)fastObjectListView1.SelectedObject;
             if (button4.Text == "Install")
             {
                 SweetFX_Install sfx = null;
@@ -106,19 +108,59 @@ namespace SweetFX_Configurator
                     if (_sfx.Name == comboBox1.SelectedItem.ToString()) { sfx = _sfx; break; }
                 }
                 if (sfx == null) { return; }
-                InstallSweetFX(game, sfx);
-                game.SweetFX_Install = sfx;
+                //
+                string[] files = Directory.GetFiles(sfx.Directory.FullName, "*.*", SearchOption.AllDirectories);
+                string[] _files = new string[files.Length];
+                _files[0] = sfx.Directory.FullName;
+                for (int i = 1; i < _files.Length; i++)
+                {
+                    _files[i] = files[i].Replace(sfx.Directory.FullName, _game.Directory.FullName);
+                    string _dir = Path.GetDirectoryName(_files[i]);
+                    if (!Directory.Exists(_dir)) { Directory.CreateDirectory(_dir); };
+                    File.Copy(files[i], _files[i], true);
+                }
+                File.WriteAllLines(_game.Directory.FullName + @"\SweetFX_Configurator.txt", _files);
+                string[] dirs = Directory.GetDirectories(sfx.Directory.FullName);
+                string[] _dirs = new string[dirs.Length];
+                for (int i = 0; i < _dirs.Length; i++)
+                {
+                    _dirs[i] = dirs[i].Replace(sfx.Directory.FullName, _game.Directory.FullName);
+                }
+                File.AppendAllLines(_game.Directory.FullName + @"\SweetFX_Configurator.txt", _dirs);
+                //
+                _game.SweetFX_Install = sfx;
+                fastObjectListView1.RefreshObject(_game);
                 button4.Text = "Uninstall";
-                SweetFXInstalled(game);
+                AddGame(_game);
             }
             else
             {
-                UninstallSweetFX(game.DirectoryInfo);
-                game.SweetFX_Install = null;
-                button4.Text = "Install"; 
-                SweetFXUninstalled(game);
+                // Add common files sweep
+                if (File.Exists(_game.Directory.FullName + @"\SweetFX_Configurator.txt"))
+                {
+                    string[] files = File.ReadAllLines(_game.Directory.FullName + @"\SweetFX_Configurator.txt");
+                    for (int i = 1; i < files.Length; i++)
+                    {
+                        if (File.Exists(files[i]))
+                        {
+                            FileAttributes attr = File.GetAttributes(files[i]);
+                            if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
+                                Directory.Delete(files[i], true);
+                            else
+                                File.Delete(files[i]);
+                        }
+                    }
+                    File.Delete(_game.Directory.FullName + @"\SweetFX_Configurator.txt");
+                    _game.SweetFX_Install = null;
+                    fastObjectListView1.RefreshObject(_game);
+                    button4.Text = "Install";
+                    RemoveGame(_game);
+                }
+                else
+                {
+                    MessageBox.Show("Currently you can only uninstall SweetFX versions that where installed with this configurator. This will changed in the future!");
+                }
             }
-            fastObjectListView1.RefreshObject(game);
         }
 
         private void InstallManagerForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -132,9 +174,7 @@ namespace SweetFX_Configurator
             if (selected != null)
             {
                 button1.Enabled = true;
-
                 button4.Enabled = true;
-                comboBox1.Enabled = true;
                 if (selected.SweetFX_Install != null)
                 {
                     button4.Text = "Uninstall";
@@ -142,10 +182,11 @@ namespace SweetFX_Configurator
                     comboBox3.Enabled = true;
                     comboBox4.Enabled = true;
                     comboBox5.Enabled = true;
+                    comboBox1.Enabled = false;
                     // Load hotkeys
-                    if (File.Exists(selected.SweetFX_Install.DirectoryInfo.FullName + @"\injector.ini"))
+                    if (File.Exists(selected.SweetFX_Install.Directory.FullName + @"\injector.ini"))
                     {
-                        IniFile ini = new IniFile(selected.SweetFX_Install.DirectoryInfo.FullName + @"\injector.ini");
+                        IniFile ini = new IniFile(selected.SweetFX_Install.Directory.FullName + @"\injector.ini");
                         string key = ini.GetString("injector", "key_toggle", "145");
                         key = key.Substring(0, key.IndexOf(';')).Trim();
                         key_toggle = (Keys)new KeysConverter().ConvertFromString(key);
@@ -169,6 +210,7 @@ namespace SweetFX_Configurator
                     comboBox3.Enabled = false;
                     comboBox4.Enabled = false;
                     comboBox5.Enabled = false;
+                    comboBox1.Enabled = true;
                 }
             }
             else
@@ -185,57 +227,30 @@ namespace SweetFX_Configurator
             return File.Exists(_directory.FullName + @"\SweetFX_settings.txt");
         }
 
-        private void InstallSweetFX(Game _game, SweetFX_Install sfx)
-        {
-            string[] files = Directory.GetFiles(sfx.DirectoryInfo.FullName, "*.*", SearchOption.AllDirectories);
-            string[] _files = new string[files.Length];
-            _files[0] = sfx.DirectoryInfo.FullName;
-            for (int i = 1; i < _files.Length; i++)
-            {
-                _files[i] = files[i].Replace(sfx.DirectoryInfo.FullName, _game.DirectoryInfo.FullName);
-                string _dir = Path.GetDirectoryName(_files[i]);
-                if (!Directory.Exists(_dir)) { Directory.CreateDirectory(_dir); };
-                File.Copy(files[i], _files[i], true);
-            }
-            File.WriteAllLines(_game.DirectoryInfo.FullName + @"\SweetFX_Configurator.txt", _files);
-           string[] dirs = Directory.GetDirectories(sfx.DirectoryInfo.FullName);
-            string[] _dirs = new string[dirs.Length];
-            for (int i = 0; i < _dirs.Length; i++)
-            {
-                _dirs[i] = dirs[i].Replace(sfx.DirectoryInfo.FullName, _game.DirectoryInfo.FullName);
-            }
-            File.AppendAllLines(_game.DirectoryInfo.FullName + @"\SweetFX_Configurator.txt", _dirs);
-        }
-
-        // Add common files sweep
-        private void UninstallSweetFX(DirectoryInfo dir)
-        {
-            if (File.Exists(dir.FullName + @"\SweetFX_Configurator.txt"))
-            {
-                string[] files = File.ReadAllLines(dir.FullName + @"\SweetFX_Configurator.txt");
-                for (int i = 1; i < files.Length; i++)
-                {
-                    if (File.Exists(files[i]))
-                    {
-                        FileAttributes attr = File.GetAttributes(files[i]);
-                        if ((attr & FileAttributes.Directory) == FileAttributes.Directory)
-                            Directory.Delete(files[i], true);
-                        else
-                            File.Delete(files[i]);
-                    }
-                }
-                File.Delete(dir.FullName + @"\SweetFX_Configurator.txt");
-            }
-        }
-
         private void button5_Click(object sender, EventArgs e)
         {
-            foreach (Game g in fastObjectListView1.Objects) { if (g.Name == comboBox2.SelectedItem.ToString()) return; }
+            foreach (Game g in fastObjectListView1.Objects)
+            {
+                if (g.Name == comboBox2.SelectedItem.ToString())
+                {
+                    MessageBox.Show("Game already added.");
+                    return;
+                }
+            }
             Process[] procs = Process.GetProcessesByName(comboBox2.SelectedItem.ToString());
             if (procs.Length > 0)
             {
-                Game g = new Game(procs[0].ProcessName, new DirectoryInfo(Path.GetDirectoryName(procs[0].Modules[0].FileName)));
-                Settings.AddGame(g);
+                try
+                {
+                    Game _g = new Game(procs[0].ProcessName, new DirectoryInfo(Path.GetDirectoryName(procs[0].Modules[0].FileName)));
+                    fastObjectListView1.AddObject(_g);
+                    Settings.AddGame(_g);
+                    if (isSweetFXInstalled(_g.Directory)) AddGame(_g);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading process: " + procs[0].ProcessName + ". Error: " + ex.Message + ".");
+                }
             }
         }
 
@@ -249,30 +264,52 @@ namespace SweetFX_Configurator
             Keys key = (Keys)new KeysConverter().ConvertFromString(comboBox3.SelectedItem.ToString());
             if (!key.Equals(key_toggle))
             {
-                IniFile ini = new IniFile(((Game)fastObjectListView1.SelectedObject).SweetFX_Install.DirectoryInfo.FullName + @"\injector.ini");
+                IniFile ini = new IniFile(((Game)fastObjectListView1.SelectedObject).SweetFX_Install.Directory.FullName + @"\injector.ini");
                 ini.WriteValue("injector", "key_toggle", ((int)key).ToString() + " ; " + ((int)key).ToString() + " = the " + key.ToString() + " key");
             }
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!AddGameForm.isOpen)
+            {
+                add_game_form = new AddGameForm((Game)fastObjectListView1.SelectedObject);
+                add_game_form.FormClosed += add_game_form_FormClosed;
+                add_game_form.GameEdited += Add_game_form_GameEdited;
+                add_game_form.Show();
+            }
+            else { add_game_form.BringToFront(); }
+        }
+
+        private void Add_game_form_GameEdited(Game old_game, Game new_game)
+        {
+            fastObjectListView1.RemoveObject(old_game);
+            fastObjectListView1.AddObject(new_game);
+            Settings.EditGame(old_game, new_game);
+            GameEdited(old_game, new_game);
         }
     }
 
     public class Game
     {
-        public Game(string _name, DirectoryInfo _directory_info)
+        public Game(string _name, DirectoryInfo sweetfx_dir)
         {
             Name = _name;
-            this.DirectoryInfo = _directory_info;
-            if (GameManagerForm.isSweetFXInstalled(this.DirectoryInfo))
+            this.Directory = sweetfx_dir;
+            if (GameManagerForm.isSweetFXInstalled(this.Directory))
             {
-                if (File.Exists(this.DirectoryInfo.FullName + @"\SweetFX_Configurator.txt"))
-                    this.SweetFX_Install = new SweetFX_Install(new DirectoryInfo(File.ReadAllLines(this.DirectoryInfo.FullName + @"\SweetFX_Configurator.txt")[0]));
-                else { this.SweetFX_Install = new SweetFX_Install(new DirectoryInfo(Application.StartupPath + @"\SweetFX\Vanilla")); }
+                if (File.Exists(this.Directory.FullName + @"\SweetFX_Configurator.txt"))
+                    this.SweetFX_Install = new SweetFX_Install(new DirectoryInfo(File.ReadAllLines(this.Directory.FullName + @"\SweetFX_Configurator.txt")[0]));
+                else this.SweetFX_Install = new SweetFX_Install("Unknown", new DirectoryInfo(Application.StartupPath + @"\SweetFX\Vanilla"));
             }
         }
 
         public string Name { get; set; }
 
-        public DirectoryInfo DirectoryInfo { get; set; }
+        public DirectoryInfo Directory { get; set; }
 
         public SweetFX_Install SweetFX_Install { get; set; }
+
+        public _SweetFX SweetFX { get; set; }
     }
 }
