@@ -1,6 +1,6 @@
 ## Sweeter SweetFX
 
-**Current State:** Alpha
+**Current State:** Discontinued
 
 
 ### Changelog
